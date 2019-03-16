@@ -16,5 +16,10 @@ namespace ClinicApp
         {
             InitializeComponent();
         }
+
+        private void NurseDashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
