@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// ClinicApp Doctor object; creates Doctor from DB data
-/// </summary>
 namespace ClinicApp.Model
 {
     /// <summary>

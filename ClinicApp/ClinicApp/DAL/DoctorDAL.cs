@@ -6,7 +6,7 @@ namespace ClinicApp.DAL
 {
     
     /// <summary>
-    /// Establishes connection and access data in the Doctor and Person tables
+    /// Establishes connection and accesses data in the Doctor and Person tables
     /// </summary>
     public static class DoctorDAL
     {
@@ -18,7 +18,7 @@ namespace ClinicApp.DAL
         {
             List<Doctor> doctorList = new List<Doctor>();
             string selectStatement =
-                "SELECT doctorID, per.firstName AS firstName, per.lastName AS lastName " +
+                "SELECT doctorID, firstName, lastName " +
                 "FROM Doctor doc " +
                 "JOIN Person per " +
                 "ON doc.personID = per.personID";

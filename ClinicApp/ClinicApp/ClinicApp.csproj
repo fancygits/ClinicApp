@@ -49,7 +49,9 @@
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="DAL\DBAcess.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Patient.cs" />
     <Compile Include="UserControls\AppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
