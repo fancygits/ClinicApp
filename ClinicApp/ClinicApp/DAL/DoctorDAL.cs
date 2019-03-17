@@ -34,7 +34,7 @@ namespace ClinicApp.DAL
                             doctor.DoctorID = (int)reader["doctorID"];
                             doctor.PersonID = (int)reader["personID"];
                             doctor.FirstName = reader["firstName"].ToString();
-                            doctor.FirstName = reader["firstName"].ToString();
+                            doctor.LastName = reader["lastName"].ToString();
                             doctorList.Add(doctor);
                         }
                         reader.Close();

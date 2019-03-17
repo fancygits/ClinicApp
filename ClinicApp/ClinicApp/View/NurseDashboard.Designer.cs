@@ -38,9 +38,7 @@
             this.lblPlaceholder2 = new System.Windows.Forms.Label();
             this.lblPlaceholder1 = new System.Windows.Forms.Label();
             this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
-            this.addAppointmentUserControl1 = new ClinicApp.UserControls.AddAppointmentUserControl();
             this.patientsTabControl.SuspendLayout();
-            this.apptTabPage.SuspendLayout();
             this.infoTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +55,6 @@
             // 
             // apptTabPage
             // 
-            this.apptTabPage.Controls.Add(this.addAppointmentUserControl1);
             this.apptTabPage.Location = new System.Drawing.Point(4, 22);
             this.apptTabPage.Name = "apptTabPage";
             this.apptTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -141,13 +138,6 @@
             this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
             this.patientInformationUserControl1.TabIndex = 0;
             // 
-            // addAppointmentUserControl1
-            // 
-            this.addAppointmentUserControl1.Location = new System.Drawing.Point(127, 24);
-            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
-            this.addAppointmentUserControl1.Size = new System.Drawing.Size(538, 344);
-            this.addAppointmentUserControl1.TabIndex = 0;
-            // 
             // NurseDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,7 +153,6 @@
             this.Text = "Nurse Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NurseDashboard_FormClosing);
             this.patientsTabControl.ResumeLayout(false);
-            this.apptTabPage.ResumeLayout(false);
             this.infoTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,7 +171,6 @@
         private System.Windows.Forms.Label lblPlaceholder2;
         private System.Windows.Forms.Label lblPlaceholder1;
         private UserControls.PatientInformationUserControl patientInformationUserControl1;
-        private UserControls.AddAppointmentUserControl addAppointmentUserControl1;
     }
 }
 
