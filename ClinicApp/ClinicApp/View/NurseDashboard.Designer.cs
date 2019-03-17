@@ -37,7 +37,9 @@
             this.lblRoll = new System.Windows.Forms.Label();
             this.lblPlaceholder2 = new System.Windows.Forms.Label();
             this.lblPlaceholder1 = new System.Windows.Forms.Label();
+            this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.patientsTabControl.SuspendLayout();
+            this.infoTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // patientsTabControl
@@ -63,10 +65,11 @@
             // 
             // infoTabPage
             // 
+            this.infoTabPage.Controls.Add(this.patientInformationUserControl1);
             this.infoTabPage.Location = new System.Drawing.Point(4, 22);
             this.infoTabPage.Name = "infoTabPage";
             this.infoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.infoTabPage.Size = new System.Drawing.Size(802, 379);
+            this.infoTabPage.Size = new System.Drawing.Size(802, 392);
             this.infoTabPage.TabIndex = 1;
             this.infoTabPage.Text = "Patient Information";
             this.infoTabPage.UseVisualStyleBackColor = true;
@@ -76,7 +79,7 @@
             this.VisitTabPage.Location = new System.Drawing.Point(4, 22);
             this.VisitTabPage.Name = "VisitTabPage";
             this.VisitTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VisitTabPage.Size = new System.Drawing.Size(802, 379);
+            this.VisitTabPage.Size = new System.Drawing.Size(802, 392);
             this.VisitTabPage.TabIndex = 2;
             this.VisitTabPage.Text = "Patient Visit";
             this.VisitTabPage.UseVisualStyleBackColor = true;
@@ -127,6 +130,14 @@
             this.lblPlaceholder1.TabIndex = 5;
             this.lblPlaceholder1.Text = "|";
             // 
+            // patientInformationUserControl1
+            // 
+            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientInformationUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
+            this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
+            this.patientInformationUserControl1.TabIndex = 0;
+            // 
             // NurseDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +153,7 @@
             this.Text = "Nurse Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NurseDashboard_FormClosing);
             this.patientsTabControl.ResumeLayout(false);
+            this.infoTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +170,7 @@
         private System.Windows.Forms.Label lblRoll;
         private System.Windows.Forms.Label lblPlaceholder2;
         private System.Windows.Forms.Label lblPlaceholder1;
+        private UserControls.PatientInformationUserControl patientInformationUserControl1;
     }
 }
 

@@ -46,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="DAL\ClinicDBConnection.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="UserControls\PatientInformationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientInformationUserControl.Designer.cs">
+      <DependentUpon>PatientInformationUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\NurseDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UserControls\PatientInformationUserControl.resx">
+      <DependentUpon>PatientInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\NurseDashboard.resx">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +80,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
+    <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,11 +95,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Model\" />
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
