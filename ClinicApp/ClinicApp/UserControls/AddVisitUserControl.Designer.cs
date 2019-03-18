@@ -40,10 +40,10 @@
             System.Windows.Forms.Label systolicBPLabel;
             System.Windows.Forms.Label temperatureLabel;
             System.Windows.Forms.Label weightLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVisitUserControl));
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label birthDateLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVisitUserControl));
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -74,6 +74,7 @@
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.birthDateTextBox = new System.Windows.Forms.TextBox();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             appointmentIDLabel = new System.Windows.Forms.Label();
             diastolicBPLabel = new System.Windows.Forms.Label();
             finalDiagnosisLabel = new System.Windows.Forms.Label();
@@ -93,6 +94,7 @@
             this.visitBindingNavigator.SuspendLayout();
             this.vistiGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -193,6 +195,33 @@
             weightLabel.Size = new System.Drawing.Size(85, 25);
             weightLabel.TabIndex = 21;
             weightLabel.Text = "Weight:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(116, 237);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(122, 25);
+            firstNameLabel.TabIndex = 23;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Location = new System.Drawing.Point(117, 281);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(121, 25);
+            lastNameLabel.TabIndex = 24;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // birthDateLabel
+            // 
+            birthDateLabel.AutoSize = true;
+            birthDateLabel.Location = new System.Drawing.Point(125, 325);
+            birthDateLabel.Name = "birthDateLabel";
+            birthDateLabel.Size = new System.Drawing.Size(113, 25);
+            birthDateLabel.TabIndex = 25;
+            birthDateLabel.Text = "Birth Date:";
             // 
             // visitBindingSource
             // 
@@ -436,15 +465,6 @@
             // 
             this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
             // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(116, 237);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(122, 25);
-            firstNameLabel.TabIndex = 23;
-            firstNameLabel.Text = "First Name:";
-            // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
@@ -452,15 +472,6 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(100, 31);
             this.firstNameTextBox.TabIndex = 24;
-            // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Location = new System.Drawing.Point(117, 281);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(121, 25);
-            lastNameLabel.TabIndex = 24;
-            lastNameLabel.Text = "Last Name:";
             // 
             // lastNameTextBox
             // 
@@ -470,15 +481,6 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(100, 31);
             this.lastNameTextBox.TabIndex = 25;
             // 
-            // birthDateLabel
-            // 
-            birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(125, 325);
-            birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(113, 25);
-            birthDateLabel.TabIndex = 25;
-            birthDateLabel.Text = "Birth Date:";
-            // 
             // birthDateTextBox
             // 
             this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "BirthDate", true));
@@ -486,6 +488,10 @@
             this.birthDateTextBox.Name = "birthDateTextBox";
             this.birthDateTextBox.Size = new System.Drawing.Size(100, 31);
             this.birthDateTextBox.TabIndex = 26;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // AddVisitUserControl
             // 
@@ -518,6 +524,7 @@
             this.vistiGroupBox.ResumeLayout(false);
             this.vistiGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,5 +562,6 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox birthDateTextBox;
+        private System.Windows.Forms.BindingSource nurseBindingSource;
     }
 }

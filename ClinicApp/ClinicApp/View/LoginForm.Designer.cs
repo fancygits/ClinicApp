@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.accessLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.userNameTextBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.loginButton, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.accessLabel, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -57,6 +59,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1118, 720);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Location = new System.Drawing.Point(562, 410);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(553, 44);
+            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // label1
             // 
@@ -88,26 +100,28 @@
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(553, 44);
             this.userNameTextBox.TabIndex = 2;
+            this.userNameTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
-            // passwordTextBox
+            // loginButton
             // 
-            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(562, 410);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(553, 44);
-            this.passwordTextBox.TabIndex = 3;
+            this.loginButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Location = new System.Drawing.Point(562, 579);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(553, 138);
+            this.loginButton.TabIndex = 4;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // button1
+            // accessLabel
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(562, 579);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(553, 138);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.accessLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.accessLabel.AutoSize = true;
+            this.accessLabel.Location = new System.Drawing.Point(279, 629);
+            this.accessLabel.Name = "accessLabel";
+            this.accessLabel.Size = new System.Drawing.Size(0, 37);
+            this.accessLabel.TabIndex = 5;
             // 
             // LoginForm
             // 
@@ -130,6 +144,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox userNameTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Label accessLabel;
     }
 }
