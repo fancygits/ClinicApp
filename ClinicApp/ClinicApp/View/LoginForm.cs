@@ -35,9 +35,12 @@ namespace ClinicApp.View
             {
                 accessLabel.ForeColor = Color.Red;
                 accessLabel.Text = "Incorrect username/password";
-                accessLabel.ForeColor = Color.Black;
             }
         }
 
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            accessLabel.Text = "";
+        }
     }
 }
