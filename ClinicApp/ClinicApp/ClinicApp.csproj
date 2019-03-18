@@ -46,17 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\VisitController.cs" />
     <Compile Include="DAL\ClinicDBConnection.cs" />
+    <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="UserControls\AddAppointmentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddAppointmentUserControl.Designer.cs">
+      <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\AddVisitUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +92,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UserControls\AddAppointmentUserControl.resx">
+      <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AddVisitUserControl.resx">
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +116,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ClinicApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
     <None Include="Properties\Settings.settings">
