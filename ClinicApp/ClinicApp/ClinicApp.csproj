@@ -84,6 +84,18 @@
     <Compile Include="UserControls\SearchForVisitUserControl.Designer.cs">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AddVisitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddVisitDialog.Designer.cs">
+      <DependentUpon>AddVisitDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\NurseDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,12 @@
     <EmbeddedResource Include="UserControls\SearchForVisitUserControl.resx">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AddVisitDialog.resx">
+      <DependentUpon>AddVisitDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\NurseDashboard.resx">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,8 +135,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\ClinicApp.Model.Doctor.datasource" />
+    <None Include="Properties\DataSources\ClinicApp.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
+    <None Include="Properties\DataSources\ClinicApp.Model.Visit.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.DoctorDataTable.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.NurseDataTable.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.NurseDataTable1.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.PatientDataTable.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.PersonDataTable.datasource" />
+    <None Include="Properties\DataSources\_CS6232_g1DataSet.VisitDataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
