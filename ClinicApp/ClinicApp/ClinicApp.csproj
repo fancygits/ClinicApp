@@ -52,6 +52,7 @@
     <Compile Include="DAL\ClinicDBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
@@ -104,6 +105,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ClinicApp.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
     <None Include="Properties\Settings.settings">
