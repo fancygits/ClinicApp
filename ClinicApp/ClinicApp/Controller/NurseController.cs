@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicApp.DAL;
+using ClinicApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,9 @@ namespace ClinicApp.Controller
 {
     class NurseController
     {
+        public List<Nurse> GetNurseList()
+        {
+           return NurseDAL.GetNurseList();
+        }
     }
 }
