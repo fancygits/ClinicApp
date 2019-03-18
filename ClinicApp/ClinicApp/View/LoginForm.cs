@@ -13,11 +13,21 @@ namespace ClinicApp.View
 {
     public partial class LoginForm : Form
     {
+        private static LoginForm instance = null;
         private CredentialController credentialController;
-        public LoginForm()
+        private LoginForm()
         {
             InitializeComponent();
             this.credentialController = new CredentialController();
+        }
+
+        public static LoginForm Instance()
+        {
+            if (instance == null)
+            {
+                instance = new LoginForm();
+            }
+            return instance;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -25,11 +35,10 @@ namespace ClinicApp.View
             if (passwordTextBox.Text == this.credentialController.GetPassword(this.userNameTextBox.Text)) {
                 if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
                 {
-                    NurseDashboard nurseDashboard = new NurseDashboard();
-                    nurseDashboard.Show();
-                    nurseDashboard.lblUserName.Text = this.userNameTextBox.Text;
-                    nurseDashboard.lblRoll.Text = this.credentialController.GetRole(this.userNameTextBox.Text);
-                    this.Hide();
+                    NurseDashboard.Instance().Show();
+                    NurseDashboard.Instance().lblUserName.Text = this.userNameTextBox.Text;
+                    NurseDashboard.Instance().lblRoll.Text = this.credentialController.GetRole(this.userNameTextBox.Text);
+                    LoginForm.Instance().Hide();
 
                 } else if (this.credentialController.GetRole(this.userNameTextBox.Text) == "administrator")
                 {
@@ -41,6 +50,12 @@ namespace ClinicApp.View
                 accessLabel.ForeColor = Color.Red;
                 accessLabel.Text = "Incorrect username/password";
             }
+        }
+
+        public static void ClearFields()
+        {
+            LoginForm.Instance().userNameTextBox.Text = "";
+            LoginForm.Instance().passwordTextBox.Text = "";
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
