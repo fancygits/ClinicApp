@@ -25,7 +25,12 @@ namespace ClinicApp.View
             if (passwordTextBox.Text == this.credentialController.GetPassword(this.userNameTextBox.Text)) {
                 if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
                 {
-                    accessLabel.Text = "Access Granted For Nurse: " + this.userNameTextBox.Text + " as a " + this.credentialController.GetRole(this.userNameTextBox.Text);
+                    NurseDashboard nurseDashboard = new NurseDashboard();
+                    nurseDashboard.Show();
+                    nurseDashboard.lblUserName.Text = this.userNameTextBox.Text;
+                    nurseDashboard.lblRoll.Text = this.credentialController.GetRole(this.userNameTextBox.Text);
+                    this.Hide();
+
                 } else if (this.credentialController.GetRole(this.userNameTextBox.Text) == "administrator")
                 {
                     accessLabel.Text = "Access Granted For Admin: " + this.userNameTextBox.Text + " as an " + this.credentialController.GetRole(this.userNameTextBox.Text);
