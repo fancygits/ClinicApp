@@ -17,7 +17,7 @@ namespace ClinicApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(LoginForm.Instance());
+            Application.Run(NurseDashboard.Instance());
         }
     }
 }

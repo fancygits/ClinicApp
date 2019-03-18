@@ -62,5 +62,10 @@ namespace ClinicApp.View
         {
             accessLabel.Text = "";
         }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
