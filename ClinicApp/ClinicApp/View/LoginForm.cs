@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace ClinicApp.View
 {
+    /// <summary>
+    /// This is the login form. It will allow the user to login and either direct them to the NurseDashboard or the AdminDashboard
+    /// </summary>
     public partial class LoginForm : Form
     {
         private static LoginForm instance = null;
@@ -21,6 +24,10 @@ namespace ClinicApp.View
             this.credentialController = new CredentialController();
         }
 
+        /// <summary>
+        /// This is the singleton method. If there is not a current instance of the LoginForm it will create one. 
+        /// </summary>
+        /// <returns>And instance of the LoginForm</returns>
         public static LoginForm Instance()
         {
             if (instance == null)
@@ -52,6 +59,9 @@ namespace ClinicApp.View
             }
         }
 
+        /// <summary>
+        /// This will clear the fields of the login form for when a user logs out. 
+        /// </summary>
         public static void ClearFields()
         {
             LoginForm.Instance().userNameTextBox.Text = "";
