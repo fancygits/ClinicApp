@@ -57,6 +57,7 @@ namespace ClinicApp.DAL
                             nurse.State = reader.GetString(stateOrd);
                             nurse.PostCode = reader.GetString(postCodeOrd);
                             nurse.PhoneNumber = reader.GetString(phoneOrd);
+                            nurse.Active = reader.GetBoolean(activeOrd);
 
                             listOfNurses.Add(nurse);
                         }
