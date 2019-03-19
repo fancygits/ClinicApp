@@ -19,7 +19,6 @@ namespace ClinicApp.DAL
         {
             string updateStatement =
                 "UPDATE Person SET " +
-                    "personID = @newPersonID, " +
                     "lastName = @newLastName, " +
                     "firstName = @newFirstName, " +
                     "birthDate = @newBirthDate, " +
@@ -44,10 +43,12 @@ namespace ClinicApp.DAL
                     "AND phoneNumber = @oldPhoneNumber " +
                     "AND (username = @oldUserName " +
                         "OR username IS NULL AND @oldUserName IS NULL)";
-            using (SqlConnection connection = ClinicDBConnection.GetConnection()){
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
                 connection.Open();
                 using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
                 {
+                    
                     updateCommand.Parameters.AddWithValue("@newPersonID", newPerson.PersonID);
                     updateCommand.Parameters.AddWithValue("@newLastName", newPerson.LastName);
                     updateCommand.Parameters.AddWithValue("@newFirstName", newPerson.FirstName);
@@ -59,7 +60,14 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@newState", newPerson.State);
                     updateCommand.Parameters.AddWithValue("@newPostCode", newPerson.PostCode);
                     updateCommand.Parameters.AddWithValue("@newPhoneNumber", newPerson.PhoneNumber);
-                    updateCommand.Parameters.AddWithValue("@newUsername", newPerson.Username);
+                    if (newPerson.Username == "" || newPerson.Username == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@newUsername", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@newUsername", newPerson.Username);
+                    }
                     updateCommand.Parameters.AddWithValue("@oldPersonID", oldPerson.PersonID);
                     updateCommand.Parameters.AddWithValue("@oldLastName", oldPerson.LastName);
                     updateCommand.Parameters.AddWithValue("@oldFirstName", oldPerson.FirstName);
@@ -71,7 +79,7 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@oldState", oldPerson.State);
                     updateCommand.Parameters.AddWithValue("@oldPostCode", oldPerson.PostCode);
                     updateCommand.Parameters.AddWithValue("@oldPhoneNumber", oldPerson.PhoneNumber);
-                    if (oldPerson.Username == null)
+                    if (oldPerson.Username == "" || oldPerson.Username == null)
                     {
                         updateCommand.Parameters.AddWithValue("@oldUsername", DBNull.Value);
                     }

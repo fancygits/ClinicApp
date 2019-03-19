@@ -56,8 +56,9 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.btnGetPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblMessage = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -298,7 +299,7 @@
             this.btnGetPatient.TabIndex = 26;
             this.btnGetPatient.Text = "Get Patient";
             this.btnGetPatient.UseVisualStyleBackColor = true;
-            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
+            this.btnGetPatient.Click += new System.EventHandler(this.GetPatient);
             // 
             // btnUpdatePatient
             // 
@@ -308,10 +309,7 @@
             this.btnUpdatePatient.TabIndex = 27;
             this.btnUpdatePatient.Text = "Update Patient";
             this.btnUpdatePatient.UseVisualStyleBackColor = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            this.btnUpdatePatient.Click += new System.EventHandler(this.btnUpdatePatient_Click);
             // 
             // genderTextBox
             // 
@@ -321,10 +319,23 @@
             this.genderTextBox.Size = new System.Drawing.Size(200, 20);
             this.genderTextBox.TabIndex = 7;
             // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(441, 189);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblMessage.TabIndex = 28;
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnUpdatePatient);
             this.Controls.Add(this.btnGetPatient);
             this.Controls.Add(birthDateLabel);
@@ -382,5 +393,6 @@
         private System.Windows.Forms.Button btnGetPatient;
         private System.Windows.Forms.Button btnUpdatePatient;
         private System.Windows.Forms.TextBox genderTextBox;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
