@@ -9,8 +9,8 @@ namespace ClinicApp.UserControls
     public partial class AddAppointmentUserControl : UserControl
     {
 
-        private readonly DoctorController doctorController;
-        private List<Doctor> doctorList;
+        private readonly AppointmentController appointmentController;
+        private List<Appointment> appointmentList;
 
         /// <summary>
         /// Constructor; initializes the User Control and the Controller objects
@@ -18,7 +18,7 @@ namespace ClinicApp.UserControls
         public AddAppointmentUserControl()
         {
             InitializeComponent();
-            this.doctorController = new DoctorController();
+            this.appointmentController = new AppointmentController();
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
@@ -28,14 +28,14 @@ namespace ClinicApp.UserControls
 
         public void RefreshPage()
         {
-            this.GetDoctorList();
+            this.GetAppointmentList(5);
         }
-        private void GetDoctorList()
+        private void GetAppointmentList(int patientID)
         {
             try
             {
-                doctorList = doctorController.GetDoctorList();
-                //doctorDataGridView.DataSource = doctorList;
+                appointmentList = appointmentController.GetAppointmentsByPatientID(patientID);
+                appointmentDataGridView.DataSource = appointmentList;
             }
             catch (Exception ex)
             {

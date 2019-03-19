@@ -46,17 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\CredentialController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\VisitController.cs" />
+    <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicDBConnection.cs" />
     <Compile Include="DAL\CredentialDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
+    <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Nurse.cs" />
@@ -137,6 +140,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ClinicApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
