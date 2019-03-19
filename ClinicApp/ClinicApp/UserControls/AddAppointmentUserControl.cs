@@ -6,10 +6,15 @@ using ClinicApp.Model;
 
 namespace ClinicApp.UserControls
 {
+    /// <summary>
+    /// User Control for getting and adding patient Appointment objects
+    /// </summary>
     public partial class AddAppointmentUserControl : UserControl
     {
 
+        private readonly PatientController patientController;
         private readonly AppointmentController appointmentController;
+        private Patient patient;
         private List<Appointment> appointmentList;
 
         /// <summary>
@@ -19,6 +24,7 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
             this.appointmentController = new AppointmentController();
+            this.patientController = new PatientController();
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
@@ -41,6 +47,11 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
