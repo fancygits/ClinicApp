@@ -140,6 +140,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ClinicApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
