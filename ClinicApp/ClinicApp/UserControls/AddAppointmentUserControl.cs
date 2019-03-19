@@ -42,5 +42,10 @@ namespace ClinicApp.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
