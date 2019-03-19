@@ -34,7 +34,7 @@ namespace ClinicApp.UserControls
 
         public void RefreshPage()
         {
-            this.GetAppointmentList(5);
+            this.GetAppointmentList(9);
         }
         private void GetAppointmentList(int patientID)
         {
@@ -52,6 +52,20 @@ namespace ClinicApp.UserControls
         private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnGetPatient_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(patientIDNumericUpDown.Value);
+            try
+            {
+                patient = this.patientController.GetPatient(patientID);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
