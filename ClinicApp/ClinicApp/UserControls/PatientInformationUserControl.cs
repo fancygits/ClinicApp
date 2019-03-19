@@ -1,7 +1,6 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,10 +17,18 @@ namespace ClinicApp.UserControls
 
         private void PatientInformationUserControl_Load(object sender, System.EventArgs e)
         {
+            patientBindingSource.Clear();
+           
+        }
+
+        private void btnGetPatient_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(patientIDNumericUpDown.Value);
             try
             {
-                List<Patient> patientList = this.patientController.GetPatientList();
-                patientDataGridView.DataSource = patientList;
+                Patient patient = this.patientController.GetPatient(patientID);
+                patientBindingSource.Clear();
+                patientBindingSource.Add(patient);
             }
             catch (Exception ex)
             {
