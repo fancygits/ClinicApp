@@ -131,6 +131,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LoginForm";
             this.Text = "Clinic Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

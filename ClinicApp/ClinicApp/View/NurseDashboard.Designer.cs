@@ -31,13 +31,13 @@
             this.patientsTabControl = new System.Windows.Forms.TabControl();
             this.apptTabPage = new System.Windows.Forms.TabPage();
             this.infoTabPage = new System.Windows.Forms.TabPage();
+            this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.VisitTabPage = new System.Windows.Forms.TabPage();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lnkLblLogout = new System.Windows.Forms.LinkLabel();
             this.lblRoll = new System.Windows.Forms.Label();
             this.lblPlaceholder2 = new System.Windows.Forms.Label();
             this.lblPlaceholder1 = new System.Windows.Forms.Label();
-            this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.patientsTabControl.SuspendLayout();
             this.infoTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,7 @@
             this.patientsTabControl.Controls.Add(this.infoTabPage);
             this.patientsTabControl.Controls.Add(this.VisitTabPage);
             this.patientsTabControl.Location = new System.Drawing.Point(2, 63);
-            this.patientsTabControl.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.patientsTabControl.Margin = new System.Windows.Forms.Padding(6);
             this.patientsTabControl.Name = "patientsTabControl";
             this.patientsTabControl.SelectedIndex = 0;
             this.patientsTabControl.Size = new System.Drawing.Size(1620, 804);
@@ -57,9 +57,9 @@
             // apptTabPage
             // 
             this.apptTabPage.Location = new System.Drawing.Point(8, 39);
-            this.apptTabPage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.apptTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.apptTabPage.Name = "apptTabPage";
-            this.apptTabPage.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.apptTabPage.Padding = new System.Windows.Forms.Padding(6);
             this.apptTabPage.Size = new System.Drawing.Size(1604, 757);
             this.apptTabPage.TabIndex = 0;
             this.apptTabPage.Text = "Patient Appointments";
@@ -69,20 +69,29 @@
             // 
             this.infoTabPage.Controls.Add(this.patientInformationUserControl1);
             this.infoTabPage.Location = new System.Drawing.Point(8, 39);
-            this.infoTabPage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.infoTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.infoTabPage.Name = "infoTabPage";
-            this.infoTabPage.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.infoTabPage.Padding = new System.Windows.Forms.Padding(6);
             this.infoTabPage.Size = new System.Drawing.Size(1604, 757);
             this.infoTabPage.TabIndex = 1;
             this.infoTabPage.Text = "Patient Information";
             this.infoTabPage.UseVisualStyleBackColor = true;
             // 
+            // patientInformationUserControl1
+            // 
+            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientInformationUserControl1.Location = new System.Drawing.Point(6, 6);
+            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(12);
+            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
+            this.patientInformationUserControl1.Size = new System.Drawing.Size(1592, 745);
+            this.patientInformationUserControl1.TabIndex = 0;
+            // 
             // VisitTabPage
             // 
             this.VisitTabPage.Location = new System.Drawing.Point(8, 39);
-            this.VisitTabPage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.VisitTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.VisitTabPage.Name = "VisitTabPage";
-            this.VisitTabPage.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.VisitTabPage.Padding = new System.Windows.Forms.Padding(6);
             this.VisitTabPage.Size = new System.Drawing.Size(1604, 757);
             this.VisitTabPage.TabIndex = 2;
             this.VisitTabPage.Text = "Patient Visit";
@@ -108,6 +117,7 @@
             this.lnkLblLogout.TabIndex = 2;
             this.lnkLblLogout.TabStop = true;
             this.lnkLblLogout.Text = "Logout";
+            this.lnkLblLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLblLogout_LinkClicked);
             // 
             // lblRoll
             // 
@@ -139,15 +149,6 @@
             this.lblPlaceholder1.TabIndex = 5;
             this.lblPlaceholder1.Text = "|";
             // 
-            // patientInformationUserControl1
-            // 
-            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientInformationUserControl1.Location = new System.Drawing.Point(6, 6);
-            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(12);
-            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
-            this.patientInformationUserControl1.Size = new System.Drawing.Size(1592, 745);
-            this.patientInformationUserControl1.TabIndex = 0;
-            // 
             // NurseDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -159,7 +160,7 @@
             this.Controls.Add(this.lnkLblLogout);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.patientsTabControl);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "NurseDashboard";
             this.Text = "Nurse Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NurseDashboard_FormClosing);
