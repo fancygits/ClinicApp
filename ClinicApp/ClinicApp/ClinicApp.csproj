@@ -142,12 +142,6 @@
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Visit.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.DoctorDataTable.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.NurseDataTable.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.NurseDataTable1.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.PatientDataTable.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.PersonDataTable.datasource" />
-    <None Include="Properties\DataSources\_CS6232_g1DataSet.VisitDataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
