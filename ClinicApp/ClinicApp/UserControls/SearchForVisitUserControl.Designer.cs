@@ -405,6 +405,7 @@
             this.Controls.Add(this.visitBindingNavigator);
             this.Name = "SearchForVisitUserControl";
             this.Size = new System.Drawing.Size(2080, 973);
+            this.Load += new System.EventHandler(this.SearchForVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingNavigator)).EndInit();
             this.visitBindingNavigator.ResumeLayout(false);
             this.visitBindingNavigator.PerformLayout();

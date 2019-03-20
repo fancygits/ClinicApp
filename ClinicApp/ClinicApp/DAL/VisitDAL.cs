@@ -77,7 +77,8 @@ namespace ClinicApp.DAL
             string selectStatement = "SELECT patientID, CONCAT(firstName, ' ', lastName) AS \"Patient Name\" " +
                                     "FROM Person p " +
                                     "JOIN Patient pa " +
-                                    "ON pa.personID = p.personID";
+                                    "ON pa.personID = p.personID " +
+                                    "ORDER BY lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();

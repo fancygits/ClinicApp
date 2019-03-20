@@ -118,7 +118,6 @@
             this.searchForVisitUserControl1.Name = "searchForVisitUserControl1";
             this.searchForVisitUserControl1.Size = new System.Drawing.Size(1592, 745);
             this.searchForVisitUserControl1.TabIndex = 0;
-            this.searchForVisitUserControl1.Load += new System.EventHandler(this.searchForVisitUserControl1_Load);
             // 
             // lblUserName
             // 
