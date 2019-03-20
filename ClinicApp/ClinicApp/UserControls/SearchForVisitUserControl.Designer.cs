@@ -365,26 +365,26 @@
             // AppointmentTime
             // 
             this.AppointmentTime.DataPropertyName = "AppointmentTime";
-            this.AppointmentTime.HeaderText = "AppointmentTime";
+            this.AppointmentTime.HeaderText = "Appointment Date and Time";
             this.AppointmentTime.Name = "AppointmentTime";
             this.AppointmentTime.ReadOnly = true;
-            this.AppointmentTime.Width = 224;
+            this.AppointmentTime.Width = 215;
             // 
             // DoctorName
             // 
             this.DoctorName.DataPropertyName = "DoctorName";
-            this.DoctorName.HeaderText = "DoctorName";
+            this.DoctorName.HeaderText = "Doctor";
             this.DoctorName.Name = "DoctorName";
             this.DoctorName.ReadOnly = true;
-            this.DoctorName.Width = 176;
+            this.DoctorName.Width = 120;
             // 
             // NurseName
             // 
             this.NurseName.DataPropertyName = "NurseName";
-            this.NurseName.HeaderText = "NurseName";
+            this.NurseName.HeaderText = "Nurse";
             this.NurseName.Name = "NurseName";
             this.NurseName.ReadOnly = true;
-            this.NurseName.Width = 170;
+            this.NurseName.Width = 114;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -397,18 +397,18 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "SystolicBP";
-            this.dataGridViewTextBoxColumn4.HeaderText = "SystolicBP";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Systolic BP";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 160;
+            this.dataGridViewTextBoxColumn4.Width = 153;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "DiastolicBP";
-            this.dataGridViewTextBoxColumn5.HeaderText = "DiastolicBP";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Diastolic BP";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 167;
+            this.dataGridViewTextBoxColumn5.Width = 160;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -437,18 +437,18 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "InitialDiagnosis";
-            this.dataGridViewTextBoxColumn9.HeaderText = "InitialDiagnosis";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Initial Diagnosis";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 202;
+            this.dataGridViewTextBoxColumn9.Width = 191;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "FinalDiagnosis";
-            this.dataGridViewTextBoxColumn10.HeaderText = "FinalDiagnosis";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Final Diagnosis";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 199;
+            this.dataGridViewTextBoxColumn10.Width = 188;
             // 
             // EditViewVisit
             // 
@@ -457,7 +457,7 @@
             this.EditViewVisit.ReadOnly = true;
             this.EditViewVisit.Text = "View/Edit Visit";
             this.EditViewVisit.UseColumnTextForButtonValue = true;
-            this.EditViewVisit.Width = 154;
+            this.EditViewVisit.Width = 139;
             // 
             // SearchForVisitUserControl
             // 

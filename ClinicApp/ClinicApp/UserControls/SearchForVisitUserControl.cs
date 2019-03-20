@@ -16,5 +16,6 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
         }
+
     }
 }
