@@ -8,5 +8,12 @@ namespace ClinicApp.DAL
 {
     class VisitDAL
     {
+        //GetNurseName
+        //GetDoctorName
+        //GetPatientName
+
+        //GetListOfAllVisits
+
+        //GetListOFVisitsByPatient
     }
 }
