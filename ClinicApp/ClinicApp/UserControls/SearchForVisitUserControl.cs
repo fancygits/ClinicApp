@@ -14,7 +14,6 @@ namespace ClinicApp.UserControls
 {
     public partial class SearchForVisitUserControl : UserControl
     {
-        private Visit visit;
         private VisitController visitController;
         private List<Visit> listOfPatients;
         public SearchForVisitUserControl()

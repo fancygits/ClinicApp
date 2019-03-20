@@ -74,7 +74,7 @@ namespace ClinicApp.DAL
         public static List<Visit> GetPatients()
         {
             List<Visit> patientList = new List<Visit>();
-            string selectStatement = "SELECT patientID, CONCAT(firstName, ' ', lastName) AS \"Patient Name\" " +
+            string selectStatement = "SELECT patientID, CONCAT(lastName, ', ', firstName) AS \"Patient Name\" " +
                                     "FROM Person p " +
                                     "JOIN Patient pa " +
                                     "ON pa.personID = p.personID " +
