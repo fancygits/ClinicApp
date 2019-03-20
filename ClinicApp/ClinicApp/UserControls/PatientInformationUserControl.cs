@@ -25,10 +25,12 @@ namespace ClinicApp.UserControls
 
         private void GetPatient(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(patientIDNumericUpDown.Value);
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string birthDate = birthDateDateTimePicker.Text;
             try
             {
-                patient = this.patientController.GetPatient(patientID);
+                patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
                 this.PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);

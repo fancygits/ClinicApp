@@ -12,9 +12,14 @@ namespace ClinicApp.Controller
             return PatientDAL.GetPatientList();
         }
 
-        public Patient GetPatient(int patientID)
+        public Patient GetPatientByID(int patientID)
         {
-            return PatientDAL.GetPatient(patientID);
+            return PatientDAL.GetPatientByID(patientID);
+        }
+
+        public Patient GetPatientByName(string firstName, string lastName, string birthDate)
+        {
+            return PatientDAL.GetPatientByName(firstName, lastName, birthDate);
         }
 
         public bool UpdatePatient(Patient oldPatient, Patient newPatient)
