@@ -34,6 +34,12 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitDataGridView = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.patientIDTextBox = new System.Windows.Forms.TextBox();
+            this.patientNameComboBox = new System.Windows.Forms.ComboBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DoctorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NurseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,12 +52,6 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditViewVisit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.patientIDTextBox = new System.Windows.Forms.TextBox();
-            this.patientNameComboBox = new System.Windows.Forms.ComboBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             patientNameLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
@@ -93,6 +93,7 @@
             // 
             // visitDataGridView
             // 
+            this.visitDataGridView.AllowUserToDeleteRows = false;
             this.visitDataGridView.AutoGenerateColumns = false;
             this.visitDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.visitDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -113,94 +114,10 @@
             this.visitDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.visitDataGridView.Location = new System.Drawing.Point(3, 228);
             this.visitDataGridView.Name = "visitDataGridView";
+            this.visitDataGridView.ReadOnly = true;
             this.visitDataGridView.RowTemplate.Height = 33;
             this.visitDataGridView.Size = new System.Drawing.Size(2074, 725);
             this.visitDataGridView.TabIndex = 1;
-            // 
-            // AppointmentTime
-            // 
-            this.AppointmentTime.DataPropertyName = "AppointmentTime";
-            this.AppointmentTime.HeaderText = "Appointment Date and Time";
-            this.AppointmentTime.Name = "AppointmentTime";
-            this.AppointmentTime.Width = 215;
-            // 
-            // DoctorName
-            // 
-            this.DoctorName.DataPropertyName = "DoctorName";
-            this.DoctorName.HeaderText = "Doctor";
-            this.DoctorName.Name = "DoctorName";
-            this.DoctorName.Width = 120;
-            // 
-            // NurseName
-            // 
-            this.NurseName.DataPropertyName = "NurseName";
-            this.NurseName.HeaderText = "Nurse";
-            this.NurseName.Name = "NurseName";
-            this.NurseName.Width = 114;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Weight";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Weight";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 124;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SystolicBP";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Systolic BP";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 153;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "DiastolicBP";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Diastolic BP";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 160;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Temperature";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Temperature";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 179;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Pulse";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Pulse";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 111;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Symptoms";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Symptoms";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 157;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "InitialDiagnosis";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Initial Diagnosis";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 191;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "FinalDiagnosis";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Final Diagnosis";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 188;
-            // 
-            // EditViewVisit
-            // 
-            this.EditViewVisit.HeaderText = "Edit/View Visit";
-            this.EditViewVisit.Name = "EditViewVisit";
-            this.EditViewVisit.Text = "View/Edit Visit";
-            this.EditViewVisit.UseColumnTextForButtonValue = true;
-            this.EditViewVisit.Width = 139;
             // 
             // tableLayoutPanel1
             // 
@@ -274,6 +191,103 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 155;
             // 
+            // AppointmentTime
+            // 
+            this.AppointmentTime.DataPropertyName = "AppointmentTime";
+            this.AppointmentTime.HeaderText = "Appointment Date and Time";
+            this.AppointmentTime.Name = "AppointmentTime";
+            this.AppointmentTime.ReadOnly = true;
+            this.AppointmentTime.Width = 215;
+            // 
+            // DoctorName
+            // 
+            this.DoctorName.DataPropertyName = "DoctorName";
+            this.DoctorName.HeaderText = "Doctor";
+            this.DoctorName.Name = "DoctorName";
+            this.DoctorName.ReadOnly = true;
+            this.DoctorName.Width = 120;
+            // 
+            // NurseName
+            // 
+            this.NurseName.DataPropertyName = "NurseName";
+            this.NurseName.HeaderText = "Nurse";
+            this.NurseName.Name = "NurseName";
+            this.NurseName.ReadOnly = true;
+            this.NurseName.Width = 114;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Weight";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Weight";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 124;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SystolicBP";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Systolic BP";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 153;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "DiastolicBP";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Diastolic BP";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 160;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Temperature";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Temperature";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 179;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Pulse";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Pulse";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 111;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Symptoms";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Symptoms";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 157;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "InitialDiagnosis";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Initial Diagnosis";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 191;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "FinalDiagnosis";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Final Diagnosis";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 188;
+            // 
+            // EditViewVisit
+            // 
+            this.EditViewVisit.HeaderText = "Edit/View Visit";
+            this.EditViewVisit.Name = "EditViewVisit";
+            this.EditViewVisit.ReadOnly = true;
+            this.EditViewVisit.Text = "Update";
+            this.EditViewVisit.UseColumnTextForButtonValue = true;
+            this.EditViewVisit.Width = 139;
+            // 
             // SearchForVisitUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -300,6 +314,9 @@
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.ComboBox patientNameComboBox;
+        private System.Windows.Forms.TextBox patientIDTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoctorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NurseName;
@@ -312,8 +329,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewButtonColumn EditViewVisit;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ComboBox patientNameComboBox;
-        private System.Windows.Forms.TextBox patientIDTextBox;
     }
 }
