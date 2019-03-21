@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
@@ -59,6 +60,13 @@ namespace ClinicApp.UserControls
             {
                 this.GetAppointmentList(patientID);
             }
+            else
+            {
+                if (this.appointmentList != null)
+                {
+                    appointmentList.Clear();
+                }
+            }
 
         }
         
@@ -74,7 +82,7 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-
+                    
                 }
             }
             catch (Exception ex)
@@ -83,5 +91,18 @@ namespace ClinicApp.UserControls
             }
         }
 
+        private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                int i = e.RowIndex;
+                DataGridViewRow row = appointmentDataGridView.Rows[i];
+                Appointment appointment = (Appointment)row.DataBoundItem;
+
+                AddUpdateAppointmentDialog addApptForm = new AddUpdateAppointmentDialog();
+                addApptForm.appointmentID = appointment.AppointmentID;
+                addApptForm.ShowDialog();
+            }
+        }
     }
 }
