@@ -1,6 +1,7 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -21,10 +22,12 @@ namespace ClinicApp.UserControls
         {
             patientBindingSource.Clear();
             newPatient = new Patient();
+            this.LoadComboboxes();
         }
 
         private void GetPatient(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
@@ -77,6 +80,18 @@ namespace ClinicApp.UserControls
             newPatient.PostCode = patient.PostCode;
             newPatient.PhoneNumber = patient.PhoneNumber;
             newPatient.Username = patient.Username;
+        }
+
+        private void LoadComboboxes()
+        {
+            var genderDatasource = new List<KeyValuePair<string, string>>();
+            genderDatasource.Add(new KeyValuePair < string, string>("Male", "M"));
+            genderDatasource.Add(new KeyValuePair<string, string>("Female", "F"));
+            genderDatasource.Add(new KeyValuePair<string, string>("Other", "O"));
+            genderComboBox.DataSource = genderDatasource;
+            genderComboBox.DisplayMember = "Key";
+            genderComboBox.ValueMember = "Value";
+            genderComboBox.SelectedValue = "";
         }
     }
 }
