@@ -27,6 +27,7 @@ namespace ClinicApp.Model
         public Patient VisitPatient { get; set; }
         public int PatientID { get; set; }
         public string PatientName { get; set; }
+        public DateTime PatientBirthDate { get; set; }
     }
 
 

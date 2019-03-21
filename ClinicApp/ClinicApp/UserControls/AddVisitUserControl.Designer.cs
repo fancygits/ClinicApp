@@ -41,9 +41,6 @@
             System.Windows.Forms.Label temperatureLabel;
             System.Windows.Forms.Label pulseLabel;
             System.Windows.Forms.Label symptomsLabel;
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentIDTextBox = new System.Windows.Forms.TextBox();
             this.nurseNameTextBox = new System.Windows.Forms.TextBox();
             this.patientNameTextBox = new System.Windows.Forms.TextBox();
@@ -56,6 +53,9 @@
             this.temperatureTextBox = new System.Windows.Forms.TextBox();
             this.pulseTextBox = new System.Windows.Forms.TextBox();
             this.symptomsTextBox = new System.Windows.Forms.TextBox();
+            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             appointmentIDLabel = new System.Windows.Forms.Label();
             nurseNameLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
@@ -68,22 +68,10 @@
             temperatureLabel = new System.Windows.Forms.Label();
             pulseLabel = new System.Windows.Forms.Label();
             symptomsLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
-            // 
-            // visitBindingSource
-            // 
-            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // appointmentIDLabel
             // 
@@ -94,14 +82,6 @@
             appointmentIDLabel.TabIndex = 0;
             appointmentIDLabel.Text = "Appointment ID:";
             // 
-            // appointmentIDTextBox
-            // 
-            this.appointmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentID", true));
-            this.appointmentIDTextBox.Location = new System.Drawing.Point(288, 64);
-            this.appointmentIDTextBox.Name = "appointmentIDTextBox";
-            this.appointmentIDTextBox.Size = new System.Drawing.Size(100, 31);
-            this.appointmentIDTextBox.TabIndex = 1;
-            // 
             // nurseNameLabel
             // 
             nurseNameLabel.AutoSize = true;
@@ -110,14 +90,6 @@
             nurseNameLabel.Size = new System.Drawing.Size(137, 25);
             nurseNameLabel.TabIndex = 2;
             nurseNameLabel.Text = "Nurse Name:";
-            // 
-            // nurseNameTextBox
-            // 
-            this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
-            this.nurseNameTextBox.Location = new System.Drawing.Point(383, 471);
-            this.nurseNameTextBox.Name = "nurseNameTextBox";
-            this.nurseNameTextBox.Size = new System.Drawing.Size(348, 31);
-            this.nurseNameTextBox.TabIndex = 3;
             // 
             // patientNameLabel
             // 
@@ -128,14 +100,6 @@
             patientNameLabel.TabIndex = 4;
             patientNameLabel.Text = "Patient Name:";
             // 
-            // patientNameTextBox
-            // 
-            this.patientNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
-            this.patientNameTextBox.Location = new System.Drawing.Point(383, 234);
-            this.patientNameTextBox.Name = "patientNameTextBox";
-            this.patientNameTextBox.Size = new System.Drawing.Size(348, 31);
-            this.patientNameTextBox.TabIndex = 5;
-            // 
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
@@ -144,14 +108,6 @@
             birthDateLabel.Size = new System.Drawing.Size(113, 25);
             birthDateLabel.TabIndex = 6;
             birthDateLabel.Text = "Birth Date:";
-            // 
-            // birthDateTextBox
-            // 
-            this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "VisitPatient.BirthDate", true));
-            this.birthDateTextBox.Location = new System.Drawing.Point(383, 289);
-            this.birthDateTextBox.Name = "birthDateTextBox";
-            this.birthDateTextBox.Size = new System.Drawing.Size(348, 31);
-            this.birthDateTextBox.TabIndex = 7;
             // 
             // appointmentTimeLabel
             // 
@@ -162,14 +118,6 @@
             appointmentTimeLabel.TabIndex = 8;
             appointmentTimeLabel.Text = "Appointment Time:";
             // 
-            // appointmentTimeTextBox
-            // 
-            this.appointmentTimeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentTime", true));
-            this.appointmentTimeTextBox.Location = new System.Drawing.Point(383, 343);
-            this.appointmentTimeTextBox.Name = "appointmentTimeTextBox";
-            this.appointmentTimeTextBox.Size = new System.Drawing.Size(348, 31);
-            this.appointmentTimeTextBox.TabIndex = 9;
-            // 
             // doctorNameLabel
             // 
             doctorNameLabel.AutoSize = true;
@@ -178,14 +126,6 @@
             doctorNameLabel.Size = new System.Drawing.Size(143, 25);
             doctorNameLabel.TabIndex = 10;
             doctorNameLabel.Text = "Doctor Name:";
-            // 
-            // doctorNameTextBox
-            // 
-            this.doctorNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DoctorName", true));
-            this.doctorNameTextBox.Location = new System.Drawing.Point(383, 400);
-            this.doctorNameTextBox.Name = "doctorNameTextBox";
-            this.doctorNameTextBox.Size = new System.Drawing.Size(348, 31);
-            this.doctorNameTextBox.TabIndex = 11;
             // 
             // weightLabel
             // 
@@ -196,14 +136,6 @@
             weightLabel.TabIndex = 12;
             weightLabel.Text = "Weight:";
             // 
-            // weightTextBox
-            // 
-            this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Weight", true));
-            this.weightTextBox.Location = new System.Drawing.Point(1164, 238);
-            this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(260, 31);
-            this.weightTextBox.TabIndex = 13;
-            // 
             // systolicBPLabel
             // 
             systolicBPLabel.AutoSize = true;
@@ -212,14 +144,6 @@
             systolicBPLabel.Size = new System.Drawing.Size(127, 25);
             systolicBPLabel.TabIndex = 14;
             systolicBPLabel.Text = "Systolic BP:";
-            // 
-            // systolicBPTextBox
-            // 
-            this.systolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "SystolicBP", true));
-            this.systolicBPTextBox.Location = new System.Drawing.Point(1164, 292);
-            this.systolicBPTextBox.Name = "systolicBPTextBox";
-            this.systolicBPTextBox.Size = new System.Drawing.Size(260, 31);
-            this.systolicBPTextBox.TabIndex = 15;
             // 
             // diastolicBPLabel
             // 
@@ -230,14 +154,6 @@
             diastolicBPLabel.TabIndex = 16;
             diastolicBPLabel.Text = "Diastolic BP:";
             // 
-            // diastolicBPTextBox
-            // 
-            this.diastolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DiastolicBP", true));
-            this.diastolicBPTextBox.Location = new System.Drawing.Point(1164, 346);
-            this.diastolicBPTextBox.Name = "diastolicBPTextBox";
-            this.diastolicBPTextBox.Size = new System.Drawing.Size(260, 31);
-            this.diastolicBPTextBox.TabIndex = 17;
-            // 
             // temperatureLabel
             // 
             temperatureLabel.AutoSize = true;
@@ -246,14 +162,6 @@
             temperatureLabel.Size = new System.Drawing.Size(140, 25);
             temperatureLabel.TabIndex = 18;
             temperatureLabel.Text = "Temperature:";
-            // 
-            // temperatureTextBox
-            // 
-            this.temperatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Temperature", true));
-            this.temperatureTextBox.Location = new System.Drawing.Point(1164, 403);
-            this.temperatureTextBox.Name = "temperatureTextBox";
-            this.temperatureTextBox.Size = new System.Drawing.Size(260, 31);
-            this.temperatureTextBox.TabIndex = 19;
             // 
             // pulseLabel
             // 
@@ -264,14 +172,6 @@
             pulseLabel.TabIndex = 20;
             pulseLabel.Text = "Pulse:";
             // 
-            // pulseTextBox
-            // 
-            this.pulseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Pulse", true));
-            this.pulseTextBox.Location = new System.Drawing.Point(1164, 474);
-            this.pulseTextBox.Name = "pulseTextBox";
-            this.pulseTextBox.Size = new System.Drawing.Size(260, 31);
-            this.pulseTextBox.TabIndex = 21;
-            // 
             // symptomsLabel
             // 
             symptomsLabel.AutoSize = true;
@@ -281,6 +181,94 @@
             symptomsLabel.TabIndex = 22;
             symptomsLabel.Text = "Symptoms:";
             // 
+            // appointmentIDTextBox
+            // 
+            this.appointmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentID", true));
+            this.appointmentIDTextBox.Location = new System.Drawing.Point(288, 64);
+            this.appointmentIDTextBox.Name = "appointmentIDTextBox";
+            this.appointmentIDTextBox.Size = new System.Drawing.Size(100, 31);
+            this.appointmentIDTextBox.TabIndex = 1;
+            // 
+            // nurseNameTextBox
+            // 
+            this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
+            this.nurseNameTextBox.Location = new System.Drawing.Point(383, 471);
+            this.nurseNameTextBox.Name = "nurseNameTextBox";
+            this.nurseNameTextBox.Size = new System.Drawing.Size(348, 31);
+            this.nurseNameTextBox.TabIndex = 3;
+            // 
+            // patientNameTextBox
+            // 
+            this.patientNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
+            this.patientNameTextBox.Location = new System.Drawing.Point(383, 234);
+            this.patientNameTextBox.Name = "patientNameTextBox";
+            this.patientNameTextBox.Size = new System.Drawing.Size(348, 31);
+            this.patientNameTextBox.TabIndex = 5;
+            // 
+            // birthDateTextBox
+            // 
+            this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "VisitPatient.BirthDate", true));
+            this.birthDateTextBox.Location = new System.Drawing.Point(383, 289);
+            this.birthDateTextBox.Name = "birthDateTextBox";
+            this.birthDateTextBox.Size = new System.Drawing.Size(348, 31);
+            this.birthDateTextBox.TabIndex = 7;
+            // 
+            // appointmentTimeTextBox
+            // 
+            this.appointmentTimeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentTime", true));
+            this.appointmentTimeTextBox.Location = new System.Drawing.Point(383, 343);
+            this.appointmentTimeTextBox.Name = "appointmentTimeTextBox";
+            this.appointmentTimeTextBox.Size = new System.Drawing.Size(348, 31);
+            this.appointmentTimeTextBox.TabIndex = 9;
+            // 
+            // doctorNameTextBox
+            // 
+            this.doctorNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DoctorName", true));
+            this.doctorNameTextBox.Location = new System.Drawing.Point(383, 400);
+            this.doctorNameTextBox.Name = "doctorNameTextBox";
+            this.doctorNameTextBox.Size = new System.Drawing.Size(348, 31);
+            this.doctorNameTextBox.TabIndex = 11;
+            // 
+            // weightTextBox
+            // 
+            this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Weight", true));
+            this.weightTextBox.Location = new System.Drawing.Point(1164, 238);
+            this.weightTextBox.Name = "weightTextBox";
+            this.weightTextBox.Size = new System.Drawing.Size(260, 31);
+            this.weightTextBox.TabIndex = 13;
+            // 
+            // systolicBPTextBox
+            // 
+            this.systolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "SystolicBP", true));
+            this.systolicBPTextBox.Location = new System.Drawing.Point(1164, 292);
+            this.systolicBPTextBox.Name = "systolicBPTextBox";
+            this.systolicBPTextBox.Size = new System.Drawing.Size(260, 31);
+            this.systolicBPTextBox.TabIndex = 15;
+            // 
+            // diastolicBPTextBox
+            // 
+            this.diastolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DiastolicBP", true));
+            this.diastolicBPTextBox.Location = new System.Drawing.Point(1164, 346);
+            this.diastolicBPTextBox.Name = "diastolicBPTextBox";
+            this.diastolicBPTextBox.Size = new System.Drawing.Size(260, 31);
+            this.diastolicBPTextBox.TabIndex = 17;
+            // 
+            // temperatureTextBox
+            // 
+            this.temperatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Temperature", true));
+            this.temperatureTextBox.Location = new System.Drawing.Point(1164, 403);
+            this.temperatureTextBox.Name = "temperatureTextBox";
+            this.temperatureTextBox.Size = new System.Drawing.Size(260, 31);
+            this.temperatureTextBox.TabIndex = 19;
+            // 
+            // pulseTextBox
+            // 
+            this.pulseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Pulse", true));
+            this.pulseTextBox.Location = new System.Drawing.Point(1164, 474);
+            this.pulseTextBox.Name = "pulseTextBox";
+            this.pulseTextBox.Size = new System.Drawing.Size(260, 31);
+            this.pulseTextBox.TabIndex = 21;
+            // 
             // symptomsTextBox
             // 
             this.symptomsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Symptoms", true));
@@ -289,6 +277,18 @@
             this.symptomsTextBox.Name = "symptomsTextBox";
             this.symptomsTextBox.Size = new System.Drawing.Size(260, 83);
             this.symptomsTextBox.TabIndex = 23;
+            // 
+            // visitBindingSource
+            // 
+            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // AddVisitUserControl
             // 
@@ -320,8 +320,9 @@
             this.Controls.Add(this.appointmentIDTextBox);
             this.Name = "AddVisitUserControl";
             this.Size = new System.Drawing.Size(1626, 814);
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.AddVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,17 +334,17 @@
         private System.Windows.Forms.BindingSource visitBindingSource;
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.BindingSource nurseBindingSource;
-        private System.Windows.Forms.TextBox appointmentIDTextBox;
-        private System.Windows.Forms.TextBox nurseNameTextBox;
-        private System.Windows.Forms.TextBox patientNameTextBox;
-        private System.Windows.Forms.TextBox birthDateTextBox;
-        private System.Windows.Forms.TextBox appointmentTimeTextBox;
-        private System.Windows.Forms.TextBox doctorNameTextBox;
-        private System.Windows.Forms.TextBox weightTextBox;
-        private System.Windows.Forms.TextBox systolicBPTextBox;
-        private System.Windows.Forms.TextBox diastolicBPTextBox;
-        private System.Windows.Forms.TextBox temperatureTextBox;
-        private System.Windows.Forms.TextBox pulseTextBox;
-        private System.Windows.Forms.TextBox symptomsTextBox;
+        public System.Windows.Forms.TextBox appointmentIDTextBox;
+        public System.Windows.Forms.TextBox nurseNameTextBox;
+        public System.Windows.Forms.TextBox patientNameTextBox;
+        public System.Windows.Forms.TextBox birthDateTextBox;
+        public System.Windows.Forms.TextBox appointmentTimeTextBox;
+        public System.Windows.Forms.TextBox doctorNameTextBox;
+        public System.Windows.Forms.TextBox weightTextBox;
+        public System.Windows.Forms.TextBox systolicBPTextBox;
+        public System.Windows.Forms.TextBox diastolicBPTextBox;
+        public System.Windows.Forms.TextBox temperatureTextBox;
+        public System.Windows.Forms.TextBox pulseTextBox;
+        public System.Windows.Forms.TextBox symptomsTextBox;
     }
 }

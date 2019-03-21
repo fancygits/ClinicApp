@@ -73,6 +73,36 @@ namespace ClinicApp.DAL
             return nurse.NurseName;
         }
         //GetPatientName
+        public static Visit GetPatient(int patientID)
+        {
+            Visit patient = new Visit();
+            string selectStatement = "SELECT patientID, birthDate, CONCAT(firstName, ' ', lastName) AS \"Patient Name\" " +
+                                    "FROM Person pe " +
+                                    "JOIN Patient pa " +
+                                    "ON pa.personID = pe.personID " +
+                                    "WHERE patientID = @patientID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@patientID", patientID);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            patient.PatientName = reader["Patient Name"].ToString();
+                            patient.PatientBirthDate = (DateTime)reader["birthDate"];
+                        }
+                        else
+                        {
+                            patient = null;
+                        }
+                    }
+                }
+            }
+            return patient;
+        }
         public static List<Visit> GetPatients()
         {
             List<Visit> patientList = new List<Visit>();
@@ -109,7 +139,8 @@ namespace ClinicApp.DAL
         public static List<Visit> GetListOfVisits(int patientID)
         {
             List<Visit> listOfVisits = new List<Visit>();
-            string selectStatement = "SELECT DISTINCT a.appointmentID, " +
+            string selectStatement = "SELECT DISTINCT pa.patientID, " +
+                                     "a.appointmentID, " +
                                      "a.apptDatetime, " +
                                      "d.doctorID, " +
                                      "n.nurseID, " +
@@ -136,6 +167,8 @@ namespace ClinicApp.DAL
                     selectCommand.Parameters.AddWithValue("@patientID", patientID);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int patIDOrd = reader.GetOrdinal("patientID");
+                        
                         int apptIDOrd = reader.GetOrdinal("appointmentID");
                         int apptDTOrd = reader.GetOrdinal("apptDatetime");
                         int doctorIDOrd = reader.GetOrdinal("doctorID");
@@ -151,10 +184,13 @@ namespace ClinicApp.DAL
                         while (reader.Read())
                         {
                             Visit visit = new Visit();
+                            visit.PatientID = reader.GetInt32(patIDOrd);
+                            visit.PatientName = GetPatient(visit.PatientID).PatientName;
+                            visit.PatientBirthDate = GetPatient(visit.PatientID).PatientBirthDate;
                             visit.AppointmentID = reader.GetInt32(apptIDOrd);
                             visit.AppointmentTime = reader.GetDateTime(apptDTOrd);
                             visit.DoctorID = reader.GetInt32(doctorIDOrd);
-                            visit.DoctorName = GetDoctor(visit.DoctorID).ToString();
+                            visit.DoctorName = GetDoctor(visit.DoctorID);
                             if (reader.IsDBNull(nurseIDOrd))
                             {
                                 nurseIDOrd += -1;

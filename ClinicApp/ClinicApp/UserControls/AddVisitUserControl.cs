@@ -14,13 +14,17 @@ namespace ClinicApp.UserControls
 {
     public partial class AddVisitUserControl : UserControl
     {
-        private NurseController nurseController;
-        private List<Nurse> nurseList;
         public AddVisitUserControl()
         {
             InitializeComponent();
-            this.nurseList = new List<Nurse>();
-            this.nurseController = new NurseController();
+        }
+
+        public int apptID;
+        public string nurseName;
+        public string birthDate;
+        private void AddVisitUserControl_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
