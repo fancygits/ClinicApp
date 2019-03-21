@@ -170,7 +170,6 @@ namespace ClinicApp.DAL
                             } else
                             {
                                 visit.Weight = reader.GetDecimal(weightOrd);
-
                             }
                             if (reader.IsDBNull(systOrd))
                             {

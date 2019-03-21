@@ -27,6 +27,9 @@ namespace ClinicApp.UserControls
 
         }
 
+        /// <summary>
+        /// This method will display the visits by the patient that is selected
+        /// </summary>
         public void DisplayVistsByPatient()
         {
             if(this.patientNameComboBox.SelectedIndex < 0)
@@ -36,20 +39,21 @@ namespace ClinicApp.UserControls
             this.visit = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
             visitBindingSource.Clear();
             visitBindingSource.Add(this.visit);
-      //      try
-      //      {
+            try
+            {
                 this.listOfVisits = this.visitController.GetListOfVisits(this.visit.PatientID);
                 if (this.listOfVisits.Count > 0)
                 {
                     visitDataGridView.DataSource = this.listOfVisits;
                 } else
                 {
-                    MessageBox.Show("This patient does not have any appointments");
+                    this.listOfVisits = new List<Visit>();
+                    visitDataGridView.DataSource = this.listOfVisits;
                 }
-      //      } catch (Exception ex)
-      //      {
-      //          MessageBox.Show(ex.Message, "Data Error");
-      //      }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Data Error");
+            }
         
         }
 
