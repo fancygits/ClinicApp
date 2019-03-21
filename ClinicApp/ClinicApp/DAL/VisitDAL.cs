@@ -114,8 +114,8 @@ namespace ClinicApp.DAL
                                      "d.doctorID, " +
                                      "n.nurseID, " +
                                      "v.weight, v.systolicBP, v.diastolicBP, v.temperature, v.pulse, v.symptoms, v.initialDiagnosis, v.finalDiagnosis " +
-                                     "FROM Visit v " +
-                                     "RIGHT JOIN Appointment a " +
+                                     "FROM Appointment a " +
+                                     "LEFT JOIN Visit v " +
                                      "ON a.appointmentID = v.appointmentID " +
                                      "LEFT JOIN Nurse n " +
                                      "ON n.nurseID = v.nurseID " +
