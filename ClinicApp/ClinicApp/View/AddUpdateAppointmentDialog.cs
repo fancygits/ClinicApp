@@ -20,6 +20,7 @@ namespace ClinicApp.View
         private AppointmentController appointmentController;
         private DoctorController doctorController;
         public Appointment appointment;
+        private Appointment newAppointment;
         private List<Doctor> doctorList;
         public AddUpdateAppointmentDialog()
         {
@@ -39,11 +40,20 @@ namespace ClinicApp.View
             {
                 this.doctorList = doctorController.GetDoctorList();
                 doctorIDComboBox.DataSource = this.doctorList;
+                this.PutNewAppointment();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void PutNewAppointment()
+        {
+            MessageBox.Show(this.appointment.AppointmentReason.ToString());
+            newAppointment.AppointmentID = appointment.AppointmentID;
+            newAppointment.AppointmentPatientID = appointment.AppointmentPatientID;
+            newAppointment.AppointmentReason = appointment.AppointmentReason;
         }
 
         
