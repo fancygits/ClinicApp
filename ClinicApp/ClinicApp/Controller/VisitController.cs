@@ -10,19 +10,23 @@ namespace ClinicApp.Controller
 {
     class VisitController
     {
-        public List<Visit> GetNurses()
+        public string GetNurse(int nurseID)
         {
-            return VisitDAL.GetNurses();
+            return VisitDAL.GetNurse(nurseID);
         }
 
-        public List<Visit> GetDoctors()
+        public string GetDoctor(int doctorID)
         {
-            return VisitDAL.GetDoctors();
+            return VisitDAL.GetDoctor(doctorID);
         }
         
         public List<Visit> GetPatients()
         {
             return VisitDAL.GetPatients();
+        }
+        public List<Visit> GetListOfVisits(int patientID)
+        {
+            return VisitDAL.GetListOfVisits(patientID);
         }
     }
 }
