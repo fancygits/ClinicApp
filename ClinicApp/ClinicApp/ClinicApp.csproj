@@ -93,6 +93,12 @@
     <Compile Include="UserControls\SearchForVisitUserControl.Designer.cs">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AddUpdateAppointmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddUpdateAppointmentDialog.Designer.cs">
+      <DependentUpon>AddUpdateAppointmentDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddVisitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchForVisitUserControl.resx">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddUpdateAppointmentDialog.resx">
+      <DependentUpon>AddUpdateAppointmentDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddVisitDialog.resx">
       <DependentUpon>AddVisitDialog.cs</DependentUpon>

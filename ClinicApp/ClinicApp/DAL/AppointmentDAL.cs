@@ -25,14 +25,14 @@ namespace ClinicApp.DAL
                 "ON app.doctorID = doc.doctorID " +
                 "JOIN Person per " +
                 "ON doc.personID = per.personID " +
-                "WHERE patientID = 5 " +
+                "WHERE patientID = @PatientID " +
                 "ORDER BY apptDatetime";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    //selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+                    selectCommand.Parameters.AddWithValue("@PatientID", patientID);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         int apptDateTimeOrd = reader.GetOrdinal("apptDatetime");
