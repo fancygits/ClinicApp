@@ -63,6 +63,8 @@
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\State.cs" />
+    <Compile Include="Model\StateList.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="UserControls\AddAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
@@ -143,6 +145,7 @@
     <None Include="Properties\DataSources\ClinicApp.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Person.datasource" />
+    <None Include="Properties\DataSources\ClinicApp.Model.State.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Visit.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

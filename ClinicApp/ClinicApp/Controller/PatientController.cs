@@ -26,5 +26,10 @@ namespace ClinicApp.Controller
         {
             return PersonDAL.UpdatePerson(oldPatient, newPatient);
         }
+
+        public List<State> GetStateList()
+        {
+            return StateList.list;
+        }
     }
 }

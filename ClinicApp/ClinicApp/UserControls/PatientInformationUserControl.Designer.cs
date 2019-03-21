@@ -40,19 +40,20 @@
             System.Windows.Forms.Label stateLabel;
             System.Windows.Forms.Label streetAddressLabel;
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.postCodeTextBox = new System.Windows.Forms.TextBox();
             this.sSNTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
             this.btnGetPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -64,6 +65,7 @@
             stateLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // birthDateLabel
@@ -176,9 +178,14 @@
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.birthDateDateTimePicker.TabIndex = 2;
             // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
             // cityTextBox
             // 
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
+            this.cityTextBox.Enabled = false;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityTextBox.Location = new System.Drawing.Point(516, 146);
             this.cityTextBox.Name = "cityTextBox";
@@ -206,6 +213,7 @@
             // phoneNumberTextBox
             // 
             this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PhoneNumber", true));
+            this.phoneNumberTextBox.Enabled = false;
             this.phoneNumberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneNumberTextBox.Location = new System.Drawing.Point(516, 263);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
@@ -215,6 +223,7 @@
             // postCodeTextBox
             // 
             this.postCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PostCode", true));
+            this.postCodeTextBox.Enabled = false;
             this.postCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postCodeTextBox.Location = new System.Drawing.Point(516, 185);
             this.postCodeTextBox.Name = "postCodeTextBox";
@@ -224,24 +233,17 @@
             // sSNTextBox
             // 
             this.sSNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "SSN", true));
+            this.sSNTextBox.Enabled = false;
             this.sSNTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sSNTextBox.Location = new System.Drawing.Point(516, 30);
             this.sSNTextBox.Name = "sSNTextBox";
             this.sSNTextBox.Size = new System.Drawing.Size(200, 26);
             this.sSNTextBox.TabIndex = 4;
             // 
-            // stateTextBox
-            // 
-            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
-            this.stateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateTextBox.Location = new System.Drawing.Point(516, 224);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(200, 26);
-            this.stateTextBox.TabIndex = 9;
-            // 
             // streetAddressTextBox
             // 
             this.streetAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "StreetAddress", true));
+            this.streetAddressTextBox.Enabled = false;
             this.streetAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.streetAddressTextBox.Location = new System.Drawing.Point(516, 107);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
@@ -264,6 +266,7 @@
             // 
             // btnUpdatePatient
             // 
+            this.btnUpdatePatient.Enabled = false;
             this.btnUpdatePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdatePatient.Location = new System.Drawing.Point(657, 341);
             this.btnUpdatePatient.Name = "btnUpdatePatient";
@@ -286,6 +289,7 @@
             // 
             this.genderComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.patientBindingSource, "Gender", true));
             this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.genderComboBox.Enabled = false;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(516, 68);
@@ -293,14 +297,30 @@
             this.genderComboBox.Size = new System.Drawing.Size(200, 28);
             this.genderComboBox.TabIndex = 5;
             // 
-            // patientBindingSource
+            // stateComboBox
             // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.patientBindingSource, "State", true));
+            this.stateComboBox.DataSource = this.stateBindingSource;
+            this.stateComboBox.DisplayMember = "Name";
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateComboBox.Enabled = false;
+            this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Location = new System.Drawing.Point(516, 224);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(200, 28);
+            this.stateComboBox.TabIndex = 29;
+            this.stateComboBox.ValueMember = "Abbreviation";
+            // 
+            // stateBindingSource
+            // 
+            this.stateBindingSource.DataSource = typeof(ClinicApp.Model.State);
             // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnUpdatePatient);
@@ -321,13 +341,13 @@
             this.Controls.Add(sSNLabel);
             this.Controls.Add(this.sSNTextBox);
             this.Controls.Add(stateLabel);
-            this.Controls.Add(this.stateTextBox);
             this.Controls.Add(streetAddressLabel);
             this.Controls.Add(this.streetAddressTextBox);
             this.Name = "PatientInformationUserControl";
             this.Size = new System.Drawing.Size(807, 396);
             this.Load += new System.EventHandler(this.PatientInformationUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,11 +363,12 @@
         private System.Windows.Forms.TextBox phoneNumberTextBox;
         private System.Windows.Forms.TextBox postCodeTextBox;
         private System.Windows.Forms.TextBox sSNTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox streetAddressTextBox;
         private System.Windows.Forms.Button btnGetPatient;
         private System.Windows.Forms.Button btnUpdatePatient;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.ComboBox genderComboBox;
+        private System.Windows.Forms.ComboBox stateComboBox;
+        private System.Windows.Forms.BindingSource stateBindingSource;
     }
 }

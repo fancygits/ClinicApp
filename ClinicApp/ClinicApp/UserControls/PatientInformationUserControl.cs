@@ -11,6 +11,7 @@ namespace ClinicApp.UserControls
         private readonly PatientController patientController;
         private Patient patient;
         private Patient newPatient;
+        private List<State> stateList;
 
         public PatientInformationUserControl()
         {
@@ -23,6 +24,7 @@ namespace ClinicApp.UserControls
             patientBindingSource.Clear();
             newPatient = new Patient();
             this.LoadComboboxes();
+            this.DisableUpdates();
         }
 
         private void GetPatient(object sender, EventArgs e)
@@ -37,6 +39,7 @@ namespace ClinicApp.UserControls
                 this.PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
+                this.EnableUpdates();
             }
             catch (Exception ex)
             {
@@ -92,6 +95,34 @@ namespace ClinicApp.UserControls
             genderComboBox.DisplayMember = "Key";
             genderComboBox.ValueMember = "Value";
             genderComboBox.SelectedValue = "";
+
+            stateList = this.patientController.GetStateList();
+            stateComboBox.DataSource = stateList;
+            stateComboBox.SelectedValue = "";
+        }
+
+        private void EnableUpdates()
+        {
+            sSNTextBox.Enabled = true;
+            genderComboBox.Enabled = true;
+            streetAddressTextBox.Enabled = true;
+            cityTextBox.Enabled = true;
+            postCodeTextBox.Enabled = true;
+            stateComboBox.Enabled = true;
+            phoneNumberTextBox.Enabled = true;
+            btnUpdatePatient.Enabled = true;
+        }
+
+        private void DisableUpdates()
+        {
+            sSNTextBox.Enabled = false;
+            genderComboBox.Enabled = false;
+            streetAddressTextBox.Enabled = false;
+            cityTextBox.Enabled = false;
+            postCodeTextBox.Enabled = false;
+            stateComboBox.Enabled = false;
+            phoneNumberTextBox.Enabled = false;
+            btnUpdatePatient.Enabled = false;
         }
     }
 }
