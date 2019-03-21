@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicApp.Model;
 using ClinicApp.Controller;
+using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
@@ -71,6 +72,12 @@ namespace ClinicApp.UserControls
         private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.DisplayVistsByPatient();
+        }
+
+        private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AddVisitDialog addVisitDialog = new AddVisitDialog();
+            addVisitDialog.Show();
         }
     }
 }
