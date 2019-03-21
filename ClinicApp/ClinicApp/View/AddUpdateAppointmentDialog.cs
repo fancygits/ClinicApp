@@ -7,16 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicApp.Model;
+using ClinicApp.Controller;
 
 namespace ClinicApp.View
 {
+    /// <summary>
+    /// The Add/Update Form for the Appointment object.  If Appointment is not null, fills form and allows update.  If it is null, creates a new object.
+    /// </summary>
     public partial class AddUpdateAppointmentDialog : Form
     {
+        private AppointmentController appointmentController;
+        private DoctorController doctorController;
+        public Appointment appointment;
+        private List<Doctor> doctorList;
         public AddUpdateAppointmentDialog()
         {
             InitializeComponent();
+            this.appointmentController = new AppointmentController();
+            this.doctorController = new DoctorController();
         }
 
-        public int appointmentID;
+        private void AddUpdateAppointmentDialog_Load(object sender, EventArgs e)
+        {
+            this.LoadComboBoxes();
+        }
+
+        private void LoadComboBoxes()
+        {
+            try
+            {
+                this.doctorList = doctorController.GetDoctorList();
+                doctorIDComboBox.DataSource = this.doctorList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        
     }
 }

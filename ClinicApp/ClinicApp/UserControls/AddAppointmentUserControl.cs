@@ -100,7 +100,7 @@ namespace ClinicApp.UserControls
                 Appointment appointment = (Appointment)row.DataBoundItem;
 
                 AddUpdateAppointmentDialog addApptForm = new AddUpdateAppointmentDialog();
-                addApptForm.appointmentID = appointment.AppointmentID;
+                addApptForm.appointment = appointment;
                 addApptForm.ShowDialog();
             }
         }

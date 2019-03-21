@@ -381,6 +381,7 @@
             this.Controls.Add(this.patientBindingNavigator);
             this.Name = "AddUpdateAppointmentDialog";
             this.Text = "Add/Update Appointment";
+            this.Load += new System.EventHandler(this.AddUpdateAppointmentDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingNavigator)).EndInit();
             this.patientBindingNavigator.ResumeLayout(false);
             this.patientBindingNavigator.PerformLayout();
