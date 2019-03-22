@@ -40,6 +40,7 @@
             this.patientNameComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientBirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +97,7 @@
             this.visitDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.visitDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.visitDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NurseID,
             this.AppointmentTime,
             this.PatientBirthDate,
             this.PatientName,
@@ -195,6 +197,15 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "VisitNurse";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 155;
+            // 
+            // NurseID
+            // 
+            this.NurseID.DataPropertyName = "NurseID";
+            this.NurseID.HeaderText = "NurseID";
+            this.NurseID.Name = "NurseID";
+            this.NurseID.ReadOnly = true;
+            this.NurseID.Visible = false;
+            this.NurseID.Width = 95;
             // 
             // AppointmentTime
             // 
@@ -340,6 +351,7 @@
         private System.Windows.Forms.ComboBox patientNameComboBox;
         private System.Windows.Forms.TextBox patientIDTextBox;
         public System.Windows.Forms.DataGridView visitDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientBirthDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;

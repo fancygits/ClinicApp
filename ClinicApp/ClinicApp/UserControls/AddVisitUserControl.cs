@@ -31,7 +31,31 @@ namespace ClinicApp.UserControls
         {
             this.listOfNurses = this.visitController.GetNurses();
             this.nurseNameComboBox.DataSource = this.listOfNurses;
-            this.nurseNameComboBox.SelectedValue = -1;
+            if (this.visit.NurseID > 0)
+            {
+                this.nurseNameComboBox.SelectedValue = this.visit.NurseID;
+            } else
+            {
+                this.nurseNameComboBox.SelectedIndex = -1;
+            }
+        }
+        private void PutData(Visit newVisit)
+        {
+            newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
+            newVisit.NurseID = (int)this.nurseNameComboBox.SelectedValue;
+            newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
+            newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
+            newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
+            newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
+            newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
+            newVisit.Symptoms = this.symptomsTextBox.Text;
+        }
+
+        private void updateVisitButton_Click(object sender, EventArgs e)
+        {
+            Visit newVisit = new Visit();
+            this.PutData(newVisit);
+            MessageBox.Show(newVisit.Symptoms, this.visit.Symptoms);
         }
     }
 }

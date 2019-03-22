@@ -286,7 +286,7 @@
             // 
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.visitBindingSource, "NurseName", true));
-            this.nurseNameComboBox.DataSource = this.nurseBindingSource;
+            this.nurseNameComboBox.DataSource = this.visitBindingSource;
             this.nurseNameComboBox.DisplayMember = "NurseName";
             this.nurseNameComboBox.FormattingEnabled = true;
             this.nurseNameComboBox.Location = new System.Drawing.Point(383, 474);
@@ -320,6 +320,7 @@
             this.updateVisitButton.TabIndex = 26;
             this.updateVisitButton.Text = "Update Visit";
             this.updateVisitButton.UseVisualStyleBackColor = true;
+            this.updateVisitButton.Click += new System.EventHandler(this.updateVisitButton_Click);
             // 
             // nurseNameTextBox
             // 

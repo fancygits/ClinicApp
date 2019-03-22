@@ -70,21 +70,22 @@ namespace ClinicApp.UserControls
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 13)
+            if (e.ColumnIndex == 14)
             {
                 int i = e.RowIndex;
                 DataGridViewRow row = visitDataGridView.Rows[i];
-                Visit visit = (Visit)row.DataBoundItem;
+                this.visit = (Visit)row.DataBoundItem;
                 AddVisitDialog addVisitDialog = new AddVisitDialog();
-                addVisitDialog.addVisitUserControl1.appointmentIDTextBox.Text = visit.AppointmentID + "";
-                addVisitDialog.addVisitUserControl1.weightTextBox.Text = visit.Weight + "";
+
+                addVisitDialog.addVisitUserControl1.appointmentIDTextBox.Text = this.visit.AppointmentID + "";
+                addVisitDialog.addVisitUserControl1.weightTextBox.Text = this.visit.Weight + "";
                 addVisitDialog.addVisitUserControl1.temperatureTextBox.Text = visit.Temperature + "";
                 addVisitDialog.addVisitUserControl1.systolicBPTextBox.Text = visit.SystolicBP + "";
                 addVisitDialog.addVisitUserControl1.diastolicBPTextBox.Text = visit.DiastolicBP + "";
                 addVisitDialog.addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
                 addVisitDialog.addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
                 addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
-                if (visit.NurseID > 0)
+                if (this.visit.NurseID > 0)
                 {
                     if (visit.FinalDiagnosis != null)
                     {
@@ -120,7 +121,7 @@ namespace ClinicApp.UserControls
                 addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                 addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
                 addVisitDialog.addVisitUserControl1.appointmentTimeTextBox.Text = visit.AppointmentTime.ToShortDateString() + " " + visit.AppointmentTime.ToShortTimeString();
-
+                addVisitDialog.addVisitUserControl1.visit = this.visit;
                 addVisitDialog.Show();
             }
         }
