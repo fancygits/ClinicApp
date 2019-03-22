@@ -193,10 +193,5 @@ namespace ClinicApp.DAL
             }
             return patient;
         }
-
-        public bool UpdatePatient(Patient oldPatient, Patient newPatient)
-        {
-            return PersonDAL.UpdatePerson(oldPatient, newPatient);
-        }
     }
 }
