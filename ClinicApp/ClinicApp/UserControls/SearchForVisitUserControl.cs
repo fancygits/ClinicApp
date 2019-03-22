@@ -16,7 +16,7 @@ namespace ClinicApp.UserControls
     public partial class SearchForVisitUserControl : UserControl
     {
         private VisitController visitController;
-        private Visit visit;
+        public Visit visit;
         private List<Visit> listOfPatients;
         private List<Visit> listOfVisits;
         public SearchForVisitUserControl()
@@ -90,7 +90,10 @@ namespace ClinicApp.UserControls
                 addVisitDialog.addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
                 addVisitDialog.addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
                 addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
-                addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
+                if (visit.NurseID > 0)
+                {
+                    addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedItem = visit.NurseID;
+                }
                 addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                 addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
                 addVisitDialog.addVisitUserControl1.appointmentTimeTextBox.Text = visit.AppointmentTime.ToShortDateString() + " " + visit.AppointmentTime.ToShortTimeString();

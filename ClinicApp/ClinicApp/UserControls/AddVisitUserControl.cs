@@ -14,9 +14,13 @@ namespace ClinicApp.UserControls
 {
     public partial class AddVisitUserControl : UserControl
     {
+        private List<Visit> listOfNurses;
+        private VisitController visitController;
         public AddVisitUserControl()
         {
             InitializeComponent();
+            this.listOfNurses = new List<Visit>();
+            this.visitController = new VisitController();
         }
 
         public int apptID;
@@ -24,7 +28,9 @@ namespace ClinicApp.UserControls
         public string birthDate;
         private void AddVisitUserControl_Load(object sender, EventArgs e)
         {
-            
+            this.listOfNurses = this.visitController.GetNurses();
+            this.nurseNameComboBox.DataSource = this.listOfNurses;
+            this.nurseNameComboBox.SelectedIndex = -1;
         }
     }
 }

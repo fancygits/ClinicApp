@@ -15,6 +15,11 @@ namespace ClinicApp.Controller
             return VisitDAL.GetNurse(nurseID);
         }
 
+        public List<Visit> GetNurses()
+        {
+            return VisitDAL.GetNurses();
+        }
+
         public string GetDoctor(int doctorID)
         {
             return VisitDAL.GetDoctor(doctorID);

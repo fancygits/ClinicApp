@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClinicApp.Model
 {
-    class Visit
+    public class Visit
     {
         public Appointment VisitAppointment { get; set; }
         public int AppointmentID { get; set; }

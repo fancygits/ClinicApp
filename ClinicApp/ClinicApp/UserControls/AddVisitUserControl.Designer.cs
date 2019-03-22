@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label appointmentIDLabel;
-            System.Windows.Forms.Label nurseNameLabel;
             System.Windows.Forms.Label patientNameLabel;
             System.Windows.Forms.Label birthDateLabel;
             System.Windows.Forms.Label appointmentTimeLabel;
@@ -41,8 +40,9 @@
             System.Windows.Forms.Label temperatureLabel;
             System.Windows.Forms.Label pulseLabel;
             System.Windows.Forms.Label symptomsLabel;
+            System.Windows.Forms.Label nurseNameLabel;
             this.appointmentIDTextBox = new System.Windows.Forms.TextBox();
-            this.nurseNameTextBox = new System.Windows.Forms.TextBox();
+            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientNameTextBox = new System.Windows.Forms.TextBox();
             this.birthDateTextBox = new System.Windows.Forms.TextBox();
             this.appointmentTimeTextBox = new System.Windows.Forms.TextBox();
@@ -53,11 +53,10 @@
             this.temperatureTextBox = new System.Windows.Forms.TextBox();
             this.pulseTextBox = new System.Windows.Forms.TextBox();
             this.symptomsTextBox = new System.Windows.Forms.TextBox();
-            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nurseNameComboBox = new System.Windows.Forms.ComboBox();
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             appointmentIDLabel = new System.Windows.Forms.Label();
-            nurseNameLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
             appointmentTimeLabel = new System.Windows.Forms.Label();
@@ -68,9 +67,10 @@
             temperatureLabel = new System.Windows.Forms.Label();
             pulseLabel = new System.Windows.Forms.Label();
             symptomsLabel = new System.Windows.Forms.Label();
+            nurseNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -81,15 +81,6 @@
             appointmentIDLabel.Size = new System.Drawing.Size(164, 25);
             appointmentIDLabel.TabIndex = 0;
             appointmentIDLabel.Text = "Appointment ID:";
-            // 
-            // nurseNameLabel
-            // 
-            nurseNameLabel.AutoSize = true;
-            nurseNameLabel.Location = new System.Drawing.Point(128, 477);
-            nurseNameLabel.Name = "nurseNameLabel";
-            nurseNameLabel.Size = new System.Drawing.Size(137, 25);
-            nurseNameLabel.TabIndex = 2;
-            nurseNameLabel.Text = "Nurse Name:";
             // 
             // patientNameLabel
             // 
@@ -181,6 +172,15 @@
             symptomsLabel.TabIndex = 22;
             symptomsLabel.Text = "Symptoms:";
             // 
+            // nurseNameLabel
+            // 
+            nurseNameLabel.AutoSize = true;
+            nurseNameLabel.Location = new System.Drawing.Point(128, 474);
+            nurseNameLabel.Name = "nurseNameLabel";
+            nurseNameLabel.Size = new System.Drawing.Size(137, 25);
+            nurseNameLabel.TabIndex = 23;
+            nurseNameLabel.Text = "Nurse Name:";
+            // 
             // appointmentIDTextBox
             // 
             this.appointmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentID", true));
@@ -189,13 +189,9 @@
             this.appointmentIDTextBox.Size = new System.Drawing.Size(100, 31);
             this.appointmentIDTextBox.TabIndex = 1;
             // 
-            // nurseNameTextBox
+            // visitBindingSource
             // 
-            this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
-            this.nurseNameTextBox.Location = new System.Drawing.Point(383, 471);
-            this.nurseNameTextBox.Name = "nurseNameTextBox";
-            this.nurseNameTextBox.Size = new System.Drawing.Size(348, 31);
-            this.nurseNameTextBox.TabIndex = 3;
+            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
             // 
             // patientNameTextBox
             // 
@@ -278,22 +274,33 @@
             this.symptomsTextBox.Size = new System.Drawing.Size(260, 83);
             this.symptomsTextBox.TabIndex = 23;
             // 
-            // visitBindingSource
+            // nurseNameComboBox
             // 
-            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
+            this.nurseNameComboBox.DataSource = this.visitBindingSource;
+            this.nurseNameComboBox.DisplayMember = "NurseName";
+            this.nurseNameComboBox.FormattingEnabled = true;
+            this.nurseNameComboBox.Location = new System.Drawing.Point(383, 466);
+            this.nurseNameComboBox.Name = "nurseNameComboBox";
+            this.nurseNameComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.nurseNameComboBox.Size = new System.Drawing.Size(348, 33);
+            this.nurseNameComboBox.TabIndex = 24;
+            this.nurseNameComboBox.ValueMember = "NurseID";
             // 
             // nurseBindingSource
             // 
             this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
             // AddVisitUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(nurseNameLabel);
+            this.Controls.Add(this.nurseNameComboBox);
             this.Controls.Add(symptomsLabel);
             this.Controls.Add(this.symptomsTextBox);
             this.Controls.Add(pulseLabel);
@@ -314,16 +321,14 @@
             this.Controls.Add(this.birthDateTextBox);
             this.Controls.Add(patientNameLabel);
             this.Controls.Add(this.patientNameTextBox);
-            this.Controls.Add(nurseNameLabel);
-            this.Controls.Add(this.nurseNameTextBox);
             this.Controls.Add(appointmentIDLabel);
             this.Controls.Add(this.appointmentIDTextBox);
             this.Name = "AddVisitUserControl";
             this.Size = new System.Drawing.Size(1626, 814);
             this.Load += new System.EventHandler(this.AddVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +340,6 @@
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.BindingSource nurseBindingSource;
         public System.Windows.Forms.TextBox appointmentIDTextBox;
-        public System.Windows.Forms.TextBox nurseNameTextBox;
         public System.Windows.Forms.TextBox patientNameTextBox;
         public System.Windows.Forms.TextBox birthDateTextBox;
         public System.Windows.Forms.TextBox appointmentTimeTextBox;
@@ -346,5 +350,6 @@
         public System.Windows.Forms.TextBox temperatureTextBox;
         public System.Windows.Forms.TextBox pulseTextBox;
         public System.Windows.Forms.TextBox symptomsTextBox;
+        public System.Windows.Forms.ComboBox nurseNameComboBox;
     }
 }
