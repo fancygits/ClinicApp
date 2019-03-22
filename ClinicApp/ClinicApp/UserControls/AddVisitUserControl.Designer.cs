@@ -58,6 +58,7 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.addVisitButton = new System.Windows.Forms.Button();
             this.updateVisitButton = new System.Windows.Forms.Button();
+            this.nurseNameTextBox = new System.Windows.Forms.TextBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -284,11 +285,11 @@
             // nurseNameComboBox
             // 
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
-            this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.nurseBindingSource, "NurseID", true));
+            this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.visitBindingSource, "NurseName", true));
             this.nurseNameComboBox.DataSource = this.nurseBindingSource;
             this.nurseNameComboBox.DisplayMember = "NurseName";
             this.nurseNameComboBox.FormattingEnabled = true;
-            this.nurseNameComboBox.Location = new System.Drawing.Point(383, 466);
+            this.nurseNameComboBox.Location = new System.Drawing.Point(383, 474);
             this.nurseNameComboBox.Name = "nurseNameComboBox";
             this.nurseNameComboBox.Size = new System.Drawing.Size(348, 33);
             this.nurseNameComboBox.TabIndex = 24;
@@ -320,10 +321,19 @@
             this.updateVisitButton.Text = "Update Visit";
             this.updateVisitButton.UseVisualStyleBackColor = true;
             // 
+            // nurseNameTextBox
+            // 
+            this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
+            this.nurseNameTextBox.Location = new System.Drawing.Point(383, 476);
+            this.nurseNameTextBox.Name = "nurseNameTextBox";
+            this.nurseNameTextBox.Size = new System.Drawing.Size(348, 31);
+            this.nurseNameTextBox.TabIndex = 27;
+            // 
             // AddVisitUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.nurseNameTextBox);
             this.Controls.Add(this.updateVisitButton);
             this.Controls.Add(this.addVisitButton);
             this.Controls.Add(nurseNameLabel);
@@ -380,5 +390,6 @@
         public System.Windows.Forms.ComboBox nurseNameComboBox;
         public System.Windows.Forms.Button addVisitButton;
         public System.Windows.Forms.Button updateVisitButton;
+        public System.Windows.Forms.TextBox nurseNameTextBox;
     }
 }

@@ -299,5 +299,15 @@ namespace ClinicApp.DAL
                     return listOfVisits;
                 }
             }
+        
+        public static bool UpdateVisit()
+        {
+            return false;
         }
-    } 
+
+        public static bool AddVisit()
+        {
+            return false;
+        }
+    }
+} 

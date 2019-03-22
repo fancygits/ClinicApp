@@ -92,11 +92,28 @@ namespace ClinicApp.UserControls
                 addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                 if (visit.NurseID > 0)
                 {
-                    addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
-                    addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
-                    addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = true;
+                    if (visit.FinalDiagnosis != null)
+                    {
+                        addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
+                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
+
+                    }
+                    else
+                    {
+                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
+                        addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = true;
+                    }
                 } else
                 {
+                    addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
+                    addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
                     addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
                     addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
                 }
