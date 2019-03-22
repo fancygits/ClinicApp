@@ -13,6 +13,7 @@ namespace ClinicApp.UserControls
         public Visit visit;
         private List<Visit> listOfPatients;
         private List<Visit> listOfVisits;
+
         public SearchForVisitUserControl()
         {
             InitializeComponent();

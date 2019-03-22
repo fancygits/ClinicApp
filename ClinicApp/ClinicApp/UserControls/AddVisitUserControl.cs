@@ -96,6 +96,9 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+
+            this.updateVisitButton.Enabled = true;
+            this.addVisitButton.Enabled = false;
         }
     }
 }
