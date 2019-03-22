@@ -33,6 +33,13 @@
             System.Windows.Forms.Label patientIDLabel;
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitDataGridView = new System.Windows.Forms.DataGridView();
+            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.patientIDTextBox = new System.Windows.Forms.TextBox();
+            this.patientNameComboBox = new System.Windows.Forms.ComboBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientBirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,13 +54,6 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditViewVisit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.patientIDTextBox = new System.Windows.Forms.TextBox();
-            this.patientNameComboBox = new System.Windows.Forms.ComboBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             patientNameLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
@@ -119,6 +119,82 @@
             this.visitDataGridView.Size = new System.Drawing.Size(2074, 725);
             this.visitDataGridView.TabIndex = 1;
             this.visitDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.visitDataGridView_CellContentClick);
+            // 
+            // visitBindingSource
+            // 
+            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.visitDataGridView, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.55507F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.44493F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(2080, 973);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.05979F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.94021F));
+            this.tableLayoutPanel2.Controls.Add(patientIDLabel, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.patientIDTextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(patientNameLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.patientNameComboBox, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(2074, 219);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // patientIDTextBox
+            // 
+            this.patientIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientID", true));
+            this.patientIDTextBox.Enabled = false;
+            this.patientIDTextBox.Location = new System.Drawing.Point(502, 152);
+            this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.Size = new System.Drawing.Size(100, 31);
+            this.patientIDTextBox.TabIndex = 3;
+            // 
+            // patientNameComboBox
+            // 
+            this.patientNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.patientNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
+            this.patientNameComboBox.DataSource = this.visitBindingSource;
+            this.patientNameComboBox.DisplayMember = "PatientName";
+            this.patientNameComboBox.FormattingEnabled = true;
+            this.patientNameComboBox.Location = new System.Drawing.Point(502, 42);
+            this.patientNameComboBox.Name = "patientNameComboBox";
+            this.patientNameComboBox.Size = new System.Drawing.Size(1391, 33);
+            this.patientNameComboBox.TabIndex = 1;
+            this.patientNameComboBox.ValueMember = "PatientID";
+            this.patientNameComboBox.SelectedIndexChanged += new System.EventHandler(this.patientNameComboBox_SelectedIndexChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "VisitAppointment";
+            this.dataGridViewTextBoxColumn1.HeaderText = "VisitAppointment";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 218;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "VisitNurse";
+            this.dataGridViewTextBoxColumn2.HeaderText = "VisitNurse";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 155;
             // 
             // AppointmentTime
             // 
@@ -231,85 +307,9 @@
             this.EditViewVisit.HeaderText = "Edit/View Visit";
             this.EditViewVisit.Name = "EditViewVisit";
             this.EditViewVisit.ReadOnly = true;
-            this.EditViewVisit.Text = "Update";
+            this.EditViewVisit.Text = "Add/Update";
             this.EditViewVisit.UseColumnTextForButtonValue = true;
             this.EditViewVisit.Width = 139;
-            // 
-            // visitBindingSource
-            // 
-            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.visitDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.55507F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.44493F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2080, 973);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.05979F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.94021F));
-            this.tableLayoutPanel2.Controls.Add(patientIDLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.patientIDTextBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(patientNameLabel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.patientNameComboBox, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(2074, 219);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // patientIDTextBox
-            // 
-            this.patientIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientID", true));
-            this.patientIDTextBox.Enabled = false;
-            this.patientIDTextBox.Location = new System.Drawing.Point(502, 152);
-            this.patientIDTextBox.Name = "patientIDTextBox";
-            this.patientIDTextBox.Size = new System.Drawing.Size(100, 31);
-            this.patientIDTextBox.TabIndex = 3;
-            // 
-            // patientNameComboBox
-            // 
-            this.patientNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.patientNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
-            this.patientNameComboBox.DataSource = this.visitBindingSource;
-            this.patientNameComboBox.DisplayMember = "PatientName";
-            this.patientNameComboBox.FormattingEnabled = true;
-            this.patientNameComboBox.Location = new System.Drawing.Point(502, 42);
-            this.patientNameComboBox.Name = "patientNameComboBox";
-            this.patientNameComboBox.Size = new System.Drawing.Size(1391, 33);
-            this.patientNameComboBox.TabIndex = 1;
-            this.patientNameComboBox.ValueMember = "PatientID";
-            this.patientNameComboBox.SelectedIndexChanged += new System.EventHandler(this.patientNameComboBox_SelectedIndexChanged);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "VisitAppointment";
-            this.dataGridViewTextBoxColumn1.HeaderText = "VisitAppointment";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 218;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "VisitNurse";
-            this.dataGridViewTextBoxColumn2.HeaderText = "VisitNurse";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 155;
             // 
             // SearchForVisitUserControl
             // 
@@ -339,6 +339,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ComboBox patientNameComboBox;
         private System.Windows.Forms.TextBox patientIDTextBox;
+        public System.Windows.Forms.DataGridView visitDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientBirthDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
@@ -353,6 +354,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewButtonColumn EditViewVisit;
-        public System.Windows.Forms.DataGridView visitDataGridView;
     }
 }

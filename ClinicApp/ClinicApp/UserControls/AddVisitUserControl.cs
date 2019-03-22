@@ -30,7 +30,7 @@ namespace ClinicApp.UserControls
         {
             this.listOfNurses = this.visitController.GetNurses();
             this.nurseNameComboBox.DataSource = this.listOfNurses;
-            this.nurseNameComboBox.SelectedIndex = -1;
+            this.nurseNameComboBox.SelectedValue = -1;
         }
     }
 }

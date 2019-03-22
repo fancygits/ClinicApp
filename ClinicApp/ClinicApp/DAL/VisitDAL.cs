@@ -228,7 +228,7 @@ namespace ClinicApp.DAL
                                     visit.NurseID = reader.GetInt32(nurseIDOrd);
                                     visit.NurseName = GetNurse(visit.NurseID);
                                 }
-                                if (reader.IsDBNull(weightOrd))
+                            if (reader.IsDBNull(weightOrd))
                                 {
                                     weightOrd += -1;
                                 } else
