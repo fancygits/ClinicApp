@@ -23,6 +23,11 @@ namespace ClinicApp.Controller
         {
             return VisitDAL.UpdateVisit(oldVisit, newVisit);
         }
+
+        public bool AddVisit(Visit newVisit)
+        {
+            return VisitDAL.AddVisit(newVisit);
+        }
         public string GetDoctor(int doctorID)
         {
             return VisitDAL.GetDoctor(doctorID);

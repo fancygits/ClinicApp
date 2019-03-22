@@ -353,9 +353,35 @@ namespace ClinicApp.DAL
             }
         }
 
-        public static bool AddVisit()
+        public static bool AddVisit(Visit newVisit)
         {
-            return false;
+            int count = 0;
+            string insertStatement = "INSERT INTO Visits " +
+                                     "(weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, nurseID) " +
+                                     "VALUES (@weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', @nurseID)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@weight", newVisit.Weight);
+                    insertCommand.Parameters.AddWithValue("@systolicBP", newVisit.SystolicBP);
+                    insertCommand.Parameters.AddWithValue("@diastolicBP", newVisit.DiastolicBP);
+                    insertCommand.Parameters.AddWithValue("@temperature", newVisit.Temperature);
+                    insertCommand.Parameters.AddWithValue("@pulse", newVisit.Pulse);
+                    insertCommand.Parameters.AddWithValue("@symptoms", newVisit.Symptoms);
+                    insertCommand.Parameters.AddWithValue("@nurseID", newVisit.NurseID);
+                    count = insertCommand.ExecuteNonQuery();
+                }
+            }
+
+            if(count > 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
     }
 } 
