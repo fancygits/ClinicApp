@@ -97,6 +97,12 @@ namespace ClinicApp.UserControls
                         addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
                         addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
                         addVisitDialog.addVisitUserControl1.nurseNameTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.weightTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.temperatureTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.systolicBPTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.diastolicBPTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.symptomsTextBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.pulseTextBox.Enabled = false;
                         addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
                         addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
                         addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
