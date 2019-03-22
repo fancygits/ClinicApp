@@ -1,5 +1,6 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -36,6 +37,15 @@ namespace ClinicApp.UserControls
             try
             {
                 patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
+                if (patient == null)
+                {
+                    List<Patient> patientList = this.patientController.GetPatientsByName(firstName, lastName);
+                    this.GetMatchingPatients(patientList);
+                    if (patient == null)
+                    {
+                        return;
+                    }
+                }
                 this.PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
@@ -44,6 +54,17 @@ namespace ClinicApp.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void GetMatchingPatients(List<Patient> patientList)
+        {
+            FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
+            findPatientsDialog.patientList = patientList;
+            DialogResult result = findPatientsDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                patient = findPatientsDialog.patient;
             }
         }
 
