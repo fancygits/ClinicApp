@@ -356,14 +356,15 @@ namespace ClinicApp.DAL
         public static bool AddVisit(Visit newVisit)
         {
             int count = 0;
-            string insertStatement = "INSERT INTO Visits " +
-                                     "(weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, nurseID) " +
-                                     "VALUES (@weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', @nurseID)";
+            string insertStatement = "INSERT INTO Visit " +
+                                     "(appointmentID, weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, nurseID) " +
+                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', @nurseID)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
+                    insertCommand.Parameters.AddWithValue("@appointmentID", newVisit.AppointmentID);
                     insertCommand.Parameters.AddWithValue("@weight", newVisit.Weight);
                     insertCommand.Parameters.AddWithValue("@systolicBP", newVisit.SystolicBP);
                     insertCommand.Parameters.AddWithValue("@diastolicBP", newVisit.DiastolicBP);

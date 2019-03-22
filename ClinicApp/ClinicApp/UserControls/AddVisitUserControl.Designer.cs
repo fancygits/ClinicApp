@@ -311,6 +311,7 @@
             this.addVisitButton.TabIndex = 25;
             this.addVisitButton.Text = "Add Visit";
             this.addVisitButton.UseVisualStyleBackColor = true;
+            this.addVisitButton.Click += new System.EventHandler(this.addVisitButton_Click);
             // 
             // updateVisitButton
             // 

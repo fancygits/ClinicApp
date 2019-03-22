@@ -41,22 +41,29 @@ namespace ClinicApp.UserControls
         }
         private void PutData(Visit newVisit)
         {
-            newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
-            newVisit.NurseID = (int)this.nurseNameComboBox.SelectedValue;
-            newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
-            newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
-            newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
-            newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
-            newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
-            newVisit.Symptoms = this.symptomsTextBox.Text;
+            try
+            {
+                newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
+                newVisit.NurseID = (int)this.nurseNameComboBox.SelectedValue;
+                newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
+                newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
+                newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
+                newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
+                newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
+                newVisit.Symptoms = this.symptomsTextBox.Text;
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
 
         private void updateVisitButton_Click(object sender, EventArgs e)
         {
             Visit newVisit = new Visit();
             this.PutData(newVisit);
-     //       try
-     //       {
+            try
+            {
                 if (!this.visitController.UpdateVisit(this.visit, newVisit))
                 {
                     MessageBox.Show("Someone has already updated that visit");
@@ -65,11 +72,30 @@ namespace ClinicApp.UserControls
                     this.visit = newVisit;
                     MessageBox.Show("Your visit has been successfully updated", "Success");
                 }
-      //      } catch (Exception ex)
-      //      {
-      //          MessageBox.Show("Error updating table", ex.GetType().ToString());
-      //      }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Error updating table", ex.GetType().ToString());
+            }
 
+        }
+
+        private void addVisitButton_Click(object sender, EventArgs e)
+        {
+            Visit newVisit = new Visit();
+            this.PutData(newVisit);
+            try
+            {
+                if(!this.visitController.AddVisit(newVisit))
+                {
+                    MessageBox.Show("There was an error adding your visit");
+                } else
+                {
+                    MessageBox.Show("Your visit was successfully added", "Success");
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
