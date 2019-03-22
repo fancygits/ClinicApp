@@ -13,9 +13,19 @@ namespace ClinicApp.Controller
     /// </summary>
     public class AppointmentController
     {
+        /// <summary>
+        /// Returns a list of Appointments by PatientID
+        /// </summary>
+        /// <param name="patientID">Patient ID</param>
+        /// <returns></returns>
         public List<Appointment> GetAppointmentsByPatientID(int patientID)
         {
             return AppointmentDAL.GetAppointmentsByPatientID(patientID);
+        }
+
+        public void AddAppointment(Appointment appointment)
+        {
+            AppointmentDAL.AddAppointment(appointment);
         }
     }
 }

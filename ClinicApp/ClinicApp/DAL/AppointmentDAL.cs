@@ -54,5 +54,30 @@ namespace ClinicApp.DAL
                 return appointmentsByPatientID;
             };
         }
+
+        /// <summary>
+        /// Adds a new Appointment object to the database
+        /// </summary>
+        /// <param name="appointment">New Appointment to be added</param>
+        public static void AddAppointment(Appointment appointment)
+        {
+            string insertStatement =
+                "INSERT INTO Appointment (patientID, doctorID, apptDatetime, reasonForVisit) " +
+                "VALUES(@PatientID, @DoctorID, @Date, @Reason)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@PatientID", appointment.AppointmentPatientID);
+                    insertCommand.Parameters.AddWithValue("@DoctorID", appointment.AppointmentDoctorID);
+                    insertCommand.Parameters.AddWithValue("@Date", appointment.AppointmentDateTime);
+                    insertCommand.Parameters.AddWithValue("@Reason", appointment.AppointmentReason);
+
+                    insertCommand.ExecuteNonQuery();
+
+                }
+            }
+        }
     }
 }

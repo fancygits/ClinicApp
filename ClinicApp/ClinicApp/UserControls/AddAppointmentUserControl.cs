@@ -74,7 +74,7 @@ namespace ClinicApp.UserControls
         {
             try
             {
-                this.patient = this.patientController.GetPatient(patientID);
+                this.patient = this.patientController.GetPatientByID(patientID);
                 if (patient != null)
                 {
                     patientBindingSource.Clear();

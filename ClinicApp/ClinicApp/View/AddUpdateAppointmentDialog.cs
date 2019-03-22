@@ -40,7 +40,7 @@ namespace ClinicApp.View
             {
                 this.doctorList = doctorController.GetDoctorList();
                 doctorIDComboBox.DataSource = this.doctorList;
-                this.PutNewAppointment();
+                //this.PutNewAppointment();
             }
             catch (Exception ex)
             {
@@ -48,14 +48,19 @@ namespace ClinicApp.View
             }
         }
 
-        private void PutNewAppointment()
+        private void PutAppointmentData(Appointment appointment)
         {
-            MessageBox.Show(this.appointment.AppointmentReason.ToString());
-            newAppointment.AppointmentID = appointment.AppointmentID;
-            newAppointment.AppointmentPatientID = appointment.AppointmentPatientID;
-            newAppointment.AppointmentReason = appointment.AppointmentReason;
+            //MessageBox.Show(this.appointment.AppointmentReason.ToString());
+            appointment.AppointmentID = appointment.AppointmentID;
+            appointment.AppointmentPatientID = appointment.AppointmentPatientID;
+            appointment.AppointmentReason = appointment.AppointmentReason;
         }
 
-        
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Appointment newAppointment = new Appointment();
+            this.PutAppointmentData(newAppointment);
+            this.appointmentController.AddAppointment(new Appointment());
+        }
     }
 }
