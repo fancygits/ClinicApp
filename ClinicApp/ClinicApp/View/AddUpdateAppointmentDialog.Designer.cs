@@ -51,15 +51,15 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.patientBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.txtBxfirstName = new System.Windows.Forms.TextBox();
+            this.txtBxLastName = new System.Windows.Forms.TextBox();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentDateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.appointmentDateTimeDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.appointmentReasonTextBox = new System.Windows.Forms.TextBox();
+            this.txtBoxAppointmentReason = new System.Windows.Forms.TextBox();
             this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.doctorIDComboBox = new System.Windows.Forms.ComboBox();
-            this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.cmboBoxDoctorID = new System.Windows.Forms.ComboBox();
+            this.timePickerBirthDateDate = new System.Windows.Forms.DateTimePicker();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -267,21 +267,21 @@
             this.patientBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.patientBindingNavigatorSaveItem.Text = "Save Data";
             // 
-            // firstNameTextBox
+            // txtBxfirstName
             // 
-            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(86, 31);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(303, 20);
-            this.firstNameTextBox.TabIndex = 4;
+            this.txtBxfirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
+            this.txtBxfirstName.Location = new System.Drawing.Point(86, 31);
+            this.txtBxfirstName.Name = "txtBxfirstName";
+            this.txtBxfirstName.Size = new System.Drawing.Size(303, 20);
+            this.txtBxfirstName.TabIndex = 4;
             // 
-            // lastNameTextBox
+            // txtBxLastName
             // 
-            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
-            this.lastNameTextBox.Location = new System.Drawing.Point(86, 56);
-            this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(302, 20);
-            this.lastNameTextBox.TabIndex = 6;
+            this.txtBxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
+            this.txtBxLastName.Location = new System.Drawing.Point(86, 56);
+            this.txtBxLastName.Name = "txtBxLastName";
+            this.txtBxLastName.Size = new System.Drawing.Size(302, 20);
+            this.txtBxLastName.TabIndex = 6;
             // 
             // appointmentBindingSource
             // 
@@ -305,39 +305,40 @@
             this.appointmentDateTimeDateTimePicker1.Size = new System.Drawing.Size(236, 20);
             this.appointmentDateTimeDateTimePicker1.TabIndex = 10;
             // 
-            // appointmentReasonTextBox
+            // txtBoxAppointmentReason
             // 
-            this.appointmentReasonTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentReason", true));
-            this.appointmentReasonTextBox.Location = new System.Drawing.Point(152, 228);
-            this.appointmentReasonTextBox.Multiline = true;
-            this.appointmentReasonTextBox.Name = "appointmentReasonTextBox";
-            this.appointmentReasonTextBox.Size = new System.Drawing.Size(236, 71);
-            this.appointmentReasonTextBox.TabIndex = 12;
+            this.txtBoxAppointmentReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentReason", true));
+            this.txtBoxAppointmentReason.Location = new System.Drawing.Point(152, 228);
+            this.txtBoxAppointmentReason.Multiline = true;
+            this.txtBoxAppointmentReason.Name = "txtBoxAppointmentReason";
+            this.txtBoxAppointmentReason.Size = new System.Drawing.Size(236, 71);
+            this.txtBoxAppointmentReason.TabIndex = 12;
             // 
             // doctorBindingSource
             // 
             this.doctorBindingSource.DataSource = typeof(ClinicApp.Model.Doctor);
             // 
-            // doctorIDComboBox
+            // cmboBoxDoctorID
             // 
-            this.doctorIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.doctorBindingSource, "DoctorID", true));
-            this.doctorIDComboBox.DataSource = this.doctorBindingSource;
-            this.doctorIDComboBox.DisplayMember = "LastName";
-            this.doctorIDComboBox.FormattingEnabled = true;
-            this.doctorIDComboBox.Location = new System.Drawing.Point(152, 192);
-            this.doctorIDComboBox.Name = "doctorIDComboBox";
-            this.doctorIDComboBox.Size = new System.Drawing.Size(236, 21);
-            this.doctorIDComboBox.TabIndex = 14;
-            this.doctorIDComboBox.ValueMember = "DoctorID";
+            this.cmboBoxDoctorID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.doctorBindingSource, "DoctorID", true));
+            this.cmboBoxDoctorID.DataSource = this.doctorBindingSource;
+            this.cmboBoxDoctorID.DisplayMember = "LastName";
+            this.cmboBoxDoctorID.FormattingEnabled = true;
+            this.cmboBoxDoctorID.Location = new System.Drawing.Point(152, 192);
+            this.cmboBoxDoctorID.Name = "cmboBoxDoctorID";
+            this.cmboBoxDoctorID.Size = new System.Drawing.Size(236, 21);
+            this.cmboBoxDoctorID.TabIndex = 14;
+            this.cmboBoxDoctorID.ValueMember = "DoctorID";
             // 
-            // birthDateDateTimePicker
+            // timePickerBirthDateDate
             // 
-            this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
-            this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthDateDateTimePicker.Location = new System.Drawing.Point(85, 82);
-            this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
-            this.birthDateDateTimePicker.Size = new System.Drawing.Size(303, 20);
-            this.birthDateDateTimePicker.TabIndex = 15;
+            this.timePickerBirthDateDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
+            this.timePickerBirthDateDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentPatientID", true));
+            this.timePickerBirthDateDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.timePickerBirthDateDate.Location = new System.Drawing.Point(85, 82);
+            this.timePickerBirthDateDate.Name = "timePickerBirthDateDate";
+            this.timePickerBirthDateDate.Size = new System.Drawing.Size(303, 20);
+            this.timePickerBirthDateDate.TabIndex = 15;
             // 
             // btnUpdate
             // 
@@ -366,19 +367,19 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(birthDateLabel);
-            this.Controls.Add(this.birthDateDateTimePicker);
+            this.Controls.Add(this.timePickerBirthDateDate);
             this.Controls.Add(doctorIDLabel);
-            this.Controls.Add(this.doctorIDComboBox);
+            this.Controls.Add(this.cmboBoxDoctorID);
             this.Controls.Add(appointmentReasonLabel);
-            this.Controls.Add(this.appointmentReasonTextBox);
+            this.Controls.Add(this.txtBoxAppointmentReason);
             this.Controls.Add(appointmentDateTimeLabel1);
             this.Controls.Add(this.appointmentDateTimeDateTimePicker1);
             this.Controls.Add(appointmentDateTimeLabel);
             this.Controls.Add(this.appointmentDateTimeDateTimePicker);
             this.Controls.Add(lastNameLabel);
-            this.Controls.Add(this.lastNameTextBox);
+            this.Controls.Add(this.txtBxLastName);
             this.Controls.Add(firstNameLabel);
-            this.Controls.Add(this.firstNameTextBox);
+            this.Controls.Add(this.txtBxfirstName);
             this.Controls.Add(this.patientBindingNavigator);
             this.Name = "AddUpdateAppointmentDialog";
             this.Text = "Add/Update Appointment";
@@ -410,15 +411,15 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton patientBindingNavigatorSaveItem;
-        private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.TextBox lastNameTextBox;
+        private System.Windows.Forms.TextBox txtBxfirstName;
+        private System.Windows.Forms.TextBox txtBxLastName;
         private System.Windows.Forms.BindingSource appointmentBindingSource;
         private System.Windows.Forms.DateTimePicker appointmentDateTimeDateTimePicker;
         private System.Windows.Forms.DateTimePicker appointmentDateTimeDateTimePicker1;
-        private System.Windows.Forms.TextBox appointmentReasonTextBox;
+        private System.Windows.Forms.TextBox txtBoxAppointmentReason;
         private System.Windows.Forms.BindingSource doctorBindingSource;
-        private System.Windows.Forms.ComboBox doctorIDComboBox;
-        private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
+        private System.Windows.Forms.ComboBox cmboBoxDoctorID;
+        private System.Windows.Forms.DateTimePicker timePickerBirthDateDate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
     }

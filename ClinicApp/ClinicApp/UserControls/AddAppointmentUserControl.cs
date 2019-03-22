@@ -100,9 +100,19 @@ namespace ClinicApp.UserControls
                 Appointment appointment = (Appointment)row.DataBoundItem;
 
                 AddUpdateAppointmentDialog addApptForm = new AddUpdateAppointmentDialog();
+                addApptForm.patient = this.patient;
                 addApptForm.appointment = appointment;
+                addApptForm.addAppointment = false;
                 addApptForm.ShowDialog();
             }
+        }
+
+        private void btnAddAppointment_Click(object sender, EventArgs e)
+        {
+            AddUpdateAppointmentDialog addApptForm = new AddUpdateAppointmentDialog();
+            addApptForm.patient = this.patient;
+            addApptForm.addAppointment = true;
+            addApptForm.ShowDialog();
         }
     }
 }

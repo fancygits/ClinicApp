@@ -19,7 +19,9 @@ namespace ClinicApp.View
     {
         private AppointmentController appointmentController;
         private DoctorController doctorController;
+        public bool addAppointment;
         public Appointment appointment;
+        public Patient patient;
         private Appointment newAppointment;
         private List<Doctor> doctorList;
         public AddUpdateAppointmentDialog()
@@ -32,6 +34,14 @@ namespace ClinicApp.View
         private void AddUpdateAppointmentDialog_Load(object sender, EventArgs e)
         {
             this.LoadComboBoxes();
+            this.newAppointment = new Appointment();
+            txtBxfirstName.Text = patient.FirstName;
+            txtBxLastName.Text = patient.LastName;
+            if (!this.addAppointment)
+            {
+                this.PutAppointment();
+            }
+           
         }
 
         private void LoadComboBoxes()
@@ -39,8 +49,7 @@ namespace ClinicApp.View
             try
             {
                 this.doctorList = doctorController.GetDoctorList();
-                doctorIDComboBox.DataSource = this.doctorList;
-                //this.PutNewAppointment();
+                cmboBoxDoctorID.DataSource = this.doctorList;
             }
             catch (Exception ex)
             {
@@ -48,6 +57,13 @@ namespace ClinicApp.View
             }
         }
 
+        private void PutAppointment()
+        {
+            newAppointment.AppointmentPatientID = appointment.AppointmentPatientID;
+            newAppointment.AppointmentDoctorID = appointment.AppointmentDoctorID;
+            newAppointment.AppointmentDateTime = appointment.AppointmentDateTime;
+            newAppointment.AppointmentReason = appointment.AppointmentReason;
+        }
         private void PutAppointmentData(Appointment appointment)
         {
             //MessageBox.Show(this.appointment.AppointmentReason.ToString());
