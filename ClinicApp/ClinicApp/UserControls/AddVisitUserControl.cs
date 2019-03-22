@@ -55,7 +55,21 @@ namespace ClinicApp.UserControls
         {
             Visit newVisit = new Visit();
             this.PutData(newVisit);
-            MessageBox.Show(newVisit.Symptoms, this.visit.Symptoms);
+     //       try
+     //       {
+                if (!this.visitController.UpdateVisit(this.visit, newVisit))
+                {
+                    MessageBox.Show("Someone has already updated that visit");
+                } else
+                {
+                    this.visit = newVisit;
+                    MessageBox.Show("Your visit has been successfully updated", "Success");
+                }
+      //      } catch (Exception ex)
+      //      {
+      //          MessageBox.Show("Error updating table", ex.GetType().ToString());
+      //      }
+
         }
     }
 }

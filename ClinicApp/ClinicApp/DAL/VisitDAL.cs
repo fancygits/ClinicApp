@@ -309,7 +309,7 @@ namespace ClinicApp.DAL
                                      "diastolicBP = @newDiastolicBP, " +
                                      "temperature = @newTemperature, " +
                                      "pulse = @newPulse, " +
-                                     "symptoms = @newSymptoms " +
+                                     "symptoms = @newSymptoms, " +
                                      "nurseID = @newNurseID " +
                                      "WHERE appointmentID = @oldAppointmentID " +
                                      "AND weight = @oldWeight " +
@@ -327,7 +327,7 @@ namespace ClinicApp.DAL
                 {
                     updateCommand.Parameters.AddWithValue("@newWeight", newVisit.Weight);
                     updateCommand.Parameters.AddWithValue("@newSystolicBP", newVisit.SystolicBP);
-                    updateCommand.Parameters.AddWithValue("@newDiastolcBP", newVisit.DiastolicBP);
+                    updateCommand.Parameters.AddWithValue("@newDiastolicBP", newVisit.DiastolicBP);
                     updateCommand.Parameters.AddWithValue("@newTemperature", newVisit.Temperature);
                     updateCommand.Parameters.AddWithValue("@newPulse", newVisit.Pulse);
                     updateCommand.Parameters.AddWithValue("@newSymptoms", newVisit.Symptoms);
