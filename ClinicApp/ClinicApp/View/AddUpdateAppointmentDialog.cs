@@ -37,9 +37,16 @@ namespace ClinicApp.View
             this.newAppointment = new Appointment();
             txtBxfirstName.Text = patient.FirstName;
             txtBxLastName.Text = patient.LastName;
+            timePickerBirthDate.Value = patient.BirthDate;
+            
             if (!this.addAppointment)
             {
                 this.PutAppointment();
+                btnAdd.Enabled = false;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
             }
            
         }
@@ -74,8 +81,7 @@ namespace ClinicApp.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Appointment newAppointment = new Appointment();
-            this.PutAppointmentData(newAppointment);
+            this.PutAppointmentData(this.newAppointment);
             this.appointmentController.AddAppointment(new Appointment());
         }
     }
