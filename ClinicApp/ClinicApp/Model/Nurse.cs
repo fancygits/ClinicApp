@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClinicApp.Model
 {
-    class Nurse : Person
+    public class Nurse : Person
     {
         public int NurseID { get; set; }
+        public string NurseName { get; set; }
         public bool Active { get; set; }
     }
 }
