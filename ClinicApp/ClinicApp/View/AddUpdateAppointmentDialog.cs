@@ -43,7 +43,7 @@ namespace ClinicApp.View
                 dateTimePickerAppointmentTime.Value = this.appointment.AppointmentDateTime;
                 cmboBoxDoctorID.SelectedValue = this.appointment.AppointmentDoctorID;
                 txtBoxAppointmentReason.Text = this.appointment.AppointmentReason;
-                this.PutAppointment();
+                //this.PutAppointment();
                 btnAdd.Enabled = false;
                 if (this.appointment.AppointmentDateTime < DateTime.Now)
                 {
@@ -76,10 +76,10 @@ namespace ClinicApp.View
 
         private void PutAppointment()
         {
-            newAppointment.AppointmentPatientID = appointment.AppointmentPatientID;
-            newAppointment.AppointmentDoctorID = appointment.AppointmentDoctorID;
-            newAppointment.AppointmentDateTime = appointment.AppointmentDateTime;
-            newAppointment.AppointmentReason = appointment.AppointmentReason;
+            newAppointment.AppointmentPatientID = this.patient.PatientID;
+            newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
+            newAppointment.AppointmentDateTime = dateTimePickerAppointmentDate.Value;
+            newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
         }
         private void PutAppointmentData(Appointment appointment)
         {
@@ -91,8 +91,8 @@ namespace ClinicApp.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.PutAppointmentData(this.newAppointment);
-            this.appointmentController.AddAppointment(new Appointment());
+            this.PutAppointment();
+            this.appointmentController.AddAppointment(this.newAppointment);
         }
     }
 }
