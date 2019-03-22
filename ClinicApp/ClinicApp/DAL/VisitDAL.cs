@@ -300,9 +300,57 @@ namespace ClinicApp.DAL
                 }
             }
         
-        public static bool UpdateVisit()
+        public static bool UpdateVisit(Visit oldVisit, Visit newVisit)
         {
-            return false;
+            int count = 0;
+            string updateStatement = "UPDATE Visit " +
+                                     "SET weight = @newWeight, " +
+                                     "systolicBP = @newSystolicBP, " +
+                                     "diastolicBP = @newDiastolicBP, " +
+                                     "temperature = @newTemperature, " +
+                                     "pulse = @newPulse, " +
+                                     "symptoms = @newSymptoms " +
+                                     "nurseID = @newNurseID " +
+                                     "WHERE appointmentID = @oldAppointmentID " +
+                                     "AND weight = @oldWeight " +
+                                     "AND systolicBP = @oldSystolicBP " +
+                                     "AND diastolicBP = @oldDiastolicBP " +
+                                     "AND temperature = @oldTemperature " +
+                                     "AND pulse = @oldPulse " +
+                                     "AND symptoms = @oldSymptoms " +
+                                     "AND nurseID = @oldNurseID " +
+                                     "AND finalDiagnosis IS NULL";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using(SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@newWeight", newVisit.Weight);
+                    updateCommand.Parameters.AddWithValue("@newSystolicBP", newVisit.SystolicBP);
+                    updateCommand.Parameters.AddWithValue("@newDiastolcBP", newVisit.DiastolicBP);
+                    updateCommand.Parameters.AddWithValue("@newTemperature", newVisit.Temperature);
+                    updateCommand.Parameters.AddWithValue("@newPulse", newVisit.Pulse);
+                    updateCommand.Parameters.AddWithValue("@newSymptoms", newVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@newNurseID", newVisit.NurseID);
+                    updateCommand.Parameters.AddWithValue("@oldAppointmentID", oldVisit.AppointmentID);
+                    updateCommand.Parameters.AddWithValue("@oldWeight", oldVisit.Weight);
+                    updateCommand.Parameters.AddWithValue("@oldSystolicBP", oldVisit.SystolicBP);
+                    updateCommand.Parameters.AddWithValue("@oldDiastolicBP", oldVisit.DiastolicBP);
+                    updateCommand.Parameters.AddWithValue("@oldTemperature", oldVisit.Temperature);
+                    updateCommand.Parameters.AddWithValue("@oldPulse", oldVisit.Pulse);
+                    updateCommand.Parameters.AddWithValue("@oldSymptoms", oldVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@oldNurseID", oldVisit.NurseID);
+                    count = updateCommand.ExecuteNonQuery();
+                }
+            }
+
+            if (count > 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public static bool AddVisit()

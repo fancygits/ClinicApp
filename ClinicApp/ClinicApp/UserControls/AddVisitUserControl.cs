@@ -14,6 +14,7 @@ namespace ClinicApp.UserControls
 {
     public partial class AddVisitUserControl : UserControl
     {
+        public Visit visit;
         private List<Visit> listOfNurses;
         private VisitController visitController;
         public AddVisitUserControl()
