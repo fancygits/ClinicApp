@@ -40,8 +40,8 @@
             this.txtBxfirstName = new System.Windows.Forms.TextBox();
             this.txtBxLastName = new System.Windows.Forms.TextBox();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.appointmentDateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.appointmentDateTimeDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerAppointmentDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerAppointmentTime = new System.Windows.Forms.DateTimePicker();
             this.txtBoxAppointmentReason = new System.Windows.Forms.TextBox();
             this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmboBoxDoctorID = new System.Windows.Forms.ComboBox();
@@ -149,23 +149,23 @@
             // 
             this.appointmentBindingSource.DataSource = typeof(ClinicApp.Model.Appointment);
             // 
-            // appointmentDateTimeDateTimePicker
+            // dateTimePickerAppointmentDate
             // 
-            this.appointmentDateTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
-            this.appointmentDateTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimeDateTimePicker.Location = new System.Drawing.Point(152, 130);
-            this.appointmentDateTimeDateTimePicker.Name = "appointmentDateTimeDateTimePicker";
-            this.appointmentDateTimeDateTimePicker.Size = new System.Drawing.Size(236, 20);
-            this.appointmentDateTimeDateTimePicker.TabIndex = 8;
+            this.dateTimePickerAppointmentDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
+            this.dateTimePickerAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerAppointmentDate.Location = new System.Drawing.Point(152, 130);
+            this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
+            this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 20);
+            this.dateTimePickerAppointmentDate.TabIndex = 8;
             // 
-            // appointmentDateTimeDateTimePicker1
+            // dateTimePickerAppointmentTime
             // 
-            this.appointmentDateTimeDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
-            this.appointmentDateTimeDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.appointmentDateTimeDateTimePicker1.Location = new System.Drawing.Point(152, 160);
-            this.appointmentDateTimeDateTimePicker1.Name = "appointmentDateTimeDateTimePicker1";
-            this.appointmentDateTimeDateTimePicker1.Size = new System.Drawing.Size(236, 20);
-            this.appointmentDateTimeDateTimePicker1.TabIndex = 10;
+            this.dateTimePickerAppointmentTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
+            this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(152, 160);
+            this.dateTimePickerAppointmentTime.Name = "dateTimePickerAppointmentTime";
+            this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 20);
+            this.dateTimePickerAppointmentTime.TabIndex = 10;
             // 
             // txtBoxAppointmentReason
             // 
@@ -236,9 +236,9 @@
             this.Controls.Add(appointmentReasonLabel);
             this.Controls.Add(this.txtBoxAppointmentReason);
             this.Controls.Add(appointmentDateTimeLabel1);
-            this.Controls.Add(this.appointmentDateTimeDateTimePicker1);
+            this.Controls.Add(this.dateTimePickerAppointmentTime);
             this.Controls.Add(appointmentDateTimeLabel);
-            this.Controls.Add(this.appointmentDateTimeDateTimePicker);
+            this.Controls.Add(this.dateTimePickerAppointmentDate);
             this.Controls.Add(lastNameLabel);
             this.Controls.Add(this.txtBxLastName);
             this.Controls.Add(firstNameLabel);
@@ -260,8 +260,8 @@
         private System.Windows.Forms.TextBox txtBxfirstName;
         private System.Windows.Forms.TextBox txtBxLastName;
         private System.Windows.Forms.BindingSource appointmentBindingSource;
-        private System.Windows.Forms.DateTimePicker appointmentDateTimeDateTimePicker;
-        private System.Windows.Forms.DateTimePicker appointmentDateTimeDateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAppointmentDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAppointmentTime;
         private System.Windows.Forms.TextBox txtBoxAppointmentReason;
         private System.Windows.Forms.BindingSource doctorBindingSource;
         private System.Windows.Forms.ComboBox cmboBoxDoctorID;

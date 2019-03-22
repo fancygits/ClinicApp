@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicApp.Model;
 using ClinicApp.Controller;
@@ -24,25 +18,41 @@ namespace ClinicApp.View
         public Patient patient;
         private Appointment newAppointment;
         private List<Doctor> doctorList;
+
+        /// <summary>
+        /// Constructor for Form; initializes instance variables
+        /// </summary>
         public AddUpdateAppointmentDialog()
         {
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.doctorController = new DoctorController();
+            this.newAppointment = new Appointment();
         }
 
         private void AddUpdateAppointmentDialog_Load(object sender, EventArgs e)
         {
             this.LoadComboBoxes();
-            this.newAppointment = new Appointment();
-            txtBxfirstName.Text = patient.FirstName;
-            txtBxLastName.Text = patient.LastName;
-            timePickerBirthDate.Value = patient.BirthDate;
+            txtBxfirstName.Text = this.patient.FirstName;
+            txtBxLastName.Text = this.patient.LastName;
+            timePickerBirthDate.Value = this.patient.BirthDate;
             
             if (!this.addAppointment)
             {
+                dateTimePickerAppointmentDate.Value = this.appointment.AppointmentDateTime;
+                dateTimePickerAppointmentTime.Value = this.appointment.AppointmentDateTime;
+                cmboBoxDoctorID.SelectedValue = this.appointment.AppointmentDoctorID;
+                txtBoxAppointmentReason.Text = this.appointment.AppointmentReason;
                 this.PutAppointment();
                 btnAdd.Enabled = false;
+                if (this.appointment.AppointmentDateTime < DateTime.Now)
+                {
+                    btnUpdate.Enabled = false;
+                    dateTimePickerAppointmentDate.Enabled = false;
+                    dateTimePickerAppointmentTime.Enabled = false;
+                    cmboBoxDoctorID.Enabled = false;
+                    txtBoxAppointmentReason.Enabled = false;
+                }
             }
             else
             {

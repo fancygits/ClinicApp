@@ -20,7 +20,8 @@ namespace ClinicApp.DAL
                 "SELECT doctorID, per.personID AS personID, firstName, lastName " +
                 "FROM Doctor doc " +
                 "JOIN Person per " +
-                "ON doc.personID = per.personID";
+                "ON doc.personID = per.personID " +
+                "ORDER BY lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
