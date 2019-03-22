@@ -50,6 +50,7 @@ namespace ClinicApp.UserControls
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
                 this.EnableUpdates();
+                btnGetPatient.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -144,6 +145,27 @@ namespace ClinicApp.UserControls
             stateComboBox.Enabled = false;
             phoneNumberTextBox.Enabled = false;
             btnUpdatePatient.Enabled = false;
+        }
+
+        private void EnableGetPatient(object sender, EventArgs e)
+        {
+            btnGetPatient.Enabled = true;
+        }
+
+        private void ClearFields(object sender, EventArgs e)
+        {
+            this.DisableUpdates();
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            birthDateDateTimePicker.Text = "";
+            sSNTextBox.Text = "";
+            genderComboBox.SelectedIndex = -1;
+            streetAddressTextBox.Text = "";
+            cityTextBox.Text = "";
+            postCodeTextBox.Text = "";
+            stateComboBox.SelectedIndex = -1;
+            phoneNumberTextBox.Text = "";
+            patient = null;
         }
     }
 }

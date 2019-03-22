@@ -54,6 +54,7 @@
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnClear = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -177,6 +178,7 @@
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.birthDateDateTimePicker.TabIndex = 2;
+            this.birthDateDateTimePicker.ValueChanged += new System.EventHandler(this.EnableGetPatient);
             // 
             // patientBindingSource
             // 
@@ -200,6 +202,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.firstNameTextBox.TabIndex = 0;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.EnableGetPatient);
             // 
             // lastNameTextBox
             // 
@@ -209,6 +212,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.lastNameTextBox.TabIndex = 1;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.EnableGetPatient);
             // 
             // phoneNumberTextBox
             // 
@@ -255,7 +259,7 @@
             this.btnGetPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetPatient.Image = global::ClinicApp.Properties.Resources.magnifier;
             this.btnGetPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGetPatient.Location = new System.Drawing.Point(108, 161);
+            this.btnGetPatient.Location = new System.Drawing.Point(161, 162);
             this.btnGetPatient.Name = "btnGetPatient";
             this.btnGetPatient.Padding = new System.Windows.Forms.Padding(5);
             this.btnGetPatient.Size = new System.Drawing.Size(181, 46);
@@ -316,10 +320,22 @@
             // 
             this.stateBindingSource.DataSource = typeof(ClinicApp.Model.State);
             // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(31, 162);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(92, 46);
+            this.btnClear.TabIndex = 30;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.ClearFields);
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.lblMessage);
@@ -370,5 +386,6 @@
         private System.Windows.Forms.ComboBox genderComboBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.BindingSource stateBindingSource;
+        private System.Windows.Forms.Button btnClear;
     }
 }

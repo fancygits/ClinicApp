@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
-            this.btnAddPatient = new System.Windows.Forms.Button();
-            this.btnSelectPatient = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +45,8 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAddPatient = new System.Windows.Forms.Button();
+            this.btnSelectPatient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -87,31 +87,7 @@
             this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientDataGridView.Size = new System.Drawing.Size(360, 203);
             this.patientDataGridView.TabIndex = 1;
-            // 
-            // btnAddPatient
-            // 
-            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPatient.Location = new System.Drawing.Point(226, 221);
-            this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Size = new System.Drawing.Size(146, 33);
-            this.btnAddPatient.TabIndex = 2;
-            this.btnAddPatient.Text = "Add New Patient";
-            this.btnAddPatient.UseVisualStyleBackColor = true;
-            // 
-            // btnSelectPatient
-            // 
-            this.btnSelectPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSelectPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSelectPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectPatient.Location = new System.Drawing.Point(12, 221);
-            this.btnSelectPatient.Name = "btnSelectPatient";
-            this.btnSelectPatient.Size = new System.Drawing.Size(146, 33);
-            this.btnSelectPatient.TabIndex = 3;
-            this.btnSelectPatient.Text = "Select Patient";
-            this.btnSelectPatient.UseVisualStyleBackColor = true;
-            this.btnSelectPatient.Click += new System.EventHandler(this.btnSelectPatient_Click);
+            this.patientDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellContentDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -233,6 +209,31 @@
             // patientBindingSource
             // 
             this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
+            // btnAddPatient
+            // 
+            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPatient.Location = new System.Drawing.Point(226, 221);
+            this.btnAddPatient.Name = "btnAddPatient";
+            this.btnAddPatient.Size = new System.Drawing.Size(146, 33);
+            this.btnAddPatient.TabIndex = 2;
+            this.btnAddPatient.Text = "Add New Patient";
+            this.btnAddPatient.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectPatient
+            // 
+            this.btnSelectPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSelectPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSelectPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectPatient.Location = new System.Drawing.Point(12, 221);
+            this.btnSelectPatient.Name = "btnSelectPatient";
+            this.btnSelectPatient.Size = new System.Drawing.Size(146, 33);
+            this.btnSelectPatient.TabIndex = 3;
+            this.btnSelectPatient.Text = "Select Patient";
+            this.btnSelectPatient.UseVisualStyleBackColor = true;
+            this.btnSelectPatient.Click += new System.EventHandler(this.SelectPatient);
             // 
             // FindPatientsDialog
             // 
