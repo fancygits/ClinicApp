@@ -20,7 +20,13 @@ namespace ClinicApp.View
             patientDataGridView.DataSource = patientList;
         }
 
-        private void btnSelectPatient_Click(object sender, EventArgs e)
+        private void SelectPatient(object sender, EventArgs e)
+        {
+            patient = patientDataGridView.SelectedRows[0].DataBoundItem as Patient;
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void patientDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             patient = patientDataGridView.SelectedRows[0].DataBoundItem as Patient;
             this.DialogResult = DialogResult.OK;
