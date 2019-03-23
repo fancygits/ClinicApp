@@ -357,8 +357,8 @@ namespace ClinicApp.DAL
         {
             int count = 0;
             string insertStatement = "INSERT INTO Visit " +
-                                     "(appointmentID, weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, nurseID) " +
-                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', @nurseID)";
+                                     "(appointmentID, weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, finalDiagnosis, nurseID) " +
+                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', NULL, @nurseID)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
