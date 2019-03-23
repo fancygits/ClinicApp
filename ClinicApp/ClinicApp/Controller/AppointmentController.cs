@@ -23,9 +23,9 @@ namespace ClinicApp.Controller
             return AppointmentDAL.GetAppointmentsByPatientID(patientID);
         }
 
-        public void AddAppointment(Appointment appointment)
+        public int AddAppointment(Appointment appointment)
         {
-            AppointmentDAL.AddAppointment(appointment);
+            return AppointmentDAL.AddAppointment(appointment);
         }
     }
 }

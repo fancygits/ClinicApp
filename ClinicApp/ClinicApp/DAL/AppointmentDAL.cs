@@ -61,7 +61,7 @@ namespace ClinicApp.DAL
         /// Adds a new Appointment object to the database
         /// </summary>
         /// <param name="appointment">New Appointment to be added</param>
-        public static void AddAppointment(Appointment appointment)
+        public static int AddAppointment(Appointment appointment)
         {
             string insertStatement =
                 "INSERT INTO Appointment (patientID, doctorID, apptDatetime, reasonForVisit) " +
@@ -77,6 +77,11 @@ namespace ClinicApp.DAL
                     insertCommand.Parameters.AddWithValue("@Reason", appointment.AppointmentReason);
 
                     insertCommand.ExecuteNonQuery();
+                    string selectStatement =
+                        "SELECT IDENT_CURRENT('Appointment') FROM Appointment";
+                    SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                    int appointmentID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return appointmentID;
 
                 }
             }

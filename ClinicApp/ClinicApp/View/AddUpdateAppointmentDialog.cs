@@ -96,7 +96,16 @@ namespace ClinicApp.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.PutAppointment();
-            this.appointmentController.AddAppointment(this.newAppointment);
+            try
+            {
+                this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                this.appointment = this.newAppointment;
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
