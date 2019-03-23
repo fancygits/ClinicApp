@@ -19,7 +19,7 @@ namespace ClinicApp.DAL
         {
             List<Appointment> appointmentsByPatientID = new List<Appointment>();
             string selectStatement =
-                "SELECT apptDatetime, firstName, lastName, reasonForVisit " +
+                "SELECT apptDatetime, firstName, lastName, app.doctorID AS doctorID, reasonForVisit " +
                 "FROM Appointment app " +
                 "JOIN Doctor doc " +
                 "ON app.doctorID = doc.doctorID " +
@@ -38,6 +38,7 @@ namespace ClinicApp.DAL
                         int apptDateTimeOrd = reader.GetOrdinal("apptDatetime");
                         int firstNameOrd = reader.GetOrdinal("firstName");
                         int lastNameOrd = reader.GetOrdinal("lastName");
+                        int doctorIDOrd = reader.GetOrdinal("doctorID");
                         int reasonForVisitOrd = reader.GetOrdinal("reasonForVisit");
                         while (reader.Read())
                         {
@@ -45,6 +46,7 @@ namespace ClinicApp.DAL
                             appointment.AppointmentDateTime = reader.GetDateTime(apptDateTimeOrd);
                             appointment.AppointmentDoctorFirstName = reader.GetString(firstNameOrd);
                             appointment.AppointmentDoctorLastName = reader.GetString(lastNameOrd);
+                            appointment.AppointmentDoctorID = reader.GetInt32(doctorIDOrd);
                             appointment.AppointmentReason = reader.GetString(reasonForVisitOrd);
                             appointmentsByPatientID.Add(appointment);
                         }

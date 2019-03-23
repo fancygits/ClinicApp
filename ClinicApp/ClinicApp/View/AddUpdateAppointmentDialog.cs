@@ -11,13 +11,12 @@ namespace ClinicApp.View
     /// </summary>
     public partial class AddUpdateAppointmentDialog : Form
     {
-        private AppointmentController appointmentController;
-        private DoctorController doctorController;
+        private readonly AppointmentController appointmentController;
+        private readonly DoctorController doctorController;
         public bool addAppointment;
         public Appointment appointment;
         public Patient patient;
         private Appointment newAppointment;
-        private List<Doctor> doctorList;
 
         /// <summary>
         /// Constructor for Form; initializes instance variables
@@ -43,7 +42,6 @@ namespace ClinicApp.View
                 dateTimePickerAppointmentTime.Value = this.appointment.AppointmentDateTime;
                 cmboBoxDoctorID.SelectedValue = this.appointment.AppointmentDoctorID;
                 txtBoxAppointmentReason.Text = this.appointment.AppointmentReason;
-                //this.PutAppointment();
                 btnAdd.Enabled = false;
                 if (this.appointment.AppointmentDateTime < DateTime.Now)
                 {
@@ -65,8 +63,10 @@ namespace ClinicApp.View
         {
             try
             {
-                this.doctorList = doctorController.GetDoctorList();
-                cmboBoxDoctorID.DataSource = this.doctorList;
+                List<Doctor> doctorList = new List<Doctor>();
+                doctorList = doctorController.GetDoctorList();
+                cmboBoxDoctorID.DataSource = doctorList;
+
             }
             catch (Exception ex)
             {
@@ -81,12 +81,7 @@ namespace ClinicApp.View
             newAppointment.AppointmentDateTime = dateTimePickerAppointmentDate.Value;
             newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
         }
-        private void PutAppointmentData(Appointment appointment)
-        {
-            appointment.AppointmentID = appointment.AppointmentID;
-            appointment.AppointmentPatientID = appointment.AppointmentPatientID;
-            appointment.AppointmentReason = appointment.AppointmentReason;
-        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

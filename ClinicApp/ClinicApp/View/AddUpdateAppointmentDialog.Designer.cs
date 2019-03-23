@@ -184,7 +184,7 @@
             // 
             this.cmboBoxDoctorID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.doctorBindingSource, "DoctorID", true));
             this.cmboBoxDoctorID.DataSource = this.doctorBindingSource;
-            this.cmboBoxDoctorID.DisplayMember = "LastName";
+            this.cmboBoxDoctorID.DisplayMember = "FullName";
             this.cmboBoxDoctorID.FormattingEnabled = true;
             this.cmboBoxDoctorID.Location = new System.Drawing.Point(152, 192);
             this.cmboBoxDoctorID.Name = "cmboBoxDoctorID";
