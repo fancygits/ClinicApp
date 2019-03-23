@@ -10,11 +10,11 @@ namespace ClinicApp.DAL
 {
     class VisitDAL
     {
-        //GetNurseName
-
-
-
-        //GetDoctorName
+        /// <summary>
+        /// This is the method that will return a string of the doctors name. 
+        /// </summary>
+        /// <param name="doctorID"></param>
+        /// <returns></returns>
         public static string GetDoctor(int doctorID)
         {
             Visit doctor = new Visit();
@@ -44,6 +44,11 @@ namespace ClinicApp.DAL
             return doctor.DoctorName;
         }
 
+        /// <summary>
+        /// This method will return the string of a nurses name given the nurseID
+        /// </summary>
+        /// <param name="nurseID"></param>
+        /// <returns></returns>
         public static string GetNurse(int nurseID)
         {
             Visit nurse = new Visit();
@@ -72,7 +77,12 @@ namespace ClinicApp.DAL
             }
             return nurse.NurseName;
         }
-        //GetPatientName
+
+        /// <summary>
+        /// This method returns a visit object that contains the patient name, id and birthdate for a visit
+        /// </summary>
+        /// <param name="patientID"></param>
+        /// <returns></returns>
         public static Visit GetPatient(int patientID)
         {
             Visit patient = new Visit();
@@ -103,6 +113,11 @@ namespace ClinicApp.DAL
             }
             return patient;
         }
+
+        /// <summary>
+        /// /This method will return the list of all patients in the DB
+        /// </summary>
+        /// <returns></returns>
         public static List<Visit> GetPatients()
         {
             List<Visit> patientList = new List<Visit>();
@@ -134,7 +149,10 @@ namespace ClinicApp.DAL
         }
 
 
-        //GetListOfAllNurses
+        /// <summary>
+        /// This method will return a list of all nurses thart can have a vist. 
+        /// </summary>
+        /// <returns></returns>
         public static List<Visit> GetNurses()
         {
             List<Visit> nurseList = new List<Visit>();
@@ -142,6 +160,7 @@ namespace ClinicApp.DAL
                                     "FROM Person p " +
                                     "JOIN Nurse n " +
                                     "ON n.personID = p.personID " +
+                                    "WHERE active = 1 " +
                                     "ORDER BY lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
@@ -163,7 +182,12 @@ namespace ClinicApp.DAL
                 return nurseList;
             }
         }
-            //GetListOFVisitsByPatient
+            
+            /// <summary>
+            /// This will return a list of visits for each patient
+            /// </summary>
+            /// <param name="patientID"></param>
+            /// <returns></returns>
             public static List<Visit> GetListOfVisits(int patientID)
             {
                 List<Visit> listOfVisits = new List<Visit>();
@@ -300,6 +324,12 @@ namespace ClinicApp.DAL
                 }
             }
         
+        /// <summary>
+        /// this will update a visit 
+        /// </summary>
+        /// <param name="oldVisit"></param>
+        /// <param name="newVisit"></param>
+        /// <returns></returns>
         public static bool UpdateVisit(Visit oldVisit, Visit newVisit)
         {
             int count = 0;
@@ -353,6 +383,11 @@ namespace ClinicApp.DAL
             }
         }
 
+        /// <summary>
+        /// this will add a visit to the visit table
+        /// </summary>
+        /// <param name="newVisit"></param>
+        /// <returns></returns>
         public static bool AddVisit(Visit newVisit)
         {
             int count = 0;
