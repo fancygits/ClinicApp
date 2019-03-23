@@ -22,10 +22,11 @@ namespace ClinicApp.UserControls
 
         private void PatientInformationUserControl_Load(object sender, System.EventArgs e)
         {
-            patientBindingSource.Clear();
             newPatient = new Patient();
             this.LoadComboboxes();
             this.DisableUpdates();
+            phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            this.ClearFields(null, null);
         }
 
         private void GetPatient(object sender, EventArgs e)
@@ -40,7 +41,14 @@ namespace ClinicApp.UserControls
                 if (patient == null)
                 {
                     List<Patient> patientList = this.patientController.GetPatientsByName(firstName, lastName);
-                    this.GetMatchingPatients(patientList);
+                    if (patientList.Count == 0)
+                    {
+                        this.NoMatchesDialog();
+                    }
+                    else
+                    {
+                        this.GetMatchingPatients(patientList);
+                    }
                     if (patient == null)
                     {
                         return;
@@ -69,15 +77,30 @@ namespace ClinicApp.UserControls
             }
         }
 
+        private void NoMatchesDialog()
+        {
+            DialogResult result = MessageBox.Show("No patients matched your search.\n" +
+                            "Would you like to add a new patient?", "No Matches",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                
+            }
+        }
+
+        private void AddPatientDialog()
+        {
+
+        }
+
         private void btnUpdatePatient_Click(object sender, EventArgs e)
         {
-            if (this.patientController.UpdatePatient(patient, newPatient))
-            {
-                lblMessage.Text = "Patient has been updated successfully.";
-            }
             try
             {
-                    
+                if (this.patientController.UpdatePatient(patient, newPatient))
+                {
+                    lblMessage.Text = "Patient has been updated successfully.";
+                }
             }
             catch (Exception ex)
             {
@@ -125,25 +148,25 @@ namespace ClinicApp.UserControls
 
         private void EnableUpdates()
         {
-            sSNTextBox.Enabled = true;
+            sSNMaskedTextBox.Enabled = true;
             genderComboBox.Enabled = true;
             streetAddressTextBox.Enabled = true;
             cityTextBox.Enabled = true;
             postCodeTextBox.Enabled = true;
             stateComboBox.Enabled = true;
-            phoneNumberTextBox.Enabled = true;
+            phoneNumberMaskedTextBox.Enabled = true;
             btnUpdatePatient.Enabled = true;
         }
 
         private void DisableUpdates()
         {
-            sSNTextBox.Enabled = false;
+            sSNMaskedTextBox.Enabled = false;
             genderComboBox.Enabled = false;
             streetAddressTextBox.Enabled = false;
             cityTextBox.Enabled = false;
             postCodeTextBox.Enabled = false;
             stateComboBox.Enabled = false;
-            phoneNumberTextBox.Enabled = false;
+            phoneNumberMaskedTextBox.Enabled = false;
             btnUpdatePatient.Enabled = false;
         }
 
@@ -155,17 +178,9 @@ namespace ClinicApp.UserControls
         private void ClearFields(object sender, EventArgs e)
         {
             this.DisableUpdates();
-            firstNameTextBox.Text = "";
-            lastNameTextBox.Text = "";
+            patientBindingSource.Clear();
             birthDateDateTimePicker.Text = "";
-            sSNTextBox.Text = "";
-            genderComboBox.SelectedIndex = -1;
-            streetAddressTextBox.Text = "";
-            cityTextBox.Text = "";
-            postCodeTextBox.Text = "";
-            stateComboBox.SelectedIndex = -1;
-            phoneNumberTextBox.Text = "";
-            patient = null;
+            btnGetPatient.Enabled = false;
         }
     }
 }
