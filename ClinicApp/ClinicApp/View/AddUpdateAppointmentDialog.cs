@@ -83,7 +83,6 @@ namespace ClinicApp.View
         }
         private void PutAppointmentData(Appointment appointment)
         {
-            //MessageBox.Show(this.appointment.AppointmentReason.ToString());
             appointment.AppointmentID = appointment.AppointmentID;
             appointment.AppointmentPatientID = appointment.AppointmentPatientID;
             appointment.AppointmentReason = appointment.AppointmentReason;

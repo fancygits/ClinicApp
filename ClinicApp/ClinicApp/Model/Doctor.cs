@@ -7,5 +7,6 @@ namespace ClinicApp.Model
     public class Doctor : Person
     {
         public int DoctorID { get; set; }
+        public string FullName { get; set; }
     }
 }
