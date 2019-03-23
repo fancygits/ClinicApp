@@ -32,10 +32,16 @@ namespace ClinicApp.View
         private void AddUpdateAppointmentDialog_Load(object sender, EventArgs e)
         {
             this.LoadComboBoxes();
+            this.DisplayAppointment();
+           
+        }
+
+        private void DisplayAppointment()
+        {
             txtBxfirstName.Text = this.patient.FirstName;
             txtBxLastName.Text = this.patient.LastName;
             timePickerBirthDate.Value = this.patient.BirthDate;
-            
+
             if (!this.addAppointment)
             {
                 dateTimePickerAppointmentDate.Value = this.appointment.AppointmentDateTime;
@@ -56,7 +62,6 @@ namespace ClinicApp.View
             {
                 btnUpdate.Enabled = false;
             }
-           
         }
 
         private void LoadComboBoxes()
@@ -78,8 +83,13 @@ namespace ClinicApp.View
         {
             newAppointment.AppointmentPatientID = this.patient.PatientID;
             newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
-            newAppointment.AppointmentDateTime = dateTimePickerAppointmentDate.Value;
+            newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
             newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
+        }
+
+        private DateTime CombineDateTime(DateTime date, DateTime time)
+        {
+            return date.Date + time.TimeOfDay;
         }
 
 
