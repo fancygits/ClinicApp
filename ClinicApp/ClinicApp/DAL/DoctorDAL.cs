@@ -17,10 +17,11 @@ namespace ClinicApp.DAL
         {
             List<Doctor> doctorList = new List<Doctor>();
             string selectStatement =
-                "SELECT doctorID, per.personID AS personID, firstName, lastName " +
+                "SELECT doctorID, per.personID AS personID, firstName, lastName, CONCAT(firstName, ' ', lastName) AS fullName " +
                 "FROM Doctor doc " +
                 "JOIN Person per " +
-                "ON doc.personID = per.personID";
+                "ON doc.personID = per.personID " +
+                "ORDER BY lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -28,13 +29,19 @@ namespace ClinicApp.DAL
                 {
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int doctorIDOrd = reader.GetOrdinal("doctorID");
+                        int personIDOrd = reader.GetOrdinal("personID");
+                        int firstNameOrd = reader.GetOrdinal("firstName");
+                        int lastNameOrd = reader.GetOrdinal("lastName");
+                        int fullNameOrd = reader.GetOrdinal("fullName");
                         while (reader.Read())
                         {
                             Doctor doctor = new Doctor();
-                            doctor.DoctorID = (int)reader["doctorID"];
-                            doctor.PersonID = (int)reader["personID"];
-                            doctor.FirstName = reader["firstName"].ToString();
-                            doctor.LastName = reader["lastName"].ToString();
+                            doctor.DoctorID = reader.GetInt32(doctorIDOrd);
+                            doctor.PersonID = reader.GetInt32(personIDOrd);
+                            doctor.FirstName = reader.GetString(firstNameOrd);
+                            doctor.LastName = reader.GetString(lastNameOrd);
+                            doctor.FullName = reader.GetString(fullNameOrd);
                             doctorList.Add(doctor);
                         }
                         reader.Close();
