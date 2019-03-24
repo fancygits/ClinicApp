@@ -107,5 +107,28 @@ namespace ClinicApp.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            this.PutAppointment();
+            try
+            {
+                if (!this.appointmentController.UpdateAppointment(this.newAppointment, this.appointment))
+                {
+                    MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
+                }
+                else
+                {
+                    MessageBox.Show("Appointment Updated");
+                    this.appointment = this.newAppointment;
+                    this.DialogResult = DialogResult.OK;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
     }
 }

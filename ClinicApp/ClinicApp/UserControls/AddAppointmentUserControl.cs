@@ -106,6 +106,7 @@ namespace ClinicApp.UserControls
                 addApptForm.appointment = appointment;
                 addApptForm.addAppointment = false;
                 addApptForm.ShowDialog();
+                this.RefreshPage();
             }
         }
 

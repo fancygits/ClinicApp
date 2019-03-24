@@ -86,5 +86,36 @@ namespace ClinicApp.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Updates the database with new Appointment object information
+        /// </summary>
+        /// <param name="appointment">current Appointment info</param>
+        /// <param name="newAppointment"><updated Appointment info/param>
+        /// <returns></returns>
+        public static bool UpdateAppointment(Appointment appointment, Appointment newAppointment)
+        {
+            string updateStatement =
+                "UPDATE Appointment SET " +
+                "doctorID = 25 " +
+                "WHERE appointmentID = 320 ";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@AppointmentID", appointment.AppointmentID);
+                    updateCommand.Parameters.AddWithValue("@NewDoctorID", newAppointment.AppointmentDoctorID);
+                    updateCommand.Parameters.AddWithValue("@NewReason", newAppointment.AppointmentReason);
+                    updateCommand.Parameters.AddWithValue("@NewDateTime", newAppointment.AppointmentDateTime);
+                    updateCommand.Parameters.AddWithValue("@OldDoctorID", appointment.AppointmentDoctorID);
+                    updateCommand.Parameters.AddWithValue("@OldReason", appointment.AppointmentReason);
+                    updateCommand.Parameters.AddWithValue("@OldDateTime", appointment.AppointmentDateTime);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
     }
 }
