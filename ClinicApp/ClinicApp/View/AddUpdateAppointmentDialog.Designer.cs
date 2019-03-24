@@ -156,7 +156,7 @@
             this.dateTimePickerAppointmentDate.Location = new System.Drawing.Point(152, 130);
             this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
             this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 20);
-            this.dateTimePickerAppointmentDate.TabIndex = 8;
+            this.dateTimePickerAppointmentDate.TabIndex = 1;
             // 
             // dateTimePickerAppointmentTime
             // 
@@ -164,8 +164,9 @@
             this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(152, 160);
             this.dateTimePickerAppointmentTime.Name = "dateTimePickerAppointmentTime";
+            this.dateTimePickerAppointmentTime.ShowUpDown = true;
             this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 20);
-            this.dateTimePickerAppointmentTime.TabIndex = 10;
+            this.dateTimePickerAppointmentTime.TabIndex = 2;
             // 
             // txtBoxAppointmentReason
             // 
@@ -174,7 +175,7 @@
             this.txtBoxAppointmentReason.Multiline = true;
             this.txtBoxAppointmentReason.Name = "txtBoxAppointmentReason";
             this.txtBoxAppointmentReason.Size = new System.Drawing.Size(236, 71);
-            this.txtBoxAppointmentReason.TabIndex = 12;
+            this.txtBoxAppointmentReason.TabIndex = 4;
             // 
             // doctorBindingSource
             // 
@@ -189,7 +190,7 @@
             this.cmboBoxDoctorID.Location = new System.Drawing.Point(152, 192);
             this.cmboBoxDoctorID.Name = "cmboBoxDoctorID";
             this.cmboBoxDoctorID.Size = new System.Drawing.Size(236, 21);
-            this.cmboBoxDoctorID.TabIndex = 14;
+            this.cmboBoxDoctorID.TabIndex = 3;
             this.cmboBoxDoctorID.ValueMember = "DoctorID";
             // 
             // timePickerBirthDate
@@ -208,7 +209,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(220, 330);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 16;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
@@ -217,7 +218,7 @@
             this.btnAdd.Location = new System.Drawing.Point(312, 330);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 17;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

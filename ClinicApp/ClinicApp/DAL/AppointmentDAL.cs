@@ -58,7 +58,7 @@ namespace ClinicApp.DAL
         }
 
         /// <summary>
-        /// Adds a new Appointment object to the database
+        /// Adds a new Appointment object to the database.  Returns the new Appointment aappointmentID
         /// </summary>
         /// <param name="appointment">New Appointment to be added</param>
         public static int AddAppointment(Appointment appointment)
