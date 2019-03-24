@@ -19,7 +19,7 @@ namespace ClinicApp.DAL
         {
             List<Appointment> appointmentsByPatientID = new List<Appointment>();
             string selectStatement =
-                "SELECT apptDatetime, firstName, lastName, app.doctorID AS doctorID, reasonForVisit " +
+                "SELECT appointmentID, apptDatetime, firstName, lastName, app.doctorID AS doctorID, reasonForVisit " +
                 "FROM Appointment app " +
                 "JOIN Doctor doc " +
                 "ON app.doctorID = doc.doctorID " +
@@ -35,6 +35,7 @@ namespace ClinicApp.DAL
                     selectCommand.Parameters.AddWithValue("@PatientID", patientID);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int apptIDOrd = reader.GetOrdinal("appointmentID");
                         int apptDateTimeOrd = reader.GetOrdinal("apptDatetime");
                         int firstNameOrd = reader.GetOrdinal("firstName");
                         int lastNameOrd = reader.GetOrdinal("lastName");
@@ -43,6 +44,7 @@ namespace ClinicApp.DAL
                         while (reader.Read())
                         {
                             Appointment appointment = new Appointment();
+                            appointment.AppointmentID = reader.GetInt32(apptIDOrd);
                             appointment.AppointmentDateTime = reader.GetDateTime(apptDateTimeOrd);
                             appointment.AppointmentDoctorFirstName = reader.GetString(firstNameOrd);
                             appointment.AppointmentDoctorLastName = reader.GetString(lastNameOrd);
@@ -97,8 +99,13 @@ namespace ClinicApp.DAL
         {
             string updateStatement =
                 "UPDATE Appointment SET " +
-                "doctorID = 25 " +
-                "WHERE appointmentID = 320 ";
+                "doctorID = @NewDoctorID," +
+                "reasonForVisit = @NewReason, " +
+                "apptDatetime = @NewDateTime " +
+                "WHERE appointmentID = @AppointmentID " +
+                "AND doctorID = @OldDoctorID " +
+                "AND reasonForVisit = @OldReason " +
+                "AND apptDatetime = @OldDateTime ";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();

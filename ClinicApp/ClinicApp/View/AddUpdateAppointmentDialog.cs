@@ -113,7 +113,7 @@ namespace ClinicApp.View
             this.PutAppointment();
             try
             {
-                if (!this.appointmentController.UpdateAppointment(this.newAppointment, this.appointment))
+                if (!this.appointmentController.UpdateAppointment(this.appointment, this.newAppointment))
                 {
                     MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
                 }
