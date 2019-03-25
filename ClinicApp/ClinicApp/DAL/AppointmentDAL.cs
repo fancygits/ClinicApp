@@ -124,5 +124,46 @@ namespace ClinicApp.DAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// Check doctorID and apptDateTime and returns true if there is a match; false if not
+        /// </summary>
+        /// <param name="doctorID">The doctorID to check against</param>
+        /// <param name="apptDateTime">The appointment time to check against</param>
+        /// <returns></returns>
+        public static bool CheckDoubleBooking(int doctorID, DateTime apptDateTime)
+        {
+            List<Appointment> apptWithDoubleBooking = new List<Appointment>();
+            string selectStatement =
+                "SELECT appointmentID " +
+                "FROM Appointment " +
+                "WHERE doctorID = @DoctorID " +
+                "AND apptDatetime BETWEEN DATEADD(MINUTE, -2, @ApptDateTime) AND DATEADD(MINUTE, 2, @ApptDateTime)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@DoctorID", doctorID);
+                    selectCommand.Parameters.AddWithValue("@ApptDateTime", apptDateTime);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        int apptIDOrd = reader.GetOrdinal("appointmentID");
+                        while (reader.Read())
+                        {
+                            Appointment appointment = new Appointment();
+                            appointment.AppointmentID = reader.GetInt32(apptIDOrd);
+                            apptWithDoubleBooking.Add(appointment);
+                        }
+                        reader.Close();
+                    };
+                    
+                }
+                return apptWithDoubleBooking.Count > 0;
+            }
+        }
+            
+
     }
 }

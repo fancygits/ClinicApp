@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using ClinicApp.Model;
 using ClinicApp.DAL;
@@ -39,6 +40,18 @@ namespace ClinicApp.Controller
         public bool UpdateAppointment(Appointment appointment, Appointment newAppointment)
         {
             return AppointmentDAL.UpdateAppointment(appointment, newAppointment);
+        }
+
+        /// <summary>
+        /// Checks doctorID and apptDateTime of incoming Appointment to make sure the doctor is not doublebooked;
+        /// 
+        /// </summary>
+        /// <param name="doctorID"></param>
+        /// <param name="apptDateTime"></param>
+        /// <returns>Returns true if there's a match, false if not</returns>
+        public bool CheckDoubleBooking(int doctorID, DateTime apptDateTime)
+        {
+            return AppointmentDAL.CheckDoubleBooking(doctorID, apptDateTime);
         }
     }
 }
