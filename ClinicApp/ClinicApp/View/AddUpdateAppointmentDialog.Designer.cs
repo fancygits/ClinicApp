@@ -176,6 +176,7 @@
             this.txtBoxAppointmentReason.Name = "txtBoxAppointmentReason";
             this.txtBoxAppointmentReason.Size = new System.Drawing.Size(236, 71);
             this.txtBoxAppointmentReason.TabIndex = 4;
+            this.txtBoxAppointmentReason.Tag = "Appointment Reason";
             // 
             // doctorBindingSource
             // 
@@ -191,6 +192,7 @@
             this.cmboBoxDoctorID.Name = "cmboBoxDoctorID";
             this.cmboBoxDoctorID.Size = new System.Drawing.Size(236, 21);
             this.cmboBoxDoctorID.TabIndex = 3;
+            this.cmboBoxDoctorID.Tag = "Doctor";
             this.cmboBoxDoctorID.ValueMember = "DoctorID";
             // 
             // timePickerBirthDate
