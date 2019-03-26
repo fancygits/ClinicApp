@@ -22,9 +22,9 @@ namespace ClinicApp.Controller
             return PatientDAL.GetPatientByName(firstName, lastName, birthDate);
         }
 
-        public List<Patient> GetPatientsByName(string firstName, string lastName)
+        public List<Patient> SearchPatientsByName(string firstName, string lastName, string birthDate)
         {
-            return PatientDAL.GetPatientsByName(firstName, lastName);
+            return PatientDAL.SearchPatientsByName(firstName, lastName, birthDate);
         }
 
         public bool UpdatePatient(Patient oldPatient, Patient newPatient)

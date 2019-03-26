@@ -31,7 +31,6 @@ namespace ClinicApp.UserControls
 
         private void GetPatient(object sender, EventArgs e)
         {
-            lblMessage.Text = "";
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
@@ -40,7 +39,7 @@ namespace ClinicApp.UserControls
                 patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
                 if (patient == null)
                 {
-                    List<Patient> patientList = this.patientController.GetPatientsByName(firstName, lastName);
+                    List<Patient> patientList = this.patientController.SearchPatientsByName(firstName, lastName, birthDate);
                     if (patientList.Count == 0)
                     {
                         this.NoMatchesDialog();
@@ -59,6 +58,7 @@ namespace ClinicApp.UserControls
                 patientBindingSource.Add(newPatient);
                 this.EnableUpdates();
                 btnGetPatient.Enabled = false;
+                btnUpdatePatient.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                
+                this.AddPatientDialog();
             }
         }
 
@@ -155,7 +155,8 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = true;
             stateComboBox.Enabled = true;
             phoneNumberMaskedTextBox.Enabled = true;
-            btnUpdatePatient.Enabled = true;
+            btnSearchAppointments.Enabled = true;
+            btnSearchVisits.Enabled = true;
         }
 
         private void DisableUpdates()
@@ -170,9 +171,19 @@ namespace ClinicApp.UserControls
             btnUpdatePatient.Enabled = false;
         }
 
-        private void EnableGetPatient(object sender, EventArgs e)
+        private void PatientTextboxChanged(object sender, EventArgs e)
         {
+            if (cityTextBox.Text != "")
+            {
+                if (btnUpdatePatient.Enabled == false)
+                {
+                    lblMessage.Text = "";
+                }
+                btnUpdatePatient.Enabled = true;
+            }
             btnGetPatient.Enabled = true;
+            btnSearchAppointments.Enabled = false;
+            btnSearchVisits.Enabled = false;
         }
 
         private void ClearFields(object sender, EventArgs e)
@@ -181,6 +192,19 @@ namespace ClinicApp.UserControls
             patientBindingSource.Clear();
             birthDateDateTimePicker.Text = "";
             btnGetPatient.Enabled = false;
+            btnSearchAppointments.Enabled = false;
+            btnSearchVisits.Enabled = false;
+            lblMessage.Text = "";
+            firstNameTextBox.Focus();
+        }
+
+        private void Enter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnGetPatient.PerformClick();
+            }
         }
     }
 }
