@@ -31,12 +31,25 @@ namespace ClinicApp.UserControls
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
         {
-            //this.RefreshPage();
+            this.RefreshPage();
         }
 
+        /// <summary>
+        /// Refreshes the page with the current Patient object and gets Appointment list
+        /// </summary>
         public void RefreshPage()
         {
-            this.GetAppointmentList(9);
+            if (this.patient != null)
+            {
+                this.GetAppointmentList(this.patient.PatientID);
+            }
+            else
+            {
+                if (this.appointmentList != null)
+                {
+                    appointmentList.Clear();
+                }
+            }
         }
         private void GetAppointmentList(int patientID)
         {
@@ -55,18 +68,7 @@ namespace ClinicApp.UserControls
         {
             int patientID = Convert.ToInt32(patientIDTextBox.Text);
             this.GetPatient(patientID);
-                
-            if (this.patient != null)
-            {
-                this.GetAppointmentList(patientID);
-            }
-            else
-            {
-                if (this.appointmentList != null)
-                {
-                    appointmentList.Clear();
-                }
-            }
+            this.RefreshPage();
 
         }
         
@@ -104,6 +106,7 @@ namespace ClinicApp.UserControls
                 addApptForm.appointment = appointment;
                 addApptForm.addAppointment = false;
                 addApptForm.ShowDialog();
+                this.RefreshPage();
             }
         }
 
@@ -113,6 +116,7 @@ namespace ClinicApp.UserControls
             addApptForm.patient = this.patient;
             addApptForm.addAppointment = true;
             addApptForm.ShowDialog();
+            this.RefreshPage();
         }
     }
 }

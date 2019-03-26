@@ -96,16 +96,57 @@ namespace ClinicApp.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.PutAppointment();
-            try
+            if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
             {
-                this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                this.appointment = this.newAppointment;
-                this.DialogResult = DialogResult.OK;
+                try
+                {
+                    this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                    this.appointment = this.newAppointment;
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show("This Doctor is already booked for " + this.newAppointment.AppointmentDateTime.ToShortTimeString() +
+                    ". Please choose a different time.");
             }
+           
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            this.PutAppointment();
+            if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
+            {
+                try
+                {
+                    if (!this.appointmentController.UpdateAppointment(this.appointment, this.newAppointment))
+                    {
+                        MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Appointment Updated");
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("This Doctor is already booked for " + this.newAppointment.AppointmentDateTime.ToShortTimeString() +
+                    ". Please choose a different time.");
+            }
+
         }
     }
 }
