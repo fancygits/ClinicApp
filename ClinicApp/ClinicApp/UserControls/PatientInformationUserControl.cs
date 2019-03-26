@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
+    /// <summary>
+    /// UserControl for Patient Information
+    /// </summary>
     public partial class PatientInformationUserControl : UserControl
     {
         private readonly PatientController patientController;
@@ -14,12 +17,20 @@ namespace ClinicApp.UserControls
         private Patient newPatient;
         private List<State> stateList;
 
+        /// <summary>
+        /// Constructs a new PatientInformationUserControl
+        /// </summary>
         public PatientInformationUserControl()
         {
             InitializeComponent();
             this.patientController = new PatientController();
         }
 
+        /// <summary>
+        /// Loads the UserControl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PatientInformationUserControl_Load(object sender, System.EventArgs e)
         {
             newPatient = new Patient();
@@ -29,6 +40,13 @@ namespace ClinicApp.UserControls
             this.ClearFields(null, null);
         }
 
+        /// <summary>
+        /// Gets a patient from the given textboxes.
+        /// If no patient is found, returns a list of possible matches.
+        /// If no matches are found, prompts to add a new Patient.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetPatient(object sender, EventArgs e)
         {
             string firstName = firstNameTextBox.Text;
@@ -66,6 +84,10 @@ namespace ClinicApp.UserControls
             }
         }
 
+        /// <summary>
+        /// Displays a dialog of matching patients
+        /// </summary>
+        /// <param name="patientList"></param>
         private void GetMatchingPatients(List<Patient> patientList)
         {
             FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
@@ -77,6 +99,9 @@ namespace ClinicApp.UserControls
             }
         }
 
+        /// <summary>
+        /// Prompts to add a new patient since none are found
+        /// </summary>
         private void NoMatchesDialog()
         {
             DialogResult result = MessageBox.Show("No patients matched your search.\n" +
@@ -93,6 +118,11 @@ namespace ClinicApp.UserControls
 
         }
 
+        /// <summary>
+        /// Updates the patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdatePatient_Click(object sender, EventArgs e)
         {
             try
@@ -113,6 +143,9 @@ namespace ClinicApp.UserControls
             }
         }
 
+        /// <summary>
+        /// Puts fields into a new patient object
+        /// </summary>
         private void PutNewPatient()
         {
             newPatient.PatientID = patient.PatientID;
@@ -130,6 +163,9 @@ namespace ClinicApp.UserControls
             newPatient.Username = patient.Username;
         }
 
+        /// <summary>
+        /// Loads the comboboxes
+        /// </summary>
         private void LoadComboboxes()
         {
             var genderDatasource = new List<KeyValuePair<string, string>>();
@@ -171,6 +207,11 @@ namespace ClinicApp.UserControls
             btnUpdatePatient.Enabled = false;
         }
 
+        /// <summary>
+        /// Enables buttons if necessary. Clears message label.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PatientTextboxChanged(object sender, EventArgs e)
         {
             if (cityTextBox.Text != "")
@@ -198,6 +239,11 @@ namespace ClinicApp.UserControls
             firstNameTextBox.Focus();
         }
 
+        /// <summary>
+        /// Used so users can press the Enter key in the name and birthdate textboxes to GetPatient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Enter_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
