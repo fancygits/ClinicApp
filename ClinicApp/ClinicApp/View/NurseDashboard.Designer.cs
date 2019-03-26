@@ -30,16 +30,20 @@
         {
             this.patientsTabControl = new System.Windows.Forms.TabControl();
             this.apptTabPage = new System.Windows.Forms.TabPage();
+            this.addAppointmentUserControl1 = new ClinicApp.UserControls.AddAppointmentUserControl();
             this.infoTabPage = new System.Windows.Forms.TabPage();
             this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.VisitTabPage = new System.Windows.Forms.TabPage();
+            this.searchForVisitUserControl1 = new ClinicApp.UserControls.SearchForVisitUserControl();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lnkLblLogout = new System.Windows.Forms.LinkLabel();
             this.lblRoll = new System.Windows.Forms.Label();
             this.lblPlaceholder2 = new System.Windows.Forms.Label();
             this.lblPlaceholder1 = new System.Windows.Forms.Label();
             this.patientsTabControl.SuspendLayout();
+            this.apptTabPage.SuspendLayout();
             this.infoTabPage.SuspendLayout();
+            this.VisitTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // patientsTabControl
@@ -56,6 +60,7 @@
             // 
             // apptTabPage
             // 
+            this.apptTabPage.Controls.Add(this.addAppointmentUserControl1);
             this.apptTabPage.Location = new System.Drawing.Point(8, 39);
             this.apptTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.apptTabPage.Name = "apptTabPage";
@@ -64,6 +69,14 @@
             this.apptTabPage.TabIndex = 0;
             this.apptTabPage.Text = "Patient Appointments";
             this.apptTabPage.UseVisualStyleBackColor = true;
+            // 
+            // addAppointmentUserControl1
+            // 
+            this.addAppointmentUserControl1.Location = new System.Drawing.Point(20, 6);
+            this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(12);
+            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
+            this.addAppointmentUserControl1.Size = new System.Drawing.Size(1584, 754);
+            this.addAppointmentUserControl1.TabIndex = 0;
             // 
             // infoTabPage
             // 
@@ -88,6 +101,7 @@
             // 
             // VisitTabPage
             // 
+            this.VisitTabPage.Controls.Add(this.searchForVisitUserControl1);
             this.VisitTabPage.Location = new System.Drawing.Point(8, 39);
             this.VisitTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.VisitTabPage.Name = "VisitTabPage";
@@ -96,6 +110,14 @@
             this.VisitTabPage.TabIndex = 2;
             this.VisitTabPage.Text = "Patient Visit";
             this.VisitTabPage.UseVisualStyleBackColor = true;
+            // 
+            // searchForVisitUserControl1
+            // 
+            this.searchForVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchForVisitUserControl1.Location = new System.Drawing.Point(6, 6);
+            this.searchForVisitUserControl1.Name = "searchForVisitUserControl1";
+            this.searchForVisitUserControl1.Size = new System.Drawing.Size(1592, 745);
+            this.searchForVisitUserControl1.TabIndex = 0;
             // 
             // lblUserName
             // 
@@ -153,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1620, 865);
+            this.ClientSize = new System.Drawing.Size(2116, 865);
             this.Controls.Add(this.lblPlaceholder1);
             this.Controls.Add(this.lblPlaceholder2);
             this.Controls.Add(this.lblRoll);
@@ -165,7 +187,9 @@
             this.Text = "Nurse Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NurseDashboard_FormClosing);
             this.patientsTabControl.ResumeLayout(false);
+            this.apptTabPage.ResumeLayout(false);
             this.infoTabPage.ResumeLayout(false);
+            this.VisitTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,6 +207,8 @@
         private UserControls.PatientInformationUserControl patientInformationUserControl1;
         public System.Windows.Forms.Label lblUserName;
         public System.Windows.Forms.Label lblRoll;
+        private UserControls.AddAppointmentUserControl addAppointmentUserControl1;
+        private UserControls.SearchForVisitUserControl searchForVisitUserControl1;
     }
 }
 
