@@ -182,7 +182,10 @@ namespace ClinicApp.DAL
                             patient.State = reader.GetString(stateOrd);
                             patient.PostCode = reader.GetString(postCodeOrd);
                             patient.PhoneNumber = reader.GetString(phoneOrd);
-                            patient.Username = reader.GetString(usernameOrd);
+                            if (!reader.IsDBNull(usernameOrd))
+                            {
+                                patient.Username = reader.GetString(usernameOrd);
+                            }
                         }
                         else
                         {
@@ -194,8 +197,17 @@ namespace ClinicApp.DAL
             return patient;
         }
 
-        public static List<Patient> GetPatientsByName(string firstName, string lastName)
+        public static List<Patient> SearchPatientsByName(string firstName, string lastName, string birthDate)
         {
+            // This is to prevent blank textboxes from returning all results since all names match %
+            if (firstName == "")
+            {
+                firstName = "1";
+            }
+            if (lastName == "")
+            {
+                lastName = "1";
+            }
             List<Patient> patientList = new List<Patient>();
             string selectStatement =
                 "SELECT patientID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
@@ -204,14 +216,16 @@ namespace ClinicApp.DAL
                 "JOIN Person p ON Patient.personID = p.personID " +
                 "WHERE firstName LIKE @fnameSubstring " +
                     "OR lastName LIKE @lnameSubstring " +
+                    "OR birthDate = @birthDate " +
                     "ORDER BY firstName, lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("@fnameSubstring", firstName.Substring(0,2) + "%");
-                    selectCommand.Parameters.AddWithValue("@lnameSubstring", lastName.Substring(0,2) + "%");
+                    selectCommand.Parameters.AddWithValue("@fnameSubstring", firstName + "%");
+                    selectCommand.Parameters.AddWithValue("@lnameSubstring", lastName + "%");
+                    selectCommand.Parameters.AddWithValue("@birthDate", birthDate);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         int patientIDOrd = reader.GetOrdinal("patientID");
