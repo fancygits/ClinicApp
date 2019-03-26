@@ -197,6 +197,13 @@ namespace ClinicApp.DAL
             return patient;
         }
 
+        /// <summary>
+        /// Searches patients by given firstName, lastName, and birthDate
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="birthDate"></param>
+        /// <returns>A List of matching Patients</returns>
         public static List<Patient> SearchPatientsByName(string firstName, string lastName, string birthDate)
         {
             // This is to prevent blank textboxes from returning all results since all names match %
