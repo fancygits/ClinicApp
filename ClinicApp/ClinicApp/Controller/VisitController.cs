@@ -1,10 +1,6 @@
 ﻿using ClinicApp.DAL;
 using ClinicApp.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicApp.Controller
 {
@@ -15,6 +11,19 @@ namespace ClinicApp.Controller
             return VisitDAL.GetNurse(nurseID);
         }
 
+        public List<Visit> GetNurses()
+        {
+            return VisitDAL.GetNurses();
+        }
+        public bool UpdateVisit(Visit oldVisit, Visit newVisit)
+        {
+            return VisitDAL.UpdateVisit(oldVisit, newVisit);
+        }
+
+        public bool AddVisit(Visit newVisit)
+        {
+            return VisitDAL.AddVisit(newVisit);
+        }
         public string GetDoctor(int doctorID)
         {
             return VisitDAL.GetDoctor(doctorID);

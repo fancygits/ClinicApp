@@ -53,6 +53,6 @@
 
         #endregion
 
-        private UserControls.AddVisitUserControl addVisitUserControl1;
+        public UserControls.AddVisitUserControl addVisitUserControl1;
     }
 }
