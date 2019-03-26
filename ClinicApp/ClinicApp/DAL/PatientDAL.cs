@@ -115,7 +115,10 @@ namespace ClinicApp.DAL
                             patient.State = reader.GetString(stateOrd);
                             patient.PostCode = reader.GetString(postCodeOrd);
                             patient.PhoneNumber = reader.GetString(phoneOrd);
-                            if (!reader.IsDBNull(usernameOrd)) patient.Username = reader.GetString(usernameOrd);
+                            if (!reader.IsDBNull(usernameOrd))
+                            {
+                                patient.Username = reader.GetString(usernameOrd);
+                            }
                         }
                         else
                         {
