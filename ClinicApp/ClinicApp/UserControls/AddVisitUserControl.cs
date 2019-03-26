@@ -9,12 +9,14 @@ namespace ClinicApp.UserControls
     public partial class AddVisitUserControl : UserControl
     {
         public Visit visit;
-        private List<Visit> listOfNurses;
+        public Nurse nurse;
+        private List<Nurse> listOfNurses;
         private VisitController visitController;
+        private NurseController nurseController;
         public AddVisitUserControl()
         {
             InitializeComponent();
-            this.listOfNurses = new List<Visit>();
+            this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
         }
 

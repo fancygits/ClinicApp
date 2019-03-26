@@ -11,6 +11,7 @@ namespace ClinicApp.Model
         public Appointment VisitAppointment { get; set; }
         public int AppointmentID { get; set; }
         public DateTime AppointmentTime { get; set; }
+        public Doctor VisitDoctor { get; set; }
         public int DoctorID { get; set; }
         public string DoctorName { get; set; }
         public decimal Weight { get; set; }

@@ -174,8 +174,8 @@
             // 
             this.patientNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.patientNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
-            this.patientNameComboBox.DataSource = this.visitBindingSource;
-            this.patientNameComboBox.DisplayMember = "PatientName";
+            this.patientNameComboBox.DataSource = this.patientBindingSource;
+            this.patientNameComboBox.DisplayMember = "FullName";
             this.patientNameComboBox.FormattingEnabled = true;
             this.patientNameComboBox.Location = new System.Drawing.Point(502, 42);
             this.patientNameComboBox.Name = "patientNameComboBox";

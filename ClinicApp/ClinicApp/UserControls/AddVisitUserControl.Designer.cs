@@ -286,8 +286,8 @@
             // 
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.visitBindingSource, "NurseName", true));
-            this.nurseNameComboBox.DataSource = this.visitBindingSource;
-            this.nurseNameComboBox.DisplayMember = "NurseName";
+            this.nurseNameComboBox.DataSource = this.nurseBindingSource;
+            this.nurseNameComboBox.DisplayMember = "FullName";
             this.nurseNameComboBox.FormattingEnabled = true;
             this.nurseNameComboBox.Location = new System.Drawing.Point(383, 474);
             this.nurseNameComboBox.Name = "nurseNameComboBox";

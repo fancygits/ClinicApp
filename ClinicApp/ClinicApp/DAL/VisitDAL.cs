@@ -12,10 +12,10 @@ namespace ClinicApp.DAL
         /// </summary>
         /// <param name="doctorID"></param>
         /// <returns></returns>
-        public static string GetDoctor(int doctorID)
+        public static Doctor GetDoctor(int doctorID)
         {
-            Visit doctor = new Visit();
-            string selectStatement = "SELECT doctorID, CONCAT(firstName, ' ', lastName) AS \"Doctor Name\" " +
+            Doctor doctor = new Doctor();
+            string selectStatement = "SELECT doctorID, firstName, lastName " +
                                     "FROM Person p " +
                                     "JOIN Doctor d " +
                                     "ON d.personID = p.personID " +
@@ -30,7 +30,8 @@ namespace ClinicApp.DAL
                     {
                         if (reader.Read())
                         {
-                            doctor.DoctorName = reader["Doctor Name"].ToString();
+                            doctor.FirstName = reader["firstName"].ToString();
+                            doctor.LastName = reader["lastName"].ToString();
                         } else
                         {
                             doctor = null;
@@ -38,7 +39,7 @@ namespace ClinicApp.DAL
                     }
                 }
             }
-            return doctor.DoctorName;
+            return doctor;
         }
 
         /// <summary>
@@ -46,10 +47,10 @@ namespace ClinicApp.DAL
         /// </summary>
         /// <param name="nurseID"></param>
         /// <returns></returns>
-        public static string GetNurse(int nurseID)
+        public static Nurse GetNurse(int nurseID)
         {
-            Visit nurse = new Visit();
-            string selectStatement = "SELECT nurseID, CONCAT(firstName, ' ', lastName) AS \"Nurse Name\" " +
+            Nurse nurse = new Nurse();
+            string selectStatement = "SELECT nurseID, firstName, lastName " +
                                     "FROM Person p " +
                                     "JOIN Nurse n " +
                                     "ON n.personID = p.personID " +
@@ -64,7 +65,8 @@ namespace ClinicApp.DAL
                     {
                         if (reader.Read())
                         {
-                            nurse.NurseName = reader["Nurse Name"].ToString();
+                            nurse.FirstName = reader["firstName"].ToString();
+                            nurse.LastName = reader["lastName"].ToString();
                         } else
                         {
                             nurse = null;
@@ -72,7 +74,7 @@ namespace ClinicApp.DAL
                     }
                 }
             }
-            return nurse.NurseName;
+            return nurse;
         }
 
         /// <summary>
@@ -80,10 +82,10 @@ namespace ClinicApp.DAL
         /// </summary>
         /// <param name="patientID"></param>
         /// <returns></returns>
-        public static Visit GetPatient(int patientID)
+        public static Patient GetPatient(int patientID)
         {
-            Visit patient = new Visit();
-            string selectStatement = "SELECT patientID, birthDate, CONCAT(firstName, ' ', lastName) AS \"Patient Name\" " +
+            Patient patient = new Patient();
+            string selectStatement = "SELECT patientID, birthDate, firstName, lastName " +
                                     "FROM Person pe " +
                                     "JOIN Patient pa " +
                                     "ON pa.personID = pe.personID " +
@@ -98,8 +100,9 @@ namespace ClinicApp.DAL
                     {
                         if (reader.Read())
                         {
-                            patient.PatientName = reader["Patient Name"].ToString();
-                            patient.PatientBirthDate = (DateTime)reader["birthDate"];
+                            patient.FirstName = reader["firstName"].ToString();
+                            patient.LastName = reader["lastName"].ToString();
+                            patient.BirthDate = (DateTime)reader["birthDate"];
                         }
                         else
                         {
@@ -115,10 +118,10 @@ namespace ClinicApp.DAL
         /// /This method will return the list of all patients in the DB
         /// </summary>
         /// <returns></returns>
-        public static List<Visit> GetPatients()
+        public static List<Patient> GetPatients()
         {
-            List<Visit> patientList = new List<Visit>();
-            string selectStatement = "SELECT patientID, CONCAT(lastName, ', ', firstName) AS \"Patient Name\" " +
+            List<Patient> patientList = new List<Patient>();
+            string selectStatement = "SELECT patientID, firstName, lastName " +
                                     "FROM Person p " +
                                     "JOIN Patient pa " +
                                     "ON pa.personID = p.personID " +
@@ -132,9 +135,10 @@ namespace ClinicApp.DAL
                     {
                         while (reader.Read())
                         {
-                            Visit patient = new Visit();
+                            Patient patient = new Patient();
                             patient.PatientID = (int)reader["patientID"];
-                            patient.PatientName = reader["Patient Name"].ToString();
+                            patient.FirstName = reader["firstName"].ToString();
+                            patient.LastName = reader["lastName"].ToString();
                             patientList.Add(patient);
                         }
                     }
@@ -150,10 +154,10 @@ namespace ClinicApp.DAL
         /// This method will return a list of all nurses thart can have a vist. 
         /// </summary>
         /// <returns></returns>
-        public static List<Visit> GetNurses()
+        public static List<Nurse> GetNurses()
         {
-            List<Visit> nurseList = new List<Visit>();
-            string selectStatement = "SELECT nurseID, CONCAT(firstName, ' ', lastName) AS \"Nurse Name\" " +
+            List<Nurse> nurseList = new List<Nurse>();
+            string selectStatement = "SELECT nurseID, firstName, lastName " +
                                     "FROM Person p " +
                                     "JOIN Nurse n " +
                                     "ON n.personID = p.personID " +
@@ -168,9 +172,10 @@ namespace ClinicApp.DAL
                     {
                         while (reader.Read())
                         {
-                            Visit nurse = new Visit();
+                            Nurse nurse = new Nurse();
                             nurse.NurseID = (int)reader["nurseID"];
-                            nurse.NurseName = reader["Nurse Name"].ToString();
+                            nurse.FirstName = reader["firstName"].ToString();
+                            nurse.LastName = reader["lastName"].ToString();
                             nurseList.Add(nurse);
                         }
                     }
@@ -234,12 +239,12 @@ namespace ClinicApp.DAL
                             {
                                 Visit visit = new Visit();
                                 visit.PatientID = reader.GetInt32(patIDOrd);
-                                visit.PatientName = GetPatient(visit.PatientID).PatientName;
-                                visit.PatientBirthDate = GetPatient(visit.PatientID).PatientBirthDate;
+                                visit.PatientName = GetPatient(visit.PatientID).FullName;
+                                visit.PatientBirthDate = GetPatient(visit.PatientID).BirthDate;
                                 visit.AppointmentID = reader.GetInt32(apptIDOrd);
                                 visit.AppointmentTime = reader.GetDateTime(apptDTOrd);
                                 visit.DoctorID = reader.GetInt32(doctorIDOrd);
-                                visit.DoctorName = GetDoctor(visit.DoctorID);
+                                visit.DoctorName = GetDoctor(visit.DoctorID).FullName;
                                 if (reader.IsDBNull(nurseIDOrd))
                                 {
                                     nurseIDOrd += -1;
@@ -247,7 +252,7 @@ namespace ClinicApp.DAL
                                 } else
                                 {
                                     visit.NurseID = reader.GetInt32(nurseIDOrd);
-                                    visit.NurseName = GetNurse(visit.NurseID);
+                                    visit.NurseName = GetNurse(visit.NurseID).FullName;
                                 }
                             if (reader.IsDBNull(weightOrd))
                                 {

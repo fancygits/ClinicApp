@@ -16,7 +16,7 @@ namespace ClinicApp.DAL
         public static Nurse GetNurse(int nurseID)
         {
             Nurse nurse = new Nurse();
-            string selectStatement = "SELECT nurseID, CONCAT(firstName, ' ', lastName) AS \"Nurse Name\" " +
+            string selectStatement = "SELECT nurseID, firstName, lastName " +
                                     "FROM Person p " +
                                     "JOIN Nurse n " +
                                     "ON n.personID = p.personID " +
@@ -31,7 +31,8 @@ namespace ClinicApp.DAL
                     {
                         if (reader.Read())
                         {
-                            nurse.NurseName = reader["Nurse Name"].ToString();
+                            nurse.FirstName = reader["firstName"].ToString();
+                            nurse.LastName = reader["lastName"].ToString();
                         }
                         else
                         {
@@ -46,7 +47,7 @@ namespace ClinicApp.DAL
         {
             List<Nurse> listOfNurses = new List<Nurse>();
             string selectStatement =
-            "SELECT nurseID, p.personID, lastName, firstName, CONCAT(firstName, ' ', lastName) AS \"Nurse Name\", birthDate, SSN, gender," +
+            "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender," +
             "streetAddress, city, state, postCode, phoneNumber, active " +
             "FROM Person p " +
             "JOIN Nurse n ON p.personID = n.personID " +
@@ -79,7 +80,6 @@ namespace ClinicApp.DAL
                             nurse.PersonID = reader.GetInt32(personIDOrd);
                             nurse.LastName = reader.GetString(lastNameOrd);
                             nurse.FirstName = reader.GetString(firstNameOrd);
-                            nurse.NurseName = reader.GetString(fullNameOrd);
                             nurse.BirthDate = reader.GetDateTime(birthDateOrd);
                             nurse.SSN = reader.GetString(ssnOrd);
                             nurse.Gender = reader.GetString(genderOrd);
