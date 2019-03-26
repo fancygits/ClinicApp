@@ -48,8 +48,6 @@ namespace ClinicApp.DAL
                 connection.Open();
                 using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
                 {
-                    
-                    updateCommand.Parameters.AddWithValue("@newPersonID", newPerson.PersonID);
                     updateCommand.Parameters.AddWithValue("@newLastName", newPerson.LastName);
                     updateCommand.Parameters.AddWithValue("@newFirstName", newPerson.FirstName);
                     updateCommand.Parameters.AddWithValue("@newBirthDate", newPerson.BirthDate);
