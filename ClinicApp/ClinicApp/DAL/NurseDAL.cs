@@ -63,7 +63,6 @@ namespace ClinicApp.DAL
                         int personIDOrd = reader.GetOrdinal("personID");
                         int lastNameOrd = reader.GetOrdinal("lastName");
                         int firstNameOrd = reader.GetOrdinal("firstName");
-                        int fullNameOrd = reader.GetOrdinal("Nurse Name");
                         int birthDateOrd = reader.GetOrdinal("birthDate");
                         int ssnOrd = reader.GetOrdinal("SSN");
                         int genderOrd = reader.GetOrdinal("gender");
