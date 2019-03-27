@@ -13,7 +13,7 @@ namespace ClinicApp.UserControls
     public partial class PatientInformationUserControl : UserControl
     {
         private readonly PatientController patientController;
-        private Patient patient;
+        public Patient patient;
         private Patient newPatient;
         private List<State> stateList;
 
@@ -251,6 +251,15 @@ namespace ClinicApp.UserControls
                 e.Handled = true;
                 btnGetPatient.PerformClick();
             }
+        }
+
+        private void btnSearchAppointments_Click(object sender, EventArgs e)
+        {
+            TabControl tabControl = this.Parent.Parent as TabControl;
+            tabControl.SelectedIndex = 1;
+            AddAppointmentUserControl addAppointmentUserControl = tabControl.TabPages[1].Controls[0] as AddAppointmentUserControl;
+            addAppointmentUserControl.patient = this.patient;
+            addAppointmentUserControl.RefreshPage();
         }
     }
 }

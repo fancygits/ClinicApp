@@ -353,6 +353,7 @@
             this.btnSearchAppointments.TabIndex = 33;
             this.btnSearchAppointments.Text = "Search Appointments";
             this.btnSearchAppointments.UseVisualStyleBackColor = true;
+            this.btnSearchAppointments.Click += new System.EventHandler(this.btnSearchAppointments_Click);
             // 
             // btnSearchVisits
             // 

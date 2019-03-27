@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ClinicApp.Controller;
+﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using ClinicApp.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
@@ -15,7 +15,7 @@ namespace ClinicApp.UserControls
 
         private readonly PatientController patientController;
         private readonly AppointmentController appointmentController;
-        private Patient patient;
+        public Patient patient;
         private List<Appointment> appointmentList;
 
         /// <summary>
@@ -26,17 +26,24 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.patientController = new PatientController();
-            this.patient = new Patient();
+            //this.patient = new Patient();
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
         {
             //this.RefreshPage();
+            
+            
         }
 
         public void RefreshPage()
         {
+            if (patient != null)
+            {
+                patientBindingSource.Add(patient);
+            }
             this.GetAppointmentList(9);
+
         }
         private void GetAppointmentList(int patientID)
         {
@@ -74,7 +81,7 @@ namespace ClinicApp.UserControls
         {
             try
             {
-                this.patient = this.patientController.GetPatient(patientID);
+                this.patient = this.patientController.GetPatientByID(patientID);
                 if (patient != null)
                 {
                     patientBindingSource.Clear();
