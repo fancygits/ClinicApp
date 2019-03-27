@@ -33,8 +33,8 @@
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label patientIDLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.appointmentDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +51,7 @@
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSearchPatient = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
@@ -122,9 +123,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "AppointmentDateTime";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn6.HeaderText = "Appointment Date";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -133,9 +134,9 @@
             // AppointmentDateTime
             // 
             this.AppointmentDateTime.DataPropertyName = "AppointmentDateTime";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.AppointmentDateTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            this.AppointmentDateTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.AppointmentDateTime.HeaderText = "Appointment Time";
             this.AppointmentDateTime.Name = "AppointmentDateTime";
             this.AppointmentDateTime.ReadOnly = true;
@@ -211,7 +212,7 @@
             // 
             // btnGetPatient
             // 
-            this.btnGetPatient.Location = new System.Drawing.Point(350, 12);
+            this.btnGetPatient.Location = new System.Drawing.Point(669, 33);
             this.btnGetPatient.Name = "btnGetPatient";
             this.btnGetPatient.Size = new System.Drawing.Size(79, 23);
             this.btnGetPatient.TabIndex = 7;
@@ -241,10 +242,21 @@
             // 
             this.doctorBindingSource.DataSource = typeof(ClinicApp.Model.Doctor);
             // 
+            // btnSearchPatient
+            // 
+            this.btnSearchPatient.Location = new System.Drawing.Point(335, 33);
+            this.btnSearchPatient.Name = "btnSearchPatient";
+            this.btnSearchPatient.Size = new System.Drawing.Size(100, 23);
+            this.btnSearchPatient.TabIndex = 11;
+            this.btnSearchPatient.Text = "Search Patient";
+            this.btnSearchPatient.UseVisualStyleBackColor = true;
+            this.btnSearchPatient.Click += new System.EventHandler(this.btnSearchPatient_Click);
+            // 
             // AddAppointmentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearchPatient);
             this.Controls.Add(patientIDLabel);
             this.Controls.Add(this.patientIDTextBox);
             this.Controls.Add(this.btnAddAppointment);
@@ -286,5 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewButtonColumn ViewAppointment;
+        private System.Windows.Forms.Button btnSearchPatient;
     }
 }
