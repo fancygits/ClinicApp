@@ -6,14 +6,14 @@ namespace ClinicApp.Controller
 {
     class VisitController
     {
-        public string GetNurse(int nurseID)
+        public Nurse GetNurse(int nurseID)
         {
             return VisitDAL.GetNurse(nurseID);
         }
 
-        public List<Visit> GetNurses()
+        public List<Nurse> GetNurses()
         {
-            return VisitDAL.GetNurses();
+            return NurseDAL.GetNurseList();
         }
         public bool UpdateVisit(Visit oldVisit, Visit newVisit)
         {
@@ -24,12 +24,12 @@ namespace ClinicApp.Controller
         {
             return VisitDAL.AddVisit(newVisit);
         }
-        public string GetDoctor(int doctorID)
+        public Doctor GetDoctor(int doctorID)
         {
             return VisitDAL.GetDoctor(doctorID);
         }
         
-        public List<Visit> GetPatients()
+        public List<Patient> GetPatients()
         {
             return VisitDAL.GetPatients();
         }

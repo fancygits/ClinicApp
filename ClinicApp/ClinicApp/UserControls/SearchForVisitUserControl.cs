@@ -10,14 +10,15 @@ namespace ClinicApp.UserControls
     public partial class SearchForVisitUserControl : UserControl
     {
         private VisitController visitController;
+        public Patient patient;
         public Visit visit;
-        private List<Visit> listOfPatients;
+        private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
         private static SearchForVisitUserControl instance;
         private SearchForVisitUserControl()
         {
             InitializeComponent();
-            this.listOfPatients = new List<Visit>();
+            this.listOfPatients = new List<Patient>();
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
 
@@ -41,12 +42,12 @@ namespace ClinicApp.UserControls
             {
                 return;
             }
-            this.visit = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
-            visitBindingSource.Clear();
-            visitBindingSource.Add(this.visit);
+            this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
+            patientBindingSource.Clear();
+            patientBindingSource.Add(this.patient);
             try
             {
-                this.listOfVisits = this.visitController.GetListOfVisits(this.visit.PatientID);
+                this.listOfVisits = this.visitController.GetListOfVisits(this.patient.PatientID);
                 if (this.listOfVisits.Count > 0)
                 {
                     visitDataGridView.DataSource = this.listOfVisits;
