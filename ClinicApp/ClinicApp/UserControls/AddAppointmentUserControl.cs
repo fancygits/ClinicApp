@@ -118,5 +118,71 @@ namespace ClinicApp.UserControls
             addApptForm.ShowDialog();
             this.RefreshPage();
         }
+
+        private void btnSearchPatient_Click(object sender, EventArgs e)
+        {
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string birthDate = birthDateDateTimePicker.Text;
+            try
+            {
+                patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
+                if (patient == null)
+                {
+                    List<Patient> patientList = this.patientController.SearchPatientsByName(firstName, lastName, birthDate);
+                    if (patientList.Count == 0)
+                    {
+                        this.NoMatchesDialog();
+                    }
+                    else
+                    {
+                        this.GetMatchingPatients(patientList);
+                    }
+                    if (patient == null)
+                    {
+                        return;
+                    }
+                }
+                patientBindingSource.Clear();
+                patientBindingSource.Add(patient);
+                this.RefreshPage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+        }
+
+        /// <summary>
+        /// Displays a dialog of matching patients
+        /// </summary>
+        /// <param name="patientList"></param>
+        private void GetMatchingPatients(List<Patient> patientList)
+        {
+            FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
+            findPatientsDialog.patientList = patientList;
+            DialogResult result = findPatientsDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                patient = findPatientsDialog.patient;
+            }
+        }
+
+        private void NoMatchesDialog()
+        {
+            DialogResult result = MessageBox.Show("No patients matched your search.\n" +
+                            "Would you like to add a new patient?", "No Matches",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.AddPatientDialog();
+            }
+        }
+
+        private void AddPatientDialog()
+        {
+
+        }
     }
 }
