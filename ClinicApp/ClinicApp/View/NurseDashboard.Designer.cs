@@ -34,7 +34,7 @@
             this.infoTabPage = new System.Windows.Forms.TabPage();
             this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.VisitTabPage = new System.Windows.Forms.TabPage();
-            this.searchForVisitUserControl1 = new ClinicApp.UserControls.SearchForVisitUserControl();
+            this.searchForVisitUserControl1 = ClinicApp.UserControls.SearchForVisitUserControl.Instance();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lnkLblLogout = new System.Windows.Forms.LinkLabel();
             this.lblRoll = new System.Windows.Forms.Label();

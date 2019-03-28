@@ -19,7 +19,7 @@ namespace ClinicApp.DAL
         {
             List<Appointment> appointmentsByPatientID = new List<Appointment>();
             string selectStatement =
-                "SELECT apptDatetime, firstName, lastName, reasonForVisit " +
+                "SELECT apptDatetime, firstName, lastName, app.doctorID AS doctorID, reasonForVisit " +
                 "FROM Appointment app " +
                 "JOIN Doctor doc " +
                 "ON app.doctorID = doc.doctorID " +
@@ -38,6 +38,7 @@ namespace ClinicApp.DAL
                         int apptDateTimeOrd = reader.GetOrdinal("apptDatetime");
                         int firstNameOrd = reader.GetOrdinal("firstName");
                         int lastNameOrd = reader.GetOrdinal("lastName");
+                        int doctorIDOrd = reader.GetOrdinal("doctorID");
                         int reasonForVisitOrd = reader.GetOrdinal("reasonForVisit");
                         while (reader.Read())
                         {
@@ -45,6 +46,7 @@ namespace ClinicApp.DAL
                             appointment.AppointmentDateTime = reader.GetDateTime(apptDateTimeOrd);
                             appointment.AppointmentDoctorFirstName = reader.GetString(firstNameOrd);
                             appointment.AppointmentDoctorLastName = reader.GetString(lastNameOrd);
+                            appointment.AppointmentDoctorID = reader.GetInt32(doctorIDOrd);
                             appointment.AppointmentReason = reader.GetString(reasonForVisitOrd);
                             appointmentsByPatientID.Add(appointment);
                         }
@@ -53,6 +55,36 @@ namespace ClinicApp.DAL
                 }
                 return appointmentsByPatientID;
             };
+        }
+
+        /// <summary>
+        /// Adds a new Appointment object to the database
+        /// </summary>
+        /// <param name="appointment">New Appointment to be added</param>
+        public static int AddAppointment(Appointment appointment)
+        {
+            string insertStatement =
+                "INSERT INTO Appointment (patientID, doctorID, apptDatetime, reasonForVisit) " +
+                "VALUES(@PatientID, @DoctorID, @Date, @Reason)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@PatientID", appointment.AppointmentPatientID);
+                    insertCommand.Parameters.AddWithValue("@DoctorID", appointment.AppointmentDoctorID);
+                    insertCommand.Parameters.AddWithValue("@Date", appointment.AppointmentDateTime);
+                    insertCommand.Parameters.AddWithValue("@Reason", appointment.AppointmentReason);
+
+                    insertCommand.ExecuteNonQuery();
+                    string selectStatement =
+                        "SELECT IDENT_CURRENT('Appointment') FROM Appointment";
+                    SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                    int appointmentID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return appointmentID;
+
+                }
+            }
         }
     }
 }
