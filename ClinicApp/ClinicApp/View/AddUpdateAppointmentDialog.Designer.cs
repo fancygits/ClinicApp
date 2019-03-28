@@ -63,63 +63,70 @@
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(20, 34);
+            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            firstNameLabel.Location = new System.Drawing.Point(20, 27);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            firstNameLabel.Size = new System.Drawing.Size(90, 20);
             firstNameLabel.TabIndex = 3;
             firstNameLabel.Text = "First Name:";
             // 
             // lastNameLabel
             // 
             lastNameLabel.AutoSize = true;
+            lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lastNameLabel.Location = new System.Drawing.Point(19, 59);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(61, 13);
+            lastNameLabel.Size = new System.Drawing.Size(90, 20);
             lastNameLabel.TabIndex = 5;
             lastNameLabel.Text = "Last Name:";
             // 
             // appointmentDateTimeLabel
             // 
             appointmentDateTimeLabel.AutoSize = true;
+            appointmentDateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             appointmentDateTimeLabel.Location = new System.Drawing.Point(25, 134);
             appointmentDateTimeLabel.Name = "appointmentDateTimeLabel";
-            appointmentDateTimeLabel.Size = new System.Drawing.Size(121, 13);
+            appointmentDateTimeLabel.Size = new System.Drawing.Size(181, 20);
             appointmentDateTimeLabel.TabIndex = 7;
             appointmentDateTimeLabel.Text = "Appointment Date Time:";
             // 
             // appointmentDateTimeLabel1
             // 
             appointmentDateTimeLabel1.AutoSize = true;
+            appointmentDateTimeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             appointmentDateTimeLabel1.Location = new System.Drawing.Point(25, 164);
             appointmentDateTimeLabel1.Name = "appointmentDateTimeLabel1";
-            appointmentDateTimeLabel1.Size = new System.Drawing.Size(121, 13);
+            appointmentDateTimeLabel1.Size = new System.Drawing.Size(181, 20);
             appointmentDateTimeLabel1.TabIndex = 9;
             appointmentDateTimeLabel1.Text = "Appointment Date Time:";
             // 
             // appointmentReasonLabel
             // 
             appointmentReasonLabel.AutoSize = true;
+            appointmentReasonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             appointmentReasonLabel.Location = new System.Drawing.Point(22, 228);
             appointmentReasonLabel.Name = "appointmentReasonLabel";
-            appointmentReasonLabel.Size = new System.Drawing.Size(109, 13);
+            appointmentReasonLabel.Size = new System.Drawing.Size(164, 20);
             appointmentReasonLabel.TabIndex = 11;
             appointmentReasonLabel.Text = "Appointment Reason:";
             // 
             // doctorIDLabel
             // 
             doctorIDLabel.AutoSize = true;
+            doctorIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             doctorIDLabel.Location = new System.Drawing.Point(25, 192);
             doctorIDLabel.Name = "doctorIDLabel";
-            doctorIDLabel.Size = new System.Drawing.Size(56, 13);
+            doctorIDLabel.Size = new System.Drawing.Size(82, 20);
             doctorIDLabel.TabIndex = 13;
             doctorIDLabel.Text = "Doctor ID:";
             // 
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(22, 86);
+            birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            birthDateLabel.Location = new System.Drawing.Point(23, 92);
             birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(57, 13);
+            birthDateLabel.Size = new System.Drawing.Size(85, 20);
             birthDateLabel.TabIndex = 14;
             birthDateLabel.Text = "Birth Date:";
             // 
@@ -131,18 +138,20 @@
             // 
             this.txtBxfirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
             this.txtBxfirstName.Enabled = false;
-            this.txtBxfirstName.Location = new System.Drawing.Point(86, 31);
+            this.txtBxfirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxfirstName.Location = new System.Drawing.Point(167, 21);
             this.txtBxfirstName.Name = "txtBxfirstName";
-            this.txtBxfirstName.Size = new System.Drawing.Size(303, 20);
+            this.txtBxfirstName.Size = new System.Drawing.Size(303, 26);
             this.txtBxfirstName.TabIndex = 4;
             // 
             // txtBxLastName
             // 
             this.txtBxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
             this.txtBxLastName.Enabled = false;
-            this.txtBxLastName.Location = new System.Drawing.Point(86, 56);
+            this.txtBxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxLastName.Location = new System.Drawing.Point(167, 53);
             this.txtBxLastName.Name = "txtBxLastName";
-            this.txtBxLastName.Size = new System.Drawing.Size(302, 20);
+            this.txtBxLastName.Size = new System.Drawing.Size(302, 26);
             this.txtBxLastName.TabIndex = 6;
             // 
             // appointmentBindingSource
@@ -152,26 +161,29 @@
             // dateTimePickerAppointmentDate
             // 
             this.dateTimePickerAppointmentDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
+            this.dateTimePickerAppointmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerAppointmentDate.Location = new System.Drawing.Point(152, 130);
+            this.dateTimePickerAppointmentDate.Location = new System.Drawing.Point(233, 127);
             this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
-            this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 20);
+            this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentDate.TabIndex = 1;
             // 
             // dateTimePickerAppointmentTime
             // 
             this.dateTimePickerAppointmentTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
+            this.dateTimePickerAppointmentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(152, 160);
+            this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(233, 157);
             this.dateTimePickerAppointmentTime.Name = "dateTimePickerAppointmentTime";
             this.dateTimePickerAppointmentTime.ShowUpDown = true;
-            this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 20);
+            this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentTime.TabIndex = 2;
             // 
             // txtBoxAppointmentReason
             // 
             this.txtBoxAppointmentReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentReason", true));
-            this.txtBoxAppointmentReason.Location = new System.Drawing.Point(152, 228);
+            this.txtBoxAppointmentReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxAppointmentReason.Location = new System.Drawing.Point(233, 225);
             this.txtBoxAppointmentReason.Multiline = true;
             this.txtBoxAppointmentReason.Name = "txtBoxAppointmentReason";
             this.txtBoxAppointmentReason.Size = new System.Drawing.Size(236, 71);
@@ -187,10 +199,11 @@
             this.cmboBoxDoctorID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.doctorBindingSource, "DoctorID", true));
             this.cmboBoxDoctorID.DataSource = this.doctorBindingSource;
             this.cmboBoxDoctorID.DisplayMember = "FullName";
+            this.cmboBoxDoctorID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmboBoxDoctorID.FormattingEnabled = true;
-            this.cmboBoxDoctorID.Location = new System.Drawing.Point(152, 192);
+            this.cmboBoxDoctorID.Location = new System.Drawing.Point(233, 189);
             this.cmboBoxDoctorID.Name = "cmboBoxDoctorID";
-            this.cmboBoxDoctorID.Size = new System.Drawing.Size(236, 21);
+            this.cmboBoxDoctorID.Size = new System.Drawing.Size(236, 28);
             this.cmboBoxDoctorID.TabIndex = 3;
             this.cmboBoxDoctorID.Tag = "Doctor";
             this.cmboBoxDoctorID.ValueMember = "DoctorID";
@@ -200,17 +213,19 @@
             this.timePickerBirthDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
             this.timePickerBirthDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentPatientID", true));
             this.timePickerBirthDate.Enabled = false;
+            this.timePickerBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timePickerBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.timePickerBirthDate.Location = new System.Drawing.Point(85, 82);
+            this.timePickerBirthDate.Location = new System.Drawing.Point(167, 85);
             this.timePickerBirthDate.Name = "timePickerBirthDate";
-            this.timePickerBirthDate.Size = new System.Drawing.Size(303, 20);
+            this.timePickerBirthDate.Size = new System.Drawing.Size(303, 26);
             this.timePickerBirthDate.TabIndex = 15;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(220, 330);
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(233, 327);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(75, 36);
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -218,9 +233,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(312, 330);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(393, 327);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(75, 36);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -230,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 365);
+            this.ClientSize = new System.Drawing.Size(509, 394);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(birthDateLabel);

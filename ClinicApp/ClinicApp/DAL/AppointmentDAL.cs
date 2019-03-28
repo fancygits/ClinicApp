@@ -139,7 +139,7 @@ namespace ClinicApp.DAL
                 "SELECT appointmentID " +
                 "FROM Appointment " +
                 "WHERE doctorID = @DoctorID " +
-                "AND apptDatetime BETWEEN DATEADD(MINUTE, -2, @ApptDateTime) AND DATEADD(MINUTE, 2, @ApptDateTime)";
+                "AND apptDatetime BETWEEN DATEADD(MINUTE, -1, @ApptDateTime) AND DATEADD(MINUTE, 1, @ApptDateTime)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
