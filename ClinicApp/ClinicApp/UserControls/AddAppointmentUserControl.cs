@@ -10,7 +10,7 @@ namespace ClinicApp.UserControls
     /// <summary>
     /// User Control for getting and adding patient Appointment objects
     /// </summary>
-    public partial class AddAppointmentUserControl : UserControl
+    public partial class AddAppointmentUserControl : UserControl, IUserControlSearch
     {
 
         private readonly PatientController patientController;
@@ -41,10 +41,10 @@ namespace ClinicApp.UserControls
             if (patient != null)
             {
                 patientBindingSource.Add(patient);
+                this.GetAppointmentList(patient.PatientID);
             }
-            this.GetAppointmentList(9);
-
         }
+
         private void GetAppointmentList(int patientID)
         {
             try

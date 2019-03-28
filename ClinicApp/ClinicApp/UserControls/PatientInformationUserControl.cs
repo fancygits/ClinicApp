@@ -10,7 +10,7 @@ namespace ClinicApp.UserControls
     /// <summary>
     /// UserControl for Patient Information
     /// </summary>
-    public partial class PatientInformationUserControl : UserControl
+    public partial class PatientInformationUserControl : UserControl, IUserControlSearch
     {
         private readonly PatientController patientController;
         public Patient patient;
@@ -52,25 +52,9 @@ namespace ClinicApp.UserControls
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
-            try
+            this.patient = this.FindPatient(firstName, lastName, birthDate);
+            if (this.patient != null)
             {
-                patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
-                if (patient == null)
-                {
-                    List<Patient> patientList = this.patientController.SearchPatientsByName(firstName, lastName, birthDate);
-                    if (patientList.Count == 0)
-                    {
-                        this.NoMatchesDialog();
-                    }
-                    else
-                    {
-                        this.GetMatchingPatients(patientList);
-                    }
-                    if (patient == null)
-                    {
-                        return;
-                    }
-                }
                 this.PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
@@ -78,9 +62,9 @@ namespace ClinicApp.UserControls
                 btnGetPatient.Enabled = false;
                 btnUpdatePatient.Enabled = false;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                this.NoMatchesDialog();
             }
         }
 
