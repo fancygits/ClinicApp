@@ -60,7 +60,7 @@
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
-	<Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Doctor.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="UserControls\AddVisitUserControl.Designer.cs">
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\IUserControlSearch.cs" />
     <Compile Include="UserControls\PatientInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +95,7 @@
     <Compile Include="UserControls\SearchForVisitUserControl.Designer.cs">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlExtensions.cs" />
     <Compile Include="View\AddUpdateAppointmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
