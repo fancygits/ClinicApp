@@ -130,12 +130,12 @@ namespace ClinicApp.View
         {
             if (this.PutAppointment())
             {
-                MessageBox.Show("doctorid " + (this.newAppointment.AppointmentDoctorID == this.appointment.AppointmentDoctorID).ToString());
-                MessageBox.Show("apptdatetime " + (this.newAppointment.AppointmentDateTime == this.appointment.AppointmentDateTime).ToString());
+                // Gets around the DoctorID Appointment DateTime constraint to update the visitReason on an existing appointment
                 if (this.newAppointment.AppointmentDoctorID == this.appointment.AppointmentDoctorID && this.newAppointment.AppointmentDateTime == this.appointment.AppointmentDateTime)
                 {
                     try
                     {
+                        this.newAppointment.AppointmentDateTime = this.newAppointment.AppointmentDateTime.AddSeconds(1);
                         this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
                         this.appointment = this.newAppointment;
                         this.DialogResult = DialogResult.OK;

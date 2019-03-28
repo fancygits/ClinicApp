@@ -33,41 +33,42 @@
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label patientIDLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.appointmentDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAppointment = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.btnGetPatient = new System.Windows.Forms.Button();
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
-            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearchPatient = new System.Windows.Forms.Button();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             birthDateLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(40, 65);
+            birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            birthDateLabel.Location = new System.Drawing.Point(40, 78);
             birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(57, 13);
+            birthDateLabel.Size = new System.Drawing.Size(85, 20);
             birthDateLabel.TabIndex = 1;
             birthDateLabel.Text = "Birth Date:";
             birthDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,27 +76,30 @@
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(41, 12);
+            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            firstNameLabel.Location = new System.Drawing.Point(42, 11);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            firstNameLabel.Size = new System.Drawing.Size(90, 20);
             firstNameLabel.TabIndex = 3;
             firstNameLabel.Text = "First Name:";
             // 
             // lastNameLabel
             // 
             lastNameLabel.AutoSize = true;
-            lastNameLabel.Location = new System.Drawing.Point(40, 38);
+            lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lastNameLabel.Location = new System.Drawing.Point(42, 46);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(61, 13);
+            lastNameLabel.Size = new System.Drawing.Size(90, 20);
             lastNameLabel.TabIndex = 5;
             lastNameLabel.Text = "Last Name:";
             // 
             // patientIDLabel
             // 
             patientIDLabel.AutoSize = true;
+            patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             patientIDLabel.Location = new System.Drawing.Point(472, 38);
             patientIDLabel.Name = "patientIDLabel";
-            patientIDLabel.Size = new System.Drawing.Size(57, 13);
+            patientIDLabel.Size = new System.Drawing.Size(84, 20);
             patientIDLabel.TabIndex = 9;
             patientIDLabel.Text = "Patient ID:";
             // 
@@ -113,34 +117,119 @@
             this.dataGridViewTextBoxColumn7,
             this.ViewAppointment});
             this.appointmentDataGridView.DataSource = this.appointmentBindingSource;
-            this.appointmentDataGridView.Location = new System.Drawing.Point(3, 95);
+            this.appointmentDataGridView.Location = new System.Drawing.Point(3, 111);
             this.appointmentDataGridView.Name = "appointmentDataGridView";
             this.appointmentDataGridView.ReadOnly = true;
-            this.appointmentDataGridView.Size = new System.Drawing.Size(769, 256);
+            this.appointmentDataGridView.Size = new System.Drawing.Size(769, 231);
             this.appointmentDataGridView.TabIndex = 0;
             this.appointmentDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appointmentDataGridView_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "AppointmentDateTime";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Appointment Date";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 125;
             // 
             // AppointmentDateTime
             // 
             this.AppointmentDateTime.DataPropertyName = "AppointmentDateTime";
-            dataGridViewCellStyle4.Format = "t";
-            dataGridViewCellStyle4.NullValue = null;
-            this.AppointmentDateTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Format = "t";
+            dataGridViewCellStyle5.NullValue = null;
+            this.AppointmentDateTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.AppointmentDateTime.HeaderText = "Appointment Time";
             this.AppointmentDateTime.Name = "AppointmentDateTime";
             this.AppointmentDateTime.ReadOnly = true;
             this.AppointmentDateTime.Width = 125;
+            // 
+            // ViewAppointment
+            // 
+            this.ViewAppointment.HeaderText = "";
+            this.ViewAppointment.Name = "ViewAppointment";
+            this.ViewAppointment.ReadOnly = true;
+            this.ViewAppointment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ViewAppointment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ViewAppointment.Text = "Edit/View";
+            this.ViewAppointment.UseColumnTextForButtonValue = true;
+            this.ViewAppointment.Width = 75;
+            // 
+            // birthDateDateTimePicker
+            // 
+            this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
+            this.birthDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.birthDateDateTimePicker.Location = new System.Drawing.Point(150, 72);
+            this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
+            this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.birthDateDateTimePicker.TabIndex = 2;
+            // 
+            // firstNameTextBox
+            // 
+            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
+            this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameTextBox.Location = new System.Drawing.Point(151, 8);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new System.Drawing.Size(199, 26);
+            this.firstNameTextBox.TabIndex = 4;
+            // 
+            // lastNameTextBox
+            // 
+            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
+            this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameTextBox.Location = new System.Drawing.Point(151, 40);
+            this.lastNameTextBox.Name = "lastNameTextBox";
+            this.lastNameTextBox.Size = new System.Drawing.Size(199, 26);
+            this.lastNameTextBox.TabIndex = 6;
+            // 
+            // btnGetPatient
+            // 
+            this.btnGetPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetPatient.Location = new System.Drawing.Point(669, 33);
+            this.btnGetPatient.Name = "btnGetPatient";
+            this.btnGetPatient.Size = new System.Drawing.Size(79, 28);
+            this.btnGetPatient.TabIndex = 7;
+            this.btnGetPatient.Text = "Get Patient";
+            this.btnGetPatient.UseVisualStyleBackColor = true;
+            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
+            // 
+            // btnAddAppointment
+            // 
+            this.btnAddAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAppointment.Location = new System.Drawing.Point(596, 358);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(121, 28);
+            this.btnAddAppointment.TabIndex = 8;
+            this.btnAddAppointment.Text = "Add Appointment";
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
+            // 
+            // patientIDTextBox
+            // 
+            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PatientID", true));
+            this.patientIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIDTextBox.Location = new System.Drawing.Point(562, 33);
+            this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.Size = new System.Drawing.Size(100, 26);
+            this.patientIDTextBox.TabIndex = 10;
+            // 
+            // btnSearchPatient
+            // 
+            this.btnSearchPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchPatient.Location = new System.Drawing.Point(366, 33);
+            this.btnSearchPatient.Name = "btnSearchPatient";
+            this.btnSearchPatient.Size = new System.Drawing.Size(100, 28);
+            this.btnSearchPatient.TabIndex = 11;
+            this.btnSearchPatient.Text = "Search Patient";
+            this.btnSearchPatient.UseVisualStyleBackColor = true;
+            this.btnSearchPatient.Click += new System.EventHandler(this.btnSearchPatient_Click);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "AppointmentDateTime";
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Appointment Date";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -166,91 +255,13 @@
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 150;
             // 
-            // ViewAppointment
-            // 
-            this.ViewAppointment.HeaderText = "";
-            this.ViewAppointment.Name = "ViewAppointment";
-            this.ViewAppointment.ReadOnly = true;
-            this.ViewAppointment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ViewAppointment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ViewAppointment.Text = "Edit/View";
-            this.ViewAppointment.UseColumnTextForButtonValue = true;
-            this.ViewAppointment.Width = 75;
-            // 
             // appointmentBindingSource
             // 
             this.appointmentBindingSource.DataSource = typeof(ClinicApp.Model.Appointment);
             // 
-            // birthDateDateTimePicker
-            // 
-            this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
-            this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthDateDateTimePicker.Location = new System.Drawing.Point(106, 59);
-            this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
-            this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.birthDateDateTimePicker.TabIndex = 2;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
-            // 
-            // firstNameTextBox
-            // 
-            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(107, 9);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.firstNameTextBox.TabIndex = 4;
-            // 
-            // lastNameTextBox
-            // 
-            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
-            this.lastNameTextBox.Location = new System.Drawing.Point(107, 35);
-            this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.lastNameTextBox.TabIndex = 6;
-            // 
-            // btnGetPatient
-            // 
-            this.btnGetPatient.Location = new System.Drawing.Point(669, 33);
-            this.btnGetPatient.Name = "btnGetPatient";
-            this.btnGetPatient.Size = new System.Drawing.Size(79, 23);
-            this.btnGetPatient.TabIndex = 7;
-            this.btnGetPatient.Text = "Get Patient";
-            this.btnGetPatient.UseVisualStyleBackColor = true;
-            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
-            // 
-            // btnAddAppointment
-            // 
-            this.btnAddAppointment.Location = new System.Drawing.Point(596, 358);
-            this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(121, 23);
-            this.btnAddAppointment.TabIndex = 8;
-            this.btnAddAppointment.Text = "Add Appointment";
-            this.btnAddAppointment.UseVisualStyleBackColor = true;
-            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
-            // 
-            // patientIDTextBox
-            // 
-            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PatientID", true));
-            this.patientIDTextBox.Location = new System.Drawing.Point(535, 35);
-            this.patientIDTextBox.Name = "patientIDTextBox";
-            this.patientIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.patientIDTextBox.TabIndex = 10;
-            // 
             // doctorBindingSource
             // 
             this.doctorBindingSource.DataSource = typeof(ClinicApp.Model.Doctor);
-            // 
-            // btnSearchPatient
-            // 
-            this.btnSearchPatient.Location = new System.Drawing.Point(335, 33);
-            this.btnSearchPatient.Name = "btnSearchPatient";
-            this.btnSearchPatient.Size = new System.Drawing.Size(100, 23);
-            this.btnSearchPatient.TabIndex = 11;
-            this.btnSearchPatient.Text = "Search Patient";
-            this.btnSearchPatient.UseVisualStyleBackColor = true;
-            this.btnSearchPatient.Click += new System.EventHandler(this.btnSearchPatient_Click);
             // 
             // AddAppointmentUserControl
             // 
@@ -272,8 +283,8 @@
             this.Size = new System.Drawing.Size(792, 401);
             this.Load += new System.EventHandler(this.AddAppointmentUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
