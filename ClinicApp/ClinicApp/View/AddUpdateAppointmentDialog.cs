@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ClinicApp.Model;
 using ClinicApp.Controller;
+using ClinicApp.View;
 
 namespace ClinicApp.View
 {
@@ -81,22 +82,17 @@ namespace ClinicApp.View
 
         private bool PutAppointment()
         {
-            bool validData = false;
+            bool isPut = false;
             newAppointment.AppointmentPatientID = this.patient.PatientID;
             newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
             newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
-            if (txtBoxAppointmentReason.Text == "")
-            {
-                MessageBox.Show(txtBoxAppointmentReason.Tag.ToString() + " is a required field.");
-                txtBoxAppointmentReason.Focus();
-            }
-            else
+            if (Validator.IsPresent(txtBoxAppointmentReason))
             {
                 newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
-                validData = true;
+                isPut = true;
             }
-            return validData;
-            
+            return isPut;
+
         }
 
         private DateTime CombineDateTime(DateTime date, DateTime time)
@@ -134,21 +130,28 @@ namespace ClinicApp.View
         {
             if (this.PutAppointment())
             {
-                if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
+                MessageBox.Show("doctorid " + (this.newAppointment.AppointmentDoctorID == this.appointment.AppointmentDoctorID).ToString());
+                MessageBox.Show("apptdatetime " + (this.newAppointment.AppointmentDateTime == this.appointment.AppointmentDateTime).ToString());
+                if (this.newAppointment.AppointmentDoctorID == this.appointment.AppointmentDoctorID && this.newAppointment.AppointmentDateTime == this.appointment.AppointmentDateTime)
                 {
                     try
                     {
-                        if (!this.appointmentController.UpdateAppointment(this.appointment, this.newAppointment))
-                        {
-                            MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Appointment Updated");
-                            this.appointment = this.newAppointment;
-                            this.DialogResult = DialogResult.OK;
-                        }
-
+                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
+                else if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
+                {
+                    try
+                    {
+                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex)
                     {
@@ -161,6 +164,7 @@ namespace ClinicApp.View
                         ". Please choose a different time.");
                 }
             }
+
         }
     }
 }

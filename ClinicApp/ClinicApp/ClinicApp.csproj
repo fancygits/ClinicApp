@@ -60,7 +60,7 @@
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
-	<Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Doctor.cs" />
@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Validator.cs" />
     <EmbeddedResource Include="UserControls\AddAppointmentUserControl.resx">
       <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
