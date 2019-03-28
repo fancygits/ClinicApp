@@ -12,7 +12,6 @@ namespace ClinicApp.UserControls
         public Nurse nurse;
         private List<Nurse> listOfNurses;
         private VisitController visitController;
-        private NurseController nurseController;
         public AddVisitUserControl()
         {
             InitializeComponent();
@@ -90,7 +89,6 @@ namespace ClinicApp.UserControls
                 {
                     MessageBox.Show("Your visit was successfully added", "Success");
                     NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
-             //       this.PutData(newVisit);
                     this.addVisitButton.Enabled = false;
                 }
             } catch (Exception ex)
