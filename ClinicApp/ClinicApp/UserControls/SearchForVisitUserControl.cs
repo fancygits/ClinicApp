@@ -14,23 +14,14 @@ namespace ClinicApp.UserControls
         public Visit visit;
         private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
-        private static SearchForVisitUserControl instance;
-        private SearchForVisitUserControl()
+
+        public SearchForVisitUserControl()
         {
             InitializeComponent();
             this.listOfPatients = new List<Patient>();
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
 
-        }
-
-        public static SearchForVisitUserControl Instance()
-        {
-            if (instance == null)
-            {
-                instance = new SearchForVisitUserControl();
-            }
-            return instance;
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace ClinicApp.UserControls
                 {
                     this.visit = newVisit;
                     MessageBox.Show("Your visit has been successfully updated", "Success");
-                    SearchForVisitUserControl.Instance().DisplayVistsByPatient();
+                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                     this.PutData(newVisit);
                 }
             } catch (Exception ex)
@@ -89,7 +89,7 @@ namespace ClinicApp.UserControls
                 } else
                 {
                     MessageBox.Show("Your visit was successfully added", "Success");
-                    SearchForVisitUserControl.Instance().DisplayVistsByPatient();
+                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
              //       this.PutData(newVisit);
                     this.addVisitButton.Enabled = false;
                 }
