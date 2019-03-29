@@ -9,12 +9,13 @@ namespace ClinicApp.UserControls
     public partial class AddVisitUserControl : UserControl
     {
         public Visit visit;
-        private List<Visit> listOfNurses;
+        public Nurse nurse;
+        private List<Nurse> listOfNurses;
         private VisitController visitController;
         public AddVisitUserControl()
         {
             InitializeComponent();
-            this.listOfNurses = new List<Visit>();
+            this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
         }
 
@@ -65,7 +66,7 @@ namespace ClinicApp.UserControls
                 {
                     this.visit = newVisit;
                     MessageBox.Show("Your visit has been successfully updated", "Success");
-                    SearchForVisitUserControl.Instance().DisplayVistsByPatient();
+                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                     this.PutData(newVisit);
                 }
             } catch (Exception ex)
@@ -87,8 +88,7 @@ namespace ClinicApp.UserControls
                 } else
                 {
                     MessageBox.Show("Your visit was successfully added", "Success");
-                    SearchForVisitUserControl.Instance().DisplayVistsByPatient();
-             //       this.PutData(newVisit);
+                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                     this.addVisitButton.Enabled = false;
                 }
             } catch (Exception ex)

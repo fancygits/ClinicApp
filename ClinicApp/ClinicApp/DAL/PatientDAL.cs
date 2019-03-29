@@ -31,17 +31,17 @@ namespace ClinicApp.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         int patientIDOrd = reader.GetOrdinal("patientID");
-                        int personIDOrd  = reader.GetOrdinal("personID");
-                        int lastNameOrd  = reader.GetOrdinal("lastName");
+                        int personIDOrd = reader.GetOrdinal("personID");
+                        int lastNameOrd = reader.GetOrdinal("lastName");
                         int firstNameOrd = reader.GetOrdinal("firstName");
                         int birthDateOrd = reader.GetOrdinal("birthDate");
-                        int ssnOrd       = reader.GetOrdinal("SSN");
-                        int genderOrd    = reader.GetOrdinal("gender");
-                        int addressOrd   = reader.GetOrdinal("streetAddress");
-                        int cityOrd      = reader.GetOrdinal("city");
-                        int stateOrd     = reader.GetOrdinal("state");
-                        int postCodeOrd  = reader.GetOrdinal("postCode");
-                        int phoneOrd     = reader.GetOrdinal("phoneNumber");
+                        int ssnOrd = reader.GetOrdinal("SSN");
+                        int genderOrd = reader.GetOrdinal("gender");
+                        int addressOrd = reader.GetOrdinal("streetAddress");
+                        int cityOrd = reader.GetOrdinal("city");
+                        int stateOrd = reader.GetOrdinal("state");
+                        int postCodeOrd = reader.GetOrdinal("postCode");
+                        int phoneOrd = reader.GetOrdinal("phoneNumber");
                         while (reader.Read())
                         {
                             Patient patient = new Patient();
@@ -63,7 +63,7 @@ namespace ClinicApp.DAL
                     }
                 }
             }
-                return patientList;
+            return patientList;
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace ClinicApp.DAL
         public static Patient GetPatientByID(int patientID)
         {
             Patient patient = new Patient();
-            string selectStatement = 
+            string selectStatement =
                 "SELECT patientID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
                 "streetAddress, city, state, postCode, phoneNumber, username " +
                 "FROM Patient " +
@@ -115,7 +115,10 @@ namespace ClinicApp.DAL
                             patient.State = reader.GetString(stateOrd);
                             patient.PostCode = reader.GetString(postCodeOrd);
                             patient.PhoneNumber = reader.GetString(phoneOrd);
-                            if (!reader.IsDBNull(usernameOrd)) patient.Username = reader.GetString(usernameOrd);
+                            if (!reader.IsDBNull(usernameOrd))
+                            {
+                                patient.Username = reader.GetString(usernameOrd);
+                            }
                         }
                         else
                         {

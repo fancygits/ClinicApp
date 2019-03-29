@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ClinicApp.Model;
 using ClinicApp.Controller;
+using ClinicApp.View;
 
 namespace ClinicApp.View
 {
@@ -79,12 +80,19 @@ namespace ClinicApp.View
             }
         }
 
-        private void PutAppointment()
+        private bool PutAppointment()
         {
+            bool isPut = false;
             newAppointment.AppointmentPatientID = this.patient.PatientID;
             newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
             newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
-            newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
+            if (Validator.IsPresent(txtBoxAppointmentReason))
+            {
+                newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
+                isPut = true;
+            }
+            return isPut;
+
         }
 
         private DateTime CombineDateTime(DateTime date, DateTime time)
@@ -95,17 +103,68 @@ namespace ClinicApp.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.PutAppointment();
-            try
+            if (this.PutAppointment())
             {
-                this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                this.appointment = this.newAppointment;
-                this.DialogResult = DialogResult.OK;
+                if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
+                {
+                    try
+                    {
+                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This Doctor is already booked for " + this.newAppointment.AppointmentDateTime.ToShortTimeString() +
+                        ". Please choose a different time.");
+                }
             }
-            catch (Exception ex)
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (this.PutAppointment())
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                // Gets around the DoctorID Appointment DateTime constraint to update the visitReason on an existing appointment
+                if (this.newAppointment.AppointmentDoctorID == this.appointment.AppointmentDoctorID && this.newAppointment.AppointmentDateTime == this.appointment.AppointmentDateTime)
+                {
+                    try
+                    {
+                        this.newAppointment.AppointmentDateTime = this.newAppointment.AppointmentDateTime.AddSeconds(1);
+                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
+                else if (!this.appointmentController.CheckDoubleBooking(this.newAppointment.AppointmentDoctorID, this.newAppointment.AppointmentDateTime))
+                {
+                    try
+                    {
+                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
+                        this.appointment = this.newAppointment;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This Doctor is already booked for " + this.newAppointment.AppointmentDateTime.ToShortTimeString() +
+                        ". Please choose a different time.");
+                }
             }
+
         }
     }
 }
