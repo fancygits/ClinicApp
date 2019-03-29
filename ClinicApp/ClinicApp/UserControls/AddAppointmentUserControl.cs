@@ -45,8 +45,10 @@ namespace ClinicApp.UserControls
             }
             else
             {
+                MessageBox.Show("hello from inside else");
                 if (this.appointmentList != null)
                 {
+                    MessageBox.Show("hello from inside if");
                     appointmentList.Clear();
                 }
             }
@@ -65,34 +67,45 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void btnGetPatient_Click(object sender, EventArgs e)
+        private void Clear()
         {
-            int patientID = Convert.ToInt32(patientIDTextBox.Text);
-            this.GetPatient(patientID);
-            this.RefreshPage();
+            patientBindingSource.Clear();
+            birthDateDateTimePicker.Text = "";
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            appointmentDataGridView.DataSource = null;
+            appointmentDataGridView.Refresh();
+            firstNameTextBox.Focus();
+        }
 
-        }
+        //private void btnGetPatient_Click(object sender, EventArgs e)
+        //{
+        //    int patientID = Convert.ToInt32(patientIDTextBox.Text);
+        //    this.GetPatient(patientID);
+        //    this.RefreshPage();
+
+        //}
         
-        private void GetPatient(int patientID)
-        {
-            try
-            {
-                this.patient = this.patientController.GetPatientByID(patientID);
-                if (patient != null)
-                {
-                    patientBindingSource.Clear();
-                    patientBindingSource.Add(patient);
-                }
-                else
-                {
+        //private void GetPatient(int patientID)
+        //{
+        //    try
+        //    {
+        //        this.patient = this.patientController.GetPatientByID(patientID);
+        //        if (patient != null)
+        //        {
+        //            patientBindingSource.Clear();
+        //            patientBindingSource.Add(patient);
+        //        }
+        //        else
+        //        {
                     
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
+        //    }
+        //}
 
         private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,50 +138,24 @@ namespace ClinicApp.UserControls
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
-            try
+            this.patient = this.FindPatient(firstName, lastName, birthDate);
+            if (this.patient != null)
             {
-                patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
-                if (patient == null)
-                {
-                    List<Patient> patientList = this.patientController.SearchPatientsByName(firstName, lastName, birthDate);
-                    if (patientList.Count == 0)
-                    {
-                        this.NoMatchesDialog();
-                    }
-                    else
-                    {
-                        this.GetMatchingPatients(patientList);
-                    }
-                    if (patient == null)
-                    {
-                        return;
-                    }
-                }
                 patientBindingSource.Clear();
                 patientBindingSource.Add(patient);
                 this.RefreshPage();
             }
-            catch (Exception ex)
+           else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                this.NoMatchesDialog();
             }
-
         }
 
         /// <summary>
         /// Displays a dialog of matching patients
         /// </summary>
         /// <param name="patientList"></param>
-        private void GetMatchingPatients(List<Patient> patientList)
-        {
-            FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
-            findPatientsDialog.patientList = patientList;
-            DialogResult result = findPatientsDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                patient = findPatientsDialog.patient;
-            }
-        }
+
 
         private void NoMatchesDialog()
         {
@@ -184,6 +171,11 @@ namespace ClinicApp.UserControls
         private void AddPatientDialog()
         {
 
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.Clear();
         }
     }
 }
