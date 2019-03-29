@@ -281,5 +281,13 @@ namespace ClinicApp.DAL
             }
             return patientList;
         }
+
+        public static int AddPatient(Patient patient)
+        {
+            // TODO Create a transaction
+            // TODO Create a new Person
+            // TODO Add a new Patient with the PersonID
+            return -1;
+        }
     }
 }
