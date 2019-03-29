@@ -26,7 +26,6 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.patientController = new PatientController();
-            //this.patient = new Patient();
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
@@ -39,16 +38,16 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void RefreshPage()
         {
+            btnAddAppointment.Enabled = false;
             if (this.patient != null)
             {
                 this.GetAppointmentList(this.patient.PatientID);
+                btnAddAppointment.Enabled = true;
             }
             else
             {
-                MessageBox.Show("hello from inside else");
                 if (this.appointmentList != null)
                 {
-                    MessageBox.Show("hello from inside if");
                     appointmentList.Clear();
                 }
             }
@@ -75,6 +74,7 @@ namespace ClinicApp.UserControls
             lastNameTextBox.Text = "";
             appointmentDataGridView.DataSource = null;
             appointmentDataGridView.Refresh();
+            btnAddAppointment.Enabled = false;
             firstNameTextBox.Focus();
         }
 
