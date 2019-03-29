@@ -64,6 +64,16 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
+        /// Adds a new Patient
+        /// </summary>
+        /// <param name="patient">The Patient to add</param>
+        /// <returns>The new PatientID</returns>
+        public int AddPatient(Patient patient)
+        {
+            return PatientDAL.AddPatient(patient);
+        }
+
+        /// <summary>
         /// Gets a list of US States and Canadian Provinces
         /// </summary>
         /// <returns>A List of States</returns>

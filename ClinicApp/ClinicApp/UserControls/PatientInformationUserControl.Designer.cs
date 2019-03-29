@@ -47,7 +47,7 @@
             this.postCodeTextBox = new System.Windows.Forms.TextBox();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
             this.btnGetPatient = new System.Windows.Forms.Button();
-            this.btnUpdatePatient = new System.Windows.Forms.Button();
+            this.btnAddUpdatePatient = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
@@ -57,6 +57,7 @@
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.btnSearchAppointments = new System.Windows.Forms.Button();
             this.btnSearchVisits = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@
             streetAddressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // birthDateLabel
@@ -125,7 +127,7 @@
             // 
             phoneNumberLabel.AutoSize = true;
             phoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            phoneNumberLabel.Location = new System.Drawing.Point(390, 266);
+            phoneNumberLabel.Location = new System.Drawing.Point(390, 265);
             phoneNumberLabel.Name = "phoneNumberLabel";
             phoneNumberLabel.Size = new System.Drawing.Size(119, 20);
             phoneNumberLabel.TabIndex = 14;
@@ -135,7 +137,7 @@
             // 
             postCodeLabel.AutoSize = true;
             postCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            postCodeLabel.Location = new System.Drawing.Point(390, 188);
+            postCodeLabel.Location = new System.Drawing.Point(390, 227);
             postCodeLabel.Name = "postCodeLabel";
             postCodeLabel.Size = new System.Drawing.Size(87, 20);
             postCodeLabel.TabIndex = 16;
@@ -155,7 +157,7 @@
             // 
             stateLabel.AutoSize = true;
             stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            stateLabel.Location = new System.Drawing.Point(390, 227);
+            stateLabel.Location = new System.Drawing.Point(390, 187);
             stateLabel.Name = "stateLabel";
             stateLabel.Size = new System.Drawing.Size(52, 20);
             stateLabel.TabIndex = 20;
@@ -165,7 +167,7 @@
             // 
             streetAddressLabel.AutoSize = true;
             streetAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            streetAddressLabel.Location = new System.Drawing.Point(390, 110);
+            streetAddressLabel.Location = new System.Drawing.Point(390, 111);
             streetAddressLabel.Name = "streetAddressLabel";
             streetAddressLabel.Size = new System.Drawing.Size(120, 20);
             streetAddressLabel.TabIndex = 22;
@@ -225,10 +227,10 @@
             this.postCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PostCode", true));
             this.postCodeTextBox.Enabled = false;
             this.postCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.postCodeTextBox.Location = new System.Drawing.Point(516, 185);
+            this.postCodeTextBox.Location = new System.Drawing.Point(516, 224);
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
-            this.postCodeTextBox.TabIndex = 8;
+            this.postCodeTextBox.TabIndex = 9;
             this.postCodeTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // streetAddressTextBox
@@ -236,7 +238,7 @@
             this.streetAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "StreetAddress", true));
             this.streetAddressTextBox.Enabled = false;
             this.streetAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streetAddressTextBox.Location = new System.Drawing.Point(516, 107);
+            this.streetAddressTextBox.Location = new System.Drawing.Point(516, 108);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 26);
             this.streetAddressTextBox.TabIndex = 6;
@@ -254,20 +256,19 @@
             this.btnGetPatient.TabIndex = 3;
             this.btnGetPatient.Text = "Get Patient";
             this.btnGetPatient.UseVisualStyleBackColor = true;
-            this.btnGetPatient.Click += new System.EventHandler(this.GetPatient);
+            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
             this.btnGetPatient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
-            // btnUpdatePatient
+            // btnAddUpdatePatient
             // 
-            this.btnUpdatePatient.Enabled = false;
-            this.btnUpdatePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePatient.Location = new System.Drawing.Point(647, 345);
-            this.btnUpdatePatient.Name = "btnUpdatePatient";
-            this.btnUpdatePatient.Size = new System.Drawing.Size(130, 35);
-            this.btnUpdatePatient.TabIndex = 11;
-            this.btnUpdatePatient.Text = "Update Patient";
-            this.btnUpdatePatient.UseVisualStyleBackColor = true;
-            this.btnUpdatePatient.Click += new System.EventHandler(this.btnUpdatePatient_Click);
+            this.btnAddUpdatePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUpdatePatient.Location = new System.Drawing.Point(608, 345);
+            this.btnAddUpdatePatient.Name = "btnAddUpdatePatient";
+            this.btnAddUpdatePatient.Size = new System.Drawing.Size(175, 35);
+            this.btnAddUpdatePatient.TabIndex = 11;
+            this.btnAddUpdatePatient.Text = "Update Patient";
+            this.btnAddUpdatePatient.UseVisualStyleBackColor = true;
+            this.btnAddUpdatePatient.Click += new System.EventHandler(this.btnAddUpdatePatient_Click);
             // 
             // lblMessage
             // 
@@ -300,10 +301,10 @@
             this.stateComboBox.Enabled = false;
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(516, 224);
+            this.stateComboBox.Location = new System.Drawing.Point(516, 184);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 28);
-            this.stateComboBox.TabIndex = 29;
+            this.stateComboBox.TabIndex = 8;
             this.stateComboBox.ValueMember = "Abbreviation";
             this.stateComboBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -320,7 +321,7 @@
             this.btnClear.TabIndex = 30;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.ClearFields);
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // sSNMaskedTextBox
             // 
@@ -330,18 +331,18 @@
             this.sSNMaskedTextBox.Mask = "000-00-0000";
             this.sSNMaskedTextBox.Name = "sSNMaskedTextBox";
             this.sSNMaskedTextBox.Size = new System.Drawing.Size(200, 26);
-            this.sSNMaskedTextBox.TabIndex = 31;
+            this.sSNMaskedTextBox.TabIndex = 4;
             this.sSNMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // phoneNumberMaskedTextBox
             // 
             this.phoneNumberMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PhoneNumber", true));
             this.phoneNumberMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneNumberMaskedTextBox.Location = new System.Drawing.Point(516, 263);
+            this.phoneNumberMaskedTextBox.Location = new System.Drawing.Point(516, 262);
             this.phoneNumberMaskedTextBox.Mask = "(999) 000-0000";
             this.phoneNumberMaskedTextBox.Name = "phoneNumberMaskedTextBox";
             this.phoneNumberMaskedTextBox.Size = new System.Drawing.Size(200, 26);
-            this.phoneNumberMaskedTextBox.TabIndex = 32;
+            this.phoneNumberMaskedTextBox.TabIndex = 10;
             this.phoneNumberMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // btnSearchAppointments
@@ -349,20 +350,25 @@
             this.btnSearchAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchAppointments.Location = new System.Drawing.Point(31, 345);
             this.btnSearchAppointments.Name = "btnSearchAppointments";
-            this.btnSearchAppointments.Size = new System.Drawing.Size(192, 35);
-            this.btnSearchAppointments.TabIndex = 33;
+            this.btnSearchAppointments.Size = new System.Drawing.Size(175, 35);
+            this.btnSearchAppointments.TabIndex = 12;
             this.btnSearchAppointments.Text = "Search Appointments";
             this.btnSearchAppointments.UseVisualStyleBackColor = true;
+            this.btnSearchAppointments.Click += new System.EventHandler(this.btnSearchAppointments_Click);
             // 
             // btnSearchVisits
             // 
             this.btnSearchVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchVisits.Location = new System.Drawing.Point(244, 345);
             this.btnSearchVisits.Name = "btnSearchVisits";
-            this.btnSearchVisits.Size = new System.Drawing.Size(192, 35);
-            this.btnSearchVisits.TabIndex = 34;
+            this.btnSearchVisits.Size = new System.Drawing.Size(175, 35);
+            this.btnSearchVisits.TabIndex = 13;
             this.btnSearchVisits.Text = "Search Visits";
             this.btnSearchVisits.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // PatientInformationUserControl
             // 
@@ -376,7 +382,7 @@
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.btnUpdatePatient);
+            this.Controls.Add(this.btnAddUpdatePatient);
             this.Controls.Add(this.btnGetPatient);
             this.Controls.Add(birthDateLabel);
             this.Controls.Add(this.birthDateDateTimePicker);
@@ -399,6 +405,7 @@
             this.Load += new System.EventHandler(this.PatientInformationUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,7 +421,7 @@
         private System.Windows.Forms.TextBox postCodeTextBox;
         private System.Windows.Forms.TextBox streetAddressTextBox;
         private System.Windows.Forms.Button btnGetPatient;
-        private System.Windows.Forms.Button btnUpdatePatient;
+        private System.Windows.Forms.Button btnAddUpdatePatient;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.ComboBox genderComboBox;
         private System.Windows.Forms.ComboBox stateComboBox;
@@ -424,5 +431,6 @@
         private System.Windows.Forms.MaskedTextBox phoneNumberMaskedTextBox;
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

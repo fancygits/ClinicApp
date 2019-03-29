@@ -1,6 +1,5 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
-using ClinicApp.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,10 +9,10 @@ namespace ClinicApp.UserControls
     /// <summary>
     /// UserControl for Patient Information
     /// </summary>
-    public partial class PatientInformationUserControl : UserControl
+    public partial class PatientInformationUserControl : UserControl, IUserControlSearch
     {
         private readonly PatientController patientController;
-        private Patient patient;
+        public Patient patient;
         private Patient newPatient;
         private List<State> stateList;
 
@@ -35,9 +34,9 @@ namespace ClinicApp.UserControls
         {
             newPatient = new Patient();
             this.LoadComboboxes();
-            this.DisableUpdates();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            this.ClearFields(null, null);
+            this.ClearFields();
+            this.DisableFields();
         }
 
         /// <summary>
@@ -45,57 +44,26 @@ namespace ClinicApp.UserControls
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, prompts to add a new Patient.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GetPatient(object sender, EventArgs e)
+        private void GetPatient()
         {
+            
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
-            try
+            this.patient = this.FindPatient(firstName, lastName, birthDate);
+            if (this.patient != null)
             {
-                patient = this.patientController.GetPatientByName(firstName, lastName, birthDate);
-                if (patient == null)
-                {
-                    List<Patient> patientList = this.patientController.SearchPatientsByName(firstName, lastName, birthDate);
-                    if (patientList.Count == 0)
-                    {
-                        this.NoMatchesDialog();
-                    }
-                    else
-                    {
-                        this.GetMatchingPatients(patientList);
-                    }
-                    if (patient == null)
-                    {
-                        return;
-                    }
-                }
+                btnAddUpdatePatient.Text = "Update Patient";
                 this.PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
-                this.EnableUpdates();
+                this.EnableFields();
                 btnGetPatient.Enabled = false;
-                btnUpdatePatient.Enabled = false;
+                btnAddUpdatePatient.Enabled = false;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
-
-        /// <summary>
-        /// Displays a dialog of matching patients
-        /// </summary>
-        /// <param name="patientList"></param>
-        private void GetMatchingPatients(List<Patient> patientList)
-        {
-            FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
-            findPatientsDialog.patientList = patientList;
-            DialogResult result = findPatientsDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                patient = findPatientsDialog.patient;
+                this.NoMatchesDialog();
             }
         }
 
@@ -109,27 +77,24 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.AddPatientDialog();
+                this.AddPatient();
             }
         }
 
-        private void AddPatientDialog()
+        private void AddPatient()
         {
-
-        }
-
-        /// <summary>
-        /// Updates the patient
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnUpdatePatient_Click(object sender, EventArgs e)
-        {
+            
             try
             {
-                if (this.patientController.UpdatePatient(patient, newPatient))
+                int patientID = this.patientController.AddPatient(patient);
+                if (patientID > 0)
                 {
-                    lblMessage.Text = "Patient has been updated successfully.";
+                    this.GetPatient();
+                    lblMessage.Text = "Patient " + patientID + " has been added successfully.";
+                }
+                else
+                {
+                    lblMessage.Text = "Error: There was a problem adding a new patient.";
                 }
             }
             catch (Exception ex)
@@ -137,9 +102,31 @@ namespace ClinicApp.UserControls
                 MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
                                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
+        }
+
+        /// <summary>
+        /// Updates the patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdatePatient()
+        {
+            try
             {
-                this.GetPatient(null, null);
+                if (this.patientController.UpdatePatient(patient, newPatient))
+                {
+                    this.GetPatient();
+                    lblMessage.Text = "Patient has been updated successfully.";
+                }
+                else
+                {
+                    lblMessage.Text = "Error: There was a problem updating this patient.";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -168,10 +155,12 @@ namespace ClinicApp.UserControls
         /// </summary>
         private void LoadComboboxes()
         {
-            var genderDatasource = new List<KeyValuePair<string, string>>();
-            genderDatasource.Add(new KeyValuePair < string, string>("Male", "M"));
-            genderDatasource.Add(new KeyValuePair<string, string>("Female", "F"));
-            genderDatasource.Add(new KeyValuePair<string, string>("Other", "O"));
+            var genderDatasource = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("Male", "M"),
+                new KeyValuePair<string, string>("Female", "F"),
+                new KeyValuePair<string, string>("Other", "O")
+            };
             genderComboBox.DataSource = genderDatasource;
             genderComboBox.DisplayMember = "Key";
             genderComboBox.ValueMember = "Value";
@@ -181,8 +170,19 @@ namespace ClinicApp.UserControls
             stateComboBox.DataSource = stateList;
             stateComboBox.SelectedValue = "";
         }
+        
+        private void ClearFields()
+        {
+            patientBindingSource.Clear();
+            birthDateDateTimePicker.Text = "";
+            btnGetPatient.Enabled = false;
+            btnSearchAppointments.Enabled = false;
+            btnSearchVisits.Enabled = false;
+            lblMessage.Text = "";
+            firstNameTextBox.Focus();
+        }
 
-        private void EnableUpdates()
+        private void EnableFields()
         {
             sSNMaskedTextBox.Enabled = true;
             genderComboBox.Enabled = true;
@@ -192,10 +192,9 @@ namespace ClinicApp.UserControls
             stateComboBox.Enabled = true;
             phoneNumberMaskedTextBox.Enabled = true;
             btnSearchAppointments.Enabled = true;
-            btnSearchVisits.Enabled = true;
         }
 
-        private void DisableUpdates()
+        private void DisableFields()
         {
             sSNMaskedTextBox.Enabled = false;
             genderComboBox.Enabled = false;
@@ -204,7 +203,7 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = false;
             stateComboBox.Enabled = false;
             phoneNumberMaskedTextBox.Enabled = false;
-            btnUpdatePatient.Enabled = false;
+            btnAddUpdatePatient.Text = "Add Patient";
         }
 
         /// <summary>
@@ -214,29 +213,18 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void PatientTextboxChanged(object sender, EventArgs e)
         {
-            if (cityTextBox.Text != "")
+            if (sSNMaskedTextBox.MaskFull)
             {
-                if (btnUpdatePatient.Enabled == false)
+                if (btnAddUpdatePatient.Enabled == false)
                 {
                     lblMessage.Text = "";
                 }
-                btnUpdatePatient.Enabled = true;
+                btnAddUpdatePatient.Enabled = true;
             }
+
             btnGetPatient.Enabled = true;
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
-        }
-
-        private void ClearFields(object sender, EventArgs e)
-        {
-            this.DisableUpdates();
-            patientBindingSource.Clear();
-            birthDateDateTimePicker.Text = "";
-            btnGetPatient.Enabled = false;
-            btnSearchAppointments.Enabled = false;
-            btnSearchVisits.Enabled = false;
-            lblMessage.Text = "";
-            firstNameTextBox.Focus();
         }
 
         /// <summary>
@@ -250,6 +238,52 @@ namespace ClinicApp.UserControls
             {
                 e.Handled = true;
                 btnGetPatient.PerformClick();
+            }
+        }
+
+        
+
+        private void btnSearchAppointments_Click(object sender, EventArgs e)
+        {
+            TabControl tabControl = this.Parent.Parent as TabControl;
+            tabControl.SelectedIndex = 1;
+            AddAppointmentUserControl addAppointmentUserControl = tabControl.TabPages[1].Controls[0] as AddAppointmentUserControl;
+            addAppointmentUserControl.patient = this.patient;
+            addAppointmentUserControl.RefreshPage();
+        }
+
+        private void btnGetPatient_Click(object sender, EventArgs e)
+        {
+            this.GetPatient();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.ClearFields();
+            this.DisableFields();
+        }
+
+        private void btnAddUpdatePatient_Click(object sender, EventArgs e)
+        {
+            if (btnAddUpdatePatient.Text == "Update Patient")
+            {
+                this.UpdatePatient();
+            }
+            else 
+            {
+                if (patient == null)
+                {
+                    patient = new Patient();
+                    patientBindingSource.Add(patient);
+                }
+                if (sSNMaskedTextBox.Enabled)
+                {
+                    this.AddPatient();
+                }
+                else
+                {
+                    this.EnableFields();
+                }
             }
         }
     }

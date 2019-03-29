@@ -1,12 +1,4 @@
 ﻿using ClinicApp.View;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicApp
@@ -14,6 +6,7 @@ namespace ClinicApp
     public partial class NurseDashboard : Form
     {
         private static NurseDashboard instance = null;
+        public TabControl patientTabControl;
         private NurseDashboard()
         {
             InitializeComponent();

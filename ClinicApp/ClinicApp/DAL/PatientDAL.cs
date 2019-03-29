@@ -19,7 +19,7 @@ namespace ClinicApp.DAL
             List<Patient> patientList = new List<Patient>();
             string selectStatement =
                 "SELECT patientID, p.personID, lastName, firstName, birthDate, SSN, gender," +
-                "streetAddress, city, state, postCode, phoneNumber " +
+                "streetAddress, city, state, postCode, phoneNumber, username " +
                 "FROM Person p " +
                 "JOIN Patient ON p.personID = Patient.personID " +
                 "ORDER BY patientID";
@@ -35,13 +35,14 @@ namespace ClinicApp.DAL
                         int lastNameOrd = reader.GetOrdinal("lastName");
                         int firstNameOrd = reader.GetOrdinal("firstName");
                         int birthDateOrd = reader.GetOrdinal("birthDate");
-                        int ssnOrd = reader.GetOrdinal("SSN");
-                        int genderOrd = reader.GetOrdinal("gender");
-                        int addressOrd = reader.GetOrdinal("streetAddress");
-                        int cityOrd = reader.GetOrdinal("city");
-                        int stateOrd = reader.GetOrdinal("state");
-                        int postCodeOrd = reader.GetOrdinal("postCode");
-                        int phoneOrd = reader.GetOrdinal("phoneNumber");
+                        int ssnOrd       = reader.GetOrdinal("SSN");
+                        int genderOrd    = reader.GetOrdinal("gender");
+                        int addressOrd   = reader.GetOrdinal("streetAddress");
+                        int cityOrd      = reader.GetOrdinal("city");
+                        int stateOrd     = reader.GetOrdinal("state");
+                        int postCodeOrd  = reader.GetOrdinal("postCode");
+                        int phoneOrd     = reader.GetOrdinal("phoneNumber");
+                        int usernameOrd  = reader.GetOrdinal("username");
                         while (reader.Read())
                         {
                             Patient patient = new Patient();
@@ -57,7 +58,10 @@ namespace ClinicApp.DAL
                             patient.State = reader.GetString(stateOrd);
                             patient.PostCode = reader.GetString(postCodeOrd);
                             patient.PhoneNumber = reader.GetString(phoneOrd);
-
+                            if (!reader.IsDBNull(usernameOrd))
+                            {
+                                patient.Username = reader.GetString(usernameOrd);
+                            }
                             patientList.Add(patient);
                         }
                     }
@@ -250,6 +254,7 @@ namespace ClinicApp.DAL
                         int stateOrd = reader.GetOrdinal("state");
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
+                        int usernameOrd = reader.GetOrdinal("username");
                         while (reader.Read())
                         {
                             Patient patient = new Patient();
@@ -265,13 +270,24 @@ namespace ClinicApp.DAL
                             patient.State = reader.GetString(stateOrd);
                             patient.PostCode = reader.GetString(postCodeOrd);
                             patient.PhoneNumber = reader.GetString(phoneOrd);
-
+                            if (!reader.IsDBNull(usernameOrd))
+                            {
+                                patient.Username = reader.GetString(usernameOrd);
+                            }
                             patientList.Add(patient);
                         }
                     }
                 }
             }
             return patientList;
+        }
+
+        public static int AddPatient(Patient patient)
+        {
+            // TODO Create a transaction
+            // TODO Create a new Person
+            // TODO Add a new Patient with the PersonID
+            return -1;
         }
     }
 }

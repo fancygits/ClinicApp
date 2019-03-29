@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ClinicApp.Controller;
+﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using ClinicApp.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
     /// <summary>
     /// User Control for getting and adding patient Appointment objects
     /// </summary>
-    public partial class AddAppointmentUserControl : UserControl
+    public partial class AddAppointmentUserControl : UserControl, IUserControlSearch
     {
 
         private readonly PatientController patientController;
         private readonly AppointmentController appointmentController;
-        private Patient patient;
+        public Patient patient;
         private List<Appointment> appointmentList;
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.patientController = new PatientController();
-            this.patient = new Patient();
+            //this.patient = new Patient();
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
@@ -51,6 +51,7 @@ namespace ClinicApp.UserControls
                 }
             }
         }
+
         private void GetAppointmentList(int patientID)
         {
             try
