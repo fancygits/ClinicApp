@@ -90,5 +90,44 @@ namespace ClinicApp.DAL
                 }
             }
         }
+
+        public static int AddPerson(Person person)
+        {
+            int personID;
+            string insertStatement =
+                "INSERT INTO Person " +
+                "(lastName, firstName, birthDate, SSN, gender, " +
+                "streetAddress, city, state, postCode, phoneNumber, username) " +
+                "VALUES (@lastName, @firstName, @birthDate, @SSN, @gender, " +
+                "@streetAddress, @city, @state, @postCode, @phoneNumber, @username)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@lastName", person.LastName);
+                    insertCommand.Parameters.AddWithValue("@firstName", person.FirstName);
+                    insertCommand.Parameters.AddWithValue("@birthDate", person.BirthDate);
+                    insertCommand.Parameters.AddWithValue("@SSN", person.SSN);
+                    insertCommand.Parameters.AddWithValue("@gender", person.Gender);
+                    insertCommand.Parameters.AddWithValue("@streetAddress", person.StreetAddress);
+                    insertCommand.Parameters.AddWithValue("@city", person.City);
+                    insertCommand.Parameters.AddWithValue("@state", person.State);
+                    insertCommand.Parameters.AddWithValue("@postCode", person.PostCode);
+                    insertCommand.Parameters.AddWithValue("@phoneNumber", person.PhoneNumber);
+                    if (person.Username == "" || person.Username == null)
+                    {
+                        insertCommand.Parameters.AddWithValue("@username", DBNull.Value);
+                    }
+                    else
+                    {
+                        insertCommand.Parameters.AddWithValue("@username", person.Username);
+                    }
+                    personID = insertCommand.ExecuteNonQuery();
+                }
+
+            }
+            return personID;
+        }
     }
 }
