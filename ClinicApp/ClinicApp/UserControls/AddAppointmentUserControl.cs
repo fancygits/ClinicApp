@@ -151,11 +151,6 @@ namespace ClinicApp.UserControls
             }
         }
 
-        /// <summary>
-        /// Displays a dialog of matching patients
-        /// </summary>
-        /// <param name="patientList"></param>
-
 
         private void SwitchTabNoMatchesDialog()
 {
