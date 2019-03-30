@@ -1,5 +1,6 @@
 ﻿using ClinicApp.Model;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ClinicApp.DAL
@@ -9,6 +10,45 @@ namespace ClinicApp.DAL
     /// </summary>
     public class PersonDAL
     {
+        /// <summary>
+        /// Gets a person from the database based on personal details
+        /// </summary>
+        /// <param name="firstName">Person's first name</param>
+        /// <param name="lastName">Person's last name</param>
+        /// <param name="birthDate">Persons date of birth</param>
+        /// <param name="SSN">Person's SSN</param>
+        /// <returns>The personID of the found Person</returns>
+        public static int GetPersonID(string firstName, string lastName, string birthDate, string SSN)
+        {
+            int personID = -1;
+            string selectStatement =
+                "SELECT personID " +
+                "FROM Person " +
+                "WHERE firstName = @firstname " +
+                    "AND lastName = @lastName " +
+                    "AND birthDate = @birthDate " +
+                    "AND SSN = @SSN";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@firstName", firstName);
+                    selectCommand.Parameters.AddWithValue("@lastName", lastName);
+                    selectCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                    selectCommand.Parameters.AddWithValue("@SSN", SSN);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+                    {
+                        if (reader.Read())
+                        {
+                            personID = (int)reader["personID"];
+                        }
+                    }
+                }
+            }
+            return personID;
+        }
+
         /// <summary>
         /// Updates a Person in the database.
         /// </summary>

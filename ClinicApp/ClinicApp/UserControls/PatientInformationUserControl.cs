@@ -86,15 +86,30 @@ namespace ClinicApp.UserControls
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Text;
+            string SSN = sSNMaskedTextBox.Text;
+            int patientID = -1;
             try
             {
                 Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
                 if (tempPatient != null)
                 {
+                    patientID = tempPatient.PatientID;
                     lblMessage.Text = "Error: That person is already a patient.";
                     return;
                 }
-                int patientID = this.patientController.AddPatient(patient);
+                else
+                {
+                    patientID = PersonToPatient();
+                }
+                if (patientID > 0)
+                {
+                    lblMessage.Text = "Patient " + patientID + " has been added successfully.";
+                    return;
+                }
+                else
+                {
+                    patientID = this.patientController.AddPatient(patient);
+                }
                 if (patientID > 0)
                 {
                     this.GetPatient();
@@ -110,6 +125,43 @@ namespace ClinicApp.UserControls
                 MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
                                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// Checks if a Person already exists and offers to add them as a patient
+        /// </summary>
+        /// <returns>The new PatientID or -1 if fail</returns>
+        private int PersonToPatient()
+        {
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string birthDate = birthDateDateTimePicker.Text;
+            string SSN = sSNMaskedTextBox.Text;
+            int patientID = -1;
+            try
+            {
+                int personID = patientController.GetPersonID(firstName, lastName, birthDate, SSN);
+                if (personID > 0)
+                {
+                    DialogResult result = MessageBox.Show("That person already exists in our database.\n" +
+                            "S/he will be added as a new patient", "Person already exists",
+                            MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        patientID = patientController.InsertPatient(personID);
+                    }
+                    else
+                    {
+                        btnClear.PerformClick();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return patientID;
         }
 
         /// <summary>
@@ -262,6 +314,7 @@ namespace ClinicApp.UserControls
 
         private void btnGetPatient_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
             this.GetPatient();
         }
 
