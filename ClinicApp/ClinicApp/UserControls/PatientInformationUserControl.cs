@@ -1,5 +1,6 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -171,22 +172,25 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void UpdatePatient()
         {
-            try
+            if (IsValidData())
             {
-                if (this.patientController.UpdatePatient(patient, newPatient))
+                try
                 {
-                    this.GetPatient();
-                    lblMessage.Text = "Patient has been updated successfully.";
+                    if (this.patientController.UpdatePatient(patient, newPatient))
+                    {
+                        this.GetPatient();
+                        lblMessage.Text = "Patient has been updated successfully.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Error: There was a problem updating this patient.";
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    lblMessage.Text = "Error: There was a problem updating this patient.";
+                    MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
-                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -264,6 +268,25 @@ namespace ClinicApp.UserControls
             stateComboBox.Enabled = false;
             phoneNumberMaskedTextBox.Enabled = false;
             btnAddUpdatePatient.Text = "Add Patient";
+        }
+
+        private bool IsValidData()
+        {
+            
+            if (Validator.IsPresent(firstNameTextBox) &&
+                Validator.IsPresent(lastNameTextBox) &&
+                Validator.IsPresent(birthDateDateTimePicker) &&
+                Validator.IsPresent(sSNMaskedTextBox) &&
+                Validator.IsPresent(genderComboBox) &&
+                Validator.IsPresent(streetAddressTextBox) &&
+                Validator.IsPresent(cityTextBox) &&
+                Validator.IsPresent(stateComboBox) &&
+                Validator.IsPresent(postCodeTextBox) &&
+                Validator.IsPresent(phoneNumberMaskedTextBox))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

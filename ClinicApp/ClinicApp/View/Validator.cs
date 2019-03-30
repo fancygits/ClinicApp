@@ -11,7 +11,7 @@ namespace ClinicApp.View
 
       
         /// <summary>
-        /// Checks if TextBox objects are empty and shows error message
+        /// Checks if TextBox/ComboBox objects are empty and shows error message
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -35,6 +35,19 @@ namespace ClinicApp.View
                     return true;
                 }
             }
+            else if (control.GetType().ToString() == "System.Windows.Forms.Combobox")
+            {
+                ComboBox comboBox = (ComboBox)control;
+                if (comboBox.SelectedIndex == -1)
+                {
+                    error.SetError(comboBox, comboBox.Tag.ToString() + " is a required field.");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
             else if (control.GetType().ToString() == "System.Windows.Forms.RichTextBox")
             {
                 
@@ -51,6 +64,12 @@ namespace ClinicApp.View
                     return true;
                 }
             }
+            return true;
+        }
+
+
+        public static bool IsValidDate(Control control)
+        {
             return true;
         }
     }
