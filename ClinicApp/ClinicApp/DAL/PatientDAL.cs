@@ -1,4 +1,5 @@
 ﻿using ClinicApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -45,19 +46,21 @@ namespace ClinicApp.DAL
                         int usernameOrd  = reader.GetOrdinal("username");
                         while (reader.Read())
                         {
-                            Patient patient = new Patient();
-                            patient.PatientID = reader.GetInt32(patientIDOrd);
-                            patient.PersonID = reader.GetInt32(personIDOrd);
-                            patient.LastName = reader.GetString(lastNameOrd);
-                            patient.FirstName = reader.GetString(firstNameOrd);
-                            patient.BirthDate = reader.GetDateTime(birthDateOrd);
-                            patient.SSN = reader.GetString(ssnOrd);
-                            patient.Gender = reader.GetString(genderOrd);
-                            patient.StreetAddress = reader.GetString(addressOrd);
-                            patient.City = reader.GetString(cityOrd);
-                            patient.State = reader.GetString(stateOrd);
-                            patient.PostCode = reader.GetString(postCodeOrd);
-                            patient.PhoneNumber = reader.GetString(phoneOrd);
+                            Patient patient = new Patient
+                            {
+                                PatientID = reader.GetInt32(patientIDOrd),
+                                PersonID = reader.GetInt32(personIDOrd),
+                                LastName = reader.GetString(lastNameOrd),
+                                FirstName = reader.GetString(firstNameOrd),
+                                BirthDate = reader.GetDateTime(birthDateOrd),
+                                SSN = reader.GetString(ssnOrd),
+                                Gender = reader.GetString(genderOrd),
+                                StreetAddress = reader.GetString(addressOrd),
+                                City = reader.GetString(cityOrd),
+                                State = reader.GetString(stateOrd),
+                                PostCode = reader.GetString(postCodeOrd),
+                                PhoneNumber = reader.GetString(phoneOrd)
+                            };
                             if (!reader.IsDBNull(usernameOrd))
                             {
                                 patient.Username = reader.GetString(usernameOrd);
@@ -257,19 +260,21 @@ namespace ClinicApp.DAL
                         int usernameOrd = reader.GetOrdinal("username");
                         while (reader.Read())
                         {
-                            Patient patient = new Patient();
-                            patient.PatientID = reader.GetInt32(patientIDOrd);
-                            patient.PersonID = reader.GetInt32(personIDOrd);
-                            patient.LastName = reader.GetString(lastNameOrd);
-                            patient.FirstName = reader.GetString(firstNameOrd);
-                            patient.BirthDate = reader.GetDateTime(birthDateOrd);
-                            patient.SSN = reader.GetString(ssnOrd);
-                            patient.Gender = reader.GetString(genderOrd);
-                            patient.StreetAddress = reader.GetString(addressOrd);
-                            patient.City = reader.GetString(cityOrd);
-                            patient.State = reader.GetString(stateOrd);
-                            patient.PostCode = reader.GetString(postCodeOrd);
-                            patient.PhoneNumber = reader.GetString(phoneOrd);
+                            Patient patient = new Patient
+                            {
+                                PatientID = reader.GetInt32(patientIDOrd),
+                                PersonID = reader.GetInt32(personIDOrd),
+                                LastName = reader.GetString(lastNameOrd),
+                                FirstName = reader.GetString(firstNameOrd),
+                                BirthDate = reader.GetDateTime(birthDateOrd),
+                                SSN = reader.GetString(ssnOrd),
+                                Gender = reader.GetString(genderOrd),
+                                StreetAddress = reader.GetString(addressOrd),
+                                City = reader.GetString(cityOrd),
+                                State = reader.GetString(stateOrd),
+                                PostCode = reader.GetString(postCodeOrd),
+                                PhoneNumber = reader.GetString(phoneOrd)
+                            };
                             if (!reader.IsDBNull(usernameOrd))
                             {
                                 patient.Username = reader.GetString(usernameOrd);
@@ -282,12 +287,66 @@ namespace ClinicApp.DAL
             return patientList;
         }
 
+        /// <summary>
+        /// Adds a Patient to Person and Patient
+        /// </summary>
+        /// <param name="patient">The Patient to add</param>
+        /// <returns>The PatientID for the new Patient</returns>
         public static int AddPatient(Patient patient)
         {
-            // TODO Create a transaction
-            // TODO Create a new Person
-            // TODO Add a new Patient with the PersonID
-            return -1;
+            int patientID = -1;
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction patientTransaction;
+
+                patientTransaction = connection.BeginTransaction("Add Patient");
+
+                command.Connection = connection;
+                command.Transaction = patientTransaction;
+
+                try
+                {
+                    int personID = PersonDAL.AddPerson(patient);
+                    patientID = InsertPatient(personID);
+
+                    patientTransaction.Commit();
+                }
+                catch (SqlException ex)
+                {
+                    patientTransaction.Rollback();
+                    throw ex;
+                }
+            }
+            return patientID;
+        }
+
+        /// <summary>
+        /// Inserts a new Person into the Patient table
+        /// </summary>
+        /// <param name="personID">The PersonID to add</param>
+        /// <returns>The new Patient's PatientID</returns>
+        public static int InsertPatient(int personID)
+        {
+            int patientID;
+            string insertStatement =
+                "INSERT INTO Patient (personID) VALUES (@personID)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@personID", personID);
+                    patientID = insertCommand.ExecuteNonQuery();
+                }
+                string selectStatement = "SELECT IDENT_CURRENT('Patient') FROM Patient";
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    patientID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                }
+            }
+            return patientID;
         }
     }
 }

@@ -74,6 +74,30 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
+        /// Inserts an existing Person as a patient
+        /// </summary>
+        /// <param name="personID">The PersonID of the new patient</param>
+        /// <returns>The new PatientID</returns>
+        public int InsertPatient(int personID)
+        {
+            return PatientDAL.InsertPatient(personID);
+        }
+
+        /// <summary>
+        /// Retrieves the PersonID from the database or -1 if not found
+        /// According to statistics, the full name and date of birth can stil lead to multiple results.
+        /// </summary>
+        /// <param name="firstName">Person's first name</param>
+        /// <param name="lastName">Person's last name</param>
+        /// <param name="birthDate">Person's birthdate</param>
+        /// <param name="SSN">Person's SSN</param>
+        /// <returns></returns>
+        public int GetPersonID(string firstName, string lastName, string birthDate, string SSN)
+        {
+            return PersonDAL.GetPersonID(firstName, lastName, birthDate, SSN);
+        }
+
+        /// <summary>
         /// Gets a list of US States and Canadian Provinces
         /// </summary>
         /// <returns>A List of States</returns>
