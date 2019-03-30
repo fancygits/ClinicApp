@@ -123,9 +123,13 @@ namespace ClinicApp.DAL
                     {
                         insertCommand.Parameters.AddWithValue("@username", person.Username);
                     }
-                    personID = insertCommand.ExecuteNonQuery();
+                    insertCommand.ExecuteNonQuery();
                 }
-
+                string selectStatement = "SELECT IDENT_CURRENT('Person') FROM Person";
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    personID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                }
             }
             return personID;
         }

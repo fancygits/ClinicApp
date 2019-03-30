@@ -77,7 +77,7 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.AddPatient();
+                btnAddUpdatePatient.PerformClick();
             }
         }
 
