@@ -83,9 +83,17 @@ namespace ClinicApp.UserControls
 
         private void AddPatient()
         {
-            
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string birthDate = birthDateDateTimePicker.Text;
             try
             {
+                Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
+                if (tempPatient != null)
+                {
+                    lblMessage.Text = "Error: That person is already a patient.";
+                    return;
+                }
                 int patientID = this.patientController.AddPatient(patient);
                 if (patientID > 0)
                 {
