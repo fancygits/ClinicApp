@@ -70,7 +70,7 @@ namespace ClinicApp.UserControls
         /// <summary>
         /// Prompts to add a new patient since none are found
         /// </summary>
-        private void NoMatchesDialog()
+        public void NoMatchesDialog()
         {
             DialogResult result = MessageBox.Show("No patients matched your search.\n" +
                             "Would you like to add a new patient?", "No Matches",
