@@ -147,7 +147,7 @@ namespace ClinicApp.UserControls
             }
            else
             {
-                this.NoMatchesDialog();
+                this.SwitchTabNoMatchesDialog();
             }
         }
 
@@ -157,20 +157,12 @@ namespace ClinicApp.UserControls
         /// <param name="patientList"></param>
 
 
-        private void NoMatchesDialog()
-        {
-            DialogResult result = MessageBox.Show("No patients matched your search.\n" +
-                            "Would you like to add a new patient?", "No Matches",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.AddPatientDialog();
-            }
-        }
-
-        private void AddPatientDialog()
-        {
-
+        private void SwitchTabNoMatchesDialog()
+{
+            TabControl tabControl = this.Parent.Parent as TabControl;
+            tabControl.SelectedIndex = 0;
+            PatientInformationUserControl patientInformationUserControl = tabControl.TabPages[0].Controls[0] as PatientInformationUserControl;
+            patientInformationUserControl.NoMatchesDialog();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
