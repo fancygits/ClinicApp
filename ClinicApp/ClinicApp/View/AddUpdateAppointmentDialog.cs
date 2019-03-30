@@ -136,9 +136,17 @@ namespace ClinicApp.View
                     try
                     {
                         this.newAppointment.AppointmentDateTime = this.newAppointment.AppointmentDateTime.AddSeconds(1);
-                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                        this.appointment = this.newAppointment;
-                        this.DialogResult = DialogResult.OK;
+                        if (!this.appointmentController.UpdateAppointment(this.appointment, this.newAppointment))
+                        {
+                            MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Appointment Updated");
+                            this.appointment = this.newAppointment;
+                            this.DialogResult = DialogResult.OK;
+                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -149,9 +157,16 @@ namespace ClinicApp.View
                 {
                     try
                     {
-                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                        this.appointment = this.newAppointment;
-                        this.DialogResult = DialogResult.OK;
+                        if (!this.appointmentController.UpdateAppointment(this.appointment, this.newAppointment))
+                        {
+                            MessageBox.Show("Another user has updated this Appointment. Please modify and try again", "Database Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Appointment Updated");
+                            this.appointment = this.newAppointment;
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                     catch (Exception ex)
                     {

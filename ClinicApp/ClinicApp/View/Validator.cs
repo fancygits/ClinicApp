@@ -9,6 +9,7 @@ namespace ClinicApp.View
     public class Validator
     {
 
+      
         /// <summary>
         /// Checks if TextBox objects are empty and shows error message
         /// </summary>
@@ -16,13 +17,16 @@ namespace ClinicApp.View
         /// <returns></returns>
         public static bool IsPresent(Control control)
         {
+            ErrorProvider error = new ErrorProvider();
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
             {
                 TextBox textBox = (TextBox)control;
                 if (textBox.Text == "")
                 {
-                    MessageBox.Show(textBox.Tag.ToString() + " is a required field.", "Error!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(textBox.Tag.ToString() + " is a required field.", "Error!",
+                    //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                    error.SetError(textBox, textBox.Tag.ToString() + " is a required field.");
                     textBox.Focus();
                     return false;
                 }
