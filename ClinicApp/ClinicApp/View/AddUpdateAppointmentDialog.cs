@@ -128,6 +128,9 @@ namespace ClinicApp.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(this.newAppointment.AppointmentID.ToString());
+            this.newAppointment.AppointmentID = this.appointment.AppointmentID;
+            MessageBox.Show(this.newAppointment.AppointmentID.ToString());
             if (this.PutAppointment())
             {
                 // Gets around the DoctorID Appointment DateTime constraint to update the visitReason on an existing appointment
@@ -136,9 +139,12 @@ namespace ClinicApp.View
                     try
                     {
                         this.newAppointment.AppointmentDateTime = this.newAppointment.AppointmentDateTime.AddSeconds(1);
-                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                        this.appointment = this.newAppointment;
-                        this.DialogResult = DialogResult.OK;
+                        if (this.appointmentController.UpdateAppointment(this.newAppointment, this.appointment))
+                        {
+                            this.appointment = this.newAppointment;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -149,9 +155,12 @@ namespace ClinicApp.View
                 {
                     try
                     {
-                        this.newAppointment.AppointmentID = this.appointmentController.AddAppointment(this.newAppointment);
-                        this.appointment = this.newAppointment;
-                        this.DialogResult = DialogResult.OK;
+                        if (this.appointmentController.UpdateAppointment(this.newAppointment, this.appointment));
+                        {
+                            this.appointment = this.newAppointment;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        
                     }
                     catch (Exception ex)
                     {

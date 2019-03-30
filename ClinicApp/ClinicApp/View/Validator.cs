@@ -21,8 +21,10 @@ namespace ClinicApp.View
                 TextBox textBox = (TextBox)control;
                 if (textBox.Text == "")
                 {
-                    MessageBox.Show(textBox.Tag.ToString() + " is a required field.", "Error!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(textBox.Tag.ToString() + " is a required field.", "Error!",
+                    //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorProvider error = new ErrorProvider();
+                    error.SetError(textBox, textBox.Tag.ToString() + " is a required field.");
                     textBox.Focus();
                     return false;
                 }
