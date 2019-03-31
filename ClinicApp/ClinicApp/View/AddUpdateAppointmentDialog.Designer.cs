@@ -1,4 +1,5 @@
-﻿namespace ClinicApp.View
+﻿using System;
+namespace ClinicApp.View
 {
     partial class AddUpdateAppointmentDialog
     {
@@ -167,18 +168,22 @@
             this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
             this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentDate.TabIndex = 1;
+            this.dateTimePickerAppointmentDate.Tag = "Appointment Date";
+            this.dateTimePickerAppointmentDate.MinDate = DateTime.Now;
             // 
             // dateTimePickerAppointmentTime
             // 
+            this.dateTimePickerAppointmentTime.CustomFormat = "h.mm.tt";
             this.dateTimePickerAppointmentTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
             this.dateTimePickerAppointmentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerAppointmentTime.CustomFormat = "h.mm.tt";
             this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(233, 157);
             this.dateTimePickerAppointmentTime.Name = "dateTimePickerAppointmentTime";
             this.dateTimePickerAppointmentTime.ShowUpDown = true;
             this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentTime.TabIndex = 2;
+            this.dateTimePickerAppointmentTime.Tag = "Appointment Time";
+            this.dateTimePickerAppointmentDate.MinDate = DateTime.Now;
             // 
             // txtBoxAppointmentReason
             // 
