@@ -1,9 +1,8 @@
-﻿using System;
+﻿using ClinicApp.Controller;
+using ClinicApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ClinicApp.Model;
-using ClinicApp.Controller;
-using ClinicApp.View;
 
 namespace ClinicApp.View
 {
@@ -18,6 +17,7 @@ namespace ClinicApp.View
         public Appointment appointment;
         public Patient patient;
         private Appointment newAppointment;
+        private ErrorProvider errorProvider;
 
         /// <summary>
         /// Constructor for Form; initializes instance variables
@@ -28,6 +28,7 @@ namespace ClinicApp.View
             this.appointmentController = new AppointmentController();
             this.doctorController = new DoctorController();
             this.newAppointment = new Appointment();
+            this.errorProvider = new ErrorProvider();
         }
 
         private void AddUpdateAppointmentDialog_Load(object sender, EventArgs e)
@@ -85,14 +86,8 @@ namespace ClinicApp.View
             bool isPut = false;
             newAppointment.AppointmentPatientID = this.patient.PatientID;
             newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
-            
-            if (Validator.IsFuture(dateTimePickerAppointmentTime))
-            {
-                 newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
-                 isPut = true;
-            }
-           
-            if (Validator.IsPresent(txtBoxAppointmentReason))
+            newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
+            if (Validator.IsPresent(txtBoxAppointmentReason, errorProvider))
             {
                 newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
                 isPut = true;
