@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
@@ -49,7 +50,10 @@ namespace ClinicApp.UserControls
                 newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
                 newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
                 newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
-                newVisit.Symptoms = this.symptomsTextBox.Text;
+                if (Validator.IsPresent(this.symptomsTextBox))
+                {
+                    newVisit.Symptoms = this.symptomsTextBox.Text;
+                }
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());

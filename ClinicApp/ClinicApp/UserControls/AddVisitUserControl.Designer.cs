@@ -254,7 +254,7 @@
             // 
             this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Weight", true));
             this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightTextBox.Location = new System.Drawing.Point(1236, 230);
+            this.weightTextBox.Location = new System.Drawing.Point(1237, 230);
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(260, 44);
             this.weightTextBox.TabIndex = 13;
@@ -302,7 +302,7 @@
             this.symptomsTextBox.Location = new System.Drawing.Point(1236, 540);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
-            this.symptomsTextBox.Size = new System.Drawing.Size(260, 132);
+            this.symptomsTextBox.Size = new System.Drawing.Size(261, 236);
             this.symptomsTextBox.TabIndex = 23;
             // 
             // nurseNameComboBox
