@@ -82,7 +82,14 @@ namespace ClinicApp.View
             return true;
         }
 
-
+        /// <summary>
+        /// Checks a DateTimePicker field if it's between allowable dates
+        /// </summary>
+        /// <param name="control">The control, it better be a DateTimePicker</param>
+        /// <param name="minDate">The minimum allowable date</param>
+        /// <param name="maxDate">The maximum allowable date</param>
+        /// <param name="error">An ErrorProvider to communicate validation through</param>
+        /// <returns></returns>
         public static bool IsValidDate(Control control, DateTime minDate, DateTime maxDate, ErrorProvider error)
         {
             if (control.GetType().ToString() == "System.Windows.Forms.DateTimePicker")
@@ -101,6 +108,48 @@ namespace ClinicApp.View
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// Checks if a textbox contains an integer
+        /// </summary>
+        /// <param name="textbox">The field to validate</param>
+        /// <param name="error">The error provider to communicate through</param>
+        /// <returns>True if it is an integer</returns>
+        public static bool IsInt32(TextBox textbox, ErrorProvider error)
+        {
+            try
+            {
+                Convert.ToInt32(textbox.Text);
+                error.SetError(textbox, "");
+                return true;
+            }
+            catch (FormatException)
+            {
+                error.SetError(textbox, textbox.Tag.ToString() + " must be an integer.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if a textbox contains an decimal
+        /// </summary>
+        /// <param name="textbox">The field to validate</param>
+        /// <param name="error">The error provider to communicate through</param>
+        /// <returns>True if it is an decimal</returns>
+        public static bool IsDecimal(TextBox textbox, ErrorProvider error)
+        {
+            try
+            {
+                Convert.ToDecimal(textbox.Text);
+                error.SetError(textbox, "");
+                return true;
+            }
+            catch (FormatException)
+            {
+                error.SetError(textbox, textbox.Tag.ToString() + " must be an decimal value.");
+                return false;
+            }
         }
     }
 }
