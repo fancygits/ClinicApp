@@ -14,12 +14,14 @@ namespace ClinicApp.UserControls
         private NurseController nurseController;
         private List<Nurse> listOfNurses;
         private VisitController visitController;
+        private ErrorProvider errorProvider;
         public AddVisitUserControl()
         {
             InitializeComponent();
             this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
             this.nurseController = new NurseController();
+            this.errorProvider = new ErrorProvider();
             this.visit = new Visit();
         }
 
@@ -50,7 +52,7 @@ namespace ClinicApp.UserControls
                 newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
                 newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
                 newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
-                if (Validator.IsPresent(this.symptomsTextBox))
+                if (Validator.IsPresent(this.symptomsTextBox, errorProvider))
                 {
                     newVisit.Symptoms = this.symptomsTextBox.Text;
                 }
