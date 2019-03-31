@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ClinicApp.Controller;
+using ClinicApp.Model;
+using ClinicApp.View;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ClinicApp.Model;
-using ClinicApp.Controller;
-using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
@@ -132,6 +132,14 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        /// <summary>
+        /// Allows selecting a patient from a different tab
+        /// </summary>
+        public void SelectPatient()
+        {
+            patientNameComboBox.SelectedValue = this.patient.PatientID;
         }
     }
 }

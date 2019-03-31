@@ -57,7 +57,6 @@
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.btnSearchAppointments = new System.Windows.Forms.Button();
             this.btnSearchVisits = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -70,7 +69,6 @@
             streetAddressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // birthDateLabel
@@ -182,6 +180,7 @@
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.birthDateDateTimePicker.TabIndex = 2;
+            this.birthDateDateTimePicker.Tag = "Date of birth";
             this.birthDateDateTimePicker.ValueChanged += new System.EventHandler(this.PatientTextboxChanged);
             this.birthDateDateTimePicker.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
@@ -198,6 +197,7 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 26);
             this.cityTextBox.TabIndex = 7;
+            this.cityTextBox.Tag = "City";
             this.cityTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // firstNameTextBox
@@ -208,6 +208,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.firstNameTextBox.TabIndex = 0;
+            this.firstNameTextBox.Tag = "First name";
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             this.firstNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
@@ -219,6 +220,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.lastNameTextBox.TabIndex = 1;
+            this.lastNameTextBox.Tag = "Last name";
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             this.lastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
@@ -231,6 +233,7 @@
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.postCodeTextBox.TabIndex = 9;
+            this.postCodeTextBox.Tag = "Post code";
             this.postCodeTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // streetAddressTextBox
@@ -242,6 +245,7 @@
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 26);
             this.streetAddressTextBox.TabIndex = 6;
+            this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // btnGetPatient
@@ -290,6 +294,7 @@
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(200, 28);
             this.genderComboBox.TabIndex = 5;
+            this.genderComboBox.Tag = "Gender";
             this.genderComboBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // stateComboBox
@@ -305,6 +310,7 @@
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 28);
             this.stateComboBox.TabIndex = 8;
+            this.stateComboBox.Tag = "State";
             this.stateComboBox.ValueMember = "Abbreviation";
             this.stateComboBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -332,6 +338,7 @@
             this.sSNMaskedTextBox.Name = "sSNMaskedTextBox";
             this.sSNMaskedTextBox.Size = new System.Drawing.Size(200, 26);
             this.sSNMaskedTextBox.TabIndex = 4;
+            this.sSNMaskedTextBox.Tag = "SSN";
             this.sSNMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // phoneNumberMaskedTextBox
@@ -343,6 +350,7 @@
             this.phoneNumberMaskedTextBox.Name = "phoneNumberMaskedTextBox";
             this.phoneNumberMaskedTextBox.Size = new System.Drawing.Size(200, 26);
             this.phoneNumberMaskedTextBox.TabIndex = 10;
+            this.phoneNumberMaskedTextBox.Tag = "Phone number";
             this.phoneNumberMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
             // btnSearchAppointments
@@ -365,10 +373,7 @@
             this.btnSearchVisits.TabIndex = 13;
             this.btnSearchVisits.Text = "Search Visits";
             this.btnSearchVisits.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
+            this.btnSearchVisits.Click += new System.EventHandler(this.btnSearchVisits_Click);
             // 
             // PatientInformationUserControl
             // 
@@ -405,7 +410,6 @@
             this.Load += new System.EventHandler(this.PatientInformationUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,6 +435,5 @@
         private System.Windows.Forms.MaskedTextBox phoneNumberMaskedTextBox;
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
-        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

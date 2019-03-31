@@ -12,7 +12,6 @@ namespace ClinicApp.UserControls
     /// </summary>
     public partial class AddAppointmentUserControl : UserControl, IUserControlSearch
     {
-
         private readonly PatientController patientController;
         private readonly AppointmentController appointmentController;
         public Patient patient;
@@ -41,6 +40,7 @@ namespace ClinicApp.UserControls
             btnAddAppointment.Enabled = false;
             if (this.patient != null)
             {
+                patientBindingSource.Add(patient);
                 this.GetAppointmentList(this.patient.PatientID);
                 btnAddAppointment.Enabled = true;
             }
@@ -155,7 +155,7 @@ namespace ClinicApp.UserControls
         private void SwitchTabNoMatchesDialog()
 {
             TabControl tabControl = this.Parent.Parent as TabControl;
-            tabControl.SelectedIndex = 0;
+            //tabControl.SelectedIndex = 0;
             PatientInformationUserControl patientInformationUserControl = tabControl.TabPages[0].Controls[0] as PatientInformationUserControl;
             patientInformationUserControl.NoMatchesDialog();
         }
