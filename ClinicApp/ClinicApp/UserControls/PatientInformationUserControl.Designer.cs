@@ -373,6 +373,7 @@
             this.btnSearchVisits.TabIndex = 13;
             this.btnSearchVisits.Text = "Search Visits";
             this.btnSearchVisits.UseVisualStyleBackColor = true;
+            this.btnSearchVisits.Click += new System.EventHandler(this.btnSearchVisits_Click);
             // 
             // PatientInformationUserControl
             // 

@@ -129,7 +129,7 @@ namespace ClinicApp.UserControls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                    MessageBox.Show("Something is wrong with the input!! \n" + ex.ToString(),
                                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -166,7 +166,7 @@ namespace ClinicApp.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                MessageBox.Show("Something is wrong with the input!! \n" + ex.ToString(),
                                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return patientID;
@@ -195,7 +195,7 @@ namespace ClinicApp.UserControls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                    MessageBox.Show("Something is wrong with the input!! \n" + ex.ToString(),
                                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -267,6 +267,7 @@ namespace ClinicApp.UserControls
             stateComboBox.Enabled = true;
             phoneNumberMaskedTextBox.Enabled = true;
             btnSearchAppointments.Enabled = true;
+            btnSearchVisits.Enabled = true;
         }
 
         private void DisableFields()
@@ -341,6 +342,14 @@ namespace ClinicApp.UserControls
             addAppointmentUserControl.patient = this.patient;
             addAppointmentUserControl.RefreshPage();
         }
+        private void btnSearchVisits_Click(object sender, EventArgs e)
+        {
+            TabControl tabControl = this.Parent.Parent as TabControl;
+            tabControl.SelectedIndex = 2;
+            SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
+            searchForVisitUserControl.patient = this.patient;
+            searchForVisitUserControl.SelectPatient();
+        }
 
         private void btnGetPatient_Click(object sender, EventArgs e)
         {
@@ -376,6 +385,24 @@ namespace ClinicApp.UserControls
                     this.EnableFields();
                 }
             }
+        }
+
+        /// <summary>
+        /// Used to find possible errors in a patient
+        /// </summary>
+        private void DebugPatient()
+        {
+            System.Diagnostics.Debug.Print(this.patient.PatientID.ToString());
+            System.Diagnostics.Debug.Print(this.patient.PersonID.ToString());
+            System.Diagnostics.Debug.Print(this.patient.FullName.ToString());
+            System.Diagnostics.Debug.Print(this.patient.BirthDate.ToString());
+            System.Diagnostics.Debug.Print(this.patient.SSN.ToString());
+            System.Diagnostics.Debug.Print(this.patient.Gender.ToString());
+            System.Diagnostics.Debug.Print(this.patient.StreetAddress.ToString());
+            System.Diagnostics.Debug.Print(this.patient.City.ToString());
+            System.Diagnostics.Debug.Print(this.patient.State.ToString());
+            System.Diagnostics.Debug.Print(this.patient.PostCode.ToString());
+            System.Diagnostics.Debug.Print(this.patient.PhoneNumber.ToString());
         }
     }
 }
