@@ -86,11 +86,24 @@ namespace ClinicApp.View
             bool isPut = false;
             newAppointment.AppointmentPatientID = this.patient.PatientID;
             newAppointment.AppointmentDoctorID = (int)cmboBoxDoctorID.SelectedValue;
-            newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
+            if (CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value) > DateTime.Now)
+            {
+                newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
+                isPut = true;
+            }  
+            else
+            {
+                //errorProvider.SetError(dateTimePickerAppointmentTime, "Please select a valid time");
+                MessageBox.Show("nope");
+            }
             if (Validator.IsPresent(txtBoxAppointmentReason, errorProvider))
             {
                 newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
                 isPut = true;
+            }
+            else
+            {
+                isPut = false;
             }
             return isPut;
 

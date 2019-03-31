@@ -14,12 +14,14 @@ namespace ClinicApp.UserControls
         private NurseController nurseController;
         private List<Nurse> listOfNurses;
         private VisitController visitController;
+        private ErrorProvider errorProvider;
         public AddVisitUserControl()
         {
             InitializeComponent();
             this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
             this.nurseController = new NurseController();
+            this.errorProvider = new ErrorProvider();
             this.visit = new Visit();
         }
 
@@ -39,8 +41,9 @@ namespace ClinicApp.UserControls
                 this.nurseNameComboBox.SelectedIndex = -1;
             }
         }
-        private void PutData(Visit newVisit)
+        private bool PutData(Visit newVisit)
         {
+            bool isValid = false;
             try
             {
                 newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
@@ -50,59 +53,71 @@ namespace ClinicApp.UserControls
                 newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
                 newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
                 newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
-                if (Validator.IsPresent(this.symptomsTextBox))
+                if (Validator.IsPresent(this.symptomsTextBox, errorProvider))
                 {
                     newVisit.Symptoms = this.symptomsTextBox.Text;
+                    isValid = true;
                 }
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+            return isValid;
 
         }
 
         private void updateVisitButton_Click(object sender, EventArgs e)
         {
             Visit newVisit = new Visit();
-            this.PutData(newVisit);
-            try
+            if (this.PutData(newVisit))
             {
-                if (!this.visitController.UpdateVisit(this.visit, newVisit))
+                try
                 {
-                    MessageBox.Show("Someone has already updated that visit");
-                } else
-                {
-                    this.visit = newVisit;
-                    MessageBox.Show("Your visit has been successfully updated", "Success");
-                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
-                    this.PutData(newVisit);
+                    if (!this.visitController.UpdateVisit(this.visit, newVisit))
+                    {
+                        MessageBox.Show("Someone has already updated that visit");
+                    }
+                    else
+                    {
+                        this.visit = newVisit;
+                        MessageBox.Show("Your visit has been successfully updated", "Success");
+                        NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
+                        this.PutData(newVisit);
+                    }
                 }
-            } catch (Exception ex)
-            {
-                MessageBox.Show("Error updating table", ex.GetType().ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating table", ex.GetType().ToString());
+                }
             }
+            
 
         }
 
         private void addVisitButton_Click(object sender, EventArgs e)
         {
             Visit newVisit = new Visit();
-            this.PutData(newVisit);
-            try
+            if (this.PutData(newVisit))
             {
-                if(!this.visitController.AddVisit(newVisit))
+                try
                 {
-                    MessageBox.Show("There was an error adding your visit");
-                } else
-                {
-                    MessageBox.Show("Your visit was successfully added", "Success");
-                    NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
-                    this.addVisitButton.Enabled = false;
+                    if (!this.visitController.AddVisit(newVisit))
+                    {
+                        MessageBox.Show("There was an error adding your visit");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Your visit was successfully added", "Success");
+                        NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
+                        this.addVisitButton.Enabled = false;
+                    }
                 }
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
+            
            
         }
     }
