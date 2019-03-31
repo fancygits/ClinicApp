@@ -284,16 +284,16 @@ namespace ClinicApp.UserControls
         private bool IsValidData()
         {
             return Validator.IsPresent(firstNameTextBox, errorProvider) &&
-                Validator.IsPresent(lastNameTextBox, errorProvider) &&
-                Validator.IsPresent(birthDateDateTimePicker, errorProvider) &&
-                Validator.IsValidDate(birthDateDateTimePicker, DateTime.Parse("1900-01-01"), DateTime.Today.AddDays(1), errorProvider) &&
-                Validator.IsPresent(sSNMaskedTextBox, errorProvider) &&
-                Validator.IsPresent(genderComboBox, errorProvider) &&
-                Validator.IsPresent(streetAddressTextBox, errorProvider) &&
-                Validator.IsPresent(cityTextBox, errorProvider) &&
-                Validator.IsPresent(stateComboBox, errorProvider) &&
-                Validator.IsPresent(postCodeTextBox, errorProvider) &&
-                Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider);
+                   Validator.IsPresent(lastNameTextBox, errorProvider) &&
+                   Validator.IsPresent(birthDateDateTimePicker, errorProvider) &&
+                   Validator.IsValidDate(birthDateDateTimePicker, DateTime.Parse("1900-01-01"), DateTime.Today.AddDays(1), errorProvider) &&
+                   Validator.IsPresent(sSNMaskedTextBox, errorProvider) &&
+                   Validator.IsPresent(genderComboBox, errorProvider) &&
+                   Validator.IsPresent(streetAddressTextBox, errorProvider) &&
+                   Validator.IsPresent(cityTextBox, errorProvider) &&
+                   Validator.IsPresent(stateComboBox, errorProvider) &&
+                   Validator.IsPresent(postCodeTextBox, errorProvider) &&
+                   Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider);
         }
 
         /// <summary>
