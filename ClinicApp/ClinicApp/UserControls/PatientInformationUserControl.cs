@@ -16,6 +16,7 @@ namespace ClinicApp.UserControls
         public Patient patient;
         private Patient newPatient;
         private List<State> stateList;
+        private ErrorProvider errorProvider;
 
         /// <summary>
         /// Constructs a new PatientInformationUserControl
@@ -24,6 +25,7 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
             this.patientController = new PatientController();
+            this.errorProvider = new ErrorProvider();
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace ClinicApp.UserControls
             }
             else
             {
-                this.NoMatchesDialog();
+                NoMatchesDialog();
             }
         }
 
@@ -78,53 +80,58 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                TabControl tabControl = Parent.Parent as TabControl;
+                tabControl.SelectedIndex = 0;
                 btnAddUpdatePatient.PerformClick();
             }
         }
 
         private void AddPatient()
         {
-            string firstName = firstNameTextBox.Text;
-            string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Text;
-            string SSN = sSNMaskedTextBox.Text;
-            int patientID = -1;
-            try
+            if (IsValidData())
             {
-                Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
-                if (tempPatient != null)
+                string firstName = firstNameTextBox.Text;
+                string lastName = lastNameTextBox.Text;
+                string birthDate = birthDateDateTimePicker.Text;
+                string SSN = sSNMaskedTextBox.Text;
+                int patientID = -1;
+                try
                 {
-                    patientID = tempPatient.PatientID;
-                    lblMessage.Text = "Error: That person is already a patient.";
-                    return;
+                    Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
+                    if (tempPatient != null)
+                    {
+                        patientID = tempPatient.PatientID;
+                        lblMessage.Text = "Error: That person is already a patient.";
+                        return;
+                    }
+                    else
+                    {
+                        patientID = PersonToPatient();
+                    }
+                    if (patientID > 0)
+                    {
+                        lblMessage.Text = "Patient " + patientID + " has been added successfully.";
+                        return;
+                    }
+                    else
+                    {
+                        patientID = this.patientController.AddPatient(patient);
+                    }
+                    if (patientID > 0)
+                    {
+                        this.GetPatient();
+                        lblMessage.Text = "Patient " + patientID + " has been added successfully.";
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Error: There was a problem adding a new patient.";
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    patientID = PersonToPatient();
+                    MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
+                                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (patientID > 0)
-                {
-                    lblMessage.Text = "Patient " + patientID + " has been added successfully.";
-                    return;
-                }
-                else
-                {
-                    patientID = this.patientController.AddPatient(patient);
-                }
-                if (patientID > 0)
-                {
-                    this.GetPatient();
-                    lblMessage.Text = "Patient " + patientID + " has been added successfully.";
-                }
-                else
-                {
-                    lblMessage.Text = "Error: There was a problem adding a new patient.";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Something is wrong with the input!! \n" + ex.Message,
-                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -228,10 +235,12 @@ namespace ClinicApp.UserControls
             genderComboBox.DataSource = genderDatasource;
             genderComboBox.DisplayMember = "Key";
             genderComboBox.ValueMember = "Value";
+            genderComboBox.SelectedIndex = -1;
             genderComboBox.SelectedValue = "";
 
             stateList = this.patientController.GetStateList();
             stateComboBox.DataSource = stateList;
+            stateComboBox.SelectedIndex = -1;
             stateComboBox.SelectedValue = "";
         }
         
@@ -239,6 +248,8 @@ namespace ClinicApp.UserControls
         {
             patientBindingSource.Clear();
             birthDateDateTimePicker.Text = "";
+            genderComboBox.SelectedIndex = -1;
+            stateComboBox.SelectedIndex = -1;
             btnGetPatient.Enabled = false;
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
@@ -272,21 +283,17 @@ namespace ClinicApp.UserControls
 
         private bool IsValidData()
         {
-            
-            if (Validator.IsPresent(firstNameTextBox) &&
-                Validator.IsPresent(lastNameTextBox) &&
-                Validator.IsPresent(birthDateDateTimePicker) &&
-                Validator.IsPresent(sSNMaskedTextBox) &&
-                Validator.IsPresent(genderComboBox) &&
-                Validator.IsPresent(streetAddressTextBox) &&
-                Validator.IsPresent(cityTextBox) &&
-                Validator.IsPresent(stateComboBox) &&
-                Validator.IsPresent(postCodeTextBox) &&
-                Validator.IsPresent(phoneNumberMaskedTextBox))
-            {
-                return true;
-            }
-            return false;
+            return Validator.IsPresent(firstNameTextBox, errorProvider) &&
+                Validator.IsPresent(lastNameTextBox, errorProvider) &&
+                Validator.IsPresent(birthDateDateTimePicker, errorProvider) &&
+                Validator.IsValidDate(birthDateDateTimePicker, DateTime.Parse("1900-01-01"), DateTime.Today.AddDays(1), errorProvider) &&
+                Validator.IsPresent(sSNMaskedTextBox, errorProvider) &&
+                Validator.IsPresent(genderComboBox, errorProvider) &&
+                Validator.IsPresent(streetAddressTextBox, errorProvider) &&
+                Validator.IsPresent(cityTextBox, errorProvider) &&
+                Validator.IsPresent(stateComboBox, errorProvider) &&
+                Validator.IsPresent(postCodeTextBox, errorProvider) &&
+                Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider);
         }
 
         /// <summary>
