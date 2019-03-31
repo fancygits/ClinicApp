@@ -86,9 +86,9 @@
             appointmentDateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             appointmentDateTimeLabel.Location = new System.Drawing.Point(25, 134);
             appointmentDateTimeLabel.Name = "appointmentDateTimeLabel";
-            appointmentDateTimeLabel.Size = new System.Drawing.Size(181, 20);
+            appointmentDateTimeLabel.Size = new System.Drawing.Size(143, 20);
             appointmentDateTimeLabel.TabIndex = 7;
-            appointmentDateTimeLabel.Text = "Appointment Date Time:";
+            appointmentDateTimeLabel.Text = "Appointment Date:";
             // 
             // appointmentDateTimeLabel1
             // 
@@ -96,9 +96,9 @@
             appointmentDateTimeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             appointmentDateTimeLabel1.Location = new System.Drawing.Point(25, 164);
             appointmentDateTimeLabel1.Name = "appointmentDateTimeLabel1";
-            appointmentDateTimeLabel1.Size = new System.Drawing.Size(181, 20);
+            appointmentDateTimeLabel1.Size = new System.Drawing.Size(142, 20);
             appointmentDateTimeLabel1.TabIndex = 9;
-            appointmentDateTimeLabel1.Text = "Appointment Date Time:";
+            appointmentDateTimeLabel1.Text = "Appointment Time:";
             // 
             // appointmentReasonLabel
             // 
@@ -116,9 +116,9 @@
             doctorIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             doctorIDLabel.Location = new System.Drawing.Point(25, 192);
             doctorIDLabel.Name = "doctorIDLabel";
-            doctorIDLabel.Size = new System.Drawing.Size(82, 20);
+            doctorIDLabel.Size = new System.Drawing.Size(61, 20);
             doctorIDLabel.TabIndex = 13;
-            doctorIDLabel.Text = "Doctor ID:";
+            doctorIDLabel.Text = "Doctor:";
             // 
             // birthDateLabel
             // 
@@ -172,7 +172,8 @@
             // 
             this.dateTimePickerAppointmentTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDateTime", true));
             this.dateTimePickerAppointmentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerAppointmentTime.CustomFormat = "h.mm.tt";
             this.dateTimePickerAppointmentTime.Location = new System.Drawing.Point(233, 157);
             this.dateTimePickerAppointmentTime.Name = "dateTimePickerAppointmentTime";
             this.dateTimePickerAppointmentTime.ShowUpDown = true;
