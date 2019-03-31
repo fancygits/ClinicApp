@@ -51,6 +51,7 @@ namespace ClinicApp.DAL
             "streetAddress, city, state, postCode, phoneNumber, active " +
             "FROM Person p " +
             "JOIN Nurse n ON p.personID = n.personID " +
+            "WHERE active = 1 " +
             "ORDER BY lastName";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {

@@ -72,13 +72,12 @@ namespace ClinicApp.UserControls
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 14)
+            if (e.ColumnIndex == 14 && e.RowIndex >= 0)
             {
                 int i = e.RowIndex;
                 DataGridViewRow row = visitDataGridView.Rows[i];
                 this.visit = (Visit)row.DataBoundItem;
                 AddVisitDialog addVisitDialog = new AddVisitDialog();
-
                 addVisitDialog.addVisitUserControl1.appointmentIDTextBox.Text = this.visit.AppointmentID + "";
                 addVisitDialog.addVisitUserControl1.weightTextBox.Text = this.visit.Weight + "";
                 addVisitDialog.addVisitUserControl1.temperatureTextBox.Text = visit.Temperature + "";

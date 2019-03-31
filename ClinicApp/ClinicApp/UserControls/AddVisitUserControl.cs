@@ -10,6 +10,7 @@ namespace ClinicApp.UserControls
     {
         public Visit visit;
         public Nurse nurse;
+        private NurseController nurseController;
         private List<Nurse> listOfNurses;
         private VisitController visitController;
         public AddVisitUserControl()
@@ -17,6 +18,8 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
+            this.nurseController = new NurseController();
+            this.visit = new Visit();
         }
 
         public int apptID;
@@ -24,11 +27,12 @@ namespace ClinicApp.UserControls
         public string birthDate;
         private void AddVisitUserControl_Load(object sender, EventArgs e)
         {
-            this.listOfNurses = this.visitController.GetNurses();
+            this.listOfNurses = this.nurseController.GetNurseList();
             this.nurseNameComboBox.DataSource = this.listOfNurses;
             if (this.visit.NurseID > 0)
             {
                 this.nurseNameComboBox.SelectedValue = this.visit.NurseID;
+                this.nurseNameComboBox.SelectedText = this.visit.NurseName;
             } else
             {
                 this.nurseNameComboBox.SelectedIndex = -1;
