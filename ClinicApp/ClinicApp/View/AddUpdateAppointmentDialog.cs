@@ -89,21 +89,20 @@ namespace ClinicApp.View
             if (CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value) > DateTime.Now)
             {
                 newAppointment.AppointmentDateTime = CombineDateTime(dateTimePickerAppointmentDate.Value, dateTimePickerAppointmentTime.Value);
-                isPut = true;
+                if (Validator.IsPresent(txtBoxAppointmentReason, errorProvider))
+                {
+                    newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
+                    isPut = true;
+                }
+                else
+                {
+                    isPut = false;
+                }
             }  
             else
             {
-                //errorProvider.SetError(dateTimePickerAppointmentTime, "Please select a valid time");
-                MessageBox.Show("nope");
-            }
-            if (Validator.IsPresent(txtBoxAppointmentReason, errorProvider))
-            {
-                newAppointment.AppointmentReason = txtBoxAppointmentReason.Text;
-                isPut = true;
-            }
-            else
-            {
-                isPut = false;
+                errorProvider.SetError(dateTimePickerAppointmentTime, "Please select a valid time");
+                dateTimePickerAppointmentTime.Focus();
             }
             return isPut;
 
