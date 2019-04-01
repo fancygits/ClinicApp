@@ -254,16 +254,16 @@ namespace ClinicApp.DAL
                                     visit.NurseID = reader.GetInt32(nurseIDOrd);
                                     visit.NurseName = GetNurse(visit.NurseID).FullName;
                                 }
-                            if (reader.IsDBNull(weightOrd))
+                                if (reader.IsDBNull(weightOrd))
                                 {
-                                    weightOrd += -1;
+                                      weightOrd += 1;
                                 } else
                                 {
                                     visit.Weight = reader.GetDecimal(weightOrd);
                                 }
                                 if (reader.IsDBNull(systOrd))
                                 {
-                                    systOrd += -1;
+                                     systOrd += -1;
                                 }
                                 else
                                 {
@@ -271,7 +271,7 @@ namespace ClinicApp.DAL
                                 }
                                 if (reader.IsDBNull(diaOrd))
                                 {
-                                    diaOrd += -1;
+                                     diaOrd += -1;
                                 }
                                 else
                                 {
@@ -279,7 +279,7 @@ namespace ClinicApp.DAL
                                 }
                                 if (reader.IsDBNull(tempOrd))
                                 {
-                                    tempOrd += -1;
+                                     tempOrd += -1;
                                 }
                                 else
                                 {
@@ -287,7 +287,7 @@ namespace ClinicApp.DAL
                                 }
                                 if (reader.IsDBNull(pulseOrd))
                                 {
-                                    pulseOrd += -1;
+                                     pulseOrd += -1;
                                 }
                                 else
                                 {
@@ -303,7 +303,7 @@ namespace ClinicApp.DAL
                                 }
                                 if (reader.IsDBNull(initOrd))
                                 {
-                                    initOrd += -1;
+                                    initOrd += 0;
                                 }
                                 else
                                 {
@@ -311,7 +311,7 @@ namespace ClinicApp.DAL
                                 }
                                 if (reader.IsDBNull(finOrd))
                                 {
-                                    finOrd += -1;
+                                    finOrd += 0;
                                 }
                                 else
                                 {
@@ -395,7 +395,7 @@ namespace ClinicApp.DAL
             int count = 0;
             string insertStatement = "INSERT INTO Visit " +
                                      "(appointmentID, weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, finalDiagnosis, nurseID) " +
-                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending doctor visit', NULL, @nurseID)";
+                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending Doctor Visit', NULL, @nurseID)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();

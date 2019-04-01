@@ -117,10 +117,19 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
-                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
-                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
-                        addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
-                        addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
+                        if (this.visit.AppointmentTime > DateTime.Now)
+                        {
+                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
+                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;                      
+                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
+                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
+                        } else
+                        {
+                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
+                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
+                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
+                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
+                        }
                     }
                     addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                     addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
