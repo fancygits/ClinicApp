@@ -1,15 +1,19 @@
 ﻿using ClinicApp.DAL;
 using ClinicApp.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ClinicApp.Controller
 {
-    class NurseController
+    /// <summary>
+    /// Defines the NurseController
+    /// </summary>
+    public class NurseController
     {
+        /// <summary>
+        /// Returns a list of Nurse objects from the DAL
+        /// </summary>
+        /// <returns></returns>
         public List<Nurse> GetNurseList()
         {
            return NurseDAL.GetNurseList();

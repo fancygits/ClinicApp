@@ -2,7 +2,7 @@
 namespace ClinicApp.Model
 {
     /// <summary>
-    /// Properties with get/set for Doctor attributes
+    /// Properties with get/set for Doctor class
     /// </summary>
     public class Doctor : Person
     {

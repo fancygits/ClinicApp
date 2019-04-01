@@ -13,6 +13,11 @@ namespace ClinicApp.DAL
     /// </summary>
     class NurseDAL
     {
+        /// <summary>
+        /// Gets Nurse object based on nurseID
+        /// </summary>
+        /// <param name="nurseID">the nurseID to match</param>
+        /// <returns>Nurse object matching nurseID</returns>
         public static Nurse GetNurse(int nurseID)
         {
             Nurse nurse = new Nurse();
@@ -43,6 +48,11 @@ namespace ClinicApp.DAL
             }
             return nurse;
         }
+
+        /// <summary>
+        /// Returns a list of Nurses
+        /// </summary>
+        /// <returns>List of Nurse objects</returns>
         public static List<Nurse> GetNurseList()
         {
             List<Nurse> listOfNurses = new List<Nurse>();

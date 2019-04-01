@@ -5,8 +5,15 @@ using System.Windows.Forms;
 
 namespace ClinicApp.View
 {
+    /// <summary>
+    /// Form for Finding Patients
+    /// </summary>
     public partial class FindPatientsDialog : Form
     {
+
+        /// <summary>
+        /// Constructs FindPatientDialog object
+        /// </summary>
         public FindPatientsDialog()
         {
             InitializeComponent();

@@ -2,6 +2,9 @@
 
 namespace ClinicApp.Model
 {
+    /// <summary>
+    /// Abstract class defining Person
+    /// </summary>
     public abstract class Person
     {
         public int PersonID { get; set; }

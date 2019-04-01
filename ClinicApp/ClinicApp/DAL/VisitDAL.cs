@@ -5,7 +5,11 @@ using System.Data.SqlClient;
 
 namespace ClinicApp.DAL
 {
-    class VisitDAL
+
+    /// <summary>
+    /// Defines the DataAccessLayer for Visit
+    /// </summary>
+    public class VisitDAL
     {
         /// <summary>
         /// This is the method that will return a string of the doctors name. 

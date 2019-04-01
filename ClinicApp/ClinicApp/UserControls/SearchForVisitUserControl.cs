@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
+
+    /// <summary>
+    /// User Control to search for Visit
+    /// </summary>
     public partial class SearchForVisitUserControl : UserControl
     {
         private VisitController visitController;
@@ -15,6 +19,9 @@ namespace ClinicApp.UserControls
         private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
 
+        /// <summary>
+        /// Constructs a new SearchForVisitUserControl
+        /// </summary>
         public SearchForVisitUserControl()
         {
             InitializeComponent();
@@ -54,6 +61,9 @@ namespace ClinicApp.UserControls
         
         }
 
+        /// <summary>
+        /// Populates the combobox with a list of Patients
+        /// </summary>
         public void PopulateComboBox()
         {
             this.listOfPatients = this.visitController.GetPatients();

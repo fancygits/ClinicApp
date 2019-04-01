@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicApp.Model
 {
     /// <summary>
-    /// Properties with get/set for Appointment attributes
+    /// Properties with get/set for Appointment class
     /// </summary>
     public class Appointment
     {

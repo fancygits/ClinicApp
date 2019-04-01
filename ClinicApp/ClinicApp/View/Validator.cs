@@ -18,7 +18,6 @@ namespace ClinicApp.View
         /// <returns></returns>
         public static bool IsPresent(Control control, ErrorProvider error)
         {
-            //ErrorProvider error = new ErrorProvider();
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
             {
                 TextBox textBox = (TextBox)control;

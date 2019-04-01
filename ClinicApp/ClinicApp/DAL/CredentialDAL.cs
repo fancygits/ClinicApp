@@ -1,17 +1,20 @@
 ﻿using ClinicApp.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicApp.DAL
 {
-   
-    class CredentialDAL
+
+    /// <summary>
+    /// Defines the Credential DataAccessLayer class
+    /// </summary>
+    public class CredentialDAL
     {
 
+        /// <summary>
+        /// Gets password based on username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static string GetPassword(string username)
         {
             Credential credential = new Credential();
@@ -42,6 +45,11 @@ namespace ClinicApp.DAL
             return password;
         }
 
+        /// <summary>
+        /// Gets role based on username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static string GetRole(string username)
         {
             Credential credential = new Credential();

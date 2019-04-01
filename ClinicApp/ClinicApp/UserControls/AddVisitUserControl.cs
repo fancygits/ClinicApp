@@ -7,6 +7,9 @@ using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
+    /// <summary>
+    /// User control fo Visit information
+    /// </summary>
     public partial class AddVisitUserControl : UserControl
     {
         public Visit visit;

@@ -131,6 +131,11 @@ namespace ClinicApp.DAL
             }
         }
 
+        /// <summary>
+        /// Adds a Person to the database
+        /// </summary>
+        /// <param name="person">Person to add</param>
+        /// <returns></returns>
         public static int AddPerson(Person person)
         {
             int personID;

@@ -41,7 +41,6 @@ namespace ClinicApp.DAL
                             doctor.PersonID = reader.GetInt32(personIDOrd);
                             doctor.FirstName = reader.GetString(firstNameOrd);
                             doctor.LastName = reader.GetString(lastNameOrd);
-                    //        doctor.FullName = reader.GetString(fullNameOrd);
                             doctorList.Add(doctor);
                         }
                         reader.Close();

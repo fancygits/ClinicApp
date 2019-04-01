@@ -3,6 +3,10 @@ using System.Windows.Forms;
 
 namespace ClinicApp
 {
+
+    /// <summary>
+    /// Main Form for the Nurse interface
+    /// </summary>
     public partial class NurseDashboard : Form
     {
         private static NurseDashboard instance = null;
@@ -12,6 +16,10 @@ namespace ClinicApp
             InitializeComponent();
         }
 
+        /// <summary>
+        /// This is the singleton method. If there is not a current instance of the NurseDashboard it will create one. 
+        /// </summary>
+        /// <returns>And instance of the NurseDashboard</returns>
         public static NurseDashboard Instance()
         {
             if (instance == null)

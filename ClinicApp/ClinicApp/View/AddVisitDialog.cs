@@ -10,8 +10,15 @@ using System.Windows.Forms;
 
 namespace ClinicApp.View
 {
+
+    /// <summary>
+    /// Form for adding Visits
+    /// </summary>
     public partial class AddVisitDialog : Form
     {
+        /// <summary>
+        /// Constructor for AddVisitDialog
+        /// </summary>
         public AddVisitDialog()
         {
             InitializeComponent();
