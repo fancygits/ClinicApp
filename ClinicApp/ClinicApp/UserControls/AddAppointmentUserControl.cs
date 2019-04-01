@@ -78,34 +78,6 @@ namespace ClinicApp.UserControls
             firstNameTextBox.Focus();
         }
 
-        //private void btnGetPatient_Click(object sender, EventArgs e)
-        //{
-        //    int patientID = Convert.ToInt32(patientIDTextBox.Text);
-        //    this.GetPatient(patientID);
-        //    this.RefreshPage();
-
-        //}
-        
-        //private void GetPatient(int patientID)
-        //{
-        //    try
-        //    {
-        //        this.patient = this.patientController.GetPatientByID(patientID);
-        //        if (patient != null)
-        //        {
-        //            patientBindingSource.Clear();
-        //            patientBindingSource.Add(patient);
-        //        }
-        //        else
-        //        {
-                    
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //}
 
         private void appointmentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
