@@ -128,6 +128,7 @@
             this.passwordTextBox.Size = new System.Drawing.Size(156, 26);
             this.passwordTextBox.TabIndex = 3;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // LoginForm
             // 

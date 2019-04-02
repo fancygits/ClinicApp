@@ -32,5 +32,10 @@ namespace ClinicApp
             LoginForm.Instance().Show();
             LoginForm.ClearFields();
         }
+
+        private void patientsTabControl_TabIndexChanged(object sender, System.EventArgs e)
+        {
+            searchForVisitUserControl1.PopulateComboBox();
+        }
     }
 }
