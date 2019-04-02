@@ -57,6 +57,7 @@
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.btnSearchAppointments = new System.Windows.Forms.Button();
             this.btnSearchVisits = new System.Windows.Forms.Button();
+            this.btnDebug = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -375,10 +376,26 @@
             this.btnSearchVisits.UseVisualStyleBackColor = true;
             this.btnSearchVisits.Click += new System.EventHandler(this.btnSearchVisits_Click);
             // 
+            // btnDebug
+            // 
+            this.btnDebug.BackColor = System.Drawing.Color.Transparent;
+            this.btnDebug.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDebug.ForeColor = System.Drawing.Color.Transparent;
+            this.btnDebug.Location = new System.Drawing.Point(5, 385);
+            this.btnDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(5, 5);
+            this.btnDebug.TabIndex = 31;
+            this.btnDebug.TabStop = false;
+            this.btnDebug.UseVisualStyleBackColor = false;
+            this.btnDebug.Click += new System.EventHandler(this.DebugPatient);
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.btnSearchVisits);
             this.Controls.Add(this.btnSearchAppointments);
             this.Controls.Add(this.phoneNumberMaskedTextBox);
@@ -405,6 +422,7 @@
             this.Controls.Add(stateLabel);
             this.Controls.Add(streetAddressLabel);
             this.Controls.Add(this.streetAddressTextBox);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "PatientInformationUserControl";
             this.Size = new System.Drawing.Size(807, 400);
             this.Load += new System.EventHandler(this.PatientInformationUserControl_Load);
@@ -435,5 +453,6 @@
         private System.Windows.Forms.MaskedTextBox phoneNumberMaskedTextBox;
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
+        private System.Windows.Forms.Button btnDebug;
     }
 }

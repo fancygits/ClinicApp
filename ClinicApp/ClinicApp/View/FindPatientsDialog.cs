@@ -31,5 +31,11 @@ namespace ClinicApp.View
             patient = patientDataGridView.SelectedRows[0].DataBoundItem as Patient;
             this.DialogResult = DialogResult.OK;
         }
+
+        private void btnAddPatient_Click(object sender, EventArgs e)
+        {
+            patient = new Patient();
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }
