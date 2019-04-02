@@ -54,7 +54,11 @@ namespace ClinicApp.UserControls
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
             patient = this.FindPatient(firstName, lastName, birthDate);
-            if (patient.FirstName == null)
+            if (patient == null)
+            {
+                NoMatchesDialog();
+            }
+            else if (patient.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdatePatient.Text = "Add Patient";
@@ -64,7 +68,7 @@ namespace ClinicApp.UserControls
                 EnableFields();
                 btnAddUpdatePatient.Enabled = true;
             }
-            else if (patient != null)
+            else
             {
                 btnAddUpdatePatient.Text = "Update Patient";
                 PutNewPatient();
@@ -73,10 +77,6 @@ namespace ClinicApp.UserControls
                 EnableFields();
                 btnGetPatient.Enabled = false;
                 btnAddUpdatePatient.Enabled = false;
-            }
-            else
-            {
-                NoMatchesDialog();
             }
         }
 
