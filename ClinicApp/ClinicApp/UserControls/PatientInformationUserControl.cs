@@ -24,8 +24,8 @@ namespace ClinicApp.UserControls
         public PatientInformationUserControl()
         {
             InitializeComponent();
-            this.patientController = new PatientController();
-            this.errorProvider = new ErrorProvider();
+            patientController = new PatientController();
+            errorProvider = new ErrorProvider();
         }
 
         /// <summary>
@@ -36,10 +36,10 @@ namespace ClinicApp.UserControls
         private void PatientInformationUserControl_Load(object sender, System.EventArgs e)
         {
             newPatient = new Patient();
-            this.LoadComboboxes();
+            LoadComboboxes();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            this.ClearFields();
-            this.DisableFields();
+            ClearFields();
+            DisableFields();
         }
 
         /// <summary>
@@ -52,21 +52,31 @@ namespace ClinicApp.UserControls
             
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Text;
-            this.patient = this.FindPatient(firstName, lastName, birthDate);
-            if (this.patient != null)
+            string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
+            patient = this.FindPatient(firstName, lastName, birthDate);
+            if (patient == null)
             {
-                btnAddUpdatePatient.Text = "Update Patient";
-                this.PutNewPatient();
+                NoMatchesDialog();
+            }
+            else if (patient.FirstName == null)
+            {
+                firstNameTextBox.Focus();
+                btnAddUpdatePatient.Text = "Add Patient";
+                PutNewPatient();
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
-                this.EnableFields();
-                btnGetPatient.Enabled = false;
-                btnAddUpdatePatient.Enabled = false;
+                EnableFields();
+                btnAddUpdatePatient.Enabled = true;
             }
             else
             {
-                NoMatchesDialog();
+                btnAddUpdatePatient.Text = "Update Patient";
+                PutNewPatient();
+                patientBindingSource.Clear();
+                patientBindingSource.Add(newPatient);
+                EnableFields();
+                btnGetPatient.Enabled = false;
+                btnAddUpdatePatient.Enabled = false;
             }
         }
 
@@ -92,11 +102,12 @@ namespace ClinicApp.UserControls
             {
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
-                string birthDate = birthDateDateTimePicker.Text;
+                string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
                 string SSN = sSNMaskedTextBox.Text;
                 int patientID = -1;
                 try
                 {
+                    PutNewPatient();
                     Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
                     if (tempPatient != null)
                     {
@@ -115,11 +126,11 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
-                        patientID = this.patientController.AddPatient(patient);
+                        patientID = patientController.AddPatient(newPatient);
                     }
                     if (patientID > 0)
                     {
-                        this.GetPatient();
+                        GetPatient();
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                     }
                     else
@@ -143,7 +154,7 @@ namespace ClinicApp.UserControls
         {
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Text;
+            string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
             string SSN = sSNMaskedTextBox.Text;
             int patientID = -1;
             try
@@ -183,9 +194,9 @@ namespace ClinicApp.UserControls
             {
                 try
                 {
-                    if (this.patientController.UpdatePatient(patient, newPatient))
+                    if (patientController.UpdatePatient(patient, newPatient))
                     {
-                        this.GetPatient();
+                        GetPatient();
                         lblMessage.Text = "Patient has been updated successfully.";
                     }
                     else
@@ -238,7 +249,7 @@ namespace ClinicApp.UserControls
             genderComboBox.SelectedIndex = -1;
             genderComboBox.SelectedValue = "";
 
-            stateList = this.patientController.GetStateList();
+            stateList = patientController.GetStateList();
             stateComboBox.DataSource = stateList;
             stateComboBox.SelectedIndex = -1;
             stateComboBox.SelectedValue = "";
@@ -246,8 +257,9 @@ namespace ClinicApp.UserControls
         
         private void ClearFields()
         {
+            patient = null;
             patientBindingSource.Clear();
-            birthDateDateTimePicker.Text = "";
+            birthDateDateTimePicker.Value = DateTime.Today;
             genderComboBox.SelectedIndex = -1;
             stateComboBox.SelectedIndex = -1;
             btnGetPatient.Enabled = false;
@@ -336,73 +348,101 @@ namespace ClinicApp.UserControls
 
         private void btnSearchAppointments_Click(object sender, EventArgs e)
         {
-            TabControl tabControl = this.Parent.Parent as TabControl;
+            TabControl tabControl = Parent.Parent as TabControl;
             tabControl.SelectedIndex = 1;
             AddAppointmentUserControl addAppointmentUserControl = tabControl.TabPages[1].Controls[0] as AddAppointmentUserControl;
-            addAppointmentUserControl.patient = this.patient;
+            addAppointmentUserControl.patient = patient;
             addAppointmentUserControl.RefreshPage();
         }
         private void btnSearchVisits_Click(object sender, EventArgs e)
         {
-            TabControl tabControl = this.Parent.Parent as TabControl;
+            TabControl tabControl = Parent.Parent as TabControl;
             tabControl.SelectedIndex = 2;
             SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
-            searchForVisitUserControl.patient = this.patient;
+            searchForVisitUserControl.patient = patient;
             searchForVisitUserControl.SelectPatient();
         }
 
         private void btnGetPatient_Click(object sender, EventArgs e)
         {
             lblMessage.Text = "";
-            this.GetPatient();
+            GetPatient();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.ClearFields();
-            this.DisableFields();
+            ClearFields();
+            DisableFields();
         }
 
         private void btnAddUpdatePatient_Click(object sender, EventArgs e)
         {
             if (btnAddUpdatePatient.Text == "Update Patient")
             {
-                this.UpdatePatient();
+                UpdatePatient();
             }
             else 
             {
                 if (patient == null)
                 {
                     patient = new Patient();
-                    patientBindingSource.Add(patient);
                 }
                 if (sSNMaskedTextBox.Enabled)
                 {
-                    this.AddPatient();
+                    AddPatient();
                 }
                 else
                 {
-                    this.EnableFields();
+                    EnableFields();
                 }
+                patientBindingSource.Clear();
+                patientBindingSource.Add(patient);
             }
         }
 
         /// <summary>
         /// Used to find possible errors in a patient
         /// </summary>
-        private void DebugPatient()
+        private void DebugPatient(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.Print(this.patient.PatientID.ToString());
-            System.Diagnostics.Debug.Print(this.patient.PersonID.ToString());
-            System.Diagnostics.Debug.Print(this.patient.FullName.ToString());
-            System.Diagnostics.Debug.Print(this.patient.BirthDate.ToString());
-            System.Diagnostics.Debug.Print(this.patient.SSN.ToString());
-            System.Diagnostics.Debug.Print(this.patient.Gender.ToString());
-            System.Diagnostics.Debug.Print(this.patient.StreetAddress.ToString());
-            System.Diagnostics.Debug.Print(this.patient.City.ToString());
-            System.Diagnostics.Debug.Print(this.patient.State.ToString());
-            System.Diagnostics.Debug.Print(this.patient.PostCode.ToString());
-            System.Diagnostics.Debug.Print(this.patient.PhoneNumber.ToString());
+            if (patient == null)
+            {
+                System.Diagnostics.Debug.Print("No Patient Loaded.");
+            }
+            else
+            {
+                try
+                {
+                    System.Diagnostics.Debug.Print("\t[Current Fields]");
+                    System.Diagnostics.Debug.Print("First Name:\t" + firstNameTextBox.Text);
+                    System.Diagnostics.Debug.Print("Last Name:\t" + lastNameTextBox.Text);
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + birthDateDateTimePicker.Value.ToShortDateString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + sSNMaskedTextBox.Text);
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + genderComboBox.DisplayMember);
+                    System.Diagnostics.Debug.Print("Address:\t" + streetAddressTextBox.Text);
+                    System.Diagnostics.Debug.Print("City:\t\t" + cityTextBox.Text);
+                    System.Diagnostics.Debug.Print("State:\t\t" + stateComboBox.DisplayMember);
+                    System.Diagnostics.Debug.Print("Postcode:\t" + postCodeTextBox.Text);
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + phoneNumberMaskedTextBox.Text);
+
+                    System.Diagnostics.Debug.Print("\t[Current Patient]");
+                    System.Diagnostics.Debug.Print("PatientID:\t" + patient.PatientID.ToString());
+                    System.Diagnostics.Debug.Print("PersonID:\t" + patient.PersonID.ToString());
+                    System.Diagnostics.Debug.Print("Full Name:\t" + patient.FullName.ToString());
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + patient.BirthDate.ToString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + patient.SSN.ToString());
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + patient.Gender.ToString());
+                    System.Diagnostics.Debug.Print("Address:\t" + patient.StreetAddress.ToString());
+                    System.Diagnostics.Debug.Print("City:\t\t" + patient.City.ToString());
+                    System.Diagnostics.Debug.Print("State:\t\t" + patient.State.ToString());
+                    System.Diagnostics.Debug.Print("Postcode:\t" + patient.PostCode.ToString());
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + patient.PhoneNumber.ToString());
+                }
+                catch (Exception ex)
+                {
+                    return;
+                }
+            }
         }
     }
 }
