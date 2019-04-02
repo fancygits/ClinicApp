@@ -46,6 +46,7 @@ namespace ClinicApp.View
 
             if (!this.addAppointment)
             {
+                dateTimePickerAppointmentDate.MinDate = DateTimePicker.MinimumDateTime;
                 dateTimePickerAppointmentDate.Value = this.appointment.AppointmentDateTime;
                 dateTimePickerAppointmentTime.Value = this.appointment.AppointmentDateTime;
                 cmboBoxDoctorID.SelectedValue = this.appointment.AppointmentDoctorID;
@@ -62,6 +63,7 @@ namespace ClinicApp.View
             }
             else
             {
+                dateTimePickerAppointmentDate.MinDate = DateTime.Today;
                 btnUpdate.Enabled = false;
             }
         }
