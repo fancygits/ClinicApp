@@ -165,11 +165,12 @@ namespace ClinicApp.View
             this.dateTimePickerAppointmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerAppointmentDate.Location = new System.Drawing.Point(233, 127);
+            this.dateTimePickerAppointmentDate.MinDate = new System.DateTime(2019, 4, 1, 20, 8, 28, 626);
             this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
             this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentDate.TabIndex = 1;
             this.dateTimePickerAppointmentDate.Tag = "Appointment Date";
-            this.dateTimePickerAppointmentDate.MinDate = DateTime.Now;
+            this.dateTimePickerAppointmentDate.Value = new System.DateTime(2019, 4, 1, 20, 8, 28, 626);
             // 
             // dateTimePickerAppointmentTime
             // 
@@ -183,7 +184,6 @@ namespace ClinicApp.View
             this.dateTimePickerAppointmentTime.Size = new System.Drawing.Size(236, 26);
             this.dateTimePickerAppointmentTime.TabIndex = 2;
             this.dateTimePickerAppointmentTime.Tag = "Appointment Time";
-            this.dateTimePickerAppointmentDate.MinDate = DateTime.Now;
             // 
             // txtBoxAppointmentReason
             // 
@@ -270,6 +270,7 @@ namespace ClinicApp.View
             this.Controls.Add(firstNameLabel);
             this.Controls.Add(this.txtBxfirstName);
             this.Name = "AddUpdateAppointmentDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add/Update Appointment";
             this.Load += new System.EventHandler(this.AddUpdateAppointmentDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
