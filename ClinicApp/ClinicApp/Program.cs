@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicApp.View;
+using System;
 using System.Windows.Forms;
 
 namespace ClinicApp
@@ -13,7 +14,7 @@ namespace ClinicApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(NurseDashboard.Instance());
+            Application.Run(LoginForm.Instance());
         }
     }
 }

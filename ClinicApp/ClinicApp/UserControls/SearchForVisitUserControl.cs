@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
+    /// <summary>
+    /// This is the user control that will allow a user to search for a visit by a patient and patient ID
+    /// </summary>
     public partial class SearchForVisitUserControl : UserControl
     {
         private VisitController visitController;
@@ -54,6 +57,9 @@ namespace ClinicApp.UserControls
         
         }
 
+        /// <summary>
+        /// This method will populate the patient combobox
+        /// </summary>
         public void PopulateComboBox()
         {
             this.listOfPatients = this.visitController.GetPatients();

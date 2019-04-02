@@ -121,6 +121,7 @@
             this.passwordTextBox.Size = new System.Drawing.Size(308, 44);
             this.passwordTextBox.TabIndex = 3;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // LoginForm
             // 
@@ -129,6 +130,7 @@
             this.ClientSize = new System.Drawing.Size(768, 374);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinic Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
