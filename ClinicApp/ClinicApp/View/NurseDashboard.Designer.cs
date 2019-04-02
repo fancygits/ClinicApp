@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NurseDashboard));
             this.patientsTabControl = new System.Windows.Forms.TabControl();
             this.infoTabPage = new System.Windows.Forms.TabPage();
-            this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
             this.apptTabPage = new System.Windows.Forms.TabPage();
-            this.addAppointmentUserControl1 = new ClinicApp.UserControls.AddAppointmentUserControl();
             this.VisitTabPage = new System.Windows.Forms.TabPage();
-            this.searchForVisitUserControl1 = new ClinicApp.UserControls.SearchForVisitUserControl();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lnkLblLogout = new System.Windows.Forms.LinkLabel();
             this.lblRoll = new System.Windows.Forms.Label();
             this.lblPlaceholder2 = new System.Windows.Forms.Label();
             this.lblPlaceholder1 = new System.Windows.Forms.Label();
+            this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
+            this.addAppointmentUserControl1 = new ClinicApp.UserControls.AddAppointmentUserControl();
+            this.searchForVisitUserControl1 = new ClinicApp.UserControls.SearchForVisitUserControl();
             this.patientsTabControl.SuspendLayout();
             this.infoTabPage.SuspendLayout();
             this.apptTabPage.SuspendLayout();
@@ -73,15 +73,6 @@
             this.infoTabPage.Text = "Patient Information";
             this.infoTabPage.UseVisualStyleBackColor = true;
             // 
-            // patientInformationUserControl1
-            // 
-            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientInformationUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
-            this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
-            this.patientInformationUserControl1.TabIndex = 0;
-            // 
             // apptTabPage
             // 
             this.apptTabPage.Controls.Add(this.addAppointmentUserControl1);
@@ -93,14 +84,6 @@
             this.apptTabPage.Text = "Patient Appointments";
             this.apptTabPage.UseVisualStyleBackColor = true;
             // 
-            // addAppointmentUserControl1
-            // 
-            this.addAppointmentUserControl1.Location = new System.Drawing.Point(10, 3);
-            this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
-            this.addAppointmentUserControl1.Size = new System.Drawing.Size(792, 392);
-            this.addAppointmentUserControl1.TabIndex = 0;
-            // 
             // VisitTabPage
             // 
             this.VisitTabPage.Controls.Add(this.searchForVisitUserControl1);
@@ -111,15 +94,6 @@
             this.VisitTabPage.TabIndex = 2;
             this.VisitTabPage.Text = "Patient Visit";
             this.VisitTabPage.UseVisualStyleBackColor = true;
-            // 
-            // searchForVisitUserControl1
-            // 
-            this.searchForVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchForVisitUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.searchForVisitUserControl1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.searchForVisitUserControl1.Name = "searchForVisitUserControl1";
-            this.searchForVisitUserControl1.Size = new System.Drawing.Size(796, 386);
-            this.searchForVisitUserControl1.TabIndex = 0;
             // 
             // lblUserName
             // 
@@ -168,6 +142,32 @@
             this.lblPlaceholder1.TabIndex = 5;
             this.lblPlaceholder1.Text = "|";
             // 
+            // patientInformationUserControl1
+            // 
+            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientInformationUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
+            this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
+            this.patientInformationUserControl1.TabIndex = 0;
+            // 
+            // addAppointmentUserControl1
+            // 
+            this.addAppointmentUserControl1.Location = new System.Drawing.Point(10, 3);
+            this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
+            this.addAppointmentUserControl1.Size = new System.Drawing.Size(792, 392);
+            this.addAppointmentUserControl1.TabIndex = 0;
+            // 
+            // searchForVisitUserControl1
+            // 
+            this.searchForVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchForVisitUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.searchForVisitUserControl1.Margin = new System.Windows.Forms.Padding(1);
+            this.searchForVisitUserControl1.Name = "searchForVisitUserControl1";
+            this.searchForVisitUserControl1.Size = new System.Drawing.Size(796, 386);
+            this.searchForVisitUserControl1.TabIndex = 0;
+            // 
             // NurseDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +181,7 @@
             this.Controls.Add(this.patientsTabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NurseDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nurse Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NurseDashboard_FormClosing);
             this.patientsTabControl.ResumeLayout(false);
