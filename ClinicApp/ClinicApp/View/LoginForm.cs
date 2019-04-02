@@ -71,5 +71,19 @@ namespace ClinicApp.View
         {
             Application.Exit();
         }
+
+        /// <summary>
+        /// Used so users can press the Enter key in the name and birthdate textboxes to GetPatient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Enter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                loginButton.PerformClick();
+            }
+        }
     }
 }
