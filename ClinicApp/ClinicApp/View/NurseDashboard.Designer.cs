@@ -97,6 +97,7 @@
             // 
             // lblUserName
             // 
+            this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(615, 12);
             this.lblUserName.Name = "lblUserName";
@@ -106,6 +107,7 @@
             // 
             // lnkLblLogout
             // 
+            this.lnkLblLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lnkLblLogout.AutoSize = true;
             this.lnkLblLogout.Location = new System.Drawing.Point(737, 12);
             this.lnkLblLogout.Name = "lnkLblLogout";
@@ -117,6 +119,7 @@
             // 
             // lblRoll
             // 
+            this.lblRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRoll.AutoSize = true;
             this.lblRoll.Location = new System.Drawing.Point(691, 12);
             this.lblRoll.Name = "lblRoll";
@@ -126,6 +129,7 @@
             // 
             // lblPlaceholder2
             // 
+            this.lblPlaceholder2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlaceholder2.AutoSize = true;
             this.lblPlaceholder2.Location = new System.Drawing.Point(722, 12);
             this.lblPlaceholder2.Name = "lblPlaceholder2";
@@ -135,6 +139,7 @@
             // 
             // lblPlaceholder1
             // 
+            this.lblPlaceholder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlaceholder1.AutoSize = true;
             this.lblPlaceholder1.Location = new System.Drawing.Point(676, 12);
             this.lblPlaceholder1.Name = "lblPlaceholder1";
