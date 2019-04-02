@@ -6,7 +6,9 @@ using ClinicApp.Model;
 using ClinicApp.View;
 
 namespace ClinicApp.UserControls
-{
+{/// <summary>
+/// This is the UserControl that will allow a user to add or update a patient visit.
+/// </summary>
     public partial class AddVisitUserControl : UserControl
     {
         public Visit visit;
