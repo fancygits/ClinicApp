@@ -306,6 +306,7 @@ namespace ClinicApp.UserControls
                    Validator.IsPresent(cityTextBox, errorProvider) &&
                    Validator.IsPresent(stateComboBox, errorProvider) &&
                    Validator.IsPresent(postCodeTextBox, errorProvider) &&
+                   Validator.IsPostCode(postCodeTextBox, errorProvider) &&
                    Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider);
         }
 
