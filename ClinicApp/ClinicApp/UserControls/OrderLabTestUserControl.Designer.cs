@@ -111,10 +111,10 @@
             this.dataGridViewTextBoxColumn5,
             this.Column1});
             this.testOrderedDataGridView.DataSource = this.testOrderedBindingSource;
-            this.testOrderedDataGridView.Location = new System.Drawing.Point(0, 99);
+            this.testOrderedDataGridView.Location = new System.Drawing.Point(7, 99);
             this.testOrderedDataGridView.Name = "testOrderedDataGridView";
             this.testOrderedDataGridView.ReadOnly = true;
-            this.testOrderedDataGridView.Size = new System.Drawing.Size(449, 220);
+            this.testOrderedDataGridView.Size = new System.Drawing.Size(499, 220);
             this.testOrderedDataGridView.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn3
@@ -130,13 +130,17 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 75;
             // 
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "Result";
+            this.dataGridViewCheckBoxColumn1.FalseValue = "Neg";
             this.dataGridViewCheckBoxColumn1.HeaderText = "Result";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.TrueValue = "Pos";
             this.dataGridViewCheckBoxColumn1.Width = 50;
             // 
             // dataGridViewTextBoxColumn5
@@ -145,14 +149,15 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Detail";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 75;
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Text = "View/Edit";
+            this.Column1.Text = "Edit/View";
+            this.Column1.UseColumnTextForButtonValue = true;
             // 
             // OrderLabTestUserControl
             // 
@@ -164,7 +169,7 @@
             this.Controls.Add(lbltTestName);
             this.Controls.Add(this.cmboBoxTestID);
             this.Name = "OrderLabTestUserControl";
-            this.Size = new System.Drawing.Size(452, 377);
+            this.Size = new System.Drawing.Size(520, 377);
             this.Load += new System.EventHandler(this.OrderLabTestUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();

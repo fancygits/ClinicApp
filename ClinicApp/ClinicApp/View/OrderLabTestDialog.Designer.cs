@@ -33,16 +33,16 @@
             // 
             // orderLabTestUserControl1
             // 
-            this.orderLabTestUserControl1.Location = new System.Drawing.Point(12, -2);
+            this.orderLabTestUserControl1.Location = new System.Drawing.Point(1, 2);
             this.orderLabTestUserControl1.Name = "orderLabTestUserControl1";
-            this.orderLabTestUserControl1.Size = new System.Drawing.Size(452, 392);
+            this.orderLabTestUserControl1.Size = new System.Drawing.Size(520, 382);
             this.orderLabTestUserControl1.TabIndex = 0;
             // 
             // OrderLabTestDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 377);
+            this.ClientSize = new System.Drawing.Size(513, 396);
             this.Controls.Add(this.orderLabTestUserControl1);
             this.Name = "OrderLabTestDialog";
             this.Text = "Order Lab Tests";
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private UserControls.OrderLabTestUserControl orderLabTestUserControl1;
+        public UserControls.OrderLabTestUserControl orderLabTestUserControl1;
     }
 }
