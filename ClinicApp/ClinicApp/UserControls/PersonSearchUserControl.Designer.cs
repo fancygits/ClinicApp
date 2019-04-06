@@ -32,12 +32,12 @@
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label birthDateLabel;
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.btnGetPatient = new System.Windows.Forms.Button();
+            this.btnGetPerson = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -74,10 +74,6 @@
             birthDateLabel.TabIndex = 5;
             birthDateLabel.Text = "Birth Date:";
             // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
-            // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "FirstName", true));
@@ -106,20 +102,21 @@
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(135, 26);
             this.birthDateDateTimePicker.TabIndex = 6;
             // 
-            // btnGetPatient
+            // btnGetPerson
             // 
-            this.btnGetPatient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGetPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetPatient.Image = global::ClinicApp.Properties.Resources.magnifier;
-            this.btnGetPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGetPatient.Location = new System.Drawing.Point(547, 16);
-            this.btnGetPatient.Name = "btnGetPatient";
-            this.btnGetPatient.Padding = new System.Windows.Forms.Padding(5);
-            this.btnGetPatient.Size = new System.Drawing.Size(157, 46);
-            this.btnGetPatient.TabIndex = 7;
-            this.btnGetPatient.Text = "Get Patient";
-            this.btnGetPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGetPatient.UseVisualStyleBackColor = true;
+            this.btnGetPerson.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGetPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetPerson.Image = global::ClinicApp.Properties.Resources.magnifier;
+            this.btnGetPerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGetPerson.Location = new System.Drawing.Point(547, 16);
+            this.btnGetPerson.Name = "btnGetPerson";
+            this.btnGetPerson.Padding = new System.Windows.Forms.Padding(5);
+            this.btnGetPerson.Size = new System.Drawing.Size(157, 46);
+            this.btnGetPerson.TabIndex = 7;
+            this.btnGetPerson.Text = "Get Person";
+            this.btnGetPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGetPerson.UseVisualStyleBackColor = true;
+            this.btnGetPerson.Click += new System.EventHandler(this.btnGetPerson_Click);
             // 
             // btnClear
             // 
@@ -132,12 +129,16 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
+            // 
             // PersonSearchUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnGetPatient);
+            this.Controls.Add(this.btnGetPerson);
             this.Controls.Add(birthDateLabel);
             this.Controls.Add(this.birthDateDateTimePicker);
             this.Controls.Add(lastNameLabel);
@@ -159,7 +160,7 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
-        private System.Windows.Forms.Button btnGetPatient;
+        private System.Windows.Forms.Button btnGetPerson;
         private System.Windows.Forms.Button btnClear;
     }
 }
