@@ -126,6 +126,8 @@ namespace ClinicApp.UserControls
         private void btnLabTest_Click(object sender, EventArgs e)
         {
             OrderLabTestDialog orderLabTestForm = new OrderLabTestDialog();
+            orderLabTestForm.orderLabTestUserControl1.visit = visit;
+            MessageBox.Show(orderLabTestForm.orderLabTestUserControl1.visit.AppointmentID.ToString());
             DialogResult result = orderLabTestForm.ShowDialog();
             if (result == DialogResult.OK)
             {

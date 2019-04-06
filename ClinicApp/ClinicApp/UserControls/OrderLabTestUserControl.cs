@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
 
+
 namespace ClinicApp.UserControls
 {
     /// <summary>
@@ -14,6 +15,7 @@ namespace ClinicApp.UserControls
     {
         private readonly LabTestController labTestController;
         private List<TestOrdered> testOrderedList;
+        public Visit visit;
 
         /// <summary>
         /// Constructor for the User Control
@@ -53,7 +55,7 @@ namespace ClinicApp.UserControls
         {
             try
             {
-                this.testOrderedList = this.labTestController.GetTestOrderedByAppointmentID(241);
+                this.testOrderedList = this.labTestController.GetTestOrderedByAppointmentID(this.visit.AppointmentID);
                 testOrderedDataGridView.DataSource = this.testOrderedList;
             }
             catch (Exception ex)

@@ -58,7 +58,7 @@ namespace ClinicApp.DAL
                 "FROM TestOrdered tord " +
                 "JOIN LabTest lb " +
                 "ON tord.testCode = lb.testCode " +
-                "WHERE appointmentID = 241";
+                "WHERE appointmentID = @AppointmentID";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -78,8 +78,14 @@ namespace ClinicApp.DAL
                             testOrdered.TestCode = reader.GetInt32(testCodeOrd);
                             testOrdered.Name = reader.GetString(testNameOrd);
                             testOrdered.Date = reader.GetDateTime(testDateOrd);
-                            testOrdered.Result = reader.GetBoolean(testResultOrd);
-                            testOrdered.ResultDetail = reader.GetString(testResultDetailsOrd);
+                            if (!reader.IsDBNull(testResultOrd))
+                            {
+                                testOrdered.Result = reader.GetBoolean(testResultOrd);
+                            }
+                            if (!reader.IsDBNull(testResultDetailsOrd))
+                            {
+                                testOrdered.ResultDetail = reader.GetString(testResultDetailsOrd);
+                            }
                             testOrderedByApptIDList.Add(testOrdered);
                         }
                         reader.Close();
