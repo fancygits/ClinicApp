@@ -93,11 +93,23 @@
     <Compile Include="UserControls\OrderLabTestUserControl.Designer.cs">
       <DependentUpon>OrderLabTestUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LoginUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LoginUserControl.Designer.cs">
+      <DependentUpon>LoginUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PatientInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\PatientInformationUserControl.Designer.cs">
       <DependentUpon>PatientInformationUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PersonSearchUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PersonSearchUserControl.Designer.cs">
+      <DependentUpon>PersonSearchUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchForVisitUserControl.cs">
       <SubType>UserControl</SubType>
@@ -117,6 +129,12 @@
     </Compile>
     <Compile Include="View\AddVisitDialog.Designer.cs">
       <DependentUpon>AddVisitDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorDashboard.Designer.cs">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FindPatientsDialog.cs">
       <SubType>Form</SubType>
@@ -154,8 +172,14 @@
     <EmbeddedResource Include="UserControls\OrderLabTestUserControl.resx">
       <DependentUpon>OrderLabTestUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LoginUserControl.resx">
+      <DependentUpon>LoginUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientInformationUserControl.resx">
       <DependentUpon>PatientInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PersonSearchUserControl.resx">
+      <DependentUpon>PersonSearchUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchForVisitUserControl.resx">
       <DependentUpon>SearchForVisitUserControl.cs</DependentUpon>
@@ -165,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddVisitDialog.resx">
       <DependentUpon>AddVisitDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorDashboard.resx">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FindPatientsDialog.resx">
       <DependentUpon>FindPatientsDialog.cs</DependentUpon>

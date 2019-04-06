@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ClinicApp.View
@@ -148,6 +149,27 @@ namespace ClinicApp.View
             catch (FormatException)
             {
                 error.SetError(textbox, textbox.Tag.ToString() + " must be an decimal value.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Compares a textbox against a US PostCode regular expression
+        /// </summary>
+        /// <param name="textbox">The TextBox to validate</param>
+        /// <param name="error">The error provider to communicat through</param>
+        /// <returns>True if it matches a postcode</returns>
+        public static bool IsPostCode(TextBox textbox, ErrorProvider error)
+        {
+            Match match = Regex.Match(textbox.Text, "^[0-9]{5}(?:-[0-9]{4})?$");
+            if (match.Success)
+            {
+                error.SetError(textbox, "");
+                return true;
+            }
+            else
+            {
+                error.SetError(textbox, textbox.Tag.ToString() + " must be in the format XXXXX or XXXXX-XXXX");
                 return false;
             }
         }

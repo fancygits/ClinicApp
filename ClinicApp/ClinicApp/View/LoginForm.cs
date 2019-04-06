@@ -38,12 +38,15 @@ namespace ClinicApp.View
                 {
                     NurseDashboard.Instance().Show();
                     NurseDashboard.Instance().lblUserName.Text = this.userNameTextBox.Text;
-                    NurseDashboard.Instance().lblRoll.Text = this.credentialController.GetRole(this.userNameTextBox.Text);
+                    NurseDashboard.Instance().lblRoll.Text = "Nurse";
                     LoginForm.Instance().Hide();
 
                 } else if (this.credentialController.GetRole(this.userNameTextBox.Text) == "administrator")
                 {
-                    accessLabel.Text = "Access Granted For Admin: " + this.userNameTextBox.Text + " as an " + this.credentialController.GetRole(this.userNameTextBox.Text);
+                    AdministratorDashboard.Instance().Show();
+                    AdministratorDashboard.Instance().lblUsername.Text = this.userNameTextBox.Text;
+                    AdministratorDashboard.Instance().lblRole.Text = "Administrator";
+                    LoginForm.Instance().Hide();
                 }
                 
             } else
