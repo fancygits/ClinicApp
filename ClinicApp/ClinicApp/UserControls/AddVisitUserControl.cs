@@ -122,5 +122,15 @@ namespace ClinicApp.UserControls
             
            
         }
+
+        private void btnLabTest_Click(object sender, EventArgs e)
+        {
+            OrderLabTestDialog orderLabTestForm = new OrderLabTestDialog();
+            DialogResult result = orderLabTestForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
