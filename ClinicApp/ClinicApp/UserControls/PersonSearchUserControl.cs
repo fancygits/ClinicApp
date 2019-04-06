@@ -1,5 +1,4 @@
-﻿using ClinicApp.Controller;
-using ClinicApp.Model;
+﻿using ClinicApp.Model;
 using System;
 using System.Windows.Forms;
 
@@ -7,37 +6,30 @@ namespace ClinicApp.UserControls
 {
     public partial class PersonSearchUserControl : UserControl, IUserControlSearch
     {
-        public Person person;
-        public Patient patient;
+        private Nurse nurse;
+        private Patient patient;
         private string personType;
-        private PatientController patientController;
-        private NurseController nurseController;
-        private DoctorController doctorController;
-        public PersonSearchUserControl(Person newPerson)
+        public PersonSearchUserControl(Person person)
         {
             InitializeComponent();
-            person = newPerson;
-            SetPersonType();
+            SetPersonType(person);
             btnGetPerson.Text = "Get " + personType;
-            btnClear.PerformClick();
+            ClearFields();
         }
 
 
-        private void SetPersonType()
+        private void SetPersonType(Person person)
         {
             switch (person.GetType().ToString())
             {
                 case "ClinicApp.Model.Patient":
                     personType = "Patient";
-                    patientController = new PatientController();
                     break;
                 case "ClinicApp.Model.Nurse":
                     personType = "Nurse";
-                    nurseController = new NurseController();
                     break;
                 case "ClinicApp.Model.Doctor":
                     personType = "Doctor";
-                    doctorController = new DoctorController();
                     break;
                 case "ClinicApp.Model.Administrator":
                     personType = "Administrator";
@@ -50,15 +42,11 @@ namespace ClinicApp.UserControls
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, prompts to add a new Patient.
         /// </summary>
-        private void GetPatient()
+        private void GetPatient(string firstName, string lastName, string birthDate)
         {
-            string firstName = firstNameTextBox.Text;
-            string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
             patient = this.FindPatient(firstName, lastName, birthDate);
             PatientInformationUserControl control = Parent as PatientInformationUserControl;
-            control.patient = patient;
-            control.GetPatient();
+            control.GetPatient(patient);
         }
 
         private void ClearFields()
@@ -74,12 +62,15 @@ namespace ClinicApp.UserControls
 
 
 
-        private void btnGetPerson_Click(object sender, System.EventArgs e)
+        private void btnGetPerson_Click(object sender, EventArgs e)
         {
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
             switch (personType)
             {
                 case "Patient":
-                    GetPatient();
+                    GetPatient(firstName, lastName, birthDate);
                     break;
                 case "Nurse":
 
@@ -110,6 +101,22 @@ namespace ClinicApp.UserControls
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
+            switch (personType)
+            {
+                case "Patient":
+                    PatientInformationUserControl control = Parent as PatientInformationUserControl;
+                    control.ClearFields();
+                    break;
+                case "Nurse":
+
+                    break;
+                case "Doctor":
+
+                    break;
+                case "Administrator":
+
+                    break;
+            }
         }
 
         private void textChanged(object sender, EventArgs e)

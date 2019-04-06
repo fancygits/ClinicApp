@@ -3,6 +3,7 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -17,6 +18,7 @@ namespace ClinicApp.UserControls
         private Patient newPatient;
         private List<State> stateList;
         private ErrorProvider errorProvider;
+        private PersonSearchUserControl personSearchUserControl;
 
         /// <summary>
         /// Constructs a new PatientInformationUserControl
@@ -26,6 +28,7 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             patientController = new PatientController();
             errorProvider = new ErrorProvider();
+            personSearchUserControl = new PersonSearchUserControl(new Patient());
         }
 
         /// <summary>
@@ -33,10 +36,11 @@ namespace ClinicApp.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PatientInformationUserControl_Load(object sender, System.EventArgs e)
+        private void PatientInformationUserControl_Load(object sender, EventArgs e)
         {
             newPatient = new Patient();
             LoadComboboxes();
+            LoadSearchBox();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
             DisableFields();
@@ -47,13 +51,9 @@ namespace ClinicApp.UserControls
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, prompts to add a new Patient.
         /// </summary>
-        private void GetPatient()
+        public void GetPatient(Patient p)
         {
-            
-            string firstName = firstNameTextBox.Text;
-            string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
-            patient = this.FindPatient(firstName, lastName, birthDate);
+            patient = p;
             if (patient == null)
             {
                 NoMatchesDialog();
@@ -75,7 +75,6 @@ namespace ClinicApp.UserControls
                 patientBindingSource.Clear();
                 patientBindingSource.Add(newPatient);
                 EnableFields();
-                btnGetPatient.Enabled = false;
                 btnAddUpdatePatient.Enabled = false;
             }
         }
@@ -130,7 +129,7 @@ namespace ClinicApp.UserControls
                     }
                     if (patientID > 0)
                     {
-                        GetPatient();
+                        GetPatient(patient);
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                     }
                     else
@@ -171,7 +170,8 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
-                        btnClear.PerformClick();
+                        ClearFields();
+                        DisableFields();
                     }
                 }
             }
@@ -196,7 +196,7 @@ namespace ClinicApp.UserControls
                 {
                     if (patientController.UpdatePatient(patient, newPatient))
                     {
-                        GetPatient();
+                        GetPatient(newPatient);
                         lblMessage.Text = "Patient has been updated successfully.";
                     }
                     else
@@ -232,6 +232,16 @@ namespace ClinicApp.UserControls
             newPatient.Username = patient.Username;
         }
 
+
+        public void LoadSearchBox()
+        {
+            this.personSearchUserControl.Location = new Point(0, 0);
+            this.personSearchUserControl.Name = "personSearchUserControl";
+            this.personSearchUserControl.Size = new Size(800, 75);
+            this.personSearchUserControl.TabIndex = 32;
+            this.Controls.Add(personSearchUserControl);
+        }
+
         /// <summary>
         /// Loads the comboboxes
         /// </summary>
@@ -255,14 +265,13 @@ namespace ClinicApp.UserControls
             stateComboBox.SelectedValue = "";
         }
         
-        private void ClearFields()
+        public void ClearFields()
         {
             patient = null;
             patientBindingSource.Clear();
             birthDateDateTimePicker.Value = DateTime.Today;
             genderComboBox.SelectedIndex = -1;
             stateComboBox.SelectedIndex = -1;
-            btnGetPatient.Enabled = false;
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
             lblMessage.Text = "";
@@ -325,25 +334,11 @@ namespace ClinicApp.UserControls
                 }
                 btnAddUpdatePatient.Enabled = true;
             }
-
-            btnGetPatient.Enabled = true;
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
         }
 
-        /// <summary>
-        /// Used so users can press the Enter key in the name and birthdate textboxes to GetPatient
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Enter_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                btnGetPatient.PerformClick();
-            }
-        }
+        
 
         
 
@@ -362,12 +357,6 @@ namespace ClinicApp.UserControls
             SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
             searchForVisitUserControl.patient = patient;
             searchForVisitUserControl.SelectPatient();
-        }
-
-        private void btnGetPatient_Click(object sender, EventArgs e)
-        {
-            lblMessage.Text = "";
-            GetPatient();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
