@@ -5,7 +5,7 @@ using ClinicApp.Model;
 
 namespace ClinicApp.DAL
 {
-    
+
     /// <summary>
     /// Defines the LabTest DataAccessLayer class
     /// </summary>
@@ -43,6 +43,51 @@ namespace ClinicApp.DAL
                 }
                 return testList;
             }
+        }
+
+        /// <summary>
+        /// Gets a list of TestOrdered by AppoitnmentID
+        /// </summary>
+        /// <param name="appointmentID">AppointmentID of Visit</param>
+        /// <returns>List of TestOrdered</returns>
+        public static List<TestOrdered> GetTestOrderedByAppointmentID(int appointmentID)
+        {
+            List<TestOrdered> testOrderedByApptIDList = new List<TestOrdered>();
+            string selectStatement =
+                "SELECT tord.testCode AS testCode, testName, testDate, result, resultDetails " +
+                "FROM TestOrdered tord " +
+                "JOIN LabTest lb " +
+                "ON tord.testCode = lb.testCode " +
+                "WHERE appointmentID = 241";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        int testCodeOrd = reader.GetOrdinal("testCode");
+                        int testNameOrd = reader.GetOrdinal("testName");
+                        int testDateOrd = reader.GetOrdinal("testDate");
+                        int testResultOrd = reader.GetOrdinal("result");
+                        int testResultDetailsOrd = reader.GetOrdinal("resultDetails");
+                        while (reader.Read())
+                        {
+                            TestOrdered testOrdered = new TestOrdered();
+                            testOrdered.TestCode = reader.GetInt32(testCodeOrd);
+                            testOrdered.Name = reader.GetString(testNameOrd);
+                            testOrdered.Date = reader.GetDateTime(testDateOrd);
+                            testOrdered.Result = reader.GetBoolean(testResultOrd);
+                            testOrdered.ResultDetail = reader.GetString(testResultDetailsOrd);
+                            testOrderedByApptIDList.Add(testOrdered);
+                        }
+                        reader.Close();
+                    };
+                }
+                return testOrderedByApptIDList;
+            }
+
         }
     }
 }

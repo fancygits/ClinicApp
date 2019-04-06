@@ -152,6 +152,7 @@
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Text = "View/Edit";
             // 
             // OrderLabTestUserControl
             // 

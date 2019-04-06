@@ -13,6 +13,7 @@ namespace ClinicApp.UserControls
     public partial class OrderLabTestUserControl : UserControl
     {
         private readonly LabTestController labTestController;
+        private List<TestOrdered> testOrderedList;
 
         /// <summary>
         /// Constructor for the User Control
@@ -40,6 +41,25 @@ namespace ClinicApp.UserControls
         private void OrderLabTestUserControl_Load(object sender, EventArgs e)
         {
             this.LoadComboBoxes();
+            this.RefreshPage();
+        }
+
+        private void RefreshPage()
+        {
+            this.GetTestOrderedList(241);
+        }
+
+        private void GetTestOrderedList(int appointmentID)
+        {
+            try
+            {
+                this.testOrderedList = this.labTestController.GetTestOrderedByAppointmentID(241);
+                testOrderedDataGridView.DataSource = this.testOrderedList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
