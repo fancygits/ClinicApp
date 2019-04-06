@@ -68,21 +68,7 @@ namespace ClinicApp.Model
                 new State("WA", "Washington"),
                 new State("WV", "West Virginia"),
                 new State("WI", "Wisconsin"),
-                new State("WY", "Wyoming"),
-                // Canada
-                new State("AB", "Alberta"),
-                new State("BC", "British Columbia"),
-                new State("MB", "Manitoba"),
-                new State("NB", "New Brunswick"),
-                new State("NL", "Newfoundland and Labrador"),
-                new State("NS", "Nova Scotia"),
-                new State("NT", "Northwest Territories"),
-                new State("NU", "Nunavut"),
-                new State("ON", "Ontario"),
-                new State("PE", "Prince Edward Island"),
-                new State("QC", "Quebec"),
-                new State("SK", "Saskatchewan"),
-                new State("YT", "Yukon")
+                new State("WY", "Wyoming")
             };
         }
     }

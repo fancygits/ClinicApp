@@ -77,7 +77,7 @@
             birthDateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             birthDateLabel.AutoSize = true;
             birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            birthDateLabel.Location = new System.Drawing.Point(33, 119);
+            birthDateLabel.Location = new System.Drawing.Point(33, 124);
             birthDateLabel.Name = "birthDateLabel";
             birthDateLabel.Size = new System.Drawing.Size(103, 20);
             birthDateLabel.TabIndex = 0;
@@ -88,7 +88,7 @@
             cityLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             cityLabel.AutoSize = true;
             cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cityLabel.Location = new System.Drawing.Point(390, 149);
+            cityLabel.Location = new System.Drawing.Point(390, 154);
             cityLabel.Name = "cityLabel";
             cityLabel.Size = new System.Drawing.Size(39, 20);
             cityLabel.TabIndex = 2;
@@ -99,7 +99,7 @@
             firstNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             firstNameLabel.AutoSize = true;
             firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            firstNameLabel.Location = new System.Drawing.Point(33, 33);
+            firstNameLabel.Location = new System.Drawing.Point(33, 38);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new System.Drawing.Size(90, 20);
             firstNameLabel.TabIndex = 4;
@@ -110,7 +110,7 @@
             genderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             genderLabel.AutoSize = true;
             genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            genderLabel.Location = new System.Drawing.Point(390, 71);
+            genderLabel.Location = new System.Drawing.Point(390, 76);
             genderLabel.Name = "genderLabel";
             genderLabel.Size = new System.Drawing.Size(67, 20);
             genderLabel.TabIndex = 6;
@@ -121,7 +121,7 @@
             lastNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             lastNameLabel.AutoSize = true;
             lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lastNameLabel.Location = new System.Drawing.Point(33, 76);
+            lastNameLabel.Location = new System.Drawing.Point(33, 81);
             lastNameLabel.Name = "lastNameLabel";
             lastNameLabel.Size = new System.Drawing.Size(90, 20);
             lastNameLabel.TabIndex = 8;
@@ -132,7 +132,7 @@
             phoneNumberLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             phoneNumberLabel.AutoSize = true;
             phoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            phoneNumberLabel.Location = new System.Drawing.Point(390, 265);
+            phoneNumberLabel.Location = new System.Drawing.Point(390, 270);
             phoneNumberLabel.Name = "phoneNumberLabel";
             phoneNumberLabel.Size = new System.Drawing.Size(119, 20);
             phoneNumberLabel.TabIndex = 14;
@@ -143,7 +143,7 @@
             postCodeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             postCodeLabel.AutoSize = true;
             postCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            postCodeLabel.Location = new System.Drawing.Point(390, 227);
+            postCodeLabel.Location = new System.Drawing.Point(390, 232);
             postCodeLabel.Name = "postCodeLabel";
             postCodeLabel.Size = new System.Drawing.Size(87, 20);
             postCodeLabel.TabIndex = 16;
@@ -154,7 +154,7 @@
             sSNLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             sSNLabel.AutoSize = true;
             sSNLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sSNLabel.Location = new System.Drawing.Point(390, 33);
+            sSNLabel.Location = new System.Drawing.Point(390, 38);
             sSNLabel.Name = "sSNLabel";
             sSNLabel.Size = new System.Drawing.Size(46, 20);
             sSNLabel.TabIndex = 18;
@@ -165,7 +165,7 @@
             stateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             stateLabel.AutoSize = true;
             stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            stateLabel.Location = new System.Drawing.Point(390, 187);
+            stateLabel.Location = new System.Drawing.Point(390, 192);
             stateLabel.Name = "stateLabel";
             stateLabel.Size = new System.Drawing.Size(52, 20);
             stateLabel.TabIndex = 20;
@@ -176,7 +176,7 @@
             streetAddressLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             streetAddressLabel.AutoSize = true;
             streetAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            streetAddressLabel.Location = new System.Drawing.Point(390, 111);
+            streetAddressLabel.Location = new System.Drawing.Point(390, 116);
             streetAddressLabel.Name = "streetAddressLabel";
             streetAddressLabel.Size = new System.Drawing.Size(120, 20);
             streetAddressLabel.TabIndex = 22;
@@ -188,7 +188,7 @@
             this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "BirthDate", true));
             this.birthDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthDateDateTimePicker.Location = new System.Drawing.Point(142, 114);
+            this.birthDateDateTimePicker.Location = new System.Drawing.Point(142, 119);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.birthDateDateTimePicker.TabIndex = 2;
@@ -206,7 +206,7 @@
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
             this.cityTextBox.Enabled = false;
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(516, 146);
+            this.cityTextBox.Location = new System.Drawing.Point(516, 151);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 26);
             this.cityTextBox.TabIndex = 7;
@@ -218,7 +218,7 @@
             this.firstNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(142, 30);
+            this.firstNameTextBox.Location = new System.Drawing.Point(142, 35);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.firstNameTextBox.TabIndex = 0;
@@ -231,7 +231,7 @@
             this.lastNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(142, 73);
+            this.lastNameTextBox.Location = new System.Drawing.Point(142, 78);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.lastNameTextBox.TabIndex = 1;
@@ -245,7 +245,7 @@
             this.postCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PostCode", true));
             this.postCodeTextBox.Enabled = false;
             this.postCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.postCodeTextBox.Location = new System.Drawing.Point(516, 224);
+            this.postCodeTextBox.Location = new System.Drawing.Point(516, 229);
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.postCodeTextBox.TabIndex = 9;
@@ -258,7 +258,7 @@
             this.streetAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "StreetAddress", true));
             this.streetAddressTextBox.Enabled = false;
             this.streetAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streetAddressTextBox.Location = new System.Drawing.Point(516, 108);
+            this.streetAddressTextBox.Location = new System.Drawing.Point(516, 113);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 26);
             this.streetAddressTextBox.TabIndex = 6;
@@ -271,7 +271,7 @@
             this.btnGetPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetPatient.Image = global::ClinicApp.Properties.Resources.magnifier;
             this.btnGetPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGetPatient.Location = new System.Drawing.Point(161, 162);
+            this.btnGetPatient.Location = new System.Drawing.Point(161, 167);
             this.btnGetPatient.Name = "btnGetPatient";
             this.btnGetPatient.Padding = new System.Windows.Forms.Padding(5);
             this.btnGetPatient.Size = new System.Drawing.Size(181, 46);
@@ -285,7 +285,7 @@
             // 
             this.btnAddUpdatePatient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddUpdatePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUpdatePatient.Location = new System.Drawing.Point(608, 345);
+            this.btnAddUpdatePatient.Location = new System.Drawing.Point(608, 350);
             this.btnAddUpdatePatient.Name = "btnAddUpdatePatient";
             this.btnAddUpdatePatient.Size = new System.Drawing.Size(175, 35);
             this.btnAddUpdatePatient.TabIndex = 11;
@@ -297,7 +297,7 @@
             // 
             this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(394, 292);
+            this.lblMessage.Location = new System.Drawing.Point(394, 297);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(322, 50);
             this.lblMessage.TabIndex = 28;
@@ -311,7 +311,7 @@
             this.genderComboBox.Enabled = false;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(516, 68);
+            this.genderComboBox.Location = new System.Drawing.Point(516, 73);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(200, 28);
             this.genderComboBox.TabIndex = 5;
@@ -328,7 +328,7 @@
             this.stateComboBox.Enabled = false;
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(516, 184);
+            this.stateComboBox.Location = new System.Drawing.Point(516, 189);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 28);
             this.stateComboBox.TabIndex = 8;
@@ -344,7 +344,7 @@
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(31, 162);
+            this.btnClear.Location = new System.Drawing.Point(31, 167);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(92, 46);
             this.btnClear.TabIndex = 30;
@@ -357,7 +357,7 @@
             this.sSNMaskedTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sSNMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "SSN", true));
             this.sSNMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sSNMaskedTextBox.Location = new System.Drawing.Point(516, 30);
+            this.sSNMaskedTextBox.Location = new System.Drawing.Point(516, 35);
             this.sSNMaskedTextBox.Mask = "000-00-0000";
             this.sSNMaskedTextBox.Name = "sSNMaskedTextBox";
             this.sSNMaskedTextBox.Size = new System.Drawing.Size(200, 26);
@@ -370,7 +370,7 @@
             this.phoneNumberMaskedTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.phoneNumberMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PhoneNumber", true));
             this.phoneNumberMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneNumberMaskedTextBox.Location = new System.Drawing.Point(516, 262);
+            this.phoneNumberMaskedTextBox.Location = new System.Drawing.Point(516, 267);
             this.phoneNumberMaskedTextBox.Mask = "(999) 000-0000";
             this.phoneNumberMaskedTextBox.Name = "phoneNumberMaskedTextBox";
             this.phoneNumberMaskedTextBox.Size = new System.Drawing.Size(200, 26);
@@ -382,7 +382,7 @@
             // 
             this.btnSearchAppointments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearchAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchAppointments.Location = new System.Drawing.Point(31, 345);
+            this.btnSearchAppointments.Location = new System.Drawing.Point(31, 350);
             this.btnSearchAppointments.Name = "btnSearchAppointments";
             this.btnSearchAppointments.Size = new System.Drawing.Size(175, 35);
             this.btnSearchAppointments.TabIndex = 12;
@@ -394,7 +394,7 @@
             // 
             this.btnSearchVisits.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearchVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchVisits.Location = new System.Drawing.Point(244, 345);
+            this.btnSearchVisits.Location = new System.Drawing.Point(244, 350);
             this.btnSearchVisits.Name = "btnSearchVisits";
             this.btnSearchVisits.Size = new System.Drawing.Size(175, 35);
             this.btnSearchVisits.TabIndex = 13;
@@ -409,7 +409,7 @@
             this.btnDebug.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDebug.ForeColor = System.Drawing.Color.Transparent;
-            this.btnDebug.Location = new System.Drawing.Point(5, 385);
+            this.btnDebug.Location = new System.Drawing.Point(5, 390);
             this.btnDebug.Margin = new System.Windows.Forms.Padding(0);
             this.btnDebug.Name = "btnDebug";
             this.btnDebug.Size = new System.Drawing.Size(5, 5);
@@ -451,7 +451,7 @@
             this.Controls.Add(this.streetAddressTextBox);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "PatientInformationUserControl";
-            this.Size = new System.Drawing.Size(807, 400);
+            this.Size = new System.Drawing.Size(807, 410);
             this.Load += new System.EventHandler(this.PatientInformationUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
