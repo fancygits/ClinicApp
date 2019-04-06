@@ -33,11 +33,11 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label birthDateLabel;
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnGetPerson = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -82,6 +82,12 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(175, 26);
             this.firstNameTextBox.TabIndex = 2;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.textChanged);
+            this.firstNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
             // 
             // lastNameTextBox
             // 
@@ -91,6 +97,8 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(175, 26);
             this.lastNameTextBox.TabIndex = 4;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.textChanged);
+            this.lastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // birthDateDateTimePicker
             // 
@@ -101,6 +109,8 @@
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(135, 26);
             this.birthDateDateTimePicker.TabIndex = 6;
+            this.birthDateDateTimePicker.ValueChanged += new System.EventHandler(this.textChanged);
+            this.birthDateDateTimePicker.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // btnGetPerson
             // 
@@ -128,10 +138,7 @@
             this.btnClear.TabIndex = 31;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // PersonSearchUserControl
             // 

@@ -1,5 +1,6 @@
 ﻿using ClinicApp.Controller;
 using ClinicApp.Model;
+using System;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,6 +19,7 @@ namespace ClinicApp.UserControls
             person = newPerson;
             SetPersonType();
             btnGetPerson.Text = "Get " + personType;
+            btnClear.PerformClick();
         }
 
 
@@ -59,6 +61,19 @@ namespace ClinicApp.UserControls
             control.GetPatient();
         }
 
+        private void ClearFields()
+        {
+            patient = null;
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
+            birthDateDateTimePicker.Value = DateTime.Today;
+            btnGetPerson.Enabled = false;
+            btnClear.Enabled = false;
+            firstNameTextBox.Focus();
+        }
+
+
+
         private void btnGetPerson_Click(object sender, System.EventArgs e)
         {
             switch (personType)
@@ -76,6 +91,31 @@ namespace ClinicApp.UserControls
 
                     break;
             }
+        }
+
+        /// <summary>
+        /// Used so users can press the Enter key in the name and birthdate textboxes to GetPatient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Enter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnGetPerson.PerformClick();
+            }
+        }
+        
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void textChanged(object sender, EventArgs e)
+        {
+            btnGetPerson.Enabled = true;
+            btnClear.Enabled = true;
         }
     }
 }
