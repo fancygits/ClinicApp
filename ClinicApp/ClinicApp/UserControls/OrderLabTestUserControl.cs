@@ -48,10 +48,10 @@ namespace ClinicApp.UserControls
 
         private void RefreshPage()
         {
-            this.GetTestOrderedList(241);
+            this.GetTestOrderedList();
         }
 
-        private void GetTestOrderedList(int appointmentID)
+        private void GetTestOrderedList()
         {
             try
             {
@@ -66,11 +66,19 @@ namespace ClinicApp.UserControls
 
         private void btnAddTest_Click(object sender, EventArgs e)
         {
+            TestOrdered testOrdered = new TestOrdered();
+            testOrdered.AppointmentID = visit.AppointmentID;
+            testOrdered.TestCode = (int)cmboBoxTestID.SelectedValue;
             try
             {
-                if (this.labTestController.AddTestOrdered(new TestOrdered()))
+                if (this.labTestController.AddTestOrdered(testOrdered))
                 {
                     MessageBox.Show("Test Added");
+                    this.RefreshPage();
+                }
+                else
+                {
+                    MessageBox.Show("Nope");
                 }
             }
             catch (Exception ex)

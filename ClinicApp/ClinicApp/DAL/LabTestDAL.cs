@@ -105,7 +105,7 @@ namespace ClinicApp.DAL
         {
             string insertStatement =
                 "INSERT INTO TestOrdered (appointmentID, testCode, testDate) " +
-                "VALUES(363, 4, GETDATE())";
+                "VALUES(@AppointmentID, @TestCode, GETDATE())";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
