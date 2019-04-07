@@ -51,6 +51,7 @@
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\Security.cs" />
     <Compile Include="Controller\VisitController.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicDBConnection.cs" />

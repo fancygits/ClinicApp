@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClinicApp.Controller;
 
 namespace ClinicApp.DAL
 {
@@ -138,6 +139,32 @@ namespace ClinicApp.DAL
                 }
             }
             return role;
+        }
+
+        public static bool AddCredential(string username, string password, string role)
+        {
+            int count = 0;
+            string insertStatement =
+                "INSERT INTO Credential (username, password, role) " +
+                "VALUES(@username, @password, @role)";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@username", username);
+                    insertCommand.Parameters.AddWithValue("@password", Security.HashSHA1(password));
+                    insertCommand.Parameters.AddWithValue("@role", role);
+                    count = insertCommand.ExecuteNonQuery();
+                    if (count > 0)
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
+            }
         }
 
     }

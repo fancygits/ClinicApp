@@ -18,5 +18,10 @@ namespace ClinicApp.Controller
         {
             return CredentialDAL.GetRole(username);
         }
+
+        public bool AddCredential(string username, string password, string role)
+        {
+            return CredentialDAL.AddCredential(username, password, role);
+        }
     }
 }
