@@ -31,7 +31,7 @@ namespace ClinicApp.UserControls
                     List<Patient> patientList = patientController.SearchPatientsByName(firstName, lastName, birthDate);
                     if (patientList.Count != 0)
                     {
-                        FindPeopleDialog findPatientsDialog = new FindPeopleDialog();
+                        FindPeopleDialog findPatientsDialog = new FindPeopleDialog(new Patient());
                         findPatientsDialog.patientList = patientList;
                         DialogResult result = findPatientsDialog.ShowDialog();
                         if (result == DialogResult.OK)

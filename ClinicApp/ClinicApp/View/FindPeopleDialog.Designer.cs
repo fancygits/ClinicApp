@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.patientDataGridView = new System.Windows.Forms.DataGridView();
+            this.personDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,23 +45,23 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAddPatient = new System.Windows.Forms.Button();
-            this.btnSelectPatient = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
+            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.btnSelectPerson = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.personDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // patientDataGridView
+            // personDataGridView
             // 
-            this.patientDataGridView.AllowUserToAddRows = false;
-            this.patientDataGridView.AllowUserToDeleteRows = false;
-            this.patientDataGridView.AllowUserToResizeRows = false;
-            this.patientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.personDataGridView.AllowUserToAddRows = false;
+            this.personDataGridView.AllowUserToDeleteRows = false;
+            this.personDataGridView.AllowUserToResizeRows = false;
+            this.personDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.patientDataGridView.AutoGenerateColumns = false;
-            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.personDataGridView.AutoGenerateColumns = false;
+            this.personDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.personDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4,
@@ -76,18 +76,18 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14});
-            this.patientDataGridView.DataSource = this.patientBindingSource;
-            this.patientDataGridView.Location = new System.Drawing.Point(12, 12);
-            this.patientDataGridView.MultiSelect = false;
-            this.patientDataGridView.Name = "patientDataGridView";
-            this.patientDataGridView.ReadOnly = true;
-            this.patientDataGridView.RowHeadersVisible = false;
-            this.patientDataGridView.RowHeadersWidth = 10;
-            this.patientDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.patientDataGridView.Size = new System.Drawing.Size(360, 203);
-            this.patientDataGridView.TabIndex = 1;
-            this.patientDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellContentDoubleClick);
+            this.personDataGridView.DataSource = this.patientBindingSource;
+            this.personDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.personDataGridView.MultiSelect = false;
+            this.personDataGridView.Name = "personDataGridView";
+            this.personDataGridView.ReadOnly = true;
+            this.personDataGridView.RowHeadersVisible = false;
+            this.personDataGridView.RowHeadersWidth = 10;
+            this.personDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.personDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.personDataGridView.Size = new System.Drawing.Size(360, 203);
+            this.personDataGridView.TabIndex = 1;
+            this.personDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.personDataGridView_CellContentDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -210,51 +210,51 @@
             // 
             this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
             // 
-            // btnAddPatient
+            // btnAddPerson
             // 
-            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPatient.Location = new System.Drawing.Point(226, 221);
-            this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Size = new System.Drawing.Size(146, 33);
-            this.btnAddPatient.TabIndex = 3;
-            this.btnAddPatient.Text = "Add New Patient";
-            this.btnAddPatient.UseVisualStyleBackColor = true;
-            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
+            this.btnAddPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPerson.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPerson.Location = new System.Drawing.Point(226, 221);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(146, 33);
+            this.btnAddPerson.TabIndex = 3;
+            this.btnAddPerson.Text = "Add New Person";
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
-            // btnSelectPatient
+            // btnSelectPerson
             // 
-            this.btnSelectPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSelectPatient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSelectPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectPatient.Location = new System.Drawing.Point(12, 221);
-            this.btnSelectPatient.Name = "btnSelectPatient";
-            this.btnSelectPatient.Size = new System.Drawing.Size(146, 33);
-            this.btnSelectPatient.TabIndex = 2;
-            this.btnSelectPatient.Text = "Select Patient";
-            this.btnSelectPatient.UseVisualStyleBackColor = true;
-            this.btnSelectPatient.Click += new System.EventHandler(this.SelectPatient);
+            this.btnSelectPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSelectPerson.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSelectPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectPerson.Location = new System.Drawing.Point(12, 221);
+            this.btnSelectPerson.Name = "btnSelectPerson";
+            this.btnSelectPerson.Size = new System.Drawing.Size(146, 33);
+            this.btnSelectPerson.TabIndex = 2;
+            this.btnSelectPerson.Text = "Select Person";
+            this.btnSelectPerson.UseVisualStyleBackColor = true;
+            this.btnSelectPerson.Click += new System.EventHandler(this.btnSelectPerson_Click);
             // 
-            // FindPatientsDialog
+            // FindPeopleDialog
             // 
-            this.AcceptButton = this.btnSelectPatient;
+            this.AcceptButton = this.btnSelectPerson;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 261);
-            this.Controls.Add(this.btnSelectPatient);
-            this.Controls.Add(this.btnAddPatient);
-            this.Controls.Add(this.patientDataGridView);
+            this.Controls.Add(this.btnSelectPerson);
+            this.Controls.Add(this.btnAddPerson);
+            this.Controls.Add(this.personDataGridView);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(600, 700);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 300);
-            this.Name = "FindPatientsDialog";
+            this.Name = "FindPeopleDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Patient Matches";
+            this.Text = "Matching People";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FindPatientsDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
+            this.Load += new System.EventHandler(this.FindPeopleDialog_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.personDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -263,9 +263,9 @@
         #endregion
 
         private System.Windows.Forms.BindingSource patientBindingSource;
-        private System.Windows.Forms.DataGridView patientDataGridView;
-        private System.Windows.Forms.Button btnAddPatient;
-        private System.Windows.Forms.Button btnSelectPatient;
+        private System.Windows.Forms.DataGridView personDataGridView;
+        private System.Windows.Forms.Button btnAddPerson;
+        private System.Windows.Forms.Button btnSelectPerson;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

@@ -7,35 +7,101 @@ namespace ClinicApp.View
 {
     public partial class FindPeopleDialog : Form
     {
-        public FindPeopleDialog()
-        {
-            InitializeComponent();
-        }
-
+        public Nurse nurse;
+        public List<Nurse> nurseList;
         public Patient patient;
         public List<Patient> patientList;
-
-        private void FindPatientsDialog_Load(object sender, EventArgs e)
+        private string personType;
+        public FindPeopleDialog(Person person)
         {
-            patientDataGridView.DataSource = patientList;
+            InitializeComponent();
+            SetPersonType(person);
+            btnSelectPerson.Text = "Get " + personType;
+            btnAddPerson.Text = "Add New " + personType;
+            Text = personType + " Matches";
+            this.Update();
         }
 
-        private void SelectPatient(object sender, EventArgs e)
+        private void FindPeopleDialog_Load(object sender, EventArgs e)
         {
-            patient = patientDataGridView.SelectedRows[0].DataBoundItem as Patient;
+            switch (personType)
+            {
+                case "Patient":
+                    personDataGridView.DataSource = patientList;
+                    break;
+                case "Nurse":
+                    personDataGridView.DataSource = nurseList;
+                    break;
+                case "Doctor":
+                    break;
+                case "Administrator":
+                    break;
+            }
+        }
+
+        private void SetPersonType(Person person)
+        {
+            switch (person.GetType().ToString())
+            {
+                case "ClinicApp.Model.Patient":
+                    personType = "Patient";
+                    break;
+                case "ClinicApp.Model.Nurse":
+                    personType = "Nurse";
+                    break;
+                case "ClinicApp.Model.Doctor":
+                    personType = "Doctor";
+                    break;
+                case "ClinicApp.Model.Administrator":
+                    personType = "Administrator";
+                    break;
+            }
+        }
+
+        private void SelectPerson()
+        {
+            switch (personType)
+            {
+                case "Patient":
+                    patient = personDataGridView.SelectedRows[0].DataBoundItem as Patient;
+                    break;
+                case "Nurse":
+                    nurse = personDataGridView.SelectedRows[0].DataBoundItem as Nurse;
+                    break;
+                case "Doctor":
+                    break;
+                case "Administrator":
+                    break;
+            }            
             this.DialogResult = DialogResult.OK;
         }
 
-        private void patientDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void personDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            patient = patientDataGridView.SelectedRows[0].DataBoundItem as Patient;
+            SelectPerson();
+        }
+
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            switch (personType)
+            {
+                case "Patient":
+                    patient = new Patient();
+                    break;
+                case "Nurse":
+                    nurse = new Nurse();
+                    break;
+                case "Doctor":
+                    break;
+                case "Administrator":
+                    break;
+            }
             this.DialogResult = DialogResult.OK;
         }
 
-        private void btnAddPatient_Click(object sender, EventArgs e)
+        private void btnSelectPerson_Click(object sender, EventArgs e)
         {
-            patient = new Patient();
-            this.DialogResult = DialogResult.OK;
+            SelectPerson();
         }
     }
 }
