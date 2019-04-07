@@ -30,5 +30,10 @@ namespace ClinicApp.Controller
         {
             return LabTestDAL.GetTestOrderedByAppointmentID(appointmentID);
         }
+
+        public bool AddTestOrdered(TestOrdered testOrdered)
+        {
+            return LabTestDAL.AddTestOrdered(testOrdered);
+        }
     }
 }
