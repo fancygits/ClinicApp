@@ -56,6 +56,7 @@
             this.btnSearchAppointments = new System.Windows.Forms.Button();
             this.btnSearchVisits = new System.Windows.Forms.Button();
             this.btnDebug = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -206,7 +207,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(534, 150);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 26);
-            this.cityTextBox.TabIndex = 7;
+            this.cityTextBox.TabIndex = 6;
             this.cityTextBox.Tag = "City";
             this.cityTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -218,7 +219,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(174, 111);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 26);
-            this.firstNameTextBox.TabIndex = 0;
+            this.firstNameTextBox.TabIndex = 1;
             this.firstNameTextBox.Tag = "First name";
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -243,7 +244,7 @@
             this.postCodeTextBox.Location = new System.Drawing.Point(534, 228);
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
-            this.postCodeTextBox.TabIndex = 9;
+            this.postCodeTextBox.TabIndex = 8;
             this.postCodeTextBox.Tag = "Post code";
             this.postCodeTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -256,7 +257,7 @@
             this.streetAddressTextBox.Location = new System.Drawing.Point(534, 111);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 26);
-            this.streetAddressTextBox.TabIndex = 6;
+            this.streetAddressTextBox.TabIndex = 5;
             this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -267,7 +268,7 @@
             this.btnAddUpdatePatient.Location = new System.Drawing.Point(595, 345);
             this.btnAddUpdatePatient.Name = "btnAddUpdatePatient";
             this.btnAddUpdatePatient.Size = new System.Drawing.Size(175, 35);
-            this.btnAddUpdatePatient.TabIndex = 11;
+            this.btnAddUpdatePatient.TabIndex = 10;
             this.btnAddUpdatePatient.Text = "Update Patient";
             this.btnAddUpdatePatient.UseVisualStyleBackColor = true;
             this.btnAddUpdatePatient.Click += new System.EventHandler(this.btnAddUpdatePatient_Click);
@@ -293,7 +294,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(174, 267);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(200, 28);
-            this.genderComboBox.TabIndex = 5;
+            this.genderComboBox.TabIndex = 4;
             this.genderComboBox.Tag = "Gender";
             this.genderComboBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -310,7 +311,7 @@
             this.stateComboBox.Location = new System.Drawing.Point(534, 189);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 28);
-            this.stateComboBox.TabIndex = 8;
+            this.stateComboBox.TabIndex = 7;
             this.stateComboBox.Tag = "State";
             this.stateComboBox.ValueMember = "Abbreviation";
             this.stateComboBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
@@ -328,7 +329,7 @@
             this.sSNMaskedTextBox.Mask = "000-00-0000";
             this.sSNMaskedTextBox.Name = "sSNMaskedTextBox";
             this.sSNMaskedTextBox.Size = new System.Drawing.Size(200, 26);
-            this.sSNMaskedTextBox.TabIndex = 4;
+            this.sSNMaskedTextBox.TabIndex = 3;
             this.sSNMaskedTextBox.Tag = "SSN";
             this.sSNMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -341,7 +342,7 @@
             this.phoneNumberMaskedTextBox.Mask = "(999) 000-0000";
             this.phoneNumberMaskedTextBox.Name = "phoneNumberMaskedTextBox";
             this.phoneNumberMaskedTextBox.Size = new System.Drawing.Size(200, 26);
-            this.phoneNumberMaskedTextBox.TabIndex = 10;
+            this.phoneNumberMaskedTextBox.TabIndex = 9;
             this.phoneNumberMaskedTextBox.Tag = "Phone number";
             this.phoneNumberMaskedTextBox.TextChanged += new System.EventHandler(this.PatientTextboxChanged);
             // 
@@ -361,7 +362,7 @@
             // 
             this.btnSearchVisits.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearchVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchVisits.Location = new System.Drawing.Point(240, 345);
+            this.btnSearchVisits.Location = new System.Drawing.Point(211, 345);
             this.btnSearchVisits.Name = "btnSearchVisits";
             this.btnSearchVisits.Size = new System.Drawing.Size(175, 35);
             this.btnSearchVisits.TabIndex = 13;
@@ -385,10 +386,23 @@
             this.btnDebug.UseVisualStyleBackColor = false;
             this.btnDebug.Click += new System.EventHandler(this.DebugPatient);
             // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(514, 345);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 35);
+            this.btnClear.TabIndex = 11;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.btnSearchVisits);
             this.Controls.Add(this.btnSearchAppointments);
@@ -444,5 +458,6 @@
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
         private System.Windows.Forms.Button btnDebug;
+        private System.Windows.Forms.Button btnClear;
     }
 }

@@ -29,7 +29,7 @@ namespace ClinicApp.UserControls
             patientController = new PatientController();
             errorProvider = new ErrorProvider();
             personSearchUserControl = new PersonSearchUserControl(new Patient());
-            this.personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
 
         /// <summary>
@@ -45,6 +45,29 @@ namespace ClinicApp.UserControls
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
             DisableFields();
+        }
+        
+        /// <summary>
+        /// Loads a PersonSearchUserControl and places it in the Parent UserControl
+        /// </summary>
+        public void LoadSearchBox()
+        {
+            personSearchUserControl.Location = new Point(0, 0);
+            personSearchUserControl.Name = "personSearchUserControl";
+            personSearchUserControl.Size = new Size(800, 75);
+            personSearchUserControl.TabIndex = 0;
+            Controls.Add(personSearchUserControl);
+            this.ActiveControl = personSearchUserControl;
+        }
+
+        /// <summary>
+        /// The method to run when the GetPerson Button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            this.GetPatient();
         }
 
         /// <summary>
@@ -233,16 +256,6 @@ namespace ClinicApp.UserControls
             newPatient.Username = patient.Username;
         }
 
-
-        public void LoadSearchBox()
-        {
-            this.personSearchUserControl.Location = new Point(0, 0);
-            this.personSearchUserControl.Name = "personSearchUserControl";
-            this.personSearchUserControl.Size = new Size(800, 75);
-            this.personSearchUserControl.TabIndex = 32;
-            this.Controls.Add(personSearchUserControl);
-        }
-
         /// <summary>
         /// Loads the comboboxes
         /// </summary>
@@ -346,13 +359,6 @@ namespace ClinicApp.UserControls
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
         }
-
-        
-        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
-        {
-            this.GetPatient();
-        }
-        
 
         private void btnSearchAppointments_Click(object sender, EventArgs e)
         {

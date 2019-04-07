@@ -33,11 +33,11 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label birthDateLabel;
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnGetPerson = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -84,10 +84,6 @@
             this.firstNameTextBox.TabIndex = 2;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.textChanged);
             this.firstNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
-            // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
             // 
             // lastNameTextBox
             // 
@@ -140,6 +136,10 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(ClinicApp.Model.Person);
+            // 
             // PersonSearchUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +155,7 @@
             this.Name = "PersonSearchUserControl";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(800, 75);
+            this.Enter += new System.EventHandler(this.PersonSearchUserControl_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -26,6 +26,11 @@ namespace ClinicApp.UserControls
                 handler(this, e);
             }
         }
+    
+        private void PersonSearchUserControl_Enter(object sender, EventArgs e)
+        {
+            firstNameTextBox.Focus();
+        }
 
         private void SetPersonType(Person person)
         {
@@ -132,5 +137,6 @@ namespace ClinicApp.UserControls
             btnGetPerson.Enabled = true;
             btnClear.Enabled = true;
         }
+
     }
 }
