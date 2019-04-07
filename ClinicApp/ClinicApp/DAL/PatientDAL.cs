@@ -313,10 +313,10 @@ namespace ClinicApp.DAL
 
                     patientTransaction.Commit();
                 }
-                catch (SqlException ex)
+                catch
                 {
                     patientTransaction.Rollback();
-                    throw ex;
+                    throw;
                 }
             }
             return patientID;

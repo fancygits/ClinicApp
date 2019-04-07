@@ -93,7 +93,7 @@
     <Compile Include="UserControls\NurseInformationUserControl.Designer.cs">
       <DependentUpon>NurseInformationUserControl.cs</DependentUpon>
     </Compile>
-	<Compile Include="UserControls\OrderLabTestUserControl.cs">
+    <Compile Include="UserControls\OrderLabTestUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\OrderLabTestUserControl.Designer.cs">
@@ -172,9 +172,6 @@
     <EmbeddedResource Include="UserControls\OrderLabTestUserControl.resx">
       <DependentUpon>OrderLabTestUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\LoginUserControl.resx">
-      <DependentUpon>LoginUserControl.cs</DependentUpon>
-	</EmbeddedResource>
     <EmbeddedResource Include="UserControls\NurseInformationUserControl.resx">
       <DependentUpon>NurseInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>

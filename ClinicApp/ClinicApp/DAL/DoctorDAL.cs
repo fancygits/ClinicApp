@@ -1,6 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using ClinicApp.Model;
 using System.Collections.Generic;
-using ClinicApp.Model;
+using System.Data.SqlClient;
 
 namespace ClinicApp.DAL
 {
@@ -44,8 +44,7 @@ namespace ClinicApp.DAL
                     //        doctor.FullName = reader.GetString(fullNameOrd);
                             doctorList.Add(doctor);
                         }
-                        reader.Close();
-                    };
+                    }
                 }
                 return doctorList;
             };

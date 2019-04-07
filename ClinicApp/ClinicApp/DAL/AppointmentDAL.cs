@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ClinicApp.Model;
+using System;
 using System.Collections.Generic;
-using ClinicApp.Model;
 using System.Data.SqlClient;
 
 namespace ClinicApp.DAL
@@ -52,8 +52,7 @@ namespace ClinicApp.DAL
                             appointment.AppointmentReason = reader.GetString(reasonForVisitOrd);
                             appointmentsByPatientID.Add(appointment);
                         }
-                        reader.Close();
-                    };
+                    }
                 }
                 return appointmentsByPatientID;
             };
@@ -156,8 +155,7 @@ namespace ClinicApp.DAL
                             appointment.AppointmentID = reader.GetInt32(apptIDOrd);
                             apptWithDoubleBooking.Add(appointment);
                         }
-                        reader.Close();
-                    };
+                    }
                     
                 }
                 return apptWithDoubleBooking.Count > 0;

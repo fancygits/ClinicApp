@@ -1,7 +1,6 @@
-﻿using System;
+﻿using ClinicApp.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ClinicApp.Model;
 
 namespace ClinicApp.DAL
 {
@@ -38,8 +37,7 @@ namespace ClinicApp.DAL
                             labTest.TestName = reader.GetString(testNameOrd);
                             testList.Add(labTest);
                         }
-                        reader.Close();
-                    };
+                    }
                 }
                 return testList;
             }
@@ -88,8 +86,7 @@ namespace ClinicApp.DAL
                             }
                             testOrderedByApptIDList.Add(testOrdered);
                         }
-                        reader.Close();
-                    };
+                    }
                 }
                 return testOrderedByApptIDList;
             }
