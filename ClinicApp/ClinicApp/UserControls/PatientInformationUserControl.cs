@@ -29,6 +29,7 @@ namespace ClinicApp.UserControls
             patientController = new PatientController();
             errorProvider = new ErrorProvider();
             personSearchUserControl = new PersonSearchUserControl(new Patient());
+            this.personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
 
         /// <summary>
@@ -51,9 +52,9 @@ namespace ClinicApp.UserControls
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, prompts to add a new Patient.
         /// </summary>
-        public void GetPatient(Patient p)
+        public void GetPatient()
         {
-            patient = p;
+            this.RefreshPatient();
             if (patient == null)
             {
                 NoMatchesDialog();
@@ -129,7 +130,7 @@ namespace ClinicApp.UserControls
                     }
                     if (patientID > 0)
                     {
-                        GetPatient(patient);
+                        GetPatient();
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                     }
                     else
@@ -196,7 +197,7 @@ namespace ClinicApp.UserControls
                 {
                     if (patientController.UpdatePatient(patient, newPatient))
                     {
-                        GetPatient(newPatient);
+                        GetPatient();
                         lblMessage.Text = "Patient has been updated successfully.";
                     }
                     else
@@ -303,6 +304,14 @@ namespace ClinicApp.UserControls
             btnAddUpdatePatient.Text = "Add Patient";
         }
 
+        private void RefreshPatient()
+        {
+            this.personSearchUserControl.RefreshPerson();
+            patient = this.personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
+        }
+
         private bool IsValidData()
         {
             return Validator.IsPresent(firstNameTextBox, errorProvider) &&
@@ -339,7 +348,10 @@ namespace ClinicApp.UserControls
         }
 
         
-
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            this.GetPatient();
+        }
         
 
         private void btnSearchAppointments_Click(object sender, EventArgs e)
@@ -428,11 +440,12 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Postcode:\t" + patient.PostCode.ToString());
                     System.Diagnostics.Debug.Print("Phone:\t\t" + patient.PhoneNumber.ToString());
                 }
-                catch (Exception ex)
+                catch
                 {
                     return;
                 }
             }
         }
+
     }
 }

@@ -126,7 +126,7 @@
             this.btnGetPerson.Text = "Get Person";
             this.btnGetPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGetPerson.UseVisualStyleBackColor = true;
-            this.btnGetPerson.Click += new System.EventHandler(this.btnGetPerson_Click);
+            this.btnGetPerson.Click += new System.EventHandler(this.GetPersonButton_Click);
             // 
             // btnClear
             // 

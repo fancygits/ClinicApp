@@ -126,11 +126,11 @@
     <Compile Include="View\AdministratorDashboard.Designer.cs">
       <DependentUpon>AdministratorDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FindPatientsDialog.cs">
+    <Compile Include="View\FindPeopleDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FindPatientsDialog.Designer.cs">
-      <DependentUpon>FindPatientsDialog.cs</DependentUpon>
+    <Compile Include="View\FindPeopleDialog.Designer.cs">
+      <DependentUpon>FindPeopleDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="View\AdministratorDashboard.resx">
       <DependentUpon>AdministratorDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FindPatientsDialog.resx">
-      <DependentUpon>FindPatientsDialog.cs</DependentUpon>
+    <EmbeddedResource Include="View\FindPeopleDialog.resx">
+      <DependentUpon>FindPeopleDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

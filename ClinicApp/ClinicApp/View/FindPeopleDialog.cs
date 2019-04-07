@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace ClinicApp.View
 {
-    public partial class FindPatientsDialog : Form
+    public partial class FindPeopleDialog : Form
     {
-        public FindPatientsDialog()
+        public FindPeopleDialog()
         {
             InitializeComponent();
         }

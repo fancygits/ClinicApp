@@ -6,9 +6,10 @@ namespace ClinicApp.UserControls
 {
     public partial class PersonSearchUserControl : UserControl, IUserControlSearch
     {
-        private Nurse nurse;
-        private Patient patient;
+        public Nurse nurse;
+        public Patient patient;
         private string personType;
+        public event EventHandler GetPersonButtonClicked;
         public PersonSearchUserControl(Person person)
         {
             InitializeComponent();
@@ -17,6 +18,14 @@ namespace ClinicApp.UserControls
             ClearFields();
         }
 
+        protected virtual void OnGetPersonButtonClicked(EventArgs e)
+        {
+            var handler = GetPersonButtonClicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
 
         private void SetPersonType(Person person)
         {
@@ -44,14 +53,30 @@ namespace ClinicApp.UserControls
         /// </summary>
         private void GetPatient(string firstName, string lastName, string birthDate)
         {
+            personBindingSource.Clear();
             patient = this.FindPatient(firstName, lastName, birthDate);
-            PatientInformationUserControl control = Parent as PatientInformationUserControl;
-            control.GetPatient(patient);
+            personBindingSource.Add(patient);
+        }
+
+        /// <summary>
+        /// Refreshes the Person object
+        /// </summary>
+        public void RefreshPerson()
+        {
+            if (patient != null)
+            {
+                patient = this.GetPatientByID(patient.PatientID);
+            }
+            else if (nurse != null)
+            {
+
+            }
         }
 
         private void ClearFields()
         {
             patient = null;
+            personBindingSource.Clear();
             firstNameTextBox.Clear();
             lastNameTextBox.Clear();
             birthDateDateTimePicker.Value = DateTime.Today;
@@ -60,9 +85,7 @@ namespace ClinicApp.UserControls
             firstNameTextBox.Focus();
         }
 
-
-
-        private void btnGetPerson_Click(object sender, EventArgs e)
+        private void GetPersonButton_Click(object sender, EventArgs e)
         {
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
@@ -82,6 +105,7 @@ namespace ClinicApp.UserControls
 
                     break;
             }
+            OnGetPersonButtonClicked(e);
         }
 
         /// <summary>
@@ -101,22 +125,6 @@ namespace ClinicApp.UserControls
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
-            switch (personType)
-            {
-                case "Patient":
-                    PatientInformationUserControl control = Parent as PatientInformationUserControl;
-                    control.ClearFields();
-                    break;
-                case "Nurse":
-
-                    break;
-                case "Doctor":
-
-                    break;
-                case "Administrator":
-
-                    break;
-            }
         }
 
         private void textChanged(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace ClinicApp.View
 {
-    partial class FindPatientsDialog
+    partial class FindPeopleDialog
     {
         /// <summary>
         /// Required designer variable.

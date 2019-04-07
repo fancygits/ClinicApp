@@ -31,7 +31,7 @@ namespace ClinicApp.UserControls
                     List<Patient> patientList = patientController.SearchPatientsByName(firstName, lastName, birthDate);
                     if (patientList.Count != 0)
                     {
-                        FindPatientsDialog findPatientsDialog = new FindPatientsDialog();
+                        FindPeopleDialog findPatientsDialog = new FindPeopleDialog();
                         findPatientsDialog.patientList = patientList;
                         DialogResult result = findPatientsDialog.ShowDialog();
                         if (result == DialogResult.OK)
@@ -47,5 +47,55 @@ namespace ClinicApp.UserControls
             }
             return patient;
         }
+
+        /// <summary>
+        /// Gets a Patient by their ID
+        /// </summary>
+        /// <param name="userControl">UserControl to send patient to</param>
+        /// <param name="patientID">The int PatientID</param>
+        /// <returns>The found Patient</returns>
+        public static Patient GetPatientByID(this IUserControlSearch userControl, int patientID)
+        {
+            Patient patient = null;
+            PatientController patientController = new PatientController();
+            try
+            {
+                patient = patientController.GetPatientByID(patientID);
+            }
+            catch
+            {
+                patient = null;
+            }
+            return patient;
+        }
+
+        //public static Nurse FindNurse(this IUserControlSearch userControl, string firstName, string lastName, string birthDate)
+        //{
+        //    Nurse nurse = null;
+        //    NurseController nurseController = new NurseController(); 
+        //    try
+        //    {
+        //        nurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
+        //        if (nurse == null)
+        //        {
+        //            List<Nurse> nurseList = nurseController.SearchNursesByName(firstName, lastName, birthDate);
+        //            if (nurseList.Count != 0)
+        //            {
+        //                FindPeopleDialog findNursesDialog = new FindPeopleDialog();
+        //                findNursesDialog.nurseList = nurseList;
+        //                DialogResult result = findNursesDialog.ShowDialog();
+        //                if (result == DialogResult.OK)
+        //                {
+        //                    nurse = findNursesDialog.nurse;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
+        //    }
+        //    return nurse;
+        //}
     }
 }
