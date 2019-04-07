@@ -51,7 +51,7 @@
             // 
             lbltTestName.AutoSize = true;
             lbltTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lbltTestName.Location = new System.Drawing.Point(3, 30);
+            lbltTestName.Location = new System.Drawing.Point(183, 30);
             lbltTestName.Name = "lbltTestName";
             lbltTestName.Size = new System.Drawing.Size(44, 20);
             lbltTestName.TabIndex = 2;
@@ -68,9 +68,9 @@
             this.cmboBoxTestID.DisplayMember = "TestName";
             this.cmboBoxTestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmboBoxTestID.FormattingEnabled = true;
-            this.cmboBoxTestID.Location = new System.Drawing.Point(65, 28);
+            this.cmboBoxTestID.Location = new System.Drawing.Point(246, 28);
             this.cmboBoxTestID.Name = "cmboBoxTestID";
-            this.cmboBoxTestID.Size = new System.Drawing.Size(367, 26);
+            this.cmboBoxTestID.Size = new System.Drawing.Size(260, 26);
             this.cmboBoxTestID.TabIndex = 3;
             this.cmboBoxTestID.ValueMember = "TestCode";
             // 
@@ -81,17 +81,18 @@
             // btnAddTest
             // 
             this.btnAddTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTest.Location = new System.Drawing.Point(314, 65);
+            this.btnAddTest.Location = new System.Drawing.Point(388, 60);
             this.btnAddTest.Name = "btnAddTest";
             this.btnAddTest.Size = new System.Drawing.Size(118, 28);
             this.btnAddTest.TabIndex = 4;
             this.btnAddTest.Text = "Add Test";
             this.btnAddTest.UseVisualStyleBackColor = true;
+            this.btnAddTest.Click += new System.EventHandler(this.btnAddTest_Click);
             // 
             // btnOrder
             // 
             this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(314, 334);
+            this.btnOrder.Location = new System.Drawing.Point(391, 338);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(115, 36);
             this.btnOrder.TabIndex = 5;

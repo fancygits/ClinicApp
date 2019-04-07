@@ -95,5 +95,29 @@ namespace ClinicApp.DAL
             }
 
         }
+
+        /// <summary>
+        /// Adds a TestOrdered object to the database
+        /// </summary>
+        /// <param name="testOrdered">TestOrdered object to be added</param>
+        /// <returns>true if insert was greater than 0 or false if not</returns>
+        public static bool AddTestOrdered(TestOrdered testOrdered)
+        {
+            string insertStatement =
+                "INSERT INTO TestOrdered (appointmentID, testCode, testDate) " +
+                "VALUES(363, 4, GETDATE())";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
+                    insertCommand.Parameters.AddWithValue("@TestCode", testOrdered.TestCode);
+
+                    int count = insertCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
     }
 }

@@ -63,5 +63,21 @@ namespace ClinicApp.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void btnAddTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labTestController.AddTestOrdered(new TestOrdered()))
+                {
+                    MessageBox.Show("Test Added");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+        }
     }
 }
