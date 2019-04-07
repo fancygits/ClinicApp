@@ -33,7 +33,13 @@
             this.credentialsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.lblRole = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.labTestReportTabPage = new System.Windows.Forms.TabPage();
+            this.nurseInformationTabPage = new System.Windows.Forms.TabPage();
+            this.nurseInformationUserControl1 = new ClinicApp.UserControls.NurseInformationUserControl();
             this.credentialsTableLayoutPanel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.nurseInformationTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -92,19 +98,68 @@
             this.lblRole.Text = "Role";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.labTestReportTabPage);
+            this.tabControl1.Controls.Add(this.nurseInformationTabPage);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 31);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(810, 418);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // labTestReportTabPage
+            // 
+            this.labTestReportTabPage.Location = new System.Drawing.Point(4, 25);
+            this.labTestReportTabPage.Name = "labTestReportTabPage";
+            this.labTestReportTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.labTestReportTabPage.Size = new System.Drawing.Size(802, 389);
+            this.labTestReportTabPage.TabIndex = 0;
+            this.labTestReportTabPage.Text = "Lab Test Report";
+            this.labTestReportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // nurseInformationTabPage
+            // 
+            this.nurseInformationTabPage.Controls.Add(this.nurseInformationUserControl1);
+            this.nurseInformationTabPage.Location = new System.Drawing.Point(4, 25);
+            this.nurseInformationTabPage.Name = "nurseInformationTabPage";
+            this.nurseInformationTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.nurseInformationTabPage.Size = new System.Drawing.Size(802, 389);
+            this.nurseInformationTabPage.TabIndex = 1;
+            this.nurseInformationTabPage.Text = "Nurse Information";
+            this.nurseInformationTabPage.UseVisualStyleBackColor = true;
+            // 
+            // nurseInformationUserControl1
+            // 
+            this.nurseInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nurseInformationUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseInformationUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.nurseInformationUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.nurseInformationUserControl1.Name = "nurseInformationUserControl1";
+            this.nurseInformationUserControl1.Size = new System.Drawing.Size(796, 383);
+            this.nurseInformationUserControl1.TabIndex = 0;
+            // 
             // AdministratorDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.credentialsTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(850, 500);
             this.Name = "AdministratorDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministratorDashboard_FormClosing);
             this.credentialsTableLayoutPanel.ResumeLayout(false);
             this.credentialsTableLayoutPanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.nurseInformationTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,6 +171,9 @@
         public System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.TableLayoutPanel credentialsTableLayoutPanel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
-        
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage labTestReportTabPage;
+        private System.Windows.Forms.TabPage nurseInformationTabPage;
+        private UserControls.NurseInformationUserControl nurseInformationUserControl1;
     }
 }

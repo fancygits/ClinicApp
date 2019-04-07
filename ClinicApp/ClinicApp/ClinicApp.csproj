@@ -83,6 +83,12 @@
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\IUserControlSearch.cs" />
+    <Compile Include="UserControls\NurseInformationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NurseInformationUserControl.Designer.cs">
+      <DependentUpon>NurseInformationUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PatientInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AddVisitUserControl.resx">
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NurseInformationUserControl.resx">
+      <DependentUpon>NurseInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientInformationUserControl.resx">
       <DependentUpon>PatientInformationUserControl.cs</DependentUpon>
