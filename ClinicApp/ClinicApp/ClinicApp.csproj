@@ -148,12 +148,6 @@
     <Compile Include="View\OrderLabTestDialog.Designer.cs">
       <DependentUpon>OrderLabTestDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderLabTestDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\OrderLabTestDialog.Designer.cs">
-      <DependentUpon>OrderLabTestDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,12 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FindPeopleDialog.resx">
       <DependentUpon>FindPeopleDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\OrderLabTestDialog.resx">
-      <DependentUpon>OrderLabTestDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\OrderLabTestDialog.resx">
-      <DependentUpon>OrderLabTestDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
