@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClinicApp.Model
 {
     /// <summary>
-    /// Properties with get/set for Appointment attributes
+    /// Properties with get/set for Appointment object
     /// </summary>
     public class Appointment
     {
