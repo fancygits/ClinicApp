@@ -175,7 +175,7 @@
             // btnSearchPatient
             // 
             this.btnSearchPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchPatient.Image = global::ClinicApp.Properties.Resources.magnifier;
+           //this.btnSearchPatient.Image = global::ClinicApp.Properties.Resources.magnifier;
             this.btnSearchPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearchPatient.Location = new System.Drawing.Point(408, 8);
             this.btnSearchPatient.Name = "btnSearchPatient";
