@@ -37,8 +37,8 @@ namespace ClinicApp.View
                 if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
                 {
                     NurseDashboard.Instance().Show();
-                    NurseDashboard.Instance().lblUserName.Text = this.userNameTextBox.Text;
-                    NurseDashboard.Instance().lblRoll.Text = "Nurse";
+                    NurseDashboard.Instance().lblUsername.Text = this.userNameTextBox.Text;
+                    NurseDashboard.Instance().lblRole.Text = "Nurse";
                     LoginForm.Instance().Hide();
 
                 } else if (this.credentialController.GetRole(this.userNameTextBox.Text) == "administrator")

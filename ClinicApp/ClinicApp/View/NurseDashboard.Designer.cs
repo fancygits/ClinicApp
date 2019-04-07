@@ -31,21 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NurseDashboard));
             this.patientsTabControl = new System.Windows.Forms.TabControl();
             this.infoTabPage = new System.Windows.Forms.TabPage();
-            this.apptTabPage = new System.Windows.Forms.TabPage();
-            this.VisitTabPage = new System.Windows.Forms.TabPage();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lnkLblLogout = new System.Windows.Forms.LinkLabel();
-            this.lblRoll = new System.Windows.Forms.Label();
-            this.lblPlaceholder2 = new System.Windows.Forms.Label();
-            this.lblPlaceholder1 = new System.Windows.Forms.Label();
             this.patientInformationUserControl1 = new ClinicApp.UserControls.PatientInformationUserControl();
+            this.apptTabPage = new System.Windows.Forms.TabPage();
             this.addAppointmentUserControl1 = new ClinicApp.UserControls.AddAppointmentUserControl();
+            this.VisitTabPage = new System.Windows.Forms.TabPage();
             this.searchForVisitUserControl1 = new ClinicApp.UserControls.SearchForVisitUserControl();
-            this.loginUserControl1 = new ClinicApp.UserControls.LoginUserControl();
+            this.credentialsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
             this.patientsTabControl.SuspendLayout();
             this.infoTabPage.SuspendLayout();
             this.apptTabPage.SuspendLayout();
             this.VisitTabPage.SuspendLayout();
+            this.credentialsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // patientsTabControl
@@ -74,6 +73,15 @@
             this.infoTabPage.Text = "Patient Information";
             this.infoTabPage.UseVisualStyleBackColor = true;
             // 
+            // patientInformationUserControl1
+            // 
+            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientInformationUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
+            this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
+            this.patientInformationUserControl1.TabIndex = 0;
+            // 
             // apptTabPage
             // 
             this.apptTabPage.Controls.Add(this.addAppointmentUserControl1);
@@ -84,6 +92,14 @@
             this.apptTabPage.TabIndex = 0;
             this.apptTabPage.Text = "Patient Appointments";
             this.apptTabPage.UseVisualStyleBackColor = true;
+            // 
+            // addAppointmentUserControl1
+            // 
+            this.addAppointmentUserControl1.Location = new System.Drawing.Point(10, 3);
+            this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
+            this.addAppointmentUserControl1.Size = new System.Drawing.Size(792, 392);
+            this.addAppointmentUserControl1.TabIndex = 0;
             // 
             // VisitTabPage
             // 
@@ -96,75 +112,6 @@
             this.VisitTabPage.Text = "Patient Visit";
             this.VisitTabPage.UseVisualStyleBackColor = true;
             // 
-            // lblUserName
-            // 
-            this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(615, 12);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(55, 13);
-            this.lblUserName.TabIndex = 1;
-            this.lblUserName.Text = "Username";
-            // 
-            // lnkLblLogout
-            // 
-            this.lnkLblLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnkLblLogout.AutoSize = true;
-            this.lnkLblLogout.Location = new System.Drawing.Point(737, 12);
-            this.lnkLblLogout.Name = "lnkLblLogout";
-            this.lnkLblLogout.Size = new System.Drawing.Size(40, 13);
-            this.lnkLblLogout.TabIndex = 2;
-            this.lnkLblLogout.TabStop = true;
-            this.lnkLblLogout.Text = "Logout";
-            this.lnkLblLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLblLogout_LinkClicked);
-            // 
-            // lblRoll
-            // 
-            this.lblRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRoll.AutoSize = true;
-            this.lblRoll.Location = new System.Drawing.Point(691, 12);
-            this.lblRoll.Name = "lblRoll";
-            this.lblRoll.Size = new System.Drawing.Size(25, 13);
-            this.lblRoll.TabIndex = 3;
-            this.lblRoll.Text = "Roll";
-            // 
-            // lblPlaceholder2
-            // 
-            this.lblPlaceholder2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPlaceholder2.AutoSize = true;
-            this.lblPlaceholder2.Location = new System.Drawing.Point(722, 12);
-            this.lblPlaceholder2.Name = "lblPlaceholder2";
-            this.lblPlaceholder2.Size = new System.Drawing.Size(9, 13);
-            this.lblPlaceholder2.TabIndex = 4;
-            this.lblPlaceholder2.Text = "|";
-            // 
-            // lblPlaceholder1
-            // 
-            this.lblPlaceholder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPlaceholder1.AutoSize = true;
-            this.lblPlaceholder1.Location = new System.Drawing.Point(676, 12);
-            this.lblPlaceholder1.Name = "lblPlaceholder1";
-            this.lblPlaceholder1.Size = new System.Drawing.Size(9, 13);
-            this.lblPlaceholder1.TabIndex = 5;
-            this.lblPlaceholder1.Text = "|";
-            // 
-            // patientInformationUserControl1
-            // 
-            this.patientInformationUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientInformationUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.patientInformationUserControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.patientInformationUserControl1.Name = "patientInformationUserControl1";
-            this.patientInformationUserControl1.Size = new System.Drawing.Size(796, 386);
-            this.patientInformationUserControl1.TabIndex = 0;
-            // 
-            // addAppointmentUserControl1
-            // 
-            this.addAppointmentUserControl1.Location = new System.Drawing.Point(10, 3);
-            this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
-            this.addAppointmentUserControl1.Size = new System.Drawing.Size(792, 392);
-            this.addAppointmentUserControl1.TabIndex = 0;
-            // 
             // searchForVisitUserControl1
             // 
             this.searchForVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -174,24 +121,68 @@
             this.searchForVisitUserControl1.Size = new System.Drawing.Size(796, 386);
             this.searchForVisitUserControl1.TabIndex = 0;
             // 
-            // loginUserControl1
+            // credentialsTableLayoutPanel
             // 
-            this.loginUserControl1.Location = new System.Drawing.Point(360, 12);
-            this.loginUserControl1.Name = "loginUserControl1";
-            this.loginUserControl1.Size = new System.Drawing.Size(236, 35);
-            this.loginUserControl1.TabIndex = 6;
+            this.credentialsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.credentialsTableLayoutPanel.AutoSize = true;
+            this.credentialsTableLayoutPanel.ColumnCount = 3;
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.credentialsTableLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
+            this.credentialsTableLayoutPanel.Controls.Add(this.lblUsername, 0, 0);
+            this.credentialsTableLayoutPanel.Controls.Add(this.lblRole, 1, 0);
+            this.credentialsTableLayoutPanel.Location = new System.Drawing.Point(580, 0);
+            this.credentialsTableLayoutPanel.Name = "credentialsTableLayoutPanel";
+            this.credentialsTableLayoutPanel.RowCount = 1;
+            this.credentialsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.credentialsTableLayoutPanel.Size = new System.Drawing.Size(250, 35);
+            this.credentialsTableLayoutPanel.TabIndex = 6;
+            // 
+            // logoutLinkLabel
+            // 
+            this.logoutLinkLabel.AutoSize = true;
+            this.logoutLinkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutLinkLabel.Location = new System.Drawing.Point(197, 0);
+            this.logoutLinkLabel.Name = "logoutLinkLabel";
+            this.logoutLinkLabel.Size = new System.Drawing.Size(50, 35);
+            this.logoutLinkLabel.TabIndex = 0;
+            this.logoutLinkLabel.TabStop = true;
+            this.logoutLinkLabel.Text = "Logout";
+            this.logoutLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLblLogout_LinkClicked);
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(3, 0);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(91, 35);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "Username";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.Location = new System.Drawing.Point(100, 0);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(91, 35);
+            this.lblRole.TabIndex = 2;
+            this.lblRole.Text = "Role";
+            this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NurseDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.loginUserControl1);
-            this.Controls.Add(this.lblPlaceholder1);
-            this.Controls.Add(this.lblPlaceholder2);
-            this.Controls.Add(this.lblRoll);
-            this.Controls.Add(this.lnkLblLogout);
-            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.credentialsTableLayoutPanel);
             this.Controls.Add(this.patientsTabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(850, 500);
@@ -203,6 +194,8 @@
             this.infoTabPage.ResumeLayout(false);
             this.apptTabPage.ResumeLayout(false);
             this.VisitTabPage.ResumeLayout(false);
+            this.credentialsTableLayoutPanel.ResumeLayout(false);
+            this.credentialsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,15 +207,13 @@
         private System.Windows.Forms.TabPage apptTabPage;
         private System.Windows.Forms.TabPage infoTabPage;
         private System.Windows.Forms.TabPage VisitTabPage;
-        private System.Windows.Forms.LinkLabel lnkLblLogout;
-        private System.Windows.Forms.Label lblPlaceholder2;
-        private System.Windows.Forms.Label lblPlaceholder1;
         private UserControls.PatientInformationUserControl patientInformationUserControl1;
-        public System.Windows.Forms.Label lblUserName;
-        public System.Windows.Forms.Label lblRoll;
         private UserControls.AddAppointmentUserControl addAppointmentUserControl1;
         public UserControls.SearchForVisitUserControl searchForVisitUserControl1;
-        private UserControls.LoginUserControl loginUserControl1;
+        private System.Windows.Forms.TableLayoutPanel credentialsTableLayoutPanel;
+        private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        public System.Windows.Forms.Label lblUsername;
+        public System.Windows.Forms.Label lblRole;
     }
 }
 

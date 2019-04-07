@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministratorDashboard));
             this.lblUsername = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.credentialsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.lblRole = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.credentialsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -48,23 +48,23 @@
             this.lblUsername.Text = "Username";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel1
+            // credentialsTableLayoutPanel
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel1.Controls.Add(this.logoutLinkLabel, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblUsername, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblRole, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(580, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(250, 35);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.credentialsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.credentialsTableLayoutPanel.AutoSize = true;
+            this.credentialsTableLayoutPanel.ColumnCount = 3;
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.credentialsTableLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
+            this.credentialsTableLayoutPanel.Controls.Add(this.lblUsername, 0, 0);
+            this.credentialsTableLayoutPanel.Controls.Add(this.lblRole, 1, 0);
+            this.credentialsTableLayoutPanel.Location = new System.Drawing.Point(580, 0);
+            this.credentialsTableLayoutPanel.Name = "credentialsTableLayoutPanel";
+            this.credentialsTableLayoutPanel.RowCount = 1;
+            this.credentialsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.credentialsTableLayoutPanel.Size = new System.Drawing.Size(250, 35);
+            this.credentialsTableLayoutPanel.TabIndex = 1;
             // 
             // logoutLinkLabel
             // 
@@ -97,14 +97,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.credentialsTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(850, 500);
             this.Name = "AdministratorDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator Dashboard";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.credentialsTableLayoutPanel.ResumeLayout(false);
+            this.credentialsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,7 +114,7 @@
 
         public System.Windows.Forms.Label lblUsername;
         public System.Windows.Forms.Label lblRole;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel credentialsTableLayoutPanel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         
     }
