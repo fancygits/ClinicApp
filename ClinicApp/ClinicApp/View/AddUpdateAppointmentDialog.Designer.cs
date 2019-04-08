@@ -270,6 +270,7 @@ namespace ClinicApp.View
             this.Controls.Add(firstNameLabel);
             this.Controls.Add(this.txtBxfirstName);
             this.Name = "AddUpdateAppointmentDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Update Appointment";
             this.Load += new System.EventHandler(this.AddUpdateAppointmentDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();

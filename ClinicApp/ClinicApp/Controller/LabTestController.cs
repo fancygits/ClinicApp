@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using ClinicApp.Model;
 using ClinicApp.DAL;
@@ -31,9 +31,25 @@ namespace ClinicApp.Controller
             return LabTestDAL.GetTestOrderedByAppointmentID(appointmentID);
         }
 
+        /// <summary>
+        /// Adds a new TestOrdered object to the database
+        /// </summary>
+        /// <param name="testOrdered">TestOrdered object to be added</param>
+        /// <returns>true if it added, false if not</returns>
         public bool AddTestOrdered(TestOrdered testOrdered)
         {
             return LabTestDAL.AddTestOrdered(testOrdered);
+        }
+
+        /// <summary>
+        /// Updates TestOrdered table with new TestOrdered object
+        /// </summary>
+        /// <param name="newTestOrdered">New TestOrdered object to be added</param>
+        /// <param name="testOrdered">Old TestOrdered object to be replaced</param>
+        /// <returns></returns>
+        public bool UpdateTestOrdered(TestOrdered newTestOrdered, TestOrdered testOrdered)
+        {
+            return LabTestDAL.UpdateTestOrdered(newTestOrdered, testOrdered);
         }
     }
 }
