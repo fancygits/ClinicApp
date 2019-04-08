@@ -117,6 +117,7 @@
             this.testOrderedDataGridView.ReadOnly = true;
             this.testOrderedDataGridView.Size = new System.Drawing.Size(499, 220);
             this.testOrderedDataGridView.TabIndex = 5;
+            this.testOrderedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.testOrderedDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn3
             // 

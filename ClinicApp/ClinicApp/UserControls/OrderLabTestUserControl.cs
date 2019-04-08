@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
 
 
 namespace ClinicApp.UserControls
@@ -86,6 +87,20 @@ namespace ClinicApp.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
 
+        }
+
+        private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                int i = e.RowIndex;
+                DataGridViewRow row = testOrderedDataGridView.Rows[i];
+                TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
+
+                LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
+                labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
+                labTestInfoForm.Show();
+            }
         }
     }
 }

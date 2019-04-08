@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +47,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AppointmentController.cs" />
@@ -87,6 +91,12 @@
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\IUserControlSearch.cs" />
+    <Compile Include="UserControls\LabTestInfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LabTestInfoUserControl.Designer.cs">
+      <DependentUpon>LabTestInfoUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NurseInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +152,12 @@
     <Compile Include="View\FindPeopleDialog.Designer.cs">
       <DependentUpon>FindPeopleDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\LabTestInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LabTestInfoDialog.Designer.cs">
+      <DependentUpon>LabTestInfoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\OrderLabTestDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +185,9 @@
     <EmbeddedResource Include="UserControls\AddVisitUserControl.resx">
       <DependentUpon>AddVisitUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LabTestInfoUserControl.resx">
+      <DependentUpon>LabTestInfoUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OrderLabTestUserControl.resx">
       <DependentUpon>OrderLabTestUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FindPeopleDialog.resx">
       <DependentUpon>FindPeopleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LabTestInfoDialog.resx">
+      <DependentUpon>LabTestInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\OrderLabTestDialog.resx">
       <DependentUpon>OrderLabTestDialog.cs</DependentUpon>
