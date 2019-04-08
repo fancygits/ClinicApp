@@ -122,14 +122,14 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Test Name";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Date";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Test Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 75;
@@ -138,12 +138,12 @@
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "Result";
             this.dataGridViewCheckBoxColumn1.FalseValue = "Neg";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Result";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Abnormal Result";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewCheckBoxColumn1.TrueValue = "Pos";
-            this.dataGridViewCheckBoxColumn1.Width = 50;
+            this.dataGridViewCheckBoxColumn1.Width = 75;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -160,6 +160,7 @@
             this.Column1.ReadOnly = true;
             this.Column1.Text = "Edit/View";
             this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 75;
             // 
             // OrderLabTestUserControl
             // 

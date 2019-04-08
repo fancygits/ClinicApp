@@ -34,12 +34,12 @@
             System.Windows.Forms.Label resultLabel;
             System.Windows.Forms.Label resultDetailLabel;
             this.dateTimePickerTestDate = new System.Windows.Forms.DateTimePicker();
+            this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txBxTestName = new System.Windows.Forms.TextBox();
             this.ckBxAbnResults = new System.Windows.Forms.CheckBox();
             this.txBxResultDetail = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             dateLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             resultLabel = new System.Windows.Forms.Label();
@@ -53,19 +53,9 @@
             dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dateLabel.Location = new System.Drawing.Point(14, 96);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new System.Drawing.Size(48, 20);
+            dateLabel.Size = new System.Drawing.Size(83, 20);
             dateLabel.TabIndex = 1;
-            dateLabel.Text = "Date:";
-            // 
-            // dateTimePickerTestDate
-            // 
-            this.dateTimePickerTestDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.testOrderedBindingSource, "Date", true));
-            this.dateTimePickerTestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTestDate.Location = new System.Drawing.Point(219, 94);
-            this.dateTimePickerTestDate.Name = "dateTimePickerTestDate";
-            this.dateTimePickerTestDate.Size = new System.Drawing.Size(100, 26);
-            this.dateTimePickerTestDate.TabIndex = 2;
+            dateLabel.Text = "Test Date:";
             // 
             // nameLabel
             // 
@@ -77,15 +67,6 @@
             nameLabel.TabIndex = 3;
             nameLabel.Text = "Test Name:";
             // 
-            // txBxTestName
-            // 
-            this.txBxTestName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "Name", true));
-            this.txBxTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txBxTestName.Location = new System.Drawing.Point(157, 56);
-            this.txBxTestName.Name = "txBxTestName";
-            this.txBxTestName.Size = new System.Drawing.Size(162, 26);
-            this.txBxTestName.TabIndex = 4;
-            // 
             // resultLabel
             // 
             resultLabel.AutoSize = true;
@@ -96,16 +77,6 @@
             resultLabel.TabIndex = 5;
             resultLabel.Text = "Abnormal Result:";
             // 
-            // ckBxAbnResults
-            // 
-            this.ckBxAbnResults.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.testOrderedBindingSource, "Result", true));
-            this.ckBxAbnResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckBxAbnResults.Location = new System.Drawing.Point(306, 126);
-            this.ckBxAbnResults.Name = "ckBxAbnResults";
-            this.ckBxAbnResults.Size = new System.Drawing.Size(13, 24);
-            this.ckBxAbnResults.TabIndex = 6;
-            this.ckBxAbnResults.UseVisualStyleBackColor = true;
-            // 
             // resultDetailLabel
             // 
             resultDetailLabel.AutoSize = true;
@@ -115,6 +86,39 @@
             resultDetailLabel.Size = new System.Drawing.Size(104, 20);
             resultDetailLabel.TabIndex = 7;
             resultDetailLabel.Text = "Result Detail:";
+            // 
+            // dateTimePickerTestDate
+            // 
+            this.dateTimePickerTestDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.testOrderedBindingSource, "Date", true));
+            this.dateTimePickerTestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTestDate.Location = new System.Drawing.Point(219, 94);
+            this.dateTimePickerTestDate.Name = "dateTimePickerTestDate";
+            this.dateTimePickerTestDate.Size = new System.Drawing.Size(100, 26);
+            this.dateTimePickerTestDate.TabIndex = 2;
+            // 
+            // testOrderedBindingSource
+            // 
+            this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
+            // 
+            // txBxTestName
+            // 
+            this.txBxTestName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "Name", true));
+            this.txBxTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBxTestName.Location = new System.Drawing.Point(157, 56);
+            this.txBxTestName.Name = "txBxTestName";
+            this.txBxTestName.Size = new System.Drawing.Size(162, 26);
+            this.txBxTestName.TabIndex = 4;
+            // 
+            // ckBxAbnResults
+            // 
+            this.ckBxAbnResults.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.testOrderedBindingSource, "Result", true));
+            this.ckBxAbnResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckBxAbnResults.Location = new System.Drawing.Point(306, 126);
+            this.ckBxAbnResults.Name = "ckBxAbnResults";
+            this.ckBxAbnResults.Size = new System.Drawing.Size(13, 24);
+            this.ckBxAbnResults.TabIndex = 6;
+            this.ckBxAbnResults.UseVisualStyleBackColor = true;
             // 
             // txBxResultDetail
             // 
@@ -144,10 +148,6 @@
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete Test";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // testOrderedBindingSource
-            // 
-            this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
             // 
             // LabTestInfoUserControl
             // 
