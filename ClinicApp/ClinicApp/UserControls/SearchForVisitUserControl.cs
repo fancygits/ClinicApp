@@ -13,6 +13,7 @@ namespace ClinicApp.UserControls
     public partial class SearchForVisitUserControl : UserControl
     {
         private VisitController visitController;
+        private CredentialController credentialController;
         public Patient patient;
         public Visit visit;
         private List<Patient> listOfPatients;
@@ -24,6 +25,7 @@ namespace ClinicApp.UserControls
             this.listOfPatients = new List<Patient>();
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
+            this.credentialController = new CredentialController();
 
         }
 
@@ -80,7 +82,7 @@ namespace ClinicApp.UserControls
         {
            try
             {
-                if (e.ColumnIndex == 14 && e.RowIndex >= 0)
+                if (e.ColumnIndex == 0 && e.RowIndex >= 0)
                 {
                     int i = e.RowIndex;
                     DataGridViewRow row = visitDataGridView.Rows[i];
@@ -123,19 +125,15 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
-                        if (this.visit.AppointmentTime > DateTime.Now)
-                        {
-                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;                      
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
-                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
-                        } else
-                        {
-                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
-                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
-                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
-                        }
+                        this.visit.NurseID = this.credentialController.GetNurseByUserName(LoginForm.Instance().userNameTextBox.Text).NurseID;
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedText = this.visit.NurseName;
+                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Enabled = false;
+                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
+                        addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
+                        addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
+                        
                     }
                     addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                     addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();

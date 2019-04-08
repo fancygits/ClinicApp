@@ -15,13 +15,14 @@ namespace ClinicApp.DAL
         public static Nurse GetNurseByUserName(string username)
         {
             Nurse nurse = new Nurse();
-            string selectStatement = "SELECT p.firstName, p.lastName, c.username, c.password, c.role " +
+            string selectStatement = "SELECT p.firstName, p.lastName, c.username, c.password, c.role, n.nurseID, n.active " +
                 "FROM Credential c " +
                 "JOIN Person p " +
                 "ON p.username = c.username " +
                 "JOIN Nurse n " +
                 "ON n.personID = p.personID " +
-                "WHERE c.username = @username";
+                "WHERE c.username = @username " +
+                "AND n.active = 1";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -34,11 +35,15 @@ namespace ClinicApp.DAL
                         int lNameOrd = reader.GetOrdinal("lastName");
                         int uNameOrd = reader.GetOrdinal("username");
                         int rolOrd = reader.GetOrdinal("role");
+                        int nIDOrd = reader.GetOrdinal("nurseID");
+                        int activeOrd = reader.GetOrdinal("active");
                         if (reader.Read())
                         {
                             nurse.FirstName = reader.GetString(fNameOrd);
                             nurse.LastName = reader.GetString(lNameOrd);
                             nurse.Username = reader.GetString(uNameOrd);
+                            nurse.NurseID = reader.GetInt32(nIDOrd);
+                            nurse.Active = reader.GetBoolean(activeOrd);
                         }
                     }
                 }
