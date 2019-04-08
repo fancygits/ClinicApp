@@ -356,6 +356,7 @@ namespace ClinicApp.UserControls
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            DebugNurse(null, null);
             ClearFields();
             DisableFields();
         }
@@ -385,5 +386,53 @@ namespace ClinicApp.UserControls
             }
         }
 
+        /// <summary>
+        /// Used to find possible errors in a nurse
+        /// </summary>
+        private void DebugNurse(object sender, EventArgs e)
+        {
+            if (nurse == null)
+            {
+                System.Diagnostics.Debug.Print("No Nurse Loaded.");
+            }
+            else
+            {
+                try
+                {
+                    System.Diagnostics.Debug.Print("\t[Current Fields]");
+                    System.Diagnostics.Debug.Print("First Name:\t" + firstNameTextBox.Text);
+                    System.Diagnostics.Debug.Print("Last Name:\t" + lastNameTextBox.Text);
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + birthDateDateTimePicker.Value.ToShortDateString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + sSNMaskedTextBox.Text);
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + genderComboBox.DisplayMember);
+                    System.Diagnostics.Debug.Print("Address:\t" + streetAddressTextBox.Text);
+                    System.Diagnostics.Debug.Print("City:\t\t" + cityTextBox.Text);
+                    System.Diagnostics.Debug.Print("State:\t\t" + stateComboBox.DisplayMember);
+                    System.Diagnostics.Debug.Print("Postcode:\t" + postCodeTextBox.Text);
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + phoneNumberMaskedTextBox.Text);
+                    System.Diagnostics.Debug.Print("Username:\t" + usernameTextBox.Text);
+                    System.Diagnostics.Debug.Print("Active:\t\t" + activeCheckBox.CheckState);
+
+                    System.Diagnostics.Debug.Print("\t[Current Nurse]");
+                    System.Diagnostics.Debug.Print("NurseID:\t" + nurse.NurseID.ToString());
+                    System.Diagnostics.Debug.Print("PersonID:\t" + nurse.PersonID.ToString());
+                    System.Diagnostics.Debug.Print("Full Name:\t" + nurse.FullName.ToString());
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + nurse.BirthDate.ToString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + nurse.SSN.ToString());
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + nurse.Gender.ToString());
+                    System.Diagnostics.Debug.Print("Address:\t" + nurse.StreetAddress.ToString());
+                    System.Diagnostics.Debug.Print("City:\t\t" + nurse.City.ToString());
+                    System.Diagnostics.Debug.Print("State:\t\t" + nurse.State.ToString());
+                    System.Diagnostics.Debug.Print("Postcode:\t" + nurse.PostCode.ToString());
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + nurse.PhoneNumber.ToString());
+                    System.Diagnostics.Debug.Print("Username:\t" + nurse.Username.ToString());
+                    System.Diagnostics.Debug.Print("Active:\t\t" + nurse.Active.ToString());
+                }
+                catch
+                {
+                    return;
+                }
+            }
+        }
     }
 }

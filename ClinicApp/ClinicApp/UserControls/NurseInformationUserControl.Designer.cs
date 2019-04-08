@@ -39,6 +39,8 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label cityLabel;
             System.Windows.Forms.Label genderLabel;
+            System.Windows.Forms.Label activeLabel;
+            System.Windows.Forms.Label usernameLabel;
             this.btnClear = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
@@ -52,6 +54,8 @@
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.activeCheckBox = new System.Windows.Forms.CheckBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
@@ -63,6 +67,8 @@
             lastNameLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
+            activeLabel = new System.Windows.Forms.Label();
+            usernameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -343,6 +349,47 @@
             this.firstNameTextBox.Tag = "First name";
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
+            // activeLabel
+            // 
+            activeLabel.AutoSize = true;
+            activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            activeLabel.Location = new System.Drawing.Point(65, 307);
+            activeLabel.Name = "activeLabel";
+            activeLabel.Size = new System.Drawing.Size(119, 20);
+            activeLabel.TabIndex = 74;
+            activeLabel.Text = "Account Active:";
+            // 
+            // activeCheckBox
+            // 
+            this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
+            this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeCheckBox.Location = new System.Drawing.Point(190, 307);
+            this.activeCheckBox.Name = "activeCheckBox";
+            this.activeCheckBox.Size = new System.Drawing.Size(23, 24);
+            this.activeCheckBox.TabIndex = 11;
+            this.activeCheckBox.Tag = "Account Active";
+            this.activeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // usernameLabel
+            // 
+            usernameLabel.AutoSize = true;
+            usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            usernameLabel.Location = new System.Drawing.Point(65, 340);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new System.Drawing.Size(87, 20);
+            usernameLabel.TabIndex = 74;
+            usernameLabel.Text = "Username:";
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
+            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.Location = new System.Drawing.Point(174, 337);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
+            this.usernameTextBox.TabIndex = 75;
+            // 
             // nurseBindingSource
             // 
             this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
@@ -351,6 +398,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(usernameLabel);
+            this.Controls.Add(this.usernameTextBox);
+            this.Controls.Add(activeLabel);
+            this.Controls.Add(this.activeCheckBox);
             this.Controls.Add(firstNameLabel);
             this.Controls.Add(this.streetAddressTextBox);
             this.Controls.Add(this.phoneNumberMaskedTextBox);
@@ -400,5 +451,7 @@
         private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.CheckBox activeCheckBox;
+        private System.Windows.Forms.TextBox usernameTextBox;
     }
 }

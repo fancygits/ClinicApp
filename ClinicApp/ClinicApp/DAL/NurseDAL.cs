@@ -106,7 +106,7 @@ namespace ClinicApp.DAL
             Nurse nurse = new Nurse();
             string selectStatement =
                 "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
-                "streetAddress, city, state, postCode, phoneNumber, username " +
+                "streetAddress, city, state, postCode, phoneNumber, username, active " +
                 "FROM Nurse " +
                 "JOIN Person p ON Nurse.personID = p.personID " +
                 "WHERE nurseID = @nurseID";
@@ -131,6 +131,7 @@ namespace ClinicApp.DAL
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
                         int usernameOrd = reader.GetOrdinal("username");
+                        int activeOrd = reader.GetOrdinal("active");
                         if (reader.Read())
                         {
                             nurse.NurseID = reader.GetInt32(nurseIDOrd);
@@ -145,10 +146,8 @@ namespace ClinicApp.DAL
                             nurse.State = reader.GetString(stateOrd);
                             nurse.PostCode = reader.GetString(postCodeOrd);
                             nurse.PhoneNumber = reader.GetString(phoneOrd);
-                            if (!reader.IsDBNull(usernameOrd))
-                            {
-                                nurse.Username = reader.GetString(usernameOrd);
-                            }
+                            nurse.Active = reader.GetBoolean(activeOrd);
+                            nurse.Username = reader.GetString(usernameOrd);
                         }
                         else
                         {
@@ -172,7 +171,7 @@ namespace ClinicApp.DAL
             Nurse nurse = new Nurse();
             string selectStatement =
                 "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
-                "streetAddress, city, state, postCode, phoneNumber, username " +
+                "streetAddress, city, state, postCode, phoneNumber, username, active " +
                 "FROM Nurse " +
                 "JOIN Person p ON Nurse.personID = p.personID " +
                 "WHERE firstName = @firstname " +
@@ -201,6 +200,7 @@ namespace ClinicApp.DAL
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
                         int usernameOrd = reader.GetOrdinal("username");
+                        int activeOrd = reader.GetOrdinal("active");
                         if (reader.Read())
                         {
                             nurse.NurseID = reader.GetInt32(nurseIDOrd);
@@ -215,10 +215,8 @@ namespace ClinicApp.DAL
                             nurse.State = reader.GetString(stateOrd);
                             nurse.PostCode = reader.GetString(postCodeOrd);
                             nurse.PhoneNumber = reader.GetString(phoneOrd);
-                            if (!reader.IsDBNull(usernameOrd))
-                            {
-                                nurse.Username = reader.GetString(usernameOrd);
-                            }
+                            nurse.Active = reader.GetBoolean(activeOrd);
+                            nurse.Username = reader.GetString(usernameOrd);
                         }
                         else
                         {
@@ -251,7 +249,7 @@ namespace ClinicApp.DAL
             List<Nurse> nurseList = new List<Nurse>();
             string selectStatement =
                 "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
-                "streetAddress, city, state, postCode, phoneNumber, username " +
+                "streetAddress, city, state, postCode, phoneNumber, username, active " +
                 "FROM Nurse " +
                 "JOIN Person p ON Nurse.personID = p.personID " +
                 "WHERE firstName LIKE @fnameSubstring " +
@@ -281,6 +279,7 @@ namespace ClinicApp.DAL
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
                         int usernameOrd = reader.GetOrdinal("username");
+                        int activeOrd = reader.GetOrdinal("active");
                         while (reader.Read())
                         {
                             Nurse nurse = new Nurse
@@ -296,12 +295,10 @@ namespace ClinicApp.DAL
                                 City = reader.GetString(cityOrd),
                                 State = reader.GetString(stateOrd),
                                 PostCode = reader.GetString(postCodeOrd),
-                                PhoneNumber = reader.GetString(phoneOrd)
-                            };
-                            if (!reader.IsDBNull(usernameOrd))
-                            {
-                                nurse.Username = reader.GetString(usernameOrd);
-                            }
+                                PhoneNumber = reader.GetString(phoneOrd),
+                                Active = reader.GetBoolean(activeOrd),
+                                Username = reader.GetString(usernameOrd)
+                        };
                             nurseList.Add(nurse);
                         }
                     }
