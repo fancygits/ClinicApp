@@ -1,4 +1,5 @@
 ﻿using ClinicApp.DAL;
+using ClinicApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,21 @@ namespace ClinicApp.Controller
         public string GetRole(string username)
         {
             return CredentialDAL.GetRole(username);
+        }
+
+        public Nurse GetNurseByUserName(string username)
+        {
+            return CredentialDAL.GetNurseByUserName(username);
+        }
+
+        public Administrator GetAdministratorByUserName(string username)
+        {
+            return CredentialDAL.GetAdministratorByUserName(username);
+        }
+
+        public bool AddCredential(string username, string password, string role)
+        {
+            return CredentialDAL.AddCredential(username, password, role);
         }
     }
 }
