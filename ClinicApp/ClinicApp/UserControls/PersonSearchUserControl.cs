@@ -64,6 +64,18 @@ namespace ClinicApp.UserControls
         }
 
         /// <summary>
+        /// Gets a nurse from the given textboxes.
+        /// If no nurse is found, returns a list of possible matches.
+        /// If no matches are found, prompts to add a new Nurse.
+        /// </summary>
+        private void GetNurse(string firstName, string lastName, string birthDate)
+        {
+            personBindingSource.Clear();
+            nurse = this.FindNurse(firstName, lastName, birthDate);
+            personBindingSource.Add(nurse);
+        }
+
+        /// <summary>
         /// Refreshes the Person object
         /// </summary>
         public void RefreshPerson()
@@ -74,7 +86,7 @@ namespace ClinicApp.UserControls
             }
             else if (nurse != null)
             {
-
+                nurse = this.GetNurseByID(nurse.NurseID);
             }
         }
 
@@ -101,7 +113,7 @@ namespace ClinicApp.UserControls
                     GetPatient(firstName, lastName, birthDate);
                     break;
                 case "Nurse":
-
+                    GetNurse(firstName, lastName, birthDate);
                     break;
                 case "Doctor":
 
