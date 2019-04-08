@@ -33,7 +33,7 @@ namespace ClinicApp.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (passwordTextBox.Text == this.credentialController.GetPassword(this.userNameTextBox.Text)) {
+            if (Security.Hash(passwordTextBox.Text).Equals(this.credentialController.GetPassword(this.userNameTextBox.Text).ToString())) {
                 if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
                 {
                     NurseDashboard.Instance().Show();
@@ -52,7 +52,7 @@ namespace ClinicApp.View
             } else
             {
                 accessLabel.ForeColor = Color.Red;
-                accessLabel.Text = "Incorrect username/password";
+                accessLabel.Text = this.credentialController.GetPassword(this.userNameTextBox.Text) + "Incorrect username/password";
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using ClinicApp.Model;
+using ClinicApp.Controller;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,7 +17,7 @@ namespace ClinicApp.DAL
         {
             Credential credential = new Credential();
             string password = "";
-             string selectStatement = "SELECT password " +
+            string selectStatement = "SELECT password_encrypted " +
                 "FROM Credential " +
                 "WHERE username = @username";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
@@ -27,10 +28,13 @@ namespace ClinicApp.DAL
                     selectCommand.Parameters.AddWithValue("@username", username);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        int passwordOrd = reader.GetOrdinal("password");
+                        int passwordOrd = reader.GetOrdinal("password_encrypted");
+                        
                         if (reader.Read())
-                        { 
-                            credential.Password = reader.GetString(passwordOrd);
+                        {
+                           byte[] binary = (byte[])reader["password_encrypted"];
+
+                            credential.Password = Encoding.Default.GetString(binary).ToString();
                             password = credential.Password;
                         } else
                         {
