@@ -84,7 +84,7 @@ namespace ClinicApp.DAL
         {
             Credential credential = new Credential();
             string password = "";
-            string selectStatement = "SELECT password_encrypted " +
+            string selectStatement = "SELECT password " +
                 "FROM Credential " +
                 "WHERE username = @username";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
@@ -95,7 +95,7 @@ namespace ClinicApp.DAL
                     selectCommand.Parameters.AddWithValue("@username", username);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        int passwordOrd = reader.GetOrdinal("password_encrypted");
+                        int passwordOrd = reader.GetOrdinal("password");
                         
                         if (reader.Read())
                         {
@@ -146,16 +146,15 @@ namespace ClinicApp.DAL
         {
             int count = 0;
             string insertStatement =
-                "INSERT INTO Credential (username, password,  role, password_encrypted) " +
-                "VALUES(@username, @password, @role, @passwordpassword_encrypted)";
+                "INSERT INTO Credential (username, password,  role) " +
+                "VALUES(@username, @password, @role)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@username", username);
-                    insertCommand.Parameters.AddWithValue("@password", password);
-                    insertCommand.Parameters.AddWithValue("@password_encrypted", Security.Hash(password));
+                    insertCommand.Parameters.AddWithValue("@password", Security.Hash(password));
                     insertCommand.Parameters.AddWithValue("@role", role);
                     count = insertCommand.ExecuteNonQuery();
                     if (count > 0)
