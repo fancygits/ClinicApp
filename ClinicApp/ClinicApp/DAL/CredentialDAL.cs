@@ -99,9 +99,7 @@ namespace ClinicApp.DAL
                         
                         if (reader.Read())
                         {
-                           byte[] binary = (byte[])reader["password_encrypted"];
-
-                            credential.Password = Encoding.Default.GetString(binary).ToString();
+                            credential.Password = reader.GetString(passwordOrd);
                             password = credential.Password;
                         } else
                         {

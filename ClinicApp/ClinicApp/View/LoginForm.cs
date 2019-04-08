@@ -33,7 +33,7 @@ namespace ClinicApp.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (Security.Hash(passwordTextBox.Text).Equals(this.credentialController.GetPassword(this.userNameTextBox.Text).ToString())) {
+            if (Security.Hash(passwordTextBox.Text).Equals(this.credentialController.GetPassword(this.userNameTextBox.Text))) {
                 if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
                 {
                     NurseDashboard.Instance().Show();
