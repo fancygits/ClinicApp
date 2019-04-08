@@ -69,33 +69,54 @@ namespace ClinicApp.UserControls
             return patient;
         }
 
-        //public static Nurse FindNurse(this IUserControlSearch userControl, string firstName, string lastName, string birthDate)
-        //{
-        //    Nurse nurse = null;
-        //    NurseController nurseController = new NurseController(); 
-        //    try
-        //    {
-        //        nurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
-        //        if (nurse == null)
-        //        {
-        //            List<Nurse> nurseList = nurseController.SearchNursesByName(firstName, lastName, birthDate);
-        //            if (nurseList.Count != 0)
-        //            {
-        //                FindPeopleDialog findNursesDialog = new FindPeopleDialog();
-        //                findNursesDialog.nurseList = nurseList;
-        //                DialogResult result = findNursesDialog.ShowDialog();
-        //                if (result == DialogResult.OK)
-        //                {
-        //                    nurse = findNursesDialog.nurse;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //    return nurse;
-        //}
+        public static Nurse FindNurse(this IUserControlSearch userControl, string firstName, string lastName, string birthDate)
+        {
+            Nurse nurse = null;
+            NurseController nurseController = new NurseController();
+            try
+            {
+                nurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
+                if (nurse == null)
+                {
+                    List<Nurse> nurseList = nurseController.SearchNursesByName(firstName, lastName, birthDate);
+                    if (nurseList.Count != 0)
+                    {
+                        FindPeopleDialog findNursesDialog = new FindPeopleDialog(new Nurse());
+                        findNursesDialog.nurseList = nurseList;
+                        DialogResult result = findNursesDialog.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            nurse = findNursesDialog.nurse;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            return nurse;
+        }
+
+        /// <summary>
+        /// Gets a Nurse by their ID
+        /// </summary>
+        /// <param name="userControl">UserControl to send nurse to</param>
+        /// <param name="nurseID">The int NurseID</param>
+        /// <returns>The found Nurse</returns>
+        public static Nurse GetNurseByID(this IUserControlSearch userControl, int nurseID)
+        {
+            Nurse nurse = null;
+            NurseController nurseController = new NurseController();
+            try
+            {
+                nurse = nurseController.GetNurseByID(nurseID);
+            }
+            catch
+            {
+                nurse = null;
+            }
+            return nurse;
+        }
     }
 }

@@ -77,7 +77,7 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetPatient()
         {
-            this.RefreshPatient();
+            RefreshPatient();
             if (patient == null)
             {
                 NoMatchesDialog();

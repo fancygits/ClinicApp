@@ -44,42 +44,44 @@
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
             this.lblUsername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(3, 0);
+            this.lblUsername.Location = new System.Drawing.Point(3, 3);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(3);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(91, 35);
+            this.lblUsername.Size = new System.Drawing.Size(144, 35);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Username";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // credentialsTableLayoutPanel
             // 
             this.credentialsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.credentialsTableLayoutPanel.AutoSize = true;
             this.credentialsTableLayoutPanel.ColumnCount = 3;
-            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.credentialsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.credentialsTableLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
             this.credentialsTableLayoutPanel.Controls.Add(this.lblUsername, 0, 0);
             this.credentialsTableLayoutPanel.Controls.Add(this.lblRole, 1, 0);
-            this.credentialsTableLayoutPanel.Location = new System.Drawing.Point(580, 0);
+            this.credentialsTableLayoutPanel.Location = new System.Drawing.Point(500, 0);
             this.credentialsTableLayoutPanel.Name = "credentialsTableLayoutPanel";
             this.credentialsTableLayoutPanel.RowCount = 1;
             this.credentialsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.credentialsTableLayoutPanel.Size = new System.Drawing.Size(250, 35);
+            this.credentialsTableLayoutPanel.Size = new System.Drawing.Size(330, 41);
             this.credentialsTableLayoutPanel.TabIndex = 1;
+            this.credentialsTableLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawLines);
             // 
             // logoutLinkLabel
             // 
-            this.logoutLinkLabel.AutoSize = true;
             this.logoutLinkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLinkLabel.Location = new System.Drawing.Point(197, 0);
+            this.logoutLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(68)))), ((int)(((byte)(36)))));
+            this.logoutLinkLabel.Location = new System.Drawing.Point(263, 3);
+            this.logoutLinkLabel.Margin = new System.Windows.Forms.Padding(3);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
-            this.logoutLinkLabel.Size = new System.Drawing.Size(50, 35);
+            this.logoutLinkLabel.Size = new System.Drawing.Size(64, 35);
             this.logoutLinkLabel.TabIndex = 0;
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
@@ -88,14 +90,14 @@
             // 
             // lblRole
             // 
-            this.lblRole.AutoSize = true;
             this.lblRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(100, 0);
+            this.lblRole.Location = new System.Drawing.Point(153, 3);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(3);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(91, 35);
+            this.lblRole.Size = new System.Drawing.Size(104, 35);
             this.lblRole.TabIndex = 2;
-            this.lblRole.Text = "Role";
+            this.lblRole.Text = " Administrator";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
@@ -157,7 +159,6 @@
             this.Text = "Administrator Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministratorDashboard_FormClosing);
             this.credentialsTableLayoutPanel.ResumeLayout(false);
-            this.credentialsTableLayoutPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.nurseInformationTabPage.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -1,4 +1,5 @@
 ﻿using ClinicApp.View;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp
@@ -36,6 +37,17 @@ namespace ClinicApp
         private void patientsTabControl_TabIndexChanged(object sender, System.EventArgs e)
         {
             searchForVisitUserControl1.PopulateComboBox();
+        }
+
+        private void DrawLines(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.Gray, 3);
+            Point start1 = new Point(lblRole.Location.X, lblRole.Location.Y + 10);
+            Point end1 = new Point(lblRole.Location.X, lblRole.Location.Y + 30);
+            Point start2 = new Point(logoutLinkLabel.Location.X, logoutLinkLabel.Location.Y + 10);
+            Point end2 = new Point(logoutLinkLabel.Location.X, logoutLinkLabel.Location.Y + 30);
+            e.Graphics.DrawLine(pen, start1, end1);
+            e.Graphics.DrawLine(pen, start2, end2);
         }
     }
 }
