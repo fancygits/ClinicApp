@@ -121,7 +121,7 @@ namespace ClinicApp.DAL
         {
             string updateStatement =
                 "UPDATE TestOrdered " +
-                "SET testDate = '2018-09-23', result = 0, resultDetails = 'testing2' " +
+                "SET testDate = '2019-02-23', result = 0, resultDetails = 'testing2' " +
                 "WHERE appointmentID = 24 AND testCode = 9";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
@@ -130,12 +130,12 @@ namespace ClinicApp.DAL
                 {
                     updateCommand.Parameters.AddWithValue("@TestCode", testOrdered.TestCode);
                     updateCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
-                    updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.TestCode);
-                    updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
-                    updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
-                    updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
-                    updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
-                    updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
+                    //updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.TestCode);
+                    //updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
+                    //updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                    //updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
+                    //updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
+                    //updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
 
                     int count = updateCommand.ExecuteNonQuery();
                     return count > 0;

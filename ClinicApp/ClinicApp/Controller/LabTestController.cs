@@ -41,6 +41,12 @@ namespace ClinicApp.Controller
             return LabTestDAL.AddTestOrdered(testOrdered);
         }
 
+        /// <summary>
+        /// Updates TestOrdered table with new TestOrdered object
+        /// </summary>
+        /// <param name="newTestOrdered">New TestOrdered object to be added</param>
+        /// <param name="testOrdered">Old TestOrdered object to be replaced</param>
+        /// <returns></returns>
         public bool UpdateTestOrdered(TestOrdered newTestOrdered, TestOrdered testOrdered)
         {
             return LabTestDAL.UpdateTestOrdered(newTestOrdered, testOrdered);
