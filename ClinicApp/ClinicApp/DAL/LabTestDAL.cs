@@ -121,8 +121,8 @@ namespace ClinicApp.DAL
         {
             string updateStatement =
                 "UPDATE TestOrdered " +
-                "SET testDate = '2019-02-23', result = 0, resultDetails = 'testing2' " +
-                "WHERE appointmentID = 24 AND testCode = 9";
+                "SET testDate = '2019-02-23', result = 0, resultDetails = 'testing3' " +
+                "WHERE appointmentID = @AppointmentID AND testCode = @TestCode";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -133,9 +133,9 @@ namespace ClinicApp.DAL
                     //updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.TestCode);
                     //updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
                     //updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
-                    //updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
-                    //updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
-                    //updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
+                    updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
+                    updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
+                    updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
 
                     int count = updateCommand.ExecuteNonQuery();
                     return count > 0;

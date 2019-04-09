@@ -37,9 +37,11 @@ namespace ClinicApp.UserControls
 
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
+            MessageBox.Show(this.testOrdered.TestCode.ToString());
+            MessageBox.Show(this.testOrdered.AppointmentID.ToString());
             try
             {
-                if (!this.labTestController.UpdateTestOrdered(new TestOrdered(), new TestOrdered()))
+                if (!this.labTestController.UpdateTestOrdered(this.testOrdered, this.newTestOrdered))
                 {
                     MessageBox.Show("Another user has updated this LabTest. Please modify and try again", "Database Error");
                 }
