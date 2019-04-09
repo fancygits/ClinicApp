@@ -359,6 +359,7 @@
             this.symptomsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
+            this.symptomsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.symptomsTextBox.Size = new System.Drawing.Size(309, 123);
             this.symptomsTextBox.TabIndex = 23;
             this.symptomsTextBox.Tag = "Visit";
@@ -457,6 +458,7 @@
             this.finalDiagnosisTextBox.Location = new System.Drawing.Point(1589, 378);
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
+            this.finalDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.finalDiagnosisTextBox.Size = new System.Drawing.Size(316, 119);
             this.finalDiagnosisTextBox.TabIndex = 29;
             // 
@@ -479,6 +481,7 @@
             this.initialDiagnosisTextBox.Location = new System.Drawing.Point(1589, 253);
             this.initialDiagnosisTextBox.Multiline = true;
             this.initialDiagnosisTextBox.Name = "initialDiagnosisTextBox";
+            this.initialDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.initialDiagnosisTextBox.Size = new System.Drawing.Size(316, 119);
             this.initialDiagnosisTextBox.TabIndex = 31;
             // 
