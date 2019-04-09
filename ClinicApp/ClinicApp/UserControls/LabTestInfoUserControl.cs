@@ -35,10 +35,18 @@ namespace ClinicApp.UserControls
             this.RefreshPage();
         }
 
+        private void PutLabTest()
+        {
+            this.newTestOrdered.AppointmentID = this.testOrdered.AppointmentID;
+            this.newTestOrdered.TestCode = this.testOrdered.TestCode;
+            this.newTestOrdered.Date = dateTimePickerTestDate.Value;
+            this.newTestOrdered.Result = ckBxAbnResults.Checked;
+            this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
+        }
+
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show(this.testOrdered.TestCode.ToString());
-            MessageBox.Show(this.testOrdered.AppointmentID.ToString());
+            this.PutLabTest();
             try
             {
                 if (!this.labTestController.UpdateTestOrdered(this.testOrdered, this.newTestOrdered))
@@ -55,6 +63,11 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

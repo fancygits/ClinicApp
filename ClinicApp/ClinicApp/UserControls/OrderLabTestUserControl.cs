@@ -91,15 +91,15 @@ namespace ClinicApp.UserControls
 
         private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 6)
             {
                 int i = e.RowIndex;
                 DataGridViewRow row = testOrderedDataGridView.Rows[i];
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
-
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
                 labTestInfoForm.Show();
+                this.RefreshPage();
             }
         }
     }

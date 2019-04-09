@@ -52,7 +52,7 @@ namespace ClinicApp.DAL
         {
             List<TestOrdered> testOrderedByApptIDList = new List<TestOrdered>();
             string selectStatement =
-                "SELECT tord.testCode AS testCode, testName, testDate, result, resultDetails " +
+                "SELECT appointmentID, tord.testCode AS testCode, testName, testDate, result, resultDetails " +
                 "FROM TestOrdered tord " +
                 "JOIN LabTest lb " +
                 "ON tord.testCode = lb.testCode " +
@@ -65,6 +65,7 @@ namespace ClinicApp.DAL
                     selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int testApptIdOrd = reader.GetOrdinal("appointmentID");
                         int testCodeOrd = reader.GetOrdinal("testCode");
                         int testNameOrd = reader.GetOrdinal("testName");
                         int testDateOrd = reader.GetOrdinal("testDate");
@@ -73,6 +74,7 @@ namespace ClinicApp.DAL
                         while (reader.Read())
                         {
                             TestOrdered testOrdered = new TestOrdered();
+                            testOrdered.AppointmentID = reader.GetInt32(testApptIdOrd);
                             testOrdered.TestCode = reader.GetInt32(testCodeOrd);
                             testOrdered.Name = reader.GetString(testNameOrd);
                             testOrdered.Date = reader.GetDateTime(testDateOrd);
@@ -121,7 +123,9 @@ namespace ClinicApp.DAL
         {
             string updateStatement =
                 "UPDATE TestOrdered " +
-                "SET testDate = '2019-02-23', result = 0, resultDetails = 'testing3' " +
+                "SET testDate = @NewTestDate, " +
+                "result = @NewResult, " +
+                "resultDetails = @NewResultDetail " +
                 "WHERE appointmentID = @AppointmentID AND testCode = @TestCode";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
@@ -130,9 +134,9 @@ namespace ClinicApp.DAL
                 {
                     updateCommand.Parameters.AddWithValue("@TestCode", testOrdered.TestCode);
                     updateCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
-                    //updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.TestCode);
-                    //updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
-                    //updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                    updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.Date);
+                    updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
+                    updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
                     updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
                     updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
                     updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);

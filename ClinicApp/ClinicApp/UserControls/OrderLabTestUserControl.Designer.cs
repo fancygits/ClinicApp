@@ -30,17 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lbltTestName;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmboBoxTestID = new System.Windows.Forms.ComboBox();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddTest = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.testOrderedDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AddEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             lbltTestName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
@@ -106,18 +109,36 @@
             this.testOrderedDataGridView.AutoGenerateColumns = false;
             this.testOrderedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.testOrderedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn5,
-            this.Column1});
+            this.AddEdit});
             this.testOrderedDataGridView.DataSource = this.testOrderedBindingSource;
-            this.testOrderedDataGridView.Location = new System.Drawing.Point(7, 99);
+            this.testOrderedDataGridView.Location = new System.Drawing.Point(3, 112);
             this.testOrderedDataGridView.Name = "testOrderedDataGridView";
             this.testOrderedDataGridView.ReadOnly = true;
-            this.testOrderedDataGridView.Size = new System.Drawing.Size(499, 220);
+            this.testOrderedDataGridView.Size = new System.Drawing.Size(520, 220);
             this.testOrderedDataGridView.TabIndex = 5;
             this.testOrderedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.testOrderedDataGridView_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "AppointmentID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "AppointmentID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TestCode";
+            this.dataGridViewTextBoxColumn2.HeaderText = "TestCode";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -129,6 +150,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Date";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn4.HeaderText = "Test Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -137,30 +161,29 @@
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "Result";
-            this.dataGridViewCheckBoxColumn1.FalseValue = "Neg";
             this.dataGridViewCheckBoxColumn1.HeaderText = "Abnormal Result";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.TrueValue = "Pos";
             this.dataGridViewCheckBoxColumn1.Width = 75;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "ResultDetail";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Detail";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Result Detail";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            this.dataGridViewTextBoxColumn5.Width = 135;
             // 
-            // Column1
+            // AddEdit
             // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Text = "Edit/View";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 75;
+            this.AddEdit.HeaderText = "";
+            this.AddEdit.Name = "AddEdit";
+            this.AddEdit.ReadOnly = true;
+            this.AddEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AddEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AddEdit.Text = "Add/Edit";
+            this.AddEdit.UseColumnTextForButtonValue = true;
+            this.AddEdit.Width = 75;
             // 
             // OrderLabTestUserControl
             // 
@@ -172,7 +195,7 @@
             this.Controls.Add(lbltTestName);
             this.Controls.Add(this.cmboBoxTestID);
             this.Name = "OrderLabTestUserControl";
-            this.Size = new System.Drawing.Size(520, 377);
+            this.Size = new System.Drawing.Size(526, 394);
             this.Load += new System.EventHandler(this.OrderLabTestUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
@@ -190,10 +213,12 @@
         private System.Windows.Forms.Button btnAddTest;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.DataGridView testOrderedDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewButtonColumn AddEdit;
     }
 }
