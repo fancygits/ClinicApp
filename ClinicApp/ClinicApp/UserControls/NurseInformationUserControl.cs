@@ -236,6 +236,19 @@ namespace ClinicApp.UserControls
             }
         }
 
+        private void UpdateCredentials()
+        {
+            UpdateAccountDialog updateAccountDialog = new UpdateAccountDialog(newNurse);
+            Enabled = false;
+            DialogResult result = updateAccountDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                RefreshNurse();
+                lblMessage.Text = "Nurse credentials have been updated.";
+            }
+            Enabled = true;
+        }
+
         /// <summary>
         /// Puts fields into a new nurse object
         /// </summary>
@@ -253,6 +266,7 @@ namespace ClinicApp.UserControls
             newNurse.State = nurse.State;
             newNurse.PostCode = nurse.PostCode;
             newNurse.PhoneNumber = nurse.PhoneNumber;
+            newNurse.Active = nurse.Active;
             newNurse.Username = nurse.Username;
         }
 
@@ -386,6 +400,11 @@ namespace ClinicApp.UserControls
             }
         }
 
+        private void btnUpdateCredentials_Click(object sender, EventArgs e)
+        {
+            UpdateCredentials();
+        }
+
         /// <summary>
         /// Used to find possible errors in a nurse
         /// </summary>
@@ -434,5 +453,6 @@ namespace ClinicApp.UserControls
                 }
             }
         }
+
     }
 }

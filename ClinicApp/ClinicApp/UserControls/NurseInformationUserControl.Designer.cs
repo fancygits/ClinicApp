@@ -56,6 +56,7 @@
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.btnUpdateCredentials = new System.Windows.Forms.Button();
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
@@ -182,6 +183,26 @@
             genderLabel.TabIndex = 64;
             genderLabel.Text = "Gender:";
             // 
+            // activeLabel
+            // 
+            activeLabel.AutoSize = true;
+            activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            activeLabel.Location = new System.Drawing.Point(22, 311);
+            activeLabel.Name = "activeLabel";
+            activeLabel.Size = new System.Drawing.Size(119, 20);
+            activeLabel.TabIndex = 74;
+            activeLabel.Text = "Account Active:";
+            // 
+            // usernameLabel
+            // 
+            usernameLabel.AutoSize = true;
+            usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            usernameLabel.Location = new System.Drawing.Point(22, 344);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new System.Drawing.Size(87, 20);
+            usernameLabel.TabIndex = 74;
+            usernameLabel.Text = "Username:";
+            // 
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -212,7 +233,7 @@
             this.btnAddUpdateNurse.Name = "btnAddUpdateNurse";
             this.btnAddUpdateNurse.Size = new System.Drawing.Size(175, 35);
             this.btnAddUpdateNurse.TabIndex = 12;
-            this.btnAddUpdateNurse.Text = "Update Patient";
+            this.btnAddUpdateNurse.Text = "Update Nurse";
             this.btnAddUpdateNurse.UseVisualStyleBackColor = true;
             this.btnAddUpdateNurse.Click += new System.EventHandler(this.btnAddUpdateNurse_Click);
             // 
@@ -349,46 +370,37 @@
             this.firstNameTextBox.Tag = "First name";
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
-            // activeLabel
-            // 
-            activeLabel.AutoSize = true;
-            activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            activeLabel.Location = new System.Drawing.Point(65, 307);
-            activeLabel.Name = "activeLabel";
-            activeLabel.Size = new System.Drawing.Size(119, 20);
-            activeLabel.TabIndex = 74;
-            activeLabel.Text = "Account Active:";
-            // 
             // activeCheckBox
             // 
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(190, 307);
+            this.activeCheckBox.Location = new System.Drawing.Point(147, 311);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(23, 24);
             this.activeCheckBox.TabIndex = 11;
             this.activeCheckBox.Tag = "Account Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // usernameLabel
-            // 
-            usernameLabel.AutoSize = true;
-            usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            usernameLabel.Location = new System.Drawing.Point(65, 340);
-            usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(87, 20);
-            usernameLabel.TabIndex = 74;
-            usernameLabel.Text = "Username:";
-            // 
             // usernameTextBox
             // 
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(174, 337);
+            this.usernameTextBox.Location = new System.Drawing.Point(131, 341);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
             this.usernameTextBox.TabIndex = 75;
+            // 
+            // btnUpdateCredentials
+            // 
+            this.btnUpdateCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCredentials.Location = new System.Drawing.Point(320, 305);
+            this.btnUpdateCredentials.Name = "btnUpdateCredentials";
+            this.btnUpdateCredentials.Size = new System.Drawing.Size(175, 35);
+            this.btnUpdateCredentials.TabIndex = 76;
+            this.btnUpdateCredentials.Text = "Update Account";
+            this.btnUpdateCredentials.UseVisualStyleBackColor = true;
+            this.btnUpdateCredentials.Click += new System.EventHandler(this.btnUpdateCredentials_Click);
             // 
             // nurseBindingSource
             // 
@@ -398,6 +410,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnUpdateCredentials);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(activeLabel);
@@ -453,5 +466,6 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Button btnUpdateCredentials;
     }
 }
