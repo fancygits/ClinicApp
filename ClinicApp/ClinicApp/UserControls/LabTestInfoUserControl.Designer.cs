@@ -92,9 +92,9 @@
             this.dateTimePickerTestDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.testOrderedBindingSource, "Date", true));
             this.dateTimePickerTestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTestDate.Location = new System.Drawing.Point(219, 94);
+            this.dateTimePickerTestDate.Location = new System.Drawing.Point(145, 94);
             this.dateTimePickerTestDate.Name = "dateTimePickerTestDate";
-            this.dateTimePickerTestDate.Size = new System.Drawing.Size(100, 26);
+            this.dateTimePickerTestDate.Size = new System.Drawing.Size(239, 26);
             this.dateTimePickerTestDate.TabIndex = 2;
             // 
             // testOrderedBindingSource
@@ -105,16 +105,16 @@
             // 
             this.txBxTestName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "Name", true));
             this.txBxTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txBxTestName.Location = new System.Drawing.Point(157, 56);
+            this.txBxTestName.Location = new System.Drawing.Point(145, 56);
             this.txBxTestName.Name = "txBxTestName";
-            this.txBxTestName.Size = new System.Drawing.Size(162, 26);
+            this.txBxTestName.Size = new System.Drawing.Size(239, 26);
             this.txBxTestName.TabIndex = 4;
             // 
             // ckBxAbnResults
             // 
             this.ckBxAbnResults.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.testOrderedBindingSource, "Result", true));
             this.ckBxAbnResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckBxAbnResults.Location = new System.Drawing.Point(306, 126);
+            this.ckBxAbnResults.Location = new System.Drawing.Point(371, 126);
             this.ckBxAbnResults.Name = "ckBxAbnResults";
             this.ckBxAbnResults.Size = new System.Drawing.Size(13, 24);
             this.ckBxAbnResults.TabIndex = 6;
@@ -124,15 +124,15 @@
             // 
             this.txBxResultDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "ResultDetail", true));
             this.txBxResultDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txBxResultDetail.Location = new System.Drawing.Point(157, 161);
+            this.txBxResultDetail.Location = new System.Drawing.Point(145, 161);
             this.txBxResultDetail.Name = "txBxResultDetail";
-            this.txBxResultDetail.Size = new System.Drawing.Size(162, 26);
+            this.txBxResultDetail.Size = new System.Drawing.Size(239, 26);
             this.txBxResultDetail.TabIndex = 8;
             // 
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(185, 209);
+            this.btnUpdate.Location = new System.Drawing.Point(240, 209);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(134, 32);
             this.btnUpdate.TabIndex = 9;
@@ -143,7 +143,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(38, 209);
+            this.btnDelete.Location = new System.Drawing.Point(21, 209);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(124, 32);
             this.btnDelete.TabIndex = 10;
@@ -165,7 +165,7 @@
             this.Controls.Add(dateLabel);
             this.Controls.Add(this.dateTimePickerTestDate);
             this.Name = "LabTestInfoUserControl";
-            this.Size = new System.Drawing.Size(338, 259);
+            this.Size = new System.Drawing.Size(387, 259);
             this.Load += new System.EventHandler(this.LabTestInfoUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
             this.ResumeLayout(false);

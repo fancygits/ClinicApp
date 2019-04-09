@@ -24,17 +24,15 @@ namespace ClinicApp.UserControls
             this.newTestOrdered = new TestOrdered();
         }
 
-        private void DisplayTestOrdered()
+
+        private void RefreshPage()
         {
-            txBxTestName.Text = this.testOrdered.Name;
-            txBxResultDetail.Text = this.testOrdered.ResultDetail;
-            dateTimePickerTestDate.Value = this.testOrdered.Date;
-            ckBxAbnResults.Checked = this.testOrdered.Result;
+            testOrderedBindingSource.Add(this.testOrdered);
         }
 
         private void LabTestInfoUserControl_Load(object sender, System.EventArgs e)
         {
-            this.DisplayTestOrdered();
+            this.RefreshPage();
         }
 
         private void btnUpdate_Click(object sender, System.EventArgs e)

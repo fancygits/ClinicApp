@@ -35,16 +35,17 @@
             // 
             this.labTestInfoUserControl1.Location = new System.Drawing.Point(-3, 1);
             this.labTestInfoUserControl1.Name = "labTestInfoUserControl1";
-            this.labTestInfoUserControl1.Size = new System.Drawing.Size(338, 251);
+            this.labTestInfoUserControl1.Size = new System.Drawing.Size(396, 251);
             this.labTestInfoUserControl1.TabIndex = 0;
             // 
             // LabTestInfoDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 255);
+            this.ClientSize = new System.Drawing.Size(391, 255);
             this.Controls.Add(this.labTestInfoUserControl1);
             this.Name = "LabTestInfoDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lab Test Info";
             this.ResumeLayout(false);
 
