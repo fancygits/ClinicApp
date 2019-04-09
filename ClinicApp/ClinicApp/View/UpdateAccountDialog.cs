@@ -8,6 +8,7 @@ namespace ClinicApp.View
         public UpdateAccountDialog(Person person)
         {
             InitializeComponent();
+            nurseBindingSource.Add(person);
         }
     }
 }

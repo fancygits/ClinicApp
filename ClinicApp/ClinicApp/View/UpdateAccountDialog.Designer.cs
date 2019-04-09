@@ -33,7 +33,6 @@
             System.Windows.Forms.Label usernameLabel;
             System.Windows.Forms.Label newPasswordLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateAccountDialog));
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.newPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -41,15 +40,12 @@
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateCredentialsButton = new System.Windows.Forms.Button();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             activeLabel = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             newPasswordLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // activeLabel
             // 
@@ -105,7 +101,6 @@
             // 
             // newPasswordTextBox
             // 
-            this.newPasswordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
             this.newPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPasswordTextBox.Location = new System.Drawing.Point(157, 84);
             this.newPasswordTextBox.Name = "newPasswordTextBox";
@@ -124,7 +119,6 @@
             // 
             // confirmPasswordTextBox
             // 
-            this.confirmPasswordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPasswordTextBox.Location = new System.Drawing.Point(157, 123);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
@@ -150,6 +144,10 @@
             this.updateCredentialsButton.TabIndex = 10;
             this.updateCredentialsButton.Text = "Update Credentials";
             this.updateCredentialsButton.UseVisualStyleBackColor = true;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // UpdateAccountDialog
             // 
