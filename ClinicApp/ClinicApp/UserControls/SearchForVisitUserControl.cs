@@ -150,6 +150,8 @@ namespace ClinicApp.UserControls
                     addVisitDialog.addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
                     addVisitDialog.addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
                     addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
+                    addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
+                    addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
                     if (this.visit.NurseID > 0)
                     {
                         if (visit.FinalDiagnosis != null)

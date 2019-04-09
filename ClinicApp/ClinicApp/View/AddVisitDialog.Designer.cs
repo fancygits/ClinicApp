@@ -35,6 +35,7 @@
             // 
             this.addVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addVisitUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.addVisitUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.addVisitUserControl1.Name = "addVisitUserControl1";
             this.addVisitUserControl1.Size = new System.Drawing.Size(1882, 918);
             this.addVisitUserControl1.TabIndex = 0;
