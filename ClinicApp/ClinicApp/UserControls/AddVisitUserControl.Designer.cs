@@ -429,7 +429,7 @@
             // 
             this.btnLabTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLabTest.Location = new System.Drawing.Point(1275, 131);
+            this.btnLabTest.Location = new System.Drawing.Point(1275, 6);
             this.btnLabTest.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLabTest.Name = "btnLabTest";
             this.btnLabTest.Size = new System.Drawing.Size(305, 113);
@@ -499,7 +499,6 @@
             this.tableLayoutPanel1.Controls.Add(this.appointmentIDTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(patientNameLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.patientNameTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 4, 1);
             this.tableLayoutPanel1.Controls.Add(birthDateLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.diastolicBPTextBox, 3, 3);
             this.tableLayoutPanel1.Controls.Add(diastolicBPLabel, 2, 3);
@@ -522,6 +521,7 @@
             this.tableLayoutPanel1.Controls.Add(pulseLabel, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.pulseTextBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -586,10 +586,10 @@
         public System.Windows.Forms.Button addVisitButton;
         public System.Windows.Forms.Button updateVisitButton;
         public System.Windows.Forms.TextBox nurseNameTextBox;
-        private System.Windows.Forms.Button btnLabTest;
         public System.Windows.Forms.TextBox finalDiagnosisTextBox;
         public System.Windows.Forms.TextBox initialDiagnosisTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button btnLabTest;
     }
 }
