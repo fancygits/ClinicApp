@@ -342,6 +342,8 @@ namespace ClinicApp.DAL
                                      "temperature = @newTemperature, " +
                                      "pulse = @newPulse, " +
                                      "symptoms = @newSymptoms, " +
+                                     "initialDiagnosis = @newInitialDiagnosis, " +
+                                     "finalDiagnosis = @newFinalDiagnosis, " +
                                      "nurseID = @newNurseID " +
                                      "WHERE appointmentID = @oldAppointmentID " +
                                      "AND weight = @oldWeight " +
@@ -351,7 +353,8 @@ namespace ClinicApp.DAL
                                      "AND pulse = @oldPulse " +
                                      "AND symptoms = @oldSymptoms " +
                                      "AND nurseID = @oldNurseID " +
-                                     "AND finalDiagnosis IS NULL";
+                                     "AND initialDiagnosis = @oldInitialDiagnosis " +
+                                     "AND (finalDiagnosis = @oldFinalDiagnosis OR (finalDiagnosis IS NULL AND @oldFinalDiagnosis IS NULL))";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -363,6 +366,14 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@newTemperature", newVisit.Temperature);
                     updateCommand.Parameters.AddWithValue("@newPulse", newVisit.Pulse);
                     updateCommand.Parameters.AddWithValue("@newSymptoms", newVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@newInitialDiagnosis", newVisit.InitialDiagnosis);
+                    if (newVisit.FinalDiagnosis == "")
+                    {
+                        updateCommand.Parameters.AddWithValue("@newFinalDiagnosis", DBNull.Value);
+                    } else
+                    {
+                        updateCommand.Parameters.AddWithValue("@newFinalDiagnosis", newVisit.FinalDiagnosis);
+                    }
                     updateCommand.Parameters.AddWithValue("@newNurseID", newVisit.NurseID);
                     updateCommand.Parameters.AddWithValue("@oldAppointmentID", oldVisit.AppointmentID);
                     updateCommand.Parameters.AddWithValue("@oldWeight", oldVisit.Weight);
@@ -371,6 +382,15 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@oldTemperature", oldVisit.Temperature);
                     updateCommand.Parameters.AddWithValue("@oldPulse", oldVisit.Pulse);
                     updateCommand.Parameters.AddWithValue("@oldSymptoms", oldVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@oldInitialDiagnosis", oldVisit.InitialDiagnosis);
+                    if (oldVisit.FinalDiagnosis == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@oldFinalDiagnosis", DBNull.Value);
+                    } else
+                    {
+                        updateCommand.Parameters.AddWithValue("@oldFinalDiagnosis", oldVisit.FinalDiagnosis);
+                    }
+
                     updateCommand.Parameters.AddWithValue("@oldNurseID", oldVisit.NurseID);
                     count = updateCommand.ExecuteNonQuery();
                 }
@@ -395,7 +415,7 @@ namespace ClinicApp.DAL
             int count = 0;
             string insertStatement = "INSERT INTO Visit " +
                                      "(appointmentID, weight, systolicBP, diastolicBP, temperature, pulse, symptoms, initialDiagnosis, finalDiagnosis, nurseID) " +
-                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, 'Pending Doctor Visit', NULL, @nurseID)";
+                                     "VALUES (@appointmentID, @weight, @systolicBP, @diastolicBP, @temperature, @pulse, @symptoms, @initialDiagnosis, @finalDiagnosis, @nurseID)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -408,6 +428,8 @@ namespace ClinicApp.DAL
                     insertCommand.Parameters.AddWithValue("@temperature", newVisit.Temperature);
                     insertCommand.Parameters.AddWithValue("@pulse", newVisit.Pulse);
                     insertCommand.Parameters.AddWithValue("@symptoms", newVisit.Symptoms);
+                    insertCommand.Parameters.AddWithValue("@initialDiagnosis", newVisit.InitialDiagnosis);
+                    insertCommand.Parameters.AddWithValue("@finalDiagnosis", newVisit.FinalDiagnosis);
                     insertCommand.Parameters.AddWithValue("@nurseID", newVisit.NurseID);
                     count = insertCommand.ExecuteNonQuery();
                 }

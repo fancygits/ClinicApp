@@ -373,10 +373,10 @@
             this.nurseNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nurseNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurseNameComboBox.FormattingEnabled = true;
-            this.nurseNameComboBox.Location = new System.Drawing.Point(2, 41);
+            this.nurseNameComboBox.Location = new System.Drawing.Point(15, 41);
             this.nurseNameComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nurseNameComboBox.Name = "nurseNameComboBox";
-            this.nurseNameComboBox.Size = new System.Drawing.Size(309, 45);
+            this.nurseNameComboBox.Size = new System.Drawing.Size(268, 45);
             this.nurseNameComboBox.TabIndex = 24;
             this.nurseNameComboBox.ValueMember = "NurseID";
             // 
@@ -419,10 +419,10 @@
             this.nurseNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
             this.nurseNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseNameTextBox.Location = new System.Drawing.Point(-3, 41);
+            this.nurseNameTextBox.Location = new System.Drawing.Point(15, 41);
             this.nurseNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nurseNameTextBox.Name = "nurseNameTextBox";
-            this.nurseNameTextBox.Size = new System.Drawing.Size(313, 38);
+            this.nurseNameTextBox.Size = new System.Drawing.Size(268, 38);
             this.nurseNameTextBox.TabIndex = 27;
             // 
             // btnLabTest
