@@ -3,6 +3,7 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,6 +19,7 @@ namespace ClinicApp.UserControls
         public Visit visit;
         private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
+        private PersonSearchUserControl personSearchUserControl;
 
         public SearchForVisitUserControl()
         {
@@ -26,7 +28,48 @@ namespace ClinicApp.UserControls
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
             this.credentialController = new CredentialController();
+            personSearchUserControl = new PersonSearchUserControl(new Patient());
+            personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
 
+        }
+
+        /// <summary>
+        /// The method to run when the GetPerson Button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            this.RefreshPage();
+        }
+
+        public void RefreshPage()
+        {
+            if (this.patient != null)
+            {
+                patientBindingSource.Add(patient);
+                this.GetVisitList(this.patient.PatientID);
+            }
+            else
+            {
+                if (this.listOfVisits != null)
+                {
+                    this.listOfVisits.Clear();
+                }
+            }
+        }
+
+        private void GetVisitList(int patientID)
+        {
+            try
+            {
+                this.listOfVisits = this.visitController.GetListOfVisits(patientID);
+                visitDataGridView.DataSource = this.listOfVisits;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         /// <summary>
@@ -71,6 +114,17 @@ namespace ClinicApp.UserControls
         private void SearchForVisitUserControl_Load(object sender, EventArgs e)
         {
             this.PopulateComboBox();
+            LoadSearchBox();
+        }
+
+        public void LoadSearchBox()
+        {
+            personSearchUserControl.Location = new Point(0, 0);
+            personSearchUserControl.Name = "personSearchUserControl";
+            personSearchUserControl.Size = new Size(800, 75);
+            personSearchUserControl.TabIndex = 0;
+            Controls.Add(personSearchUserControl);
+            this.ActiveControl = personSearchUserControl;
         }
 
         private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,6 +150,8 @@ namespace ClinicApp.UserControls
                     addVisitDialog.addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
                     addVisitDialog.addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
                     addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
+                    addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
+                    addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
                     if (this.visit.NurseID > 0)
                     {
                         if (visit.FinalDiagnosis != null)
@@ -109,6 +165,9 @@ namespace ClinicApp.UserControls
                             addVisitDialog.addVisitUserControl1.diastolicBPTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.symptomsTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.pulseTextBox.Enabled = false;
+                            addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
+                            addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
+                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
                             addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
