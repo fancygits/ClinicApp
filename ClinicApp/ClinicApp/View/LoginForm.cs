@@ -34,25 +34,28 @@ namespace ClinicApp.View
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (Security.Hash(passwordTextBox.Text).Equals(this.credentialController.GetPassword(this.userNameTextBox.Text))) {
-                if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse")
+                if (this.credentialController.GetRole(this.userNameTextBox.Text) == "nurse" && this.credentialController.GetNurseByUserName(this.userNameTextBox.Text).Active)
                 {
                     NurseDashboard.Instance().Show();
-                    NurseDashboard.Instance().lblUsername.Text = this.userNameTextBox.Text;
+                    NurseDashboard.Instance().lblUsername.Text = this.credentialController.GetNurseByUserName(this.userNameTextBox.Text).FullName;
                     NurseDashboard.Instance().lblRole.Text = "Nurse";
                     LoginForm.Instance().Hide();
 
                 } else if (this.credentialController.GetRole(this.userNameTextBox.Text) == "administrator")
                 {
                     AdministratorDashboard.Instance().Show();
-                    AdministratorDashboard.Instance().lblUsername.Text = this.userNameTextBox.Text;
+                    AdministratorDashboard.Instance().lblUsername.Text = this.credentialController.GetAdministratorByUserName(this.userNameTextBox.Text).FullName;
                     AdministratorDashboard.Instance().lblRole.Text = "Administrator";
                     LoginForm.Instance().Hide();
+                } else
+                {
+                    accessLabel.Text = "Inactive user";
                 }
                 
             } else
             {
                 accessLabel.ForeColor = Color.Red;
-                accessLabel.Text = this.credentialController.GetPassword(this.userNameTextBox.Text) + "Incorrect username/password";
+                accessLabel.Text = "Incorrect username/password";
             }
         }
 
