@@ -3,6 +3,7 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,6 +19,7 @@ namespace ClinicApp.UserControls
         public Visit visit;
         private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
+        private PersonSearchUserControl personSearchUserControl;
 
         public SearchForVisitUserControl()
         {
@@ -26,7 +28,48 @@ namespace ClinicApp.UserControls
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
             this.credentialController = new CredentialController();
+            personSearchUserControl = new PersonSearchUserControl(new Patient());
+            personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
 
+        }
+
+        /// <summary>
+        /// The method to run when the GetPerson Button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            this.RefreshPage();
+        }
+
+        public void RefreshPage()
+        {
+            if (this.patient != null)
+            {
+                patientBindingSource.Add(patient);
+                this.GetVisitList(this.patient.PatientID);
+            }
+            else
+            {
+                if (this.listOfVisits != null)
+                {
+                    this.listOfVisits.Clear();
+                }
+            }
+        }
+
+        private void GetVisitList(int patientID)
+        {
+            try
+            {
+                this.listOfVisits = this.visitController.GetListOfVisits(patientID);
+                visitDataGridView.DataSource = this.listOfVisits;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         /// <summary>
@@ -71,6 +114,17 @@ namespace ClinicApp.UserControls
         private void SearchForVisitUserControl_Load(object sender, EventArgs e)
         {
             this.PopulateComboBox();
+            LoadSearchBox();
+        }
+
+        public void LoadSearchBox()
+        {
+            personSearchUserControl.Location = new Point(0, 0);
+            personSearchUserControl.Name = "personSearchUserControl";
+            personSearchUserControl.Size = new Size(800, 75);
+            personSearchUserControl.TabIndex = 0;
+            Controls.Add(personSearchUserControl);
+            this.ActiveControl = personSearchUserControl;
         }
 
         private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
