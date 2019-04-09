@@ -429,7 +429,13 @@ namespace ClinicApp.DAL
                     insertCommand.Parameters.AddWithValue("@pulse", newVisit.Pulse);
                     insertCommand.Parameters.AddWithValue("@symptoms", newVisit.Symptoms);
                     insertCommand.Parameters.AddWithValue("@initialDiagnosis", newVisit.InitialDiagnosis);
-                    insertCommand.Parameters.AddWithValue("@finalDiagnosis", newVisit.FinalDiagnosis);
+                    if (newVisit.FinalDiagnosis == "")
+                    {
+                        insertCommand.Parameters.AddWithValue("@finalDiagnosis", DBNull.Value);
+                    } else
+                    {
+                        insertCommand.Parameters.AddWithValue("@finalDiagnosis", newVisit.FinalDiagnosis);
+                    }
                     insertCommand.Parameters.AddWithValue("@nurseID", newVisit.NurseID);
                     count = insertCommand.ExecuteNonQuery();
                 }
