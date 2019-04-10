@@ -60,6 +60,19 @@ namespace ClinicApp.UserControls
                     newVisit.Symptoms = this.symptomsTextBox.Text;
                     isValid = true;
                 }
+                if (Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
+                {
+                    newVisit.InitialDiagnosis = this.initialDiagnosisTextBox.Text;
+                    isValid = true;
+                }
+                if (!this.finalDiagnosisTextBox.Equals(""))
+                {
+                    newVisit.FinalDiagnosis = this.finalDiagnosisTextBox.Text;
+                } else
+                {
+                    newVisit.FinalDiagnosis = DBNull.Value.ToString();
+                }
+
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
