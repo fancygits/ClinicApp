@@ -32,6 +32,7 @@
             System.Windows.Forms.Label activeLabel;
             System.Windows.Forms.Label usernameLabel;
             System.Windows.Forms.Label newPasswordLabel;
+            System.Windows.Forms.Label currentPasswordLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateAccountDialog));
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
@@ -40,10 +41,14 @@
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.updateCredentialsButton = new System.Windows.Forms.Button();
+            this.currentPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             activeLabel = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             newPasswordLabel = new System.Windows.Forms.Label();
+            currentPasswordLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,17 +62,6 @@
             activeLabel.TabIndex = 1;
             activeLabel.Text = "Account Active:";
             // 
-            // activeCheckBox
-            // 
-            this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
-            this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(157, 8);
-            this.activeCheckBox.Name = "activeCheckBox";
-            this.activeCheckBox.Size = new System.Drawing.Size(44, 24);
-            this.activeCheckBox.TabIndex = 2;
-            this.activeCheckBox.Tag = "Account Active";
-            this.activeCheckBox.UseVisualStyleBackColor = true;
-            // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
@@ -79,6 +73,28 @@
             usernameLabel.Tag = "Username";
             usernameLabel.Text = "Username:";
             // 
+            // newPasswordLabel
+            // 
+            newPasswordLabel.AutoSize = true;
+            newPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            newPasswordLabel.Location = new System.Drawing.Point(12, 126);
+            newPasswordLabel.Name = "newPasswordLabel";
+            newPasswordLabel.Size = new System.Drawing.Size(117, 20);
+            newPasswordLabel.TabIndex = 5;
+            newPasswordLabel.Tag = "New Password";
+            newPasswordLabel.Text = "New Password:";
+            // 
+            // activeCheckBox
+            // 
+            this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
+            this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeCheckBox.Location = new System.Drawing.Point(157, 8);
+            this.activeCheckBox.Name = "activeCheckBox";
+            this.activeCheckBox.Size = new System.Drawing.Size(44, 24);
+            this.activeCheckBox.TabIndex = 2;
+            this.activeCheckBox.Tag = "Account Active";
+            this.activeCheckBox.UseVisualStyleBackColor = true;
+            // 
             // usernameTextBox
             // 
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
@@ -88,21 +104,10 @@
             this.usernameTextBox.Size = new System.Drawing.Size(194, 26);
             this.usernameTextBox.TabIndex = 4;
             // 
-            // newPasswordLabel
-            // 
-            newPasswordLabel.AutoSize = true;
-            newPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            newPasswordLabel.Location = new System.Drawing.Point(12, 87);
-            newPasswordLabel.Name = "newPasswordLabel";
-            newPasswordLabel.Size = new System.Drawing.Size(117, 20);
-            newPasswordLabel.TabIndex = 5;
-            newPasswordLabel.Tag = "Current Password";
-            newPasswordLabel.Text = "New Password:";
-            // 
             // newPasswordTextBox
             // 
             this.newPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPasswordTextBox.Location = new System.Drawing.Point(157, 84);
+            this.newPasswordTextBox.Location = new System.Drawing.Point(157, 123);
             this.newPasswordTextBox.Name = "newPasswordTextBox";
             this.newPasswordTextBox.Size = new System.Drawing.Size(194, 26);
             this.newPasswordTextBox.TabIndex = 6;
@@ -111,39 +116,66 @@
             // 
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(12, 126);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(12, 165);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
             this.confirmPasswordLabel.Size = new System.Drawing.Size(141, 20);
             this.confirmPasswordLabel.TabIndex = 7;
+            this.confirmPasswordLabel.Tag = "Confirm Password";
             this.confirmPasswordLabel.Text = "Confirm Password:";
             // 
             // confirmPasswordTextBox
             // 
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(157, 123);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(157, 162);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(194, 26);
             this.confirmPasswordTextBox.TabIndex = 8;
             // 
             // cancelButton
             // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(23, 164);
+            this.cancelButton.Location = new System.Drawing.Point(23, 202);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(108, 35);
             this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // updateCredentialsButton
             // 
             this.updateCredentialsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateCredentialsButton.Location = new System.Drawing.Point(171, 164);
+            this.updateCredentialsButton.Location = new System.Drawing.Point(172, 202);
             this.updateCredentialsButton.Name = "updateCredentialsButton";
             this.updateCredentialsButton.Size = new System.Drawing.Size(165, 35);
             this.updateCredentialsButton.TabIndex = 10;
             this.updateCredentialsButton.Text = "Update Credentials";
             this.updateCredentialsButton.UseVisualStyleBackColor = true;
+            this.updateCredentialsButton.Click += new System.EventHandler(this.updateCredentialsButton_Click);
+            // 
+            // currentPasswordLabel
+            // 
+            currentPasswordLabel.AutoSize = true;
+            currentPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            currentPasswordLabel.Location = new System.Drawing.Point(12, 87);
+            currentPasswordLabel.Name = "currentPasswordLabel";
+            currentPasswordLabel.Size = new System.Drawing.Size(139, 20);
+            currentPasswordLabel.TabIndex = 11;
+            currentPasswordLabel.Tag = "Current Password";
+            currentPasswordLabel.Text = "Current Password:";
+            // 
+            // currentPasswordTextBox
+            // 
+            this.currentPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentPasswordTextBox.Location = new System.Drawing.Point(157, 84);
+            this.currentPasswordTextBox.Name = "currentPasswordTextBox";
+            this.currentPasswordTextBox.Size = new System.Drawing.Size(194, 26);
+            this.currentPasswordTextBox.TabIndex = 12;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // nurseBindingSource
             // 
@@ -153,7 +185,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 211);
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(384, 241);
+            this.Controls.Add(currentPasswordLabel);
+            this.Controls.Add(this.currentPasswordTextBox);
             this.Controls.Add(this.updateCredentialsButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.confirmPasswordTextBox);
@@ -167,13 +202,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(380, 250);
+            this.MaximumSize = new System.Drawing.Size(400, 280);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(380, 250);
+            this.MinimumSize = new System.Drawing.Size(400, 280);
             this.Name = "UpdateAccountDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Account Credentials";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -181,8 +217,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource nurseBindingSource;
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox newPasswordTextBox;
@@ -190,5 +224,8 @@
         private System.Windows.Forms.TextBox confirmPasswordTextBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button updateCredentialsButton;
+        private System.Windows.Forms.TextBox currentPasswordTextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.BindingSource nurseBindingSource;
     }
 }
