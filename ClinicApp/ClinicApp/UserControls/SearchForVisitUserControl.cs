@@ -3,7 +3,6 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -19,7 +18,6 @@ namespace ClinicApp.UserControls
         public Visit visit;
         private List<Patient> listOfPatients;
         private List<Visit> listOfVisits;
-        private PersonSearchUserControl personSearchUserControl;
 
         public SearchForVisitUserControl()
         {
@@ -28,9 +26,16 @@ namespace ClinicApp.UserControls
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
             this.credentialController = new CredentialController();
-            personSearchUserControl = new PersonSearchUserControl(new Patient());
+            personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+        }
 
+        private void RefreshPatient()
+        {
+            personSearchUserControl.RefreshPerson();
+            patient = personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
         }
 
         /// <summary>
@@ -40,7 +45,9 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            this.RefreshPage();
+            //this.RefreshPage();
+            RefreshPatient();
+            DisplayVistsByPatient();
         }
 
         public void RefreshPage()
@@ -77,13 +84,13 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void DisplayVistsByPatient()
         {
-            if(this.patientNameComboBox.SelectedIndex < 0)
-            {
-                return;
-            }
-            this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
-            patientBindingSource.Clear();
-            patientBindingSource.Add(this.patient);
+            //if(this.patientNameComboBox.SelectedIndex < 0)
+            //{
+            //    return;
+            //}
+            //this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
+            //patientBindingSource.Clear();
+            //patientBindingSource.Add(this.patient);
             try
             {
                 this.listOfVisits = this.visitController.GetListOfVisits(this.patient.PatientID);
@@ -114,22 +121,11 @@ namespace ClinicApp.UserControls
         private void SearchForVisitUserControl_Load(object sender, EventArgs e)
         {
             this.PopulateComboBox();
-            LoadSearchBox();
-        }
-
-        public void LoadSearchBox()
-        {
-            personSearchUserControl.Location = new Point(0, 0);
-            personSearchUserControl.Name = "personSearchUserControl";
-            personSearchUserControl.Size = new Size(800, 75);
-            personSearchUserControl.TabIndex = 0;
-            Controls.Add(personSearchUserControl);
-            this.ActiveControl = personSearchUserControl;
         }
 
         private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.DisplayVistsByPatient();
+            //this.DisplayVistsByPatient();
         }
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -179,6 +179,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\UpdateAccountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateAccountDialog.Designer.cs">
+      <DependentUpon>UpdateAccountDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Validator.cs" />
     <EmbeddedResource Include="UserControls\AddAppointmentUserControl.resx">
       <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
@@ -238,6 +244,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\UpdateAccountDialog.resx">
+      <DependentUpon>UpdateAccountDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\ClinicApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicApp.Model.LabTest.datasource" />
