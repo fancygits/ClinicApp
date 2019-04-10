@@ -47,7 +47,7 @@ namespace ClinicApp.UserControls
             this.RefreshPage();
         }
 
-        private void RefreshPage()
+        public void RefreshPage()
         {
             this.GetTestOrderedList();
         }
@@ -86,7 +86,6 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
 
         private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -101,6 +100,16 @@ namespace ClinicApp.UserControls
                 labTestInfoForm.Show();
                 this.RefreshPage();
             }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            OrderLabTestDialog.Instance().Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OrderLabTestDialog.Instance().Hide();
         }
     }
 }

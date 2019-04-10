@@ -44,6 +44,7 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
             lbltTestName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
@@ -101,6 +102,7 @@
             this.btnOrder.TabIndex = 5;
             this.btnOrder.Text = "Order Tests";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // testOrderedDataGridView
             // 
@@ -185,10 +187,22 @@
             this.AddEdit.UseColumnTextForButtonValue = true;
             this.AddEdit.Width = 75;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(22, 338);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 36);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
+            // 
             // OrderLabTestUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.testOrderedDataGridView);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnAddTest);
@@ -220,5 +234,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewButtonColumn AddEdit;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

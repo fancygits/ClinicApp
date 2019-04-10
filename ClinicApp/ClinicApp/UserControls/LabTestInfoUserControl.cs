@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicApp.UserControls
 {
@@ -57,6 +59,7 @@ namespace ClinicApp.UserControls
                 {
                     MessageBox.Show("Lab Test Updated");
                     this.testOrdered = this.newTestOrdered;
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();
                 }
