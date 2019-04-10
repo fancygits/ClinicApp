@@ -114,19 +114,19 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void PopulateComboBox()
         {
-            this.listOfPatients = this.visitController.GetPatients();
-            this.patientNameComboBox.DataSource = this.listOfPatients;
+     //       this.listOfPatients = this.visitController.GetPatients();
+     //       this.patientNameComboBox.DataSource = this.listOfPatients;
         }
 
         private void SearchForVisitUserControl_Load(object sender, EventArgs e)
         {
-            this.PopulateComboBox();
+     //       this.PopulateComboBox();
         }
 
-        private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //this.DisplayVistsByPatient();
-        }
+     //   private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+     //   {
+     //       this.DisplayVistsByPatient();
+     //   }
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -207,7 +207,7 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void SelectPatient()
         {
-            patientNameComboBox.SelectedValue = this.patient.PatientID;
+       //     patientNameComboBox.SelectedValue = this.patient.PatientID;
         }
     }
 }
