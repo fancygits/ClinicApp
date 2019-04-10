@@ -233,13 +233,13 @@
         #endregion
 
         private System.Windows.Forms.BindingSource personBindingSource;
-        private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
         private System.Windows.Forms.Button btnGetPerson;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        public System.Windows.Forms.TextBox firstNameTextBox;
+        public System.Windows.Forms.TextBox lastNameTextBox;
+        public System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
     }
 }

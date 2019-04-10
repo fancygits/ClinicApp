@@ -359,7 +359,10 @@ namespace ClinicApp.UserControls
             tabControl.SelectedIndex = 2;
             SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
             searchForVisitUserControl.patient = patient;
-            searchForVisitUserControl.SelectPatient();
+            searchForVisitUserControl.RefreshPage();
+            searchForVisitUserControl.personSearchUserControl.firstNameTextBox.Text = patient.FirstName;
+            searchForVisitUserControl.personSearchUserControl.lastNameTextBox.Text = patient.LastName;
+            searchForVisitUserControl.personSearchUserControl.birthDateDateTimePicker.Text = patient.BirthDate.ToShortDateString();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

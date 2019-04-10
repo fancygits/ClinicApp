@@ -45,8 +45,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitDataGridView = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EditViewVisit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.NurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppointmentTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,20 +67,11 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
             // 
             // visitDataGridView
             // 
@@ -119,17 +115,66 @@
             this.visitDataGridView.TabIndex = 1;
             this.visitDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.visitDataGridView_CellContentClick);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.visitDataGridView, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.personSearchUserControl, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.52665F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.47335F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(2080, 973);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "VisitAppointment";
+            this.dataGridViewTextBoxColumn1.HeaderText = "VisitAppointment";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 218;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "VisitNurse";
+            this.dataGridViewTextBoxColumn2.HeaderText = "VisitNurse";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 155;
+            // 
+            // visitBindingSource
+            // 
+            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
+            // 
+            // personSearchUserControl
+            // 
+            this.personSearchUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personSearchUserControl.Location = new System.Drawing.Point(6, 6);
+            this.personSearchUserControl.Margin = new System.Windows.Forms.Padding(6);
+            this.personSearchUserControl.Name = "personSearchUserControl";
+            this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(20, 19, 20, 19);
+            this.personSearchUserControl.Size = new System.Drawing.Size(2068, 261);
+            this.personSearchUserControl.TabIndex = 2;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicApp.Model.Patient);
+            // 
             // EditViewVisit
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditViewVisit.DefaultCellStyle = dataGridViewCellStyle2;
-            this.EditViewVisit.HeaderText = "Edit/View Visit";
+            this.EditViewVisit.HeaderText = "Add/Update Visit";
             this.EditViewVisit.Name = "EditViewVisit";
             this.EditViewVisit.ReadOnly = true;
             this.EditViewVisit.Text = "Add/Update";
             this.EditViewVisit.UseColumnTextForButtonValue = true;
-            this.EditViewVisit.Width = 203;
+            this.EditViewVisit.Width = 237;
             // 
             // NurseID
             // 
@@ -141,6 +186,7 @@
             this.NurseID.Name = "NurseID";
             this.NurseID.ReadOnly = true;
             this.NurseID.Visible = false;
+            this.NurseID.Width = 179;
             // 
             // AppointmentTime
             // 
@@ -248,6 +294,7 @@
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "Symptoms";
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn8.HeaderText = "Symptoms";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
@@ -258,6 +305,7 @@
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "InitialDiagnosis";
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn9.HeaderText = "Initial Diagnosis";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
@@ -268,56 +316,12 @@
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "FinalDiagnosis";
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn10.HeaderText = "Final Diagnosis";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 258;
-            // 
-            // visitBindingSource
-            // 
-            this.visitBindingSource.DataSource = typeof(ClinicApp.Model.Visit);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.visitDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.personSearchUserControl, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.52665F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.47335F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2080, 973);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "VisitAppointment";
-            this.dataGridViewTextBoxColumn1.HeaderText = "VisitAppointment";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 218;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "VisitNurse";
-            this.dataGridViewTextBoxColumn2.HeaderText = "VisitNurse";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 155;
-            // 
-            // personSearchUserControl
-            // 
-            this.personSearchUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.personSearchUserControl.Location = new System.Drawing.Point(6, 6);
-            this.personSearchUserControl.Margin = new System.Windows.Forms.Padding(6);
-            this.personSearchUserControl.Name = "personSearchUserControl";
-            this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(20, 19, 20, 19);
-            this.personSearchUserControl.Size = new System.Drawing.Size(2068, 261);
-            this.personSearchUserControl.TabIndex = 2;
             // 
             // SearchForVisitUserControl
             // 
@@ -328,10 +332,10 @@
             this.Name = "SearchForVisitUserControl";
             this.Size = new System.Drawing.Size(2080, 973);
             this.Load += new System.EventHandler(this.SearchForVisitUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,6 +348,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         public System.Windows.Forms.DataGridView visitDataGridView;
+        public PersonSearchUserControl personSearchUserControl;
         private System.Windows.Forms.DataGridViewButtonColumn EditViewVisit;
         private System.Windows.Forms.DataGridViewTextBoxColumn NurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentTime;
@@ -359,6 +364,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private PersonSearchUserControl personSearchUserControl;
     }
 }
