@@ -3,7 +3,6 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -31,12 +30,6 @@ namespace ClinicApp.UserControls
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
 
-        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
-        {
-            RefreshPatient();
-            DisplayVistsByPatient();
-        }
-
         private void RefreshPatient()
         {
             personSearchUserControl.RefreshPerson();
@@ -52,7 +45,9 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            this.RefreshPage();
+            //this.RefreshPage();
+            RefreshPatient();
+            DisplayVistsByPatient();
         }
 
         public void RefreshPage()
