@@ -57,6 +57,7 @@
             this.btnSearchVisits = new System.Windows.Forms.Button();
             this.btnDebug = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -398,10 +399,19 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // personSearchUserControl
+            // 
+            this.personSearchUserControl.Location = new System.Drawing.Point(0, 0);
+            this.personSearchUserControl.Name = "personSearchUserControl";
+            this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(10);
+            this.personSearchUserControl.Size = new System.Drawing.Size(800, 75);
+            this.personSearchUserControl.TabIndex = 0;
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.personSearchUserControl);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.btnSearchVisits);
@@ -459,5 +469,6 @@
         private System.Windows.Forms.Button btnSearchVisits;
         private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Button btnClear;
+        private PersonSearchUserControl personSearchUserControl;
     }
 }

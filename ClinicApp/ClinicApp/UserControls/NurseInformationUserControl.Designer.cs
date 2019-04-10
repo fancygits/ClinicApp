@@ -45,6 +45,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sSNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
@@ -57,7 +58,7 @@
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.btnUpdateCredentials = new System.Windows.Forms.Button();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
             stateLabel = new System.Windows.Forms.Label();
@@ -250,6 +251,10 @@
             this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
+            // 
             // phoneNumberMaskedTextBox
             // 
             this.phoneNumberMaskedTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -402,14 +407,19 @@
             this.btnUpdateCredentials.UseVisualStyleBackColor = true;
             this.btnUpdateCredentials.Click += new System.EventHandler(this.btnUpdateCredentials_Click);
             // 
-            // nurseBindingSource
+            // personSearchUserControl
             // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
+            this.personSearchUserControl.Location = new System.Drawing.Point(0, 0);
+            this.personSearchUserControl.Name = "personSearchUserControl";
+            this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(10);
+            this.personSearchUserControl.Size = new System.Drawing.Size(800, 75);
+            this.personSearchUserControl.TabIndex = 0;
             // 
             // NurseInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.personSearchUserControl);
             this.Controls.Add(this.btnUpdateCredentials);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(this.usernameTextBox);
@@ -467,5 +477,6 @@
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Button btnUpdateCredentials;
+        private PersonSearchUserControl personSearchUserControl;
     }
 }

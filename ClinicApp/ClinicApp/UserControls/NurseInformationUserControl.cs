@@ -3,7 +3,6 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,7 +17,6 @@ namespace ClinicApp.UserControls
         private Nurse newNurse;
         private List<State> stateList;
         private ErrorProvider errorProvider;
-        private PersonSearchUserControl personSearchUserControl;
 
         /// <summary>
         /// Constructs a new NurseInformationUserControl
@@ -28,7 +26,7 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             nurseController = new NurseController();
             errorProvider = new ErrorProvider();
-            personSearchUserControl = new PersonSearchUserControl(new Nurse());
+            personSearchUserControl.SetPersonType(new Nurse());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
         
@@ -41,22 +39,9 @@ namespace ClinicApp.UserControls
         {
             newNurse = new Nurse();
             LoadComboboxes();
-            LoadSearchBox();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
             DisableFields();
-        }
-
-        /// <summary>
-        /// Loads a PersonSearchUserControl and places it in the Parent UserControl
-        /// </summary>
-        public void LoadSearchBox()
-        {
-            personSearchUserControl.Location = new Point(0, 0);
-            personSearchUserControl.Name = "personSearchUserControl";
-            personSearchUserControl.Size = new Size(800, 75);
-            personSearchUserControl.TabIndex = 1;
-            Controls.Add(personSearchUserControl);
             this.ActiveControl = personSearchUserControl;
         }
 

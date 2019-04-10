@@ -3,7 +3,6 @@ using ClinicApp.Model;
 using ClinicApp.View;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -18,7 +17,6 @@ namespace ClinicApp.UserControls
         private Patient newPatient;
         private List<State> stateList;
         private ErrorProvider errorProvider;
-        private PersonSearchUserControl personSearchUserControl;
 
         /// <summary>
         /// Constructs a new PatientInformationUserControl
@@ -28,7 +26,6 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             patientController = new PatientController();
             errorProvider = new ErrorProvider();
-            personSearchUserControl = new PersonSearchUserControl(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
 
@@ -39,24 +36,12 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void PatientInformationUserControl_Load(object sender, EventArgs e)
         {
+            personSearchUserControl.SetPersonType(new Patient());
             newPatient = new Patient();
             LoadComboboxes();
-            LoadSearchBox();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
             DisableFields();
-        }
-        
-        /// <summary>
-        /// Loads a PersonSearchUserControl and places it in the Parent UserControl
-        /// </summary>
-        public void LoadSearchBox()
-        {
-            personSearchUserControl.Location = new Point(0, 0);
-            personSearchUserControl.Name = "personSearchUserControl";
-            personSearchUserControl.Size = new Size(800, 75);
-            personSearchUserControl.TabIndex = 0;
-            Controls.Add(personSearchUserControl);
             this.ActiveControl = personSearchUserControl;
         }
 
@@ -319,8 +304,8 @@ namespace ClinicApp.UserControls
 
         private void RefreshPatient()
         {
-            this.personSearchUserControl.RefreshPerson();
-            patient = this.personSearchUserControl.patient;
+            personSearchUserControl.RefreshPerson();
+            patient = personSearchUserControl.patient;
             patientBindingSource.Clear();
             patientBindingSource.Add(patient);
         }
