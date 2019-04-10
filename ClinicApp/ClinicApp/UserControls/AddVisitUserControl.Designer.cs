@@ -41,6 +41,8 @@
             System.Windows.Forms.Label pulseLabel;
             System.Windows.Forms.Label symptomsLabel;
             System.Windows.Forms.Label nurseNameLabel;
+            System.Windows.Forms.Label finalDiagnosisLabel;
+            System.Windows.Forms.Label initialDiagnosisLabel;
             this.appointmentIDTextBox = new System.Windows.Forms.TextBox();
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientNameTextBox = new System.Windows.Forms.TextBox();
@@ -60,6 +62,10 @@
             this.updateVisitButton = new System.Windows.Forms.Button();
             this.nurseNameTextBox = new System.Windows.Forms.TextBox();
             this.btnLabTest = new System.Windows.Forms.Button();
+            this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
+            this.initialDiagnosisTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -72,152 +78,169 @@
             pulseLabel = new System.Windows.Forms.Label();
             symptomsLabel = new System.Windows.Forms.Label();
             nurseNameLabel = new System.Windows.Forms.Label();
+            finalDiagnosisLabel = new System.Windows.Forms.Label();
+            initialDiagnosisLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
             // 
+            appointmentIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             appointmentIDLabel.AutoSize = true;
-            appointmentIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            appointmentIDLabel.Location = new System.Drawing.Point(63, 38);
-            appointmentIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            appointmentIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            appointmentIDLabel.Location = new System.Drawing.Point(4, 47);
+            appointmentIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             appointmentIDLabel.Name = "appointmentIDLabel";
-            appointmentIDLabel.Size = new System.Drawing.Size(125, 20);
+            appointmentIDLabel.Size = new System.Drawing.Size(209, 31);
             appointmentIDLabel.TabIndex = 0;
             appointmentIDLabel.Text = "Appointment ID:";
             // 
             // patientNameLabel
             // 
             patientNameLabel.AutoSize = true;
-            patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            patientNameLabel.Location = new System.Drawing.Point(64, 123);
-            patientNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            patientNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            patientNameLabel.Location = new System.Drawing.Point(4, 125);
+            patientNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             patientNameLabel.Name = "patientNameLabel";
-            patientNameLabel.Size = new System.Drawing.Size(109, 20);
+            patientNameLabel.Size = new System.Drawing.Size(310, 125);
             patientNameLabel.TabIndex = 4;
             patientNameLabel.Text = "Patient Name:";
             // 
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            birthDateLabel.Location = new System.Drawing.Point(64, 153);
-            birthDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            birthDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            birthDateLabel.Location = new System.Drawing.Point(4, 250);
+            birthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(85, 20);
+            birthDateLabel.Size = new System.Drawing.Size(310, 125);
             birthDateLabel.TabIndex = 6;
             birthDateLabel.Text = "Birth Date:";
             // 
             // appointmentTimeLabel
             // 
             appointmentTimeLabel.AutoSize = true;
-            appointmentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            appointmentTimeLabel.Location = new System.Drawing.Point(64, 188);
-            appointmentTimeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            appointmentTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            appointmentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            appointmentTimeLabel.Location = new System.Drawing.Point(4, 375);
+            appointmentTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             appointmentTimeLabel.Name = "appointmentTimeLabel";
-            appointmentTimeLabel.Size = new System.Drawing.Size(142, 20);
+            appointmentTimeLabel.Size = new System.Drawing.Size(310, 125);
             appointmentTimeLabel.TabIndex = 8;
             appointmentTimeLabel.Text = "Appointment Time:";
             // 
             // doctorNameLabel
             // 
             doctorNameLabel.AutoSize = true;
-            doctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            doctorNameLabel.Location = new System.Drawing.Point(64, 225);
-            doctorNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            doctorNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            doctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            doctorNameLabel.Location = new System.Drawing.Point(4, 500);
+            doctorNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             doctorNameLabel.Name = "doctorNameLabel";
-            doctorNameLabel.Size = new System.Drawing.Size(107, 20);
+            doctorNameLabel.Size = new System.Drawing.Size(310, 125);
             doctorNameLabel.TabIndex = 10;
             doctorNameLabel.Text = "Doctor Name:";
             // 
             // weightLabel
             // 
             weightLabel.AutoSize = true;
-            weightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            weightLabel.Location = new System.Drawing.Point(483, 125);
-            weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            weightLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            weightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            weightLabel.Location = new System.Drawing.Point(639, 125);
+            weightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             weightLabel.Name = "weightLabel";
-            weightLabel.Size = new System.Drawing.Size(63, 20);
+            weightLabel.Size = new System.Drawing.Size(309, 125);
             weightLabel.TabIndex = 12;
             weightLabel.Text = "Weight:";
             // 
             // systolicBPLabel
             // 
             systolicBPLabel.AutoSize = true;
-            systolicBPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            systolicBPLabel.Location = new System.Drawing.Point(483, 155);
-            systolicBPLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            systolicBPLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            systolicBPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            systolicBPLabel.Location = new System.Drawing.Point(639, 250);
+            systolicBPLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             systolicBPLabel.Name = "systolicBPLabel";
-            systolicBPLabel.Size = new System.Drawing.Size(92, 20);
+            systolicBPLabel.Size = new System.Drawing.Size(309, 125);
             systolicBPLabel.TabIndex = 14;
             systolicBPLabel.Text = "Systolic BP:";
             // 
             // diastolicBPLabel
             // 
             diastolicBPLabel.AutoSize = true;
-            diastolicBPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            diastolicBPLabel.Location = new System.Drawing.Point(483, 184);
-            diastolicBPLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            diastolicBPLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            diastolicBPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            diastolicBPLabel.Location = new System.Drawing.Point(639, 375);
+            diastolicBPLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             diastolicBPLabel.Name = "diastolicBPLabel";
-            diastolicBPLabel.Size = new System.Drawing.Size(98, 20);
+            diastolicBPLabel.Size = new System.Drawing.Size(309, 125);
             diastolicBPLabel.TabIndex = 16;
             diastolicBPLabel.Text = "Diastolic BP:";
             // 
             // temperatureLabel
             // 
             temperatureLabel.AutoSize = true;
-            temperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            temperatureLabel.Location = new System.Drawing.Point(483, 216);
-            temperatureLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            temperatureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            temperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            temperatureLabel.Location = new System.Drawing.Point(639, 500);
+            temperatureLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             temperatureLabel.Name = "temperatureLabel";
-            temperatureLabel.Size = new System.Drawing.Size(104, 20);
+            temperatureLabel.Size = new System.Drawing.Size(309, 125);
             temperatureLabel.TabIndex = 18;
             temperatureLabel.Text = "Temperature:";
             // 
             // pulseLabel
             // 
             pulseLabel.AutoSize = true;
-            pulseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pulseLabel.Location = new System.Drawing.Point(483, 252);
-            pulseLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            pulseLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            pulseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pulseLabel.Location = new System.Drawing.Point(639, 625);
+            pulseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pulseLabel.Name = "pulseLabel";
-            pulseLabel.Size = new System.Drawing.Size(52, 20);
+            pulseLabel.Size = new System.Drawing.Size(309, 125);
             pulseLabel.TabIndex = 20;
             pulseLabel.Text = "Pulse:";
             // 
             // symptomsLabel
             // 
             symptomsLabel.AutoSize = true;
-            symptomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            symptomsLabel.Location = new System.Drawing.Point(483, 282);
-            symptomsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            symptomsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            symptomsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            symptomsLabel.Location = new System.Drawing.Point(639, 750);
+            symptomsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             symptomsLabel.Name = "symptomsLabel";
-            symptomsLabel.Size = new System.Drawing.Size(88, 20);
+            symptomsLabel.Size = new System.Drawing.Size(309, 131);
             symptomsLabel.TabIndex = 22;
             symptomsLabel.Text = "Symptoms:";
             // 
             // nurseNameLabel
             // 
             nurseNameLabel.AutoSize = true;
-            nurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nurseNameLabel.Location = new System.Drawing.Point(64, 258);
-            nurseNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            nurseNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            nurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nurseNameLabel.Location = new System.Drawing.Point(4, 625);
+            nurseNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             nurseNameLabel.Name = "nurseNameLabel";
-            nurseNameLabel.Size = new System.Drawing.Size(101, 20);
+            nurseNameLabel.Size = new System.Drawing.Size(310, 125);
             nurseNameLabel.TabIndex = 23;
             nurseNameLabel.Text = "Nurse Name:";
             // 
             // appointmentIDTextBox
             // 
+            this.appointmentIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appointmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentID", true));
             this.appointmentIDTextBox.Enabled = false;
-            this.appointmentIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentIDTextBox.Location = new System.Drawing.Point(213, 36);
-            this.appointmentIDTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.appointmentIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentIDTextBox.Location = new System.Drawing.Point(426, 43);
+            this.appointmentIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.appointmentIDTextBox.Name = "appointmentIDTextBox";
-            this.appointmentIDTextBox.Size = new System.Drawing.Size(52, 26);
+            this.appointmentIDTextBox.Size = new System.Drawing.Size(100, 38);
             this.appointmentIDTextBox.TabIndex = 1;
             // 
             // visitBindingSource
@@ -227,106 +250,117 @@
             // patientNameTextBox
             // 
             this.patientNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "PatientName", true));
+            this.patientNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.patientNameTextBox.Enabled = false;
-            this.patientNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameTextBox.Location = new System.Drawing.Point(256, 120);
-            this.patientNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.patientNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientNameTextBox.Location = new System.Drawing.Point(322, 129);
+            this.patientNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.patientNameTextBox.Name = "patientNameTextBox";
-            this.patientNameTextBox.Size = new System.Drawing.Size(176, 26);
+            this.patientNameTextBox.Size = new System.Drawing.Size(309, 38);
             this.patientNameTextBox.TabIndex = 5;
             // 
             // birthDateTextBox
             // 
             this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "VisitPatient.BirthDate", true));
+            this.birthDateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.birthDateTextBox.Enabled = false;
-            this.birthDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthDateTextBox.Location = new System.Drawing.Point(256, 153);
-            this.birthDateTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.birthDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.birthDateTextBox.Location = new System.Drawing.Point(322, 254);
+            this.birthDateTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.birthDateTextBox.Name = "birthDateTextBox";
-            this.birthDateTextBox.Size = new System.Drawing.Size(176, 26);
+            this.birthDateTextBox.Size = new System.Drawing.Size(309, 38);
             this.birthDateTextBox.TabIndex = 7;
             // 
             // appointmentTimeTextBox
             // 
             this.appointmentTimeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "AppointmentTime", true));
+            this.appointmentTimeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.appointmentTimeTextBox.Enabled = false;
-            this.appointmentTimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentTimeTextBox.Location = new System.Drawing.Point(256, 188);
-            this.appointmentTimeTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.appointmentTimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentTimeTextBox.Location = new System.Drawing.Point(322, 379);
+            this.appointmentTimeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.appointmentTimeTextBox.Name = "appointmentTimeTextBox";
-            this.appointmentTimeTextBox.Size = new System.Drawing.Size(176, 26);
+            this.appointmentTimeTextBox.Size = new System.Drawing.Size(309, 38);
             this.appointmentTimeTextBox.TabIndex = 9;
             // 
             // doctorNameTextBox
             // 
             this.doctorNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DoctorName", true));
+            this.doctorNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doctorNameTextBox.Enabled = false;
-            this.doctorNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorNameTextBox.Location = new System.Drawing.Point(256, 224);
-            this.doctorNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.doctorNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorNameTextBox.Location = new System.Drawing.Point(322, 504);
+            this.doctorNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.doctorNameTextBox.Name = "doctorNameTextBox";
-            this.doctorNameTextBox.Size = new System.Drawing.Size(176, 26);
+            this.doctorNameTextBox.Size = new System.Drawing.Size(309, 38);
             this.doctorNameTextBox.TabIndex = 11;
             // 
             // weightTextBox
             // 
             this.weightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Weight", true));
-            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightTextBox.Location = new System.Drawing.Point(618, 120);
-            this.weightTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.weightTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightTextBox.Location = new System.Drawing.Point(956, 129);
+            this.weightTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(132, 26);
+            this.weightTextBox.Size = new System.Drawing.Size(309, 38);
             this.weightTextBox.TabIndex = 13;
             // 
             // systolicBPTextBox
             // 
             this.systolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "SystolicBP", true));
-            this.systolicBPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.systolicBPTextBox.Location = new System.Drawing.Point(618, 151);
-            this.systolicBPTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.systolicBPTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.systolicBPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.systolicBPTextBox.Location = new System.Drawing.Point(956, 254);
+            this.systolicBPTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systolicBPTextBox.Name = "systolicBPTextBox";
-            this.systolicBPTextBox.Size = new System.Drawing.Size(132, 26);
+            this.systolicBPTextBox.Size = new System.Drawing.Size(309, 38);
             this.systolicBPTextBox.TabIndex = 15;
             // 
             // diastolicBPTextBox
             // 
             this.diastolicBPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "DiastolicBP", true));
-            this.diastolicBPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diastolicBPTextBox.Location = new System.Drawing.Point(618, 180);
-            this.diastolicBPTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.diastolicBPTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.diastolicBPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diastolicBPTextBox.Location = new System.Drawing.Point(956, 379);
+            this.diastolicBPTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.diastolicBPTextBox.Name = "diastolicBPTextBox";
-            this.diastolicBPTextBox.Size = new System.Drawing.Size(132, 26);
+            this.diastolicBPTextBox.Size = new System.Drawing.Size(309, 38);
             this.diastolicBPTextBox.TabIndex = 17;
             // 
             // temperatureTextBox
             // 
             this.temperatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Temperature", true));
-            this.temperatureTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.temperatureTextBox.Location = new System.Drawing.Point(618, 213);
-            this.temperatureTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.temperatureTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.temperatureTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.temperatureTextBox.Location = new System.Drawing.Point(956, 504);
+            this.temperatureTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.temperatureTextBox.Name = "temperatureTextBox";
-            this.temperatureTextBox.Size = new System.Drawing.Size(132, 26);
+            this.temperatureTextBox.Size = new System.Drawing.Size(309, 38);
             this.temperatureTextBox.TabIndex = 19;
             // 
             // pulseTextBox
             // 
             this.pulseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Pulse", true));
-            this.pulseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pulseTextBox.Location = new System.Drawing.Point(618, 250);
-            this.pulseTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.pulseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pulseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pulseTextBox.Location = new System.Drawing.Point(956, 629);
+            this.pulseTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pulseTextBox.Name = "pulseTextBox";
-            this.pulseTextBox.Size = new System.Drawing.Size(132, 26);
+            this.pulseTextBox.Size = new System.Drawing.Size(309, 38);
             this.pulseTextBox.TabIndex = 21;
             // 
             // symptomsTextBox
             // 
             this.symptomsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "Symptoms", true));
-            this.symptomsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.symptomsTextBox.Location = new System.Drawing.Point(618, 281);
-            this.symptomsTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.symptomsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.symptomsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.symptomsTextBox.Location = new System.Drawing.Point(956, 754);
+            this.symptomsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
-            this.symptomsTextBox.Size = new System.Drawing.Size(132, 125);
+            this.symptomsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.symptomsTextBox.Size = new System.Drawing.Size(309, 123);
             this.symptomsTextBox.TabIndex = 23;
             this.symptomsTextBox.Tag = "Visit";
             // 
@@ -336,13 +370,14 @@
             this.nurseNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.visitBindingSource, "NurseName", true));
             this.nurseNameComboBox.DataSource = this.nurseBindingSource;
             this.nurseNameComboBox.DisplayMember = "FullName";
+            this.nurseNameComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nurseNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.nurseNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurseNameComboBox.FormattingEnabled = true;
-            this.nurseNameComboBox.Location = new System.Drawing.Point(256, 259);
-            this.nurseNameComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nurseNameComboBox.Location = new System.Drawing.Point(0, 0);
+            this.nurseNameComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nurseNameComboBox.Name = "nurseNameComboBox";
-            this.nurseNameComboBox.Size = new System.Drawing.Size(176, 28);
+            this.nurseNameComboBox.Size = new System.Drawing.Size(311, 37);
             this.nurseNameComboBox.TabIndex = 24;
             this.nurseNameComboBox.ValueMember = "NurseID";
             // 
@@ -356,11 +391,12 @@
             // 
             // addVisitButton
             // 
-            this.addVisitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addVisitButton.Location = new System.Drawing.Point(66, 370);
-            this.addVisitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addVisitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addVisitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addVisitButton.Location = new System.Drawing.Point(31, 784);
+            this.addVisitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addVisitButton.Name = "addVisitButton";
-            this.addVisitButton.Size = new System.Drawing.Size(128, 33);
+            this.addVisitButton.Size = new System.Drawing.Size(256, 63);
             this.addVisitButton.TabIndex = 25;
             this.addVisitButton.Text = "Add Visit";
             this.addVisitButton.UseVisualStyleBackColor = true;
@@ -368,11 +404,12 @@
             // 
             // updateVisitButton
             // 
-            this.updateVisitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateVisitButton.Location = new System.Drawing.Point(256, 370);
-            this.updateVisitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.updateVisitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.updateVisitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateVisitButton.Location = new System.Drawing.Point(348, 784);
+            this.updateVisitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.updateVisitButton.Name = "updateVisitButton";
-            this.updateVisitButton.Size = new System.Drawing.Size(128, 33);
+            this.updateVisitButton.Size = new System.Drawing.Size(256, 63);
             this.updateVisitButton.TabIndex = 26;
             this.updateVisitButton.Text = "Update Visit";
             this.updateVisitButton.UseVisualStyleBackColor = true;
@@ -381,65 +418,154 @@
             // nurseNameTextBox
             // 
             this.nurseNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "NurseName", true));
-            this.nurseNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseNameTextBox.Location = new System.Drawing.Point(256, 259);
-            this.nurseNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nurseNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nurseNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseNameTextBox.Location = new System.Drawing.Point(0, 0);
+            this.nurseNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nurseNameTextBox.Name = "nurseNameTextBox";
-            this.nurseNameTextBox.Size = new System.Drawing.Size(176, 26);
+            this.nurseNameTextBox.Size = new System.Drawing.Size(311, 35);
             this.nurseNameTextBox.TabIndex = 27;
             // 
             // btnLabTest
             // 
-            this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLabTest.Location = new System.Drawing.Point(631, 28);
+            this.btnLabTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLabTest.Location = new System.Drawing.Point(1275, 6);
+            this.btnLabTest.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLabTest.Name = "btnLabTest";
-            this.btnLabTest.Size = new System.Drawing.Size(109, 34);
+            this.btnLabTest.Size = new System.Drawing.Size(305, 113);
             this.btnLabTest.TabIndex = 28;
             this.btnLabTest.Text = "Lab Tests";
             this.btnLabTest.UseVisualStyleBackColor = true;
             this.btnLabTest.Click += new System.EventHandler(this.btnLabTest_Click);
             // 
+            // finalDiagnosisLabel
+            // 
+            finalDiagnosisLabel.AutoSize = true;
+            finalDiagnosisLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            finalDiagnosisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            finalDiagnosisLabel.Location = new System.Drawing.Point(1272, 375);
+            finalDiagnosisLabel.Name = "finalDiagnosisLabel";
+            finalDiagnosisLabel.Size = new System.Drawing.Size(311, 125);
+            finalDiagnosisLabel.TabIndex = 28;
+            finalDiagnosisLabel.Text = "Final Diagnosis:";
+            // 
+            // finalDiagnosisTextBox
+            // 
+            this.finalDiagnosisTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "FinalDiagnosis", true));
+            this.finalDiagnosisTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.finalDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(1589, 378);
+            this.finalDiagnosisTextBox.Multiline = true;
+            this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
+            this.finalDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(316, 119);
+            this.finalDiagnosisTextBox.TabIndex = 29;
+            // 
+            // initialDiagnosisLabel
+            // 
+            initialDiagnosisLabel.AutoSize = true;
+            initialDiagnosisLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            initialDiagnosisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            initialDiagnosisLabel.Location = new System.Drawing.Point(1272, 250);
+            initialDiagnosisLabel.Name = "initialDiagnosisLabel";
+            initialDiagnosisLabel.Size = new System.Drawing.Size(311, 125);
+            initialDiagnosisLabel.TabIndex = 30;
+            initialDiagnosisLabel.Text = "Initial Diagnosis:";
+            // 
+            // initialDiagnosisTextBox
+            // 
+            this.initialDiagnosisTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "InitialDiagnosis", true));
+            this.initialDiagnosisTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.initialDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialDiagnosisTextBox.Location = new System.Drawing.Point(1589, 253);
+            this.initialDiagnosisTextBox.Multiline = true;
+            this.initialDiagnosisTextBox.Name = "initialDiagnosisTextBox";
+            this.initialDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.initialDiagnosisTextBox.Size = new System.Drawing.Size(316, 119);
+            this.initialDiagnosisTextBox.TabIndex = 31;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Controls.Add(this.finalDiagnosisTextBox, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.initialDiagnosisTextBox, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(initialDiagnosisLabel, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(finalDiagnosisLabel, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(appointmentIDLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.appointmentIDTextBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(patientNameLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.patientNameTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(birthDateLabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.diastolicBPTextBox, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(diastolicBPLabel, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.temperatureTextBox, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(temperatureLabel, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.updateVisitButton, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.birthDateTextBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.addVisitButton, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(appointmentTimeLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.appointmentTimeTextBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(doctorNameLabel, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.doctorNameTextBox, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(nurseNameLabel, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.systolicBPTextBox, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(systolicBPLabel, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.weightTextBox, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(weightLabel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(symptomsLabel, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.symptomsTextBox, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(pulseLabel, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.pulseTextBox, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 4, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1908, 881);
+            this.tableLayoutPanel1.TabIndex = 32;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.nurseNameTextBox);
+            this.panel1.Controls.Add(this.nurseNameComboBox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(321, 628);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(311, 119);
+            this.panel1.TabIndex = 32;
+            // 
             // AddVisitUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLabTest);
-            this.Controls.Add(this.nurseNameTextBox);
-            this.Controls.Add(this.updateVisitButton);
-            this.Controls.Add(this.addVisitButton);
-            this.Controls.Add(nurseNameLabel);
-            this.Controls.Add(this.nurseNameComboBox);
-            this.Controls.Add(symptomsLabel);
-            this.Controls.Add(this.symptomsTextBox);
-            this.Controls.Add(pulseLabel);
-            this.Controls.Add(this.pulseTextBox);
-            this.Controls.Add(temperatureLabel);
-            this.Controls.Add(this.temperatureTextBox);
-            this.Controls.Add(diastolicBPLabel);
-            this.Controls.Add(this.diastolicBPTextBox);
-            this.Controls.Add(systolicBPLabel);
-            this.Controls.Add(this.systolicBPTextBox);
-            this.Controls.Add(weightLabel);
-            this.Controls.Add(this.weightTextBox);
-            this.Controls.Add(doctorNameLabel);
-            this.Controls.Add(this.doctorNameTextBox);
-            this.Controls.Add(appointmentTimeLabel);
-            this.Controls.Add(this.appointmentTimeTextBox);
-            this.Controls.Add(birthDateLabel);
-            this.Controls.Add(this.birthDateTextBox);
-            this.Controls.Add(patientNameLabel);
-            this.Controls.Add(this.patientNameTextBox);
-            this.Controls.Add(appointmentIDLabel);
-            this.Controls.Add(this.appointmentIDTextBox);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddVisitUserControl";
-            this.Size = new System.Drawing.Size(813, 423);
+            this.Size = new System.Drawing.Size(1908, 881);
             this.Load += new System.EventHandler(this.AddVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -463,6 +589,10 @@
         public System.Windows.Forms.Button addVisitButton;
         public System.Windows.Forms.Button updateVisitButton;
         public System.Windows.Forms.TextBox nurseNameTextBox;
-        private System.Windows.Forms.Button btnLabTest;
+        public System.Windows.Forms.TextBox finalDiagnosisTextBox;
+        public System.Windows.Forms.TextBox initialDiagnosisTextBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button btnLabTest;
     }
 }

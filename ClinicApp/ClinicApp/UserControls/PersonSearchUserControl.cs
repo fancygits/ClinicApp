@@ -1,5 +1,6 @@
 ﻿using ClinicApp.Model;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -10,11 +11,14 @@ namespace ClinicApp.UserControls
         public Patient patient;
         private string personType;
         public event EventHandler GetPersonButtonClicked;
-        public PersonSearchUserControl(Person person)
+        public PersonSearchUserControl(Person person) : this()
+        {
+            SetPersonType(person);
+        }
+
+        public PersonSearchUserControl()
         {
             InitializeComponent();
-            SetPersonType(person);
-            btnGetPerson.Text = "Get " + personType;
             ClearFields();
         }
 
@@ -32,7 +36,7 @@ namespace ClinicApp.UserControls
             firstNameTextBox.Focus();
         }
 
-        private void SetPersonType(Person person)
+        public void SetPersonType(Person person)
         {
             switch (person.GetType().ToString())
             {
@@ -49,6 +53,8 @@ namespace ClinicApp.UserControls
                     personType = "Administrator";
                     break;
             }
+            btnGetPerson.Text = "Get " + personType;
+            Debug.Print(personType);
         }
 
         /// <summary>
