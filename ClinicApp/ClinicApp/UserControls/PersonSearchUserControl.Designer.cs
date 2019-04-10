@@ -46,6 +46,7 @@
             // 
             // firstNameLabel
             // 
+            firstNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             firstNameLabel.AutoSize = true;
             firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             firstNameLabel.Location = new System.Drawing.Point(13, 10);
@@ -56,6 +57,7 @@
             // 
             // lastNameLabel
             // 
+            lastNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             lastNameLabel.AutoSize = true;
             lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lastNameLabel.Location = new System.Drawing.Point(198, 10);
@@ -66,6 +68,7 @@
             // 
             // birthDateLabel
             // 
+            birthDateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             birthDateLabel.AutoSize = true;
             birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             birthDateLabel.Location = new System.Drawing.Point(391, 10);
@@ -76,35 +79,38 @@
             // 
             // firstNameTextBox
             // 
+            this.firstNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "FirstName", true));
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameTextBox.Location = new System.Drawing.Point(17, 33);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(175, 26);
-            this.firstNameTextBox.TabIndex = 2;
+            this.firstNameTextBox.TabIndex = 0;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.textChanged);
             this.firstNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // lastNameTextBox
             // 
+            this.lastNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "LastName", true));
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameTextBox.Location = new System.Drawing.Point(198, 33);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(175, 26);
-            this.lastNameTextBox.TabIndex = 4;
+            this.lastNameTextBox.TabIndex = 1;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.textChanged);
             this.lastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // birthDateDateTimePicker
             // 
+            this.birthDateDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.personBindingSource, "BirthDate", true));
             this.birthDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthDateDateTimePicker.Location = new System.Drawing.Point(395, 33);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(135, 26);
-            this.birthDateDateTimePicker.TabIndex = 6;
+            this.birthDateDateTimePicker.TabIndex = 2;
             this.birthDateDateTimePicker.ValueChanged += new System.EventHandler(this.textChanged);
             this.birthDateDateTimePicker.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
@@ -118,7 +124,7 @@
             this.btnGetPerson.Name = "btnGetPerson";
             this.btnGetPerson.Padding = new System.Windows.Forms.Padding(5);
             this.btnGetPerson.Size = new System.Drawing.Size(157, 46);
-            this.btnGetPerson.TabIndex = 7;
+            this.btnGetPerson.TabIndex = 3;
             this.btnGetPerson.Text = "Get Person";
             this.btnGetPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGetPerson.UseVisualStyleBackColor = true;
@@ -131,7 +137,7 @@
             this.btnClear.Location = new System.Drawing.Point(710, 16);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(77, 46);
-            this.btnClear.TabIndex = 31;
+            this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);

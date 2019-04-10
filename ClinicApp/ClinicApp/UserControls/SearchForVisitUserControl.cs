@@ -26,7 +26,22 @@ namespace ClinicApp.UserControls
             this.listOfVisits = new List<Visit>();
             this.visitController = new VisitController();
             this.credentialController = new CredentialController();
+            personSearchUserControl.SetPersonType(new Patient());
+            personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+        }
 
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            RefreshPatient();
+            DisplayVistsByPatient();
+        }
+
+        private void RefreshPatient()
+        {
+            personSearchUserControl.RefreshPerson();
+            patient = personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
         }
 
         /// <summary>
@@ -34,13 +49,13 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void DisplayVistsByPatient()
         {
-            if(this.patientNameComboBox.SelectedIndex < 0)
-            {
-                return;
-            }
-            this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
-            patientBindingSource.Clear();
-            patientBindingSource.Add(this.patient);
+            //if(this.patientNameComboBox.SelectedIndex < 0)
+            //{
+            //    return;
+            //}
+            //this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
+            //patientBindingSource.Clear();
+            //patientBindingSource.Add(this.patient);
             try
             {
                 this.listOfVisits = this.visitController.GetListOfVisits(this.patient.PatientID);
@@ -75,7 +90,7 @@ namespace ClinicApp.UserControls
 
         private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.DisplayVistsByPatient();
+            //this.DisplayVistsByPatient();
         }
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -26,6 +26,7 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             patientController = new PatientController();
             errorProvider = new ErrorProvider();
+            personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
         }
 
@@ -36,7 +37,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void PatientInformationUserControl_Load(object sender, EventArgs e)
         {
-            personSearchUserControl.SetPersonType(new Patient());
             newPatient = new Patient();
             LoadComboboxes();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
