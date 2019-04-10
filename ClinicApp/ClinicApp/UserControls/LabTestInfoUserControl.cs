@@ -57,6 +57,8 @@ namespace ClinicApp.UserControls
                 {
                     MessageBox.Show("Lab Test Updated");
                     this.testOrdered = this.newTestOrdered;
+                    Form labInfo = (Form)this.Parent;
+                    labInfo.Close();
                 }
             }
             catch (Exception ex)
@@ -67,7 +69,8 @@ namespace ClinicApp.UserControls
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            
+            Form labInfo = (Form)this.Parent;
+            labInfo.Close();
         }
     }
 }
