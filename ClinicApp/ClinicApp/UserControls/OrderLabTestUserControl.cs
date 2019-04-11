@@ -67,6 +67,23 @@ namespace ClinicApp.UserControls
         {
             this.LoadComboBoxes();
             this.GetTestOrderedList();
+            this.SetDisplay();
+        }
+
+        public void SetDisplay()
+        {
+            if (this.visit.FinalDiagnosis != null)
+            {
+                MessageBox.Show(this.visit.FinalDiagnosis.ToString());
+                btnAddTest.Enabled = false;
+                btnOrder.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("I'm in the else");
+                btnAddTest.Enabled = true;
+                btnOrder.Enabled = true;
+            }
         }
 
         private void GetTestOrderedList()
@@ -91,18 +108,23 @@ namespace ClinicApp.UserControls
             {
                 if (this.labTestController.AddTestOrdered(testOrdered))
                 {
-                    MessageBox.Show("Test Added");
+                    //this.SetMessage(testOrdered.Name.ToString() + " was added to the Patients record.");
                     this.RefreshPage();
                 }
                 else
                 {
-                    MessageBox.Show("Nope");
+                    //this.SetMessage("There was a problem adding this Lab Test.");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void SetMessage(String message)
+        {
+            lblMessage.Text = message;
         }
 
         private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

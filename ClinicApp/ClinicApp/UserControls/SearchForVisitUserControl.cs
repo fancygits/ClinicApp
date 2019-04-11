@@ -163,7 +163,7 @@ namespace ClinicApp.UserControls
                             addVisitDialog.addVisitUserControl1.pulseTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
-                            //addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
+                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = true;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
                             addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
@@ -176,6 +176,7 @@ namespace ClinicApp.UserControls
                             addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
                             addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
                             addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = true;
+                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = true;
                         }
                     }
                     else
@@ -188,7 +189,9 @@ namespace ClinicApp.UserControls
                         addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
                         addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
                         addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
-                        
+                        addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
+
+
                     }
                     addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                     addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();

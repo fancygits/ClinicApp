@@ -609,7 +609,7 @@
         public System.Windows.Forms.TextBox initialDiagnosisTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnLabTest;
+        public System.Windows.Forms.Button btnLabTest;
         private System.Windows.Forms.Label lblTestOrdered;
     }
 }

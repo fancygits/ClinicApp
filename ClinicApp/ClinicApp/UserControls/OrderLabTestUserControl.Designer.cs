@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lbltTestName;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmboBoxTestID = new System.Windows.Forms.ComboBox();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,6 +45,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
             lbltTestName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
@@ -152,9 +153,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Date";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn4.HeaderText = "Test Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -166,7 +167,7 @@
             this.dataGridViewCheckBoxColumn1.HeaderText = "Abnormal Result";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 75;
+            this.dataGridViewCheckBoxColumn1.Width = 70;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -174,7 +175,7 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Result Detail";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 135;
+            this.dataGridViewTextBoxColumn5.Width = 130;
             // 
             // AddEdit
             // 
@@ -183,9 +184,9 @@
             this.AddEdit.ReadOnly = true;
             this.AddEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.AddEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.AddEdit.Text = "Add/Edit";
+            this.AddEdit.Text = "Add/Edit/Delete";
             this.AddEdit.UseColumnTextForButtonValue = true;
-            this.AddEdit.Width = 75;
+            this.AddEdit.Width = 90;
             // 
             // btnCancel
             // 
@@ -198,10 +199,20 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(84, 75);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblMessage.TabIndex = 7;
+            // 
             // OrderLabTestUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.testOrderedDataGridView);
             this.Controls.Add(this.btnOrder);
@@ -227,6 +238,7 @@
         private System.Windows.Forms.Button btnAddTest;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.DataGridView testOrderedDataGridView;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -234,6 +246,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewButtonColumn AddEdit;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
