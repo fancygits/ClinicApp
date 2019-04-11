@@ -48,7 +48,16 @@ namespace ClinicApp.UserControls
                         }
                     }
                 }
-                cmboBoxTestID.DataSource = testList;
+                if (testList.Count > 0)
+                {
+                    cmboBoxTestID.DataSource = testList;
+                }
+                else
+                {
+                    btnAddTest.Enabled = false;
+                    cmboBoxTestID.Text = "No Lab Tests Available";
+                }
+                
             }
             catch (Exception ex)
             {
