@@ -138,14 +138,15 @@ namespace ClinicApp.UserControls
 
         private void btnLabTest_Click(object sender, EventArgs e)
         {
-            OrderLabTestDialog orderLabTestForm = new OrderLabTestDialog();
-            orderLabTestForm.orderLabTestUserControl1.visit = visit;
-            MessageBox.Show(orderLabTestForm.orderLabTestUserControl1.visit.AppointmentID.ToString());
-            DialogResult result = orderLabTestForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
+            //OrderLabTestDialog orderLabTestForm = new OrderLabTestDialog();
+            //orderLabTestForm.orderLabTestUserControl1.visit = visit;
+            //DialogResult result = orderLabTestForm.ShowDialog();
+            //if (result == DialogResult.OK)
+            //{
 
-            }
+            //}
+            OrderLabTestDialog.Instance().orderLabTestUserControl1.visit = visit;
+            OrderLabTestDialog.Instance().Show();
         }
     }
 }
