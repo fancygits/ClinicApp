@@ -119,6 +119,12 @@ namespace ClinicApp.DAL
             }
         }
 
+        /// <summary>
+        /// Updates TestOrdered table with new info
+        /// </summary>
+        /// <param name="testOrdered">TestOrdered object being updated</param>
+        /// <param name="newTestOrdered">TestOrdered object with new info</param>
+        /// <returns>True if successfull update, false otherwise</returns>
         public static bool UpdateTestOrdered(TestOrdered testOrdered, TestOrdered newTestOrdered)
         {
             string updateStatement =
@@ -142,6 +148,24 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
 
                     int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        public static bool DeleteTestOrdered(TestOrdered testOrdered)
+        {
+            string deleteStatement =
+                "DELETE FROM TestOrdered " +
+                "WHERE appointmentID = @AppointmentID AND testCode = @TestCode";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection))
+                {
+                    deleteCommand.Parameters.AddWithValue("@TestCode", testOrdered.TestCode);
+                    deleteCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
+                    int count = deleteCommand.ExecuteNonQuery();
                     return count > 0;
                 }
             }

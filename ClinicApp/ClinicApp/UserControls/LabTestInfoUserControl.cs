@@ -57,7 +57,7 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("Lab Test Updated");
+                    MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
                     this.testOrdered = this.newTestOrdered;
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
                     Form labInfo = (Form)this.Parent;
@@ -74,6 +74,28 @@ namespace ClinicApp.UserControls
         {
             Form labInfo = (Form)this.Parent;
             labInfo.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labTestController.DeleteTestOrdered(this.testOrdered))
+                {
+                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient record");
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    Form labInfo = (Form)this.Parent;
+                    labInfo.Close();
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem deleting this test.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

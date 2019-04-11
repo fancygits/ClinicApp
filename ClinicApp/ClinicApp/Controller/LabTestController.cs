@@ -46,10 +46,20 @@ namespace ClinicApp.Controller
         /// </summary>
         /// <param name="newTestOrdered">New TestOrdered object to be added</param>
         /// <param name="testOrdered">Old TestOrdered object to be replaced</param>
-        /// <returns></returns>
+        /// <returns>True if successful, false otherwise</returns>
         public bool UpdateTestOrdered(TestOrdered newTestOrdered, TestOrdered testOrdered)
         {
             return LabTestDAL.UpdateTestOrdered(newTestOrdered, testOrdered);
+        }
+
+        /// <summary>
+        /// Deletes from the TestOrdered table in the database
+        /// </summary>
+        /// <param name="testOrdered">TestOrdered object to be deleted</param>
+        /// <returns>True if successful, false otherwise</returns>
+        public bool DeleteTestOrdered(TestOrdered testOrdered)
+        {
+            return LabTestDAL.DeleteTestOrdered(testOrdered);
         }
     }
 }

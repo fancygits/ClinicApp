@@ -34,13 +34,13 @@
             System.Windows.Forms.Label resultLabel;
             System.Windows.Forms.Label resultDetailLabel;
             this.dateTimePickerTestDate = new System.Windows.Forms.DateTimePicker();
+            this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txBxTestName = new System.Windows.Forms.TextBox();
             this.ckBxAbnResults = new System.Windows.Forms.CheckBox();
             this.txBxResultDetail = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             dateLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             resultLabel = new System.Windows.Forms.Label();
@@ -98,6 +98,10 @@
             this.dateTimePickerTestDate.Size = new System.Drawing.Size(126, 26);
             this.dateTimePickerTestDate.TabIndex = 2;
             // 
+            // testOrderedBindingSource
+            // 
+            this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
+            // 
             // txBxTestName
             // 
             this.txBxTestName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "Name", true));
@@ -148,6 +152,7 @@
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete Test";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel
             // 
@@ -159,10 +164,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // testOrderedBindingSource
-            // 
-            this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
             // 
             // LabTestInfoUserControl
             // 
