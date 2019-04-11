@@ -163,7 +163,7 @@ namespace ClinicApp.UserControls
                             addVisitDialog.addVisitUserControl1.pulseTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
                             addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
+                            //addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
                             addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
                             addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
