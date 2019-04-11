@@ -52,7 +52,11 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            this.GetPatient();
+            //personSearchUserControl.RefreshPerson();
+            patient = personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
+            GetPatient();
         }
 
         /// <summary>
@@ -62,7 +66,6 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetPatient()
         {
-            RefreshPatient();
             if (patient == null)
             {
                 NoMatchesDialog();
@@ -116,7 +119,7 @@ namespace ClinicApp.UserControls
                 try
                 {
                     PutNewPatient();
-                    Patient tempPatient = patientController.GetPatientByName(firstName, lastName, birthDate);
+                    Patient tempPatient = patientController.GetPatientBySSN(SSN);
                     if (tempPatient != null)
                     {
                         patientID = tempPatient.PatientID;
@@ -205,6 +208,7 @@ namespace ClinicApp.UserControls
                 {
                     if (patientController.UpdatePatient(patient, newPatient))
                     {
+                        RefreshPatient();
                         GetPatient();
                         lblMessage.Text = "Patient has been updated successfully.";
                     }
@@ -230,7 +234,7 @@ namespace ClinicApp.UserControls
             newPatient.PersonID = patient.PersonID;
             newPatient.LastName = patient.LastName;
             newPatient.FirstName = patient.FirstName;
-            newPatient.BirthDate = patient.BirthDate;
+            newPatient.BirthDate = patient.BirthDate.Date;
             newPatient.SSN = patient.SSN;
             newPatient.Gender = patient.Gender;
             newPatient.StreetAddress = patient.StreetAddress;
@@ -385,6 +389,7 @@ namespace ClinicApp.UserControls
                 }
                 if (sSNMaskedTextBox.Enabled)
                 {
+                    DebugPatient(null, null);
                     AddPatient();
                 }
                 else
