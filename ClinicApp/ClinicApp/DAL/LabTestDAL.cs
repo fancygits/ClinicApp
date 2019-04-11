@@ -153,6 +153,11 @@ namespace ClinicApp.DAL
             }
         }
 
+        /// <summary>
+        /// Deletes TestOrdered from the database
+        /// </summary>
+        /// <param name="testOrdered">TestOrdered to be be deleted</param>
+        /// <returns>True if successfull update, false otherwise</returns>
         public static bool DeleteTestOrdered(TestOrdered testOrdered)
         {
             string deleteStatement =

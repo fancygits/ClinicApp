@@ -82,7 +82,7 @@ namespace ClinicApp.UserControls
             {
                 if (this.labTestController.DeleteTestOrdered(this.testOrdered))
                 {
-                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient record");
+                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();

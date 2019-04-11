@@ -25,6 +25,7 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
             this.labTestController = new LabTestController();
+            testOrderedList = new List<TestOrdered>();
         }
 
         private void LoadComboBoxes()
@@ -33,6 +34,20 @@ namespace ClinicApp.UserControls
             {
                 List<LabTest> testList = new List<LabTest>();
                 testList = labTestController.GetLabTests();
+                this.GetTestOrderedList();
+                if (this.testOrderedList.Count > 0)
+                {
+                    for (int i = 0; i < this.testOrderedList.Count; i++)
+                    {
+                        for (int j = 0; j < testList.Count; j++)
+                        {
+                            if (this.testOrderedList[i].TestCode == testList[j].TestCode)
+                            {
+                                testList.Remove(testList[j]);
+                            }
+                        }
+                    }
+                }
                 cmboBoxTestID.DataSource = testList;
             }
             catch (Exception ex)
@@ -41,14 +56,16 @@ namespace ClinicApp.UserControls
             }
         }
 
+
         private void OrderLabTestUserControl_Load(object sender, EventArgs e)
         {
-            this.LoadComboBoxes();
+            
             this.RefreshPage();
         }
 
         public void RefreshPage()
         {
+            this.LoadComboBoxes();
             this.GetTestOrderedList();
         }
 

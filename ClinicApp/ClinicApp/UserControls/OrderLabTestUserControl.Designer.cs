@@ -89,18 +89,18 @@
             this.btnAddTest.Name = "btnAddTest";
             this.btnAddTest.Size = new System.Drawing.Size(118, 28);
             this.btnAddTest.TabIndex = 4;
-            this.btnAddTest.Text = "Add Test";
+            this.btnAddTest.Text = "Order Test";
             this.btnAddTest.UseVisualStyleBackColor = true;
             this.btnAddTest.Click += new System.EventHandler(this.btnAddTest_Click);
             // 
             // btnOrder
             // 
             this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(391, 338);
+            this.btnOrder.Location = new System.Drawing.Point(352, 338);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(115, 36);
+            this.btnOrder.Size = new System.Drawing.Size(154, 36);
             this.btnOrder.TabIndex = 5;
-            this.btnOrder.Text = "Order Tests";
+            this.btnOrder.Text = "Add Labs to Visit";
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
