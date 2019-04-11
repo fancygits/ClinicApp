@@ -1,6 +1,5 @@
 ﻿using ClinicApp.Model;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
@@ -54,7 +53,6 @@ namespace ClinicApp.UserControls
                     break;
             }
             btnGetPerson.Text = "Get " + personType;
-            Debug.Print(personType);
         }
 
         /// <summary>
