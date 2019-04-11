@@ -25,6 +25,7 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
             this.labTestController = new LabTestController();
+            testOrderedList = new List<TestOrdered>();
         }
 
         private void LoadComboBoxes()
@@ -33,6 +34,20 @@ namespace ClinicApp.UserControls
             {
                 List<LabTest> testList = new List<LabTest>();
                 testList = labTestController.GetLabTests();
+                this.GetTestOrderedList();
+                if (this.testOrderedList.Count > 0)
+                {
+                    for (int i = 0; i < this.testOrderedList.Count; i++)
+                    {
+                        for (int j = 0; j < testList.Count; j++)
+                        {
+                            if (this.testOrderedList[i].TestCode == testList[j].TestCode)
+                            {
+                                testList.Remove(testList[j]);
+                            }
+                        }
+                    }
+                }
                 cmboBoxTestID.DataSource = testList;
             }
             catch (Exception ex)
@@ -41,14 +56,16 @@ namespace ClinicApp.UserControls
             }
         }
 
+
         private void OrderLabTestUserControl_Load(object sender, EventArgs e)
         {
-            this.LoadComboBoxes();
+            
             this.RefreshPage();
         }
 
-        private void RefreshPage()
+        public void RefreshPage()
         {
+            this.LoadComboBoxes();
             this.GetTestOrderedList();
         }
 
@@ -86,21 +103,30 @@ namespace ClinicApp.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
 
         private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 6)
             {
                 int i = e.RowIndex;
                 DataGridViewRow row = testOrderedDataGridView.Rows[i];
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
-
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
                 labTestInfoForm.Show();
+                this.RefreshPage();
             }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            OrderLabTestDialog.Instance().Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OrderLabTestDialog.Instance().Hide();
         }
     }
 }

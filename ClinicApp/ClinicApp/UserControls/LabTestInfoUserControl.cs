@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using ClinicApp.Controller;
 using ClinicApp.Model;
+using ClinicApp.View;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicApp.UserControls
 {
@@ -24,31 +26,70 @@ namespace ClinicApp.UserControls
             this.newTestOrdered = new TestOrdered();
         }
 
-        private void DisplayTestOrdered()
+
+        private void RefreshPage()
         {
-            txBxTestName.Text = this.testOrdered.Name;
-            txBxResultDetail.Text = this.testOrdered.ResultDetail;
-            dateTimePickerTestDate.Value = this.testOrdered.Date;
-            ckBxAbnResults.Checked = this.testOrdered.Result;
+            testOrderedBindingSource.Add(this.testOrdered);
         }
 
         private void LabTestInfoUserControl_Load(object sender, System.EventArgs e)
         {
-            this.DisplayTestOrdered();
+            this.RefreshPage();
+        }
+
+        private void PutLabTest()
+        {
+            this.newTestOrdered.AppointmentID = this.testOrdered.AppointmentID;
+            this.newTestOrdered.TestCode = this.testOrdered.TestCode;
+            this.newTestOrdered.Date = dateTimePickerTestDate.Value;
+            this.newTestOrdered.Result = ckBxAbnResults.Checked;
+            this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
         }
 
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
+            this.PutLabTest();
             try
             {
-                if (!this.labTestController.UpdateTestOrdered(new TestOrdered(), new TestOrdered()))
+                if (!this.labTestController.UpdateTestOrdered(this.testOrdered, this.newTestOrdered))
                 {
                     MessageBox.Show("Another user has updated this LabTest. Please modify and try again", "Database Error");
                 }
                 else
                 {
-                    MessageBox.Show("Lab Test Updated");
+                    MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
                     this.testOrdered = this.newTestOrdered;
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    Form labInfo = (Form)this.Parent;
+                    labInfo.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Form labInfo = (Form)this.Parent;
+            labInfo.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labTestController.DeleteTestOrdered(this.testOrdered))
+                {
+                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    Form labInfo = (Form)this.Parent;
+                    labInfo.Close();
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem deleting this test.");
                 }
             }
             catch (Exception ex)
