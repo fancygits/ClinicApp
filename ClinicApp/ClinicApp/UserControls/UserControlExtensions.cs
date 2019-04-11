@@ -11,6 +11,10 @@ namespace ClinicApp.UserControls
     {
         /// <summary>
         /// Gets a patient from the given textboxes.
+        /// First, by DOB if only one is in the DB.
+        /// Second, by lastName & firstName.
+        /// Third, by DOB and last name.
+        /// Finally, a list of all possible matches.
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, returns null
         /// </summary>
@@ -25,18 +29,26 @@ namespace ClinicApp.UserControls
             PatientController patientController = new PatientController();
             try
             {
-                patient = patientController.GetPatientByName(firstName, lastName, birthDate);
+                patient = patientController.GetPatientByBirthDate(birthDate);
                 if (patient == null)
                 {
-                    List<Patient> patientList = patientController.SearchPatientsByName(firstName, lastName, birthDate);
-                    if (patientList.Count != 0)
+                    patient = patientController.GetPatientByName(firstName, lastName);
+                    if (patient == null)
                     {
-                        FindPeopleDialog findPatientsDialog = new FindPeopleDialog(new Patient());
-                        findPatientsDialog.patientList = patientList;
-                        DialogResult result = findPatientsDialog.ShowDialog();
-                        if (result == DialogResult.OK)
+                        patient = patientController.GetPatientByLastNameAndBirthDate(lastName, birthDate);
+                        if (patient == null)
                         {
-                            patient = findPatientsDialog.patient;
+                            List<Patient> patientList = patientController.SearchPatientsByName(firstName, lastName, birthDate);
+                            if (patientList.Count != 0)
+                            {
+                                FindPeopleDialog findPatientsDialog = new FindPeopleDialog(new Patient());
+                                findPatientsDialog.patientList = patientList;
+                                DialogResult result = findPatientsDialog.ShowDialog();
+                                if (result == DialogResult.OK)
+                                {
+                                    patient = findPatientsDialog.patient;
+                                }
+                            }
                         }
                     }
                 }

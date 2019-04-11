@@ -29,16 +29,41 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
+        /// Gets a Patient matching a birth date. 
+        /// </summary>
+        /// <param name="birthDate">The birth date to search</param>
+        /// <returns>A Patient or null if none or multiple patients are found.</returns>
+        public Patient GetPatientByBirthDate(string birthDate)
+        {
+            return PatientDAL.GetPatientByBirthDate(birthDate);
+        }
+
+        /// <summary>
         /// Gets a Patient by full name and birthDate
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
-        /// <param name="birthDate"></param>
         /// <returns>A Patient</returns>
-        public Patient GetPatientByName(string firstName, string lastName, string birthDate)
+        public Patient GetPatientByName(string firstName, string lastName)
         {
-            return PatientDAL.GetPatientByName(firstName, lastName, birthDate);
+            return PatientDAL.GetPatientByName(firstName, lastName);
         }
+
+        public Patient GetPatientByLastNameAndBirthDate(string lastName, string birthDate)
+        {
+            return PatientDAL.GetPatientByLastNameAndBirthDate(lastName, birthDate);
+        }
+
+        /// <summary>
+        /// Gets a Patient matching a SSN.
+        /// </summary>
+        /// <param name="SSN">The SSN to search</param>
+        /// <returns>A Patient or null if none are found.</returns>
+        public Patient GetPatientBySSN(string SSN)
+        {
+            return PatientDAL.GetPatientBySSN(SSN);
+        }
+
 
         /// <summary>
         /// Searches Patients by name and birthdate
