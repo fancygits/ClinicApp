@@ -55,7 +55,7 @@ namespace ClinicApp.UserControls
             if (this.patient != null)
             {
                 patientBindingSource.Add(patient);
-                this.GetVisitList(this.patient.PatientID);
+                this.DisplayVistsByPatient();
             }
             else
             {
@@ -66,18 +66,18 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void GetVisitList(int patientID)
-        {
-            try
-            {
-                this.listOfVisits = this.visitController.GetListOfVisits(patientID);
-                visitDataGridView.DataSource = this.listOfVisits;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
+     //   private void GetVisitList(int patientID)
+     //   {
+     //       try
+     //       {
+     //           this.listOfVisits = this.visitController.GetListOfVisits(patientID);
+     //           visitDataGridView.DataSource = this.listOfVisits;
+     //       }
+     //       catch (Exception ex)
+     //       {
+     //           MessageBox.Show(ex.Message, ex.GetType().ToString());
+     //       }
+     //   }
 
         /// <summary>
         /// This method will display the visits by the patient that is selected
@@ -114,19 +114,19 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void PopulateComboBox()
         {
-            this.listOfPatients = this.visitController.GetPatients();
-            this.patientNameComboBox.DataSource = this.listOfPatients;
+     //       this.listOfPatients = this.visitController.GetPatients();
+     //       this.patientNameComboBox.DataSource = this.listOfPatients;
         }
 
         private void SearchForVisitUserControl_Load(object sender, EventArgs e)
         {
-            this.PopulateComboBox();
+     //       this.PopulateComboBox();
         }
 
-        private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //this.DisplayVistsByPatient();
-        }
+     //   private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+     //   {
+     //       this.DisplayVistsByPatient();
+     //   }
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -207,7 +207,8 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void SelectPatient()
         {
-            patientNameComboBox.SelectedValue = this.patient.PatientID;
+            this.RefreshPatient();
+            this.DisplayVistsByPatient();
         }
     }
 }
