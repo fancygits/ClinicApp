@@ -45,7 +45,6 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sSNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
@@ -59,6 +58,7 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.btnUpdateCredentials = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
             stateLabel = new System.Windows.Forms.Label();
@@ -186,9 +186,10 @@
             // 
             // activeLabel
             // 
+            activeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             activeLabel.AutoSize = true;
             activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            activeLabel.Location = new System.Drawing.Point(22, 311);
+            activeLabel.Location = new System.Drawing.Point(65, 346);
             activeLabel.Name = "activeLabel";
             activeLabel.Size = new System.Drawing.Size(119, 20);
             activeLabel.TabIndex = 74;
@@ -196,9 +197,10 @@
             // 
             // usernameLabel
             // 
+            usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            usernameLabel.Location = new System.Drawing.Point(22, 344);
+            usernameLabel.Location = new System.Drawing.Point(65, 309);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new System.Drawing.Size(87, 20);
             usernameLabel.TabIndex = 74;
@@ -250,10 +252,6 @@
             this.streetAddressTextBox.TabIndex = 6;
             this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // phoneNumberMaskedTextBox
             // 
@@ -380,40 +378,49 @@
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeCheckBox.Location = new System.Drawing.Point(147, 311);
+            this.activeCheckBox.Location = new System.Drawing.Point(190, 345);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(23, 24);
             this.activeCheckBox.TabIndex = 11;
             this.activeCheckBox.Tag = "Account Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
+            this.activeCheckBox.CheckStateChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
             // usernameTextBox
             // 
+            this.usernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(131, 341);
+            this.usernameTextBox.Location = new System.Drawing.Point(174, 306);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
             this.usernameTextBox.TabIndex = 75;
+            this.usernameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
             // btnUpdateCredentials
             // 
+            this.btnUpdateCredentials.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdateCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateCredentials.Location = new System.Drawing.Point(320, 305);
+            this.btnUpdateCredentials.Location = new System.Drawing.Point(219, 345);
             this.btnUpdateCredentials.Name = "btnUpdateCredentials";
-            this.btnUpdateCredentials.Size = new System.Drawing.Size(175, 35);
+            this.btnUpdateCredentials.Size = new System.Drawing.Size(155, 35);
             this.btnUpdateCredentials.TabIndex = 76;
-            this.btnUpdateCredentials.Text = "Update Account";
+            this.btnUpdateCredentials.Text = "Reset Password";
             this.btnUpdateCredentials.UseVisualStyleBackColor = true;
             this.btnUpdateCredentials.Click += new System.EventHandler(this.btnUpdateCredentials_Click);
             // 
             // personSearchUserControl
             // 
-            this.personSearchUserControl.Location = new System.Drawing.Point(0, 0);
+            this.personSearchUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.personSearchUserControl.Location = new System.Drawing.Point(25, 0);
+            this.personSearchUserControl.Margin = new System.Windows.Forms.Padding(0);
             this.personSearchUserControl.Name = "personSearchUserControl";
-            this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(10);
-            this.personSearchUserControl.Size = new System.Drawing.Size(800, 75);
+            this.personSearchUserControl.Size = new System.Drawing.Size(750, 80);
             this.personSearchUserControl.TabIndex = 0;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // NurseInformationUserControl
             // 

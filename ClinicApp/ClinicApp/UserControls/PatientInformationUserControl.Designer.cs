@@ -58,6 +58,7 @@
             this.btnDebug = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
+            this.deletePatientButton = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -266,9 +267,9 @@
             // 
             this.btnAddUpdatePatient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddUpdatePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUpdatePatient.Location = new System.Drawing.Point(595, 345);
+            this.btnAddUpdatePatient.Location = new System.Drawing.Point(493, 345);
             this.btnAddUpdatePatient.Name = "btnAddUpdatePatient";
-            this.btnAddUpdatePatient.Size = new System.Drawing.Size(175, 35);
+            this.btnAddUpdatePatient.Size = new System.Drawing.Size(130, 35);
             this.btnAddUpdatePatient.TabIndex = 10;
             this.btnAddUpdatePatient.Text = "Update Patient";
             this.btnAddUpdatePatient.UseVisualStyleBackColor = true;
@@ -365,7 +366,7 @@
             this.btnSearchVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchVisits.Location = new System.Drawing.Point(211, 345);
             this.btnSearchVisits.Name = "btnSearchVisits";
-            this.btnSearchVisits.Size = new System.Drawing.Size(175, 35);
+            this.btnSearchVisits.Size = new System.Drawing.Size(125, 35);
             this.btnSearchVisits.TabIndex = 13;
             this.btnSearchVisits.Text = "Search Visits";
             this.btnSearchVisits.UseVisualStyleBackColor = true;
@@ -391,7 +392,7 @@
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(514, 345);
+            this.btnClear.Location = new System.Drawing.Point(412, 345);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 35);
             this.btnClear.TabIndex = 11;
@@ -408,10 +409,25 @@
             this.personSearchUserControl.Size = new System.Drawing.Size(750, 105);
             this.personSearchUserControl.TabIndex = 32;
             // 
+            // deletePatientButton
+            // 
+            this.deletePatientButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deletePatientButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.deletePatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletePatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deletePatientButton.Location = new System.Drawing.Point(650, 345);
+            this.deletePatientButton.Name = "deletePatientButton";
+            this.deletePatientButton.Size = new System.Drawing.Size(120, 35);
+            this.deletePatientButton.TabIndex = 33;
+            this.deletePatientButton.Text = "Delete Patient";
+            this.deletePatientButton.UseVisualStyleBackColor = true;
+            this.deletePatientButton.Click += new System.EventHandler(this.deletePatientButton_Click);
+            // 
             // PatientInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.personSearchUserControl);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDebug);
@@ -471,5 +487,6 @@
         private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Button btnClear;
         private PersonSearchUserControl personSearchUserControl;
+        private System.Windows.Forms.Button deletePatientButton;
     }
 }

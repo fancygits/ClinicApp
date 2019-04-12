@@ -223,7 +223,7 @@ namespace ClinicApp.UserControls
 
         private void UpdateCredentials()
         {
-            UpdateAccountDialog updateAccountDialog = new UpdateAccountDialog(newNurse);
+            ResetPasswordDialog updateAccountDialog = new ResetPasswordDialog(newNurse);
             Enabled = false;
             DialogResult result = updateAccountDialog.ShowDialog();
             if (result == DialogResult.OK)

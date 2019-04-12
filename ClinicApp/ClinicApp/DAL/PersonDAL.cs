@@ -131,6 +131,11 @@ namespace ClinicApp.DAL
             }
         }
 
+        /// <summary>
+        /// Adds a Person to the database
+        /// </summary>
+        /// <param name="person">The Person to add</param>
+        /// <returns>The PersonID of the new Person</returns>
         public static int AddPerson(Person person)
         {
             int personID;
@@ -172,6 +177,29 @@ namespace ClinicApp.DAL
                 }
             }
             return personID;
+        }
+
+        /// <summary>
+        /// Deletes a Person from the database
+        /// </summary>
+        /// <param name="person">The Person to delete</param>
+        /// <returns>True if successful</returns>
+        public static bool DeletePerson(Person person)
+        {
+            int rowCount = 0;
+            string deleteStatement =
+                "DELETE FROM Person " +
+                "WHERE personID = @personID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection))
+                {
+                    deleteCommand.Parameters.AddWithValue("@personID", person.PersonID);
+                    rowCount = deleteCommand.ExecuteNonQuery();
+                }
+            }
+            return (rowCount == 1);
         }
     }
 }

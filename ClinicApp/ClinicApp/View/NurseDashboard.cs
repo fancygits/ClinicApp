@@ -34,11 +34,6 @@ namespace ClinicApp
             LoginForm.ClearFields();
         }
 
-        private void patientsTabControl_TabIndexChanged(object sender, System.EventArgs e)
-        {
-            searchForVisitUserControl1.PopulateComboBox();
-        }
-
         private void DrawLines(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Gray, 3);

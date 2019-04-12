@@ -331,7 +331,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchForVisitUserControl";
             this.Size = new System.Drawing.Size(2080, 973);
-            this.Load += new System.EventHandler(this.SearchForVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();

@@ -109,6 +109,36 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
+        /// Deletes a Patient
+        /// </summary>
+        /// <param name="patient">The Patient to delete</param>
+        /// <returns>True if successful</returns>
+        public bool DeletePatient(Patient patient)
+        {
+            bool success;
+            try
+            {
+                success = PatientDAL.DeletePatient(patient);
+            }
+            catch
+            {
+                return false;
+            }
+            if (success)
+            {
+                try
+                {
+                    PersonDAL.DeletePerson(patient);
+                }
+                catch
+                {
+
+                }
+            }
+            return success;
+        }
+
+        /// <summary>
         /// Retrieves the PersonID from the database or -1 if not found
         /// According to statistics, the full name and date of birth can stil lead to multiple results.
         /// </summary>
@@ -120,15 +150,6 @@ namespace ClinicApp.Controller
         public int GetPersonID(string firstName, string lastName, string birthDate, string SSN)
         {
             return PersonDAL.GetPersonID(firstName, lastName, birthDate, SSN);
-        }
-
-        /// <summary>
-        /// Gets a list of US States and Canadian Provinces
-        /// </summary>
-        /// <returns>A List of States</returns>
-        public List<State> GetStateList()
-        {
-            return StateList.list;
         }
     }
 }
