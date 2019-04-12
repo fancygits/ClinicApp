@@ -74,24 +74,26 @@ namespace ClinicApp.UserControls
 
         public void RefreshPage()
         {
+            this.SetDisplay();
             this.LoadComboBoxes();
             this.GetTestOrderedList();
-            this.SetDisplay();
         }
 
         public void SetDisplay()
         {
             if (this.visit.FinalDiagnosis != null)
             {
-                MessageBox.Show(this.visit.FinalDiagnosis.ToString());
+                this.SetMessage("");
                 btnAddTest.Enabled = false;
                 btnOrder.Enabled = false;
+                cmboBoxTestID.Enabled = false;
             }
             else
             {
-                MessageBox.Show("I'm in the else");
+                this.SetMessage("");
                 btnAddTest.Enabled = true;
                 btnOrder.Enabled = true;
+                cmboBoxTestID.Enabled = true;
             }
         }
 
@@ -113,16 +115,17 @@ namespace ClinicApp.UserControls
             TestOrdered testOrdered = new TestOrdered();
             testOrdered.AppointmentID = visit.AppointmentID;
             testOrdered.TestCode = (int)cmboBoxTestID.SelectedValue;
+            testOrdered.Name = cmboBoxTestID.SelectedText.ToString();
             try
             {
                 if (this.labTestController.AddTestOrdered(testOrdered))
                 {
-                    //this.SetMessage(testOrdered.Name.ToString() + " was added to the Patients record.");
+                    this.SetMessage("The lab test was added to the Patients record.");
                     this.RefreshPage();
                 }
                 else
                 {
-                    //this.SetMessage("There was a problem adding this Lab Test.");
+                    this.SetMessage("There was a problem adding this lab test.");
                 }
             }
             catch (Exception ex)
@@ -145,6 +148,14 @@ namespace ClinicApp.UserControls
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
+                if (this.visit.FinalDiagnosis != null)
+                {
+                    labTestInfoForm.labTestInfoUserControl1.isFinalized = true;
+                }
+                else
+                {
+                    labTestInfoForm.labTestInfoUserControl1.isFinalized = false;
+                }
                 labTestInfoForm.Show();
                 this.RefreshPage();
             }

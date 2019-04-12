@@ -14,6 +14,7 @@ namespace ClinicApp.UserControls
     {
         private readonly LabTestController labTestController;
         public TestOrdered testOrdered;
+        public bool isFinalized;
         private TestOrdered newTestOrdered;
 
         /// <summary>
@@ -30,11 +31,32 @@ namespace ClinicApp.UserControls
         private void RefreshPage()
         {
             testOrderedBindingSource.Add(this.testOrdered);
+            this.SetDisplay();
         }
 
         private void LabTestInfoUserControl_Load(object sender, System.EventArgs e)
         {
             this.RefreshPage();
+        }
+
+        private void SetDisplay()
+        {
+            if(isFinalized)
+            {
+                txBxResultDetail.Enabled = false;
+                dateTimePickerTestDate.Enabled = false;
+                ckBxAbnResults.Enabled = false;
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
+            else
+            {
+                txBxResultDetail.Enabled = true;
+                dateTimePickerTestDate.Enabled = true;
+                ckBxAbnResults.Enabled = true;
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
+            }
         }
 
         private void PutLabTest()
