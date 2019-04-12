@@ -591,5 +591,28 @@ namespace ClinicApp.DAL
             }
             return patientID;
         }
+        
+
+        /// <summary>
+        /// Deletes a Patient from the Patient table
+        /// </summary>
+        /// <param name="patient">The Patient to delete</param>
+        /// <returns>True if successful</returns>
+        public static bool DeletePatient(Patient patient)
+        {
+            int rowCount;
+            string deleteStatement =
+                "DELETE FROM Patient WHERE patientID = @patientID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection))
+                {
+                    deleteCommand.Parameters.AddWithValue("@patientID", patient.PatientID);
+                    rowCount = deleteCommand.ExecuteNonQuery();
+                }
+            }
+            return (rowCount == 1);
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace ClinicApp.View
         /// <returns></returns>
         public static bool IsPresent(Control control, ErrorProvider error)
         {
-            //ErrorProvider error = new ErrorProvider();
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
             {
                 TextBox textBox = (TextBox)control;
@@ -170,6 +169,21 @@ namespace ClinicApp.View
             else
             {
                 error.SetError(textbox, textbox.Tag.ToString() + " must be in the format XXXXX or XXXXX-XXXX");
+                return false;
+            }
+        }
+
+
+        public static bool FieldsMatch(TextBox textbox1, TextBox textbox2, ErrorProvider error)
+        {
+            if (textbox1.Text == textbox2.Text)
+            {
+                error.SetError(textbox1, "");
+                return true;
+            }
+            else
+            {
+                error.SetError(textbox1, textbox1.Tag.ToString() + " does not match " + textbox2.Tag.ToString());
                 return false;
             }
         }

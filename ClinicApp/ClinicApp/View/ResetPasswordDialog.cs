@@ -7,7 +7,7 @@ namespace ClinicApp.View
     /// <summary>
     /// Defines the UpdateAccountDialog Form
     /// </summary>
-    public partial class UpdateAccountDialog : Form
+    public partial class ResetPasswordDialog : Form
     {
         private Credential currentCredetials;
         private Credential newCredentials;
@@ -18,7 +18,7 @@ namespace ClinicApp.View
         /// Constructs a new UpdateAccountDialog and populates the fields with a Person
         /// </summary>
         /// <param name="nurse">The Nurse to update</param>
-        public UpdateAccountDialog(Nurse nurse)
+        public ResetPasswordDialog(Nurse nurse)
         {
             this.nurse = nurse;
             InitializeComponent();
@@ -27,7 +27,10 @@ namespace ClinicApp.View
 
         private void UpdateCredentials()
         {
+            if (ValidateFields())
+            {
 
+            }
         }
 
         private void updateCredentialsButton_Click(object sender, System.EventArgs e)
@@ -39,6 +42,13 @@ namespace ClinicApp.View
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private bool ValidateFields()
+        {
+            return Validator.IsPresent(newPasswordTextBox, errorProvider) &&
+                   Validator.IsPresent(confirmPasswordTextBox, errorProvider) &&
+                   Validator.FieldsMatch(newPasswordTextBox, confirmPasswordTextBox, errorProvider);
         }
     }
 }
