@@ -50,11 +50,51 @@ namespace ClinicApp.UserControls
             {
                 newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
                 newVisit.NurseID = (int)this.nurseNameComboBox.SelectedValue;
-                newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
-                newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
-                newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
-                newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
-                newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
+                if (Validator.IsDecimal(this.weightTextBox, errorProvider))
+                {
+                    newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
+                    isValid = true;
+                } else
+                {
+                    throw new FormatException();
+                }
+               
+                if (Validator.IsInt32(this.systolicBPTextBox, errorProvider))
+                {
+                    newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
+                    isValid = true;
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+                if (Validator.IsInt32(this.diastolicBPTextBox, errorProvider))
+                {
+                    newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
+                    isValid = true;
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+                if (Validator.IsDecimal(this.temperatureTextBox, errorProvider))
+                {
+                    newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
+                    isValid = true;
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+                if (Validator.IsInt32(this.pulseTextBox, errorProvider))
+                {
+                    newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
+                    isValid = true;
+                }
+                else
+                {
+                    throw new FormatException();
+                }
                 if (Validator.IsPresent(this.symptomsTextBox, errorProvider))
                 {
                     newVisit.Symptoms = this.symptomsTextBox.Text;
@@ -102,7 +142,7 @@ namespace ClinicApp.UserControls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error updating table", ex.GetType().ToString());
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
             

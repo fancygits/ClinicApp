@@ -45,7 +45,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            //this.RefreshPage();
             RefreshPatient();
             DisplayVistsByPatient();
         }
@@ -66,31 +65,11 @@ namespace ClinicApp.UserControls
             }
         }
 
-     //   private void GetVisitList(int patientID)
-     //   {
-     //       try
-     //       {
-     //           this.listOfVisits = this.visitController.GetListOfVisits(patientID);
-     //           visitDataGridView.DataSource = this.listOfVisits;
-     //       }
-     //       catch (Exception ex)
-     //       {
-     //           MessageBox.Show(ex.Message, ex.GetType().ToString());
-     //       }
-     //   }
-
         /// <summary>
         /// This method will display the visits by the patient that is selected
         /// </summary>
         public void DisplayVistsByPatient()
         {
-            //if(this.patientNameComboBox.SelectedIndex < 0)
-            //{
-            //    return;
-            //}
-            //this.patient = this.listOfPatients[this.patientNameComboBox.SelectedIndex];
-            //patientBindingSource.Clear();
-            //patientBindingSource.Add(this.patient);
             try
             {
                 this.listOfVisits = this.visitController.GetListOfVisits(this.patient.PatientID);
@@ -108,25 +87,6 @@ namespace ClinicApp.UserControls
             }
         
         }
-
-        /// <summary>
-        /// This method will populate the patient combobox
-        /// </summary>
-        public void PopulateComboBox()
-        {
-     //       this.listOfPatients = this.visitController.GetPatients();
-     //       this.patientNameComboBox.DataSource = this.listOfPatients;
-        }
-
-        private void SearchForVisitUserControl_Load(object sender, EventArgs e)
-        {
-     //       this.PopulateComboBox();
-        }
-
-     //   private void patientNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-     //   {
-     //       this.DisplayVistsByPatient();
-     //   }
 
         private void visitDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
