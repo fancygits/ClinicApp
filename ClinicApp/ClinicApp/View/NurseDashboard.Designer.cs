@@ -60,7 +60,6 @@
             this.patientsTabControl.SelectedIndex = 0;
             this.patientsTabControl.Size = new System.Drawing.Size(810, 418);
             this.patientsTabControl.TabIndex = 0;
-            this.patientsTabControl.TabIndexChanged += new System.EventHandler(this.patientsTabControl_TabIndexChanged);
             // 
             // infoTabPage
             // 
