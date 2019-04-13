@@ -16,6 +16,8 @@ namespace ClinicApp.UserControls
         private NurseController nurseController;
         private List<Nurse> listOfNurses;
         private VisitController visitController;
+        private LabTestController labTestController;
+        private List<TestOrdered> testOrderedList;
         private ErrorProvider errorProvider;
         public AddVisitUserControl()
         {
@@ -23,6 +25,7 @@ namespace ClinicApp.UserControls
             this.listOfNurses = new List<Nurse>();
             this.visitController = new VisitController();
             this.nurseController = new NurseController();
+            this.labTestController = new LabTestController();
             this.errorProvider = new ErrorProvider();
             this.visit = new Visit();
         }
@@ -42,6 +45,7 @@ namespace ClinicApp.UserControls
             {
                 this.nurseNameComboBox.SelectedIndex = -1;
             }
+            this.SetTestOrderedLabel();
         }
         private bool PutData(Visit newVisit)
         {
@@ -175,6 +179,39 @@ namespace ClinicApp.UserControls
             
            
         }
+
+        private void SetTestOrderedLabel()
+        {
+            lblTestHeader.Visible = false;
+            lblResults.Visible = false;
+            try
+            {
+                this.testOrderedList = this.labTestController.GetTestOrderedByAppointmentID(this.visit.AppointmentID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            if (this.testOrderedList.Count > 0)
+            {
+                lblTestHeader.Visible = true;
+                lblResults.Visible = true;
+                string testNames = "";
+                for (int i = 0; i < this.testOrderedList.Count; i++)
+                {
+                    testNames += this.testOrderedList[i].Name.ToString() + "\n";
+                }
+                string testResults = "";
+                for (int i = 0; i < this.testOrderedList.Count; i++)
+                {
+                    testResults += this.testOrderedList[i].Result.ToString() + "\n";
+                }
+                lblTestOrdered.Text = testNames;
+                llbAbResults.Text = testResults;
+            }
+        }
+
+       
 
         private void btnLabTest_Click(object sender, EventArgs e)
         {

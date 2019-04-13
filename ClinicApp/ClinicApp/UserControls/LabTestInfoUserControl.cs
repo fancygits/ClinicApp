@@ -64,7 +64,14 @@ namespace ClinicApp.UserControls
             this.newTestOrdered.TestCode = this.testOrdered.TestCode;
             this.newTestOrdered.Date = dateTimePickerTestDate.Value;
             this.newTestOrdered.Result = ckBxAbnResults.Checked;
-            this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
+            if (txBxResultDetail.Text != "")
+            {
+                this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
+            }
+            else
+            {
+                this.newTestOrdered.ResultDetail = "no info provided";
+            }
         }
 
         private void btnUpdate_Click(object sender, System.EventArgs e)

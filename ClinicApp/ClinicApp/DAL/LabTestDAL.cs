@@ -1,6 +1,7 @@
 ﻿using ClinicApp.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System;
 
 namespace ClinicApp.DAL
 {
@@ -148,7 +149,7 @@ namespace ClinicApp.DAL
                     }
                     else
                     {
-                        updateCommand.Parameters.AddWithValue("@NewResultDetail", null);
+                        updateCommand.Parameters.AddWithValue("@NewResultDetail", DBNull.Value);
                     }
                     updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
                     updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
