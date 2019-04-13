@@ -459,6 +459,19 @@
             this.nurseNameTextBox.TabIndex = 27;
             this.nurseNameTextBox.Tag = "Nurse Name";
             // 
+            // btnLabTest
+            // 
+            this.btnLabTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLabTest.Location = new System.Drawing.Point(1274, 6);
+            this.btnLabTest.Margin = new System.Windows.Forms.Padding(6);
+            this.btnLabTest.Name = "btnLabTest";
+            this.btnLabTest.Size = new System.Drawing.Size(305, 113);
+            this.btnLabTest.TabIndex = 28;
+            this.btnLabTest.Text = "Lab Tests";
+            this.btnLabTest.UseVisualStyleBackColor = true;
+            this.btnLabTest.Click += new System.EventHandler(this.btnLabTest_Click);
+            // 
             // finalDiagnosisTextBox
             // 
             this.finalDiagnosisTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.visitBindingSource, "FinalDiagnosis", true));
