@@ -186,6 +186,7 @@ namespace ClinicApp.UserControls
 
             //}
             OrderLabTestDialog.Instance().orderLabTestUserControl1.visit = visit;
+            OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
             OrderLabTestDialog.Instance().Show();
         }
     }

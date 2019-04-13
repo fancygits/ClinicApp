@@ -61,11 +61,12 @@
             this.addVisitButton = new System.Windows.Forms.Button();
             this.updateVisitButton = new System.Windows.Forms.Button();
             this.nurseNameTextBox = new System.Windows.Forms.TextBox();
-            this.btnLabTest = new System.Windows.Forms.Button();
             this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.initialDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLabTest = new System.Windows.Forms.Button();
+            this.lblTestOrdered = new System.Windows.Forms.Label();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -92,10 +93,10 @@
             appointmentIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             appointmentIDLabel.AutoSize = true;
             appointmentIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            appointmentIDLabel.Location = new System.Drawing.Point(4, 47);
-            appointmentIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            appointmentIDLabel.Location = new System.Drawing.Point(2, 24);
+            appointmentIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             appointmentIDLabel.Name = "appointmentIDLabel";
-            appointmentIDLabel.Size = new System.Drawing.Size(209, 31);
+            appointmentIDLabel.Size = new System.Drawing.Size(108, 17);
             appointmentIDLabel.TabIndex = 0;
             appointmentIDLabel.Text = "Appointment ID:";
             // 
@@ -104,8 +105,8 @@
             patientNameLabel.AutoSize = true;
             patientNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            patientNameLabel.Location = new System.Drawing.Point(4, 125);
-            patientNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            patientNameLabel.Location = new System.Drawing.Point(2, 65);
+            patientNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             patientNameLabel.Name = "patientNameLabel";
             patientNameLabel.Size = new System.Drawing.Size(291, 125);
             patientNameLabel.TabIndex = 4;
@@ -116,8 +117,8 @@
             birthDateLabel.AutoSize = true;
             birthDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             birthDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            birthDateLabel.Location = new System.Drawing.Point(4, 250);
-            birthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            birthDateLabel.Location = new System.Drawing.Point(2, 130);
+            birthDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             birthDateLabel.Name = "birthDateLabel";
             birthDateLabel.Size = new System.Drawing.Size(291, 125);
             birthDateLabel.TabIndex = 6;
@@ -128,8 +129,8 @@
             appointmentTimeLabel.AutoSize = true;
             appointmentTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             appointmentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            appointmentTimeLabel.Location = new System.Drawing.Point(4, 375);
-            appointmentTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            appointmentTimeLabel.Location = new System.Drawing.Point(2, 195);
+            appointmentTimeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             appointmentTimeLabel.Name = "appointmentTimeLabel";
             appointmentTimeLabel.Size = new System.Drawing.Size(291, 125);
             appointmentTimeLabel.TabIndex = 8;
@@ -140,8 +141,8 @@
             doctorNameLabel.AutoSize = true;
             doctorNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             doctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            doctorNameLabel.Location = new System.Drawing.Point(4, 500);
-            doctorNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            doctorNameLabel.Location = new System.Drawing.Point(2, 260);
+            doctorNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             doctorNameLabel.Name = "doctorNameLabel";
             doctorNameLabel.Size = new System.Drawing.Size(291, 125);
             doctorNameLabel.TabIndex = 10;
@@ -224,8 +225,8 @@
             nurseNameLabel.AutoSize = true;
             nurseNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             nurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nurseNameLabel.Location = new System.Drawing.Point(4, 625);
-            nurseNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            nurseNameLabel.Location = new System.Drawing.Point(2, 325);
+            nurseNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nurseNameLabel.Name = "nurseNameLabel";
             nurseNameLabel.Size = new System.Drawing.Size(291, 125);
             nurseNameLabel.TabIndex = 23;
@@ -262,7 +263,7 @@
             this.appointmentIDTextBox.Location = new System.Drawing.Point(398, 43);
             this.appointmentIDTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.appointmentIDTextBox.Name = "appointmentIDTextBox";
-            this.appointmentIDTextBox.Size = new System.Drawing.Size(100, 38);
+            this.appointmentIDTextBox.Size = new System.Drawing.Size(52, 23);
             this.appointmentIDTextBox.TabIndex = 1;
             // 
             // visitBindingSource
@@ -406,7 +407,7 @@
             this.nurseNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurseNameComboBox.FormattingEnabled = true;
             this.nurseNameComboBox.Location = new System.Drawing.Point(0, 0);
-            this.nurseNameComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nurseNameComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.nurseNameComboBox.Name = "nurseNameComboBox";
             this.nurseNameComboBox.Size = new System.Drawing.Size(293, 37);
             this.nurseNameComboBox.TabIndex = 24;
@@ -427,7 +428,7 @@
             this.addVisitButton.Location = new System.Drawing.Point(21, 784);
             this.addVisitButton.Margin = new System.Windows.Forms.Padding(4);
             this.addVisitButton.Name = "addVisitButton";
-            this.addVisitButton.Size = new System.Drawing.Size(256, 63);
+            this.addVisitButton.Size = new System.Drawing.Size(128, 33);
             this.addVisitButton.TabIndex = 25;
             this.addVisitButton.Text = "Add Visit";
             this.addVisitButton.UseVisualStyleBackColor = true;
@@ -440,7 +441,7 @@
             this.updateVisitButton.Location = new System.Drawing.Point(320, 784);
             this.updateVisitButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateVisitButton.Name = "updateVisitButton";
-            this.updateVisitButton.Size = new System.Drawing.Size(256, 63);
+            this.updateVisitButton.Size = new System.Drawing.Size(128, 33);
             this.updateVisitButton.TabIndex = 26;
             this.updateVisitButton.Text = "Update Visit";
             this.updateVisitButton.UseVisualStyleBackColor = true;
@@ -452,7 +453,7 @@
             this.nurseNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nurseNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurseNameTextBox.Location = new System.Drawing.Point(0, 0);
-            this.nurseNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nurseNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nurseNameTextBox.Name = "nurseNameTextBox";
             this.nurseNameTextBox.Size = new System.Drawing.Size(293, 35);
             this.nurseNameTextBox.TabIndex = 27;
@@ -462,10 +463,10 @@
             // 
             this.btnLabTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLabTest.Location = new System.Drawing.Point(1202, 6);
+            this.btnLabTest.Location = new System.Drawing.Point(1274, 6);
             this.btnLabTest.Margin = new System.Windows.Forms.Padding(6);
             this.btnLabTest.Name = "btnLabTest";
-            this.btnLabTest.Size = new System.Drawing.Size(242, 113);
+            this.btnLabTest.Size = new System.Drawing.Size(305, 113);
             this.btnLabTest.TabIndex = 28;
             this.btnLabTest.Text = "Lab Tests";
             this.btnLabTest.UseVisualStyleBackColor = true;
@@ -536,9 +537,11 @@
             this.tableLayoutPanel1.Controls.Add(pulseLabel, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.pulseTextBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 5, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblTestOrdered, 5, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -548,7 +551,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1908, 881);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(954, 458);
             this.tableLayoutPanel1.TabIndex = 32;
             // 
             // panel1
@@ -561,14 +564,35 @@
             this.panel1.Size = new System.Drawing.Size(293, 119);
             this.panel1.TabIndex = 32;
             // 
+            // btnLabTest
+            // 
+            this.btnLabTest.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLabTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLabTest.Location = new System.Drawing.Point(830, 409);
+            this.btnLabTest.Name = "btnLabTest";
+            this.btnLabTest.Size = new System.Drawing.Size(84, 29);
+            this.btnLabTest.TabIndex = 33;
+            this.btnLabTest.Text = "LabTest";
+            this.btnLabTest.UseVisualStyleBackColor = true;
+            this.btnLabTest.Click += new System.EventHandler(this.btnLabTest_Click);
+            // 
+            // lblTestOrdered
+            // 
+            this.lblTestOrdered.AutoSize = true;
+            this.lblTestOrdered.Location = new System.Drawing.Point(793, 325);
+            this.lblTestOrdered.Name = "lblTestOrdered";
+            this.lblTestOrdered.Size = new System.Drawing.Size(66, 13);
+            this.lblTestOrdered.TabIndex = 34;
+            this.lblTestOrdered.Text = "TestOrdered";
+            // 
             // AddVisitUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddVisitUserControl";
-            this.Size = new System.Drawing.Size(1908, 881);
+            this.Size = new System.Drawing.Size(954, 458);
             this.Load += new System.EventHandler(this.AddVisitUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
@@ -606,5 +630,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnLabTest;
+        private System.Windows.Forms.Label lblTestOrdered;
     }
 }

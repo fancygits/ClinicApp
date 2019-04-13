@@ -142,7 +142,14 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
                     updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.Date);
                     updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
-                    updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                    if (newTestOrdered.ResultDetail != "")
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewResultDetail", null);
+                    }
                     updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
                     updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
                     updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);

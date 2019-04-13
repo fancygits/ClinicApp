@@ -48,7 +48,16 @@ namespace ClinicApp.UserControls
                         }
                     }
                 }
-                cmboBoxTestID.DataSource = testList;
+                if (testList.Count > 0)
+                {
+                    cmboBoxTestID.DataSource = testList;
+                }
+                else
+                {
+                    btnAddTest.Enabled = false;
+                    cmboBoxTestID.Text = "No Lab Tests Available";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -65,8 +74,27 @@ namespace ClinicApp.UserControls
 
         public void RefreshPage()
         {
+            this.SetDisplay();
             this.LoadComboBoxes();
             this.GetTestOrderedList();
+        }
+
+        public void SetDisplay()
+        {
+            if (this.visit.FinalDiagnosis != null)
+            {
+                this.SetMessage("");
+                btnAddTest.Enabled = false;
+                btnOrder.Enabled = false;
+                cmboBoxTestID.Enabled = false;
+            }
+            else
+            {
+                this.SetMessage("");
+                btnAddTest.Enabled = true;
+                btnOrder.Enabled = true;
+                cmboBoxTestID.Enabled = true;
+            }
         }
 
         private void GetTestOrderedList()
@@ -87,22 +115,28 @@ namespace ClinicApp.UserControls
             TestOrdered testOrdered = new TestOrdered();
             testOrdered.AppointmentID = visit.AppointmentID;
             testOrdered.TestCode = (int)cmboBoxTestID.SelectedValue;
+            testOrdered.Name = cmboBoxTestID.SelectedText.ToString();
             try
             {
                 if (this.labTestController.AddTestOrdered(testOrdered))
                 {
-                    MessageBox.Show("Test Added");
+                    this.SetMessage("The lab test was added to the Patients record.");
                     this.RefreshPage();
                 }
                 else
                 {
-                    MessageBox.Show("Nope");
+                    this.SetMessage("There was a problem adding this lab test.");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void SetMessage(String message)
+        {
+            lblMessage.Text = message;
         }
 
         private void testOrderedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -114,6 +148,14 @@ namespace ClinicApp.UserControls
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
+                if (this.visit.FinalDiagnosis != null)
+                {
+                    labTestInfoForm.labTestInfoUserControl1.isFinalized = true;
+                }
+                else
+                {
+                    labTestInfoForm.labTestInfoUserControl1.isFinalized = false;
+                }
                 labTestInfoForm.Show();
                 this.RefreshPage();
             }
