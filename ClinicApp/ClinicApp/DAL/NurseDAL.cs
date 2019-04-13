@@ -73,20 +73,22 @@ namespace ClinicApp.DAL
                         int activeOrd = reader.GetOrdinal("active");
                         while (reader.Read())
                         {
-                            Nurse nurse = new Nurse();
-                            nurse.NurseID = reader.GetInt32(nurseIDOrd);
-                            nurse.PersonID = reader.GetInt32(personIDOrd);
-                            nurse.LastName = reader.GetString(lastNameOrd);
-                            nurse.FirstName = reader.GetString(firstNameOrd);
-                            nurse.BirthDate = reader.GetDateTime(birthDateOrd);
-                            nurse.SSN = reader.GetString(ssnOrd);
-                            nurse.Gender = reader.GetString(genderOrd);
-                            nurse.StreetAddress = reader.GetString(addressOrd);
-                            nurse.City = reader.GetString(cityOrd);
-                            nurse.State = reader.GetString(stateOrd);
-                            nurse.PostCode = reader.GetString(postCodeOrd);
-                            nurse.PhoneNumber = reader.GetString(phoneOrd);
-                            nurse.Active = reader.GetBoolean(activeOrd);
+                            Nurse nurse = new Nurse
+                            {
+                                NurseID = reader.GetInt32(nurseIDOrd),
+                                PersonID = reader.GetInt32(personIDOrd),
+                                LastName = reader.GetString(lastNameOrd),
+                                FirstName = reader.GetString(firstNameOrd),
+                                BirthDate = reader.GetDateTime(birthDateOrd),
+                                SSN = reader.GetString(ssnOrd),
+                                Gender = reader.GetString(genderOrd),
+                                StreetAddress = reader.GetString(addressOrd),
+                                City = reader.GetString(cityOrd),
+                                State = reader.GetString(stateOrd),
+                                PostCode = reader.GetString(postCodeOrd),
+                                PhoneNumber = reader.GetString(phoneOrd),
+                                Active = reader.GetBoolean(activeOrd)
+                            };
 
                             listOfNurses.Add(nurse);
                         }
@@ -328,10 +330,11 @@ namespace ClinicApp.DAL
 
                 try
                 {
+                    CredentialDAL.AddCredential(nurse.Username, nurse.Password, "nurse");
                     int personID = PersonDAL.AddPerson(nurse);
                     nurseID = InsertNurse(personID);
-
                     nurseTransaction.Commit();
+                    return nurseID;
                 }
                 catch
                 {
@@ -339,7 +342,6 @@ namespace ClinicApp.DAL
                     throw;
                 }
             }
-            return nurseID;
         }
 
         /// <summary>
@@ -367,6 +369,48 @@ namespace ClinicApp.DAL
                 }
             }
             return nurseID;
+        }
+
+        /// <summary>
+        /// Updates a Nurse and the credentials
+        /// </summary>
+        /// <param name="oldNurse">Nurse to change from</param>
+        /// <param name="oldCredential">Credential to change from</param>
+        /// <param name="newNurse">Nurse to change to</param>
+        /// <param name="newCredential">Credential to change to</param>
+        /// <returns>True if update was successful</returns>
+        public static bool UpdateNurse(Nurse oldNurse, Credential oldCredential, Nurse newNurse, Credential newCredential)
+        {
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction nurseTransaction;
+
+                nurseTransaction = connection.BeginTransaction("Update Nurse");
+
+                command.Connection = connection;
+                command.Transaction = nurseTransaction;
+
+                try
+                {
+                    PersonDAL.UpdatePerson(oldNurse, newNurse);
+                    if (newCredential.Password != null)
+                    {
+                        CredentialDAL.UpdateCredential(oldCredential, newCredential);
+                    }
+                    else if (oldCredential.Username != newCredential.Username) {
+                        CredentialDAL.UpdateUsername(oldCredential, newCredential);
+                    }
+                    nurseTransaction.Commit();
+                    return true;
+                }
+                catch
+                {
+                    nurseTransaction.Rollback();
+                    throw;
+                }
+            }
         }
     }
 }

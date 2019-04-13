@@ -1,5 +1,4 @@
-﻿using ClinicApp.Controller;
-using ClinicApp.Model;
+﻿using ClinicApp.Model;
 using System.Windows.Forms;
 
 namespace ClinicApp.View
@@ -9,10 +8,8 @@ namespace ClinicApp.View
     /// </summary>
     public partial class ResetPasswordDialog : Form
     {
-        private Credential currentCredetials;
-        private Credential newCredentials;
-        private NurseController nurseController;
-        private Nurse nurse;
+        public Credential newCredential;
+        public Nurse nurse;
 
         /// <summary>
         /// Constructs a new UpdateAccountDialog and populates the fields with a Person
@@ -21,15 +18,17 @@ namespace ClinicApp.View
         public ResetPasswordDialog(Nurse nurse)
         {
             this.nurse = nurse;
+            newCredential.Username = nurse.Username;
+            newCredential.Role = "nurse";
             InitializeComponent();
-            nurseBindingSource.Add(nurse);
         }
 
         private void UpdateCredentials()
         {
             if (ValidateFields())
             {
-
+                newCredential.Password = newPasswordTextBox.Text;
+                DialogResult = DialogResult.OK;
             }
         }
 

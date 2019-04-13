@@ -14,7 +14,9 @@ namespace ClinicApp.UserControls
     {
         private readonly NurseController nurseController;
         public Nurse nurse;
+        private Credential currentCredential;
         private Nurse newNurse;
+        private Credential newCredential;
         private List<State> stateList;
         private ErrorProvider errorProvider;
 
@@ -38,6 +40,8 @@ namespace ClinicApp.UserControls
         private void NurseInformationUserControl_Load(object sender, EventArgs e)
         {
             newNurse = new Nurse();
+            currentCredential = new Credential();
+            newCredential = new Credential();
             LoadComboboxes();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
@@ -71,6 +75,7 @@ namespace ClinicApp.UserControls
             {
                 firstNameTextBox.Focus();
                 btnAddUpdateNurse.Text = "Add Nurse";
+                resetPasswordButton.Text = "Set Password";
                 PutNewNurse();
                 nurseBindingSource.Clear();
                 nurseBindingSource.Add(newNurse);
@@ -80,6 +85,7 @@ namespace ClinicApp.UserControls
             else
             {
                 btnAddUpdateNurse.Text = "Update Nurse";
+                resetPasswordButton.Text = "Set Password";
                 PutNewNurse();
                 nurseBindingSource.Clear();
                 nurseBindingSource.Add(newNurse);
@@ -108,6 +114,11 @@ namespace ClinicApp.UserControls
         {
             if (IsValidData())
             {
+                if (newCredential.Password == null)
+                {
+                    errorProvider.SetError(resetPasswordButton, "Password hasn't been set.");
+                    return;
+                }
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
@@ -199,11 +210,13 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void UpdateNurse()
         {
+            DebugNurse(null, null);
             if (IsValidData())
             {
                 try
                 {
-                    if (nurseController.UpdateNurse(nurse, newNurse))
+                    newCredential.Username = usernameTextBox.Text;
+                    if (nurseController.UpdateNurse(nurse, currentCredential, newNurse, newCredential))
                     {
                         GetNurse();
                         lblMessage.Text = "Nurse has been updated successfully.";
@@ -221,15 +234,15 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void UpdateCredentials()
+        private void SetResetPassword()
         {
             ResetPasswordDialog updateAccountDialog = new ResetPasswordDialog(newNurse);
             Enabled = false;
             DialogResult result = updateAccountDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                RefreshNurse();
-                lblMessage.Text = "Nurse credentials have been updated.";
+                newCredential = updateAccountDialog.newCredential;
+                lblMessage.Text = "New password is set. Press " + btnAddUpdateNurse.Text + " to save.";
             }
             Enabled = true;
         }
@@ -253,6 +266,9 @@ namespace ClinicApp.UserControls
             newNurse.PhoneNumber = nurse.PhoneNumber;
             newNurse.Active = nurse.Active;
             newNurse.Username = nurse.Username;
+            newCredential.Username = currentCredential.Username;
+            newCredential.Password = currentCredential.Password;
+            newCredential.Role = currentCredential.Role;
         }
 
         /// <summary>
@@ -298,6 +314,7 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = true;
             stateComboBox.Enabled = true;
             phoneNumberMaskedTextBox.Enabled = true;
+            resetPasswordButton.Enabled = true;
         }
 
         private void DisableFields()
@@ -309,6 +326,7 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = false;
             stateComboBox.Enabled = false;
             phoneNumberMaskedTextBox.Enabled = false;
+            resetPasswordButton.Enabled = false;
             btnAddUpdateNurse.Text = "Add Nurse";
         }
 
@@ -316,6 +334,8 @@ namespace ClinicApp.UserControls
         {
             this.personSearchUserControl.RefreshPerson();
             nurse = this.personSearchUserControl.nurse;
+            currentCredential.Username = nurse.Username;
+            currentCredential.Role = "nurse";
             nurseBindingSource.Clear();
             nurseBindingSource.Add(nurse);
         }
@@ -355,7 +375,6 @@ namespace ClinicApp.UserControls
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            DebugNurse(null, null);
             ClearFields();
             DisableFields();
         }
@@ -385,9 +404,9 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void btnUpdateCredentials_Click(object sender, EventArgs e)
+        private void resetPasswordButton_Click(object sender, EventArgs e)
         {
-            UpdateCredentials();
+            SetResetPassword();
         }
 
         /// <summary>
@@ -431,6 +450,16 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Phone:\t\t" + nurse.PhoneNumber.ToString());
                     System.Diagnostics.Debug.Print("Username:\t" + nurse.Username.ToString());
                     System.Diagnostics.Debug.Print("Active:\t\t" + nurse.Active.ToString());
+
+                    System.Diagnostics.Debug.Print("\t[Current Credential]");
+                    System.Diagnostics.Debug.Print("Username:\t" + currentCredential.Username.ToString());
+                    System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(currentCredential.Password));
+                    System.Diagnostics.Debug.Print("Role:\t\t" + currentCredential.Role.ToString());
+                    
+                    System.Diagnostics.Debug.Print("\t[New Credential]");
+                    System.Diagnostics.Debug.Print("Username:\t" + newCredential.Username.ToString());
+                    System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(newCredential.Password));
+                    System.Diagnostics.Debug.Print("Role:\t\t" + newCredential.Role.ToString());
                 }
                 catch
                 {
