@@ -17,6 +17,7 @@ namespace ClinicApp.UserControls
         private readonly LabTestController labTestController;
         private List<TestOrdered> testOrderedList;
         public Visit visit;
+        public bool isFnaliazed;
 
         /// <summary>
         /// Constructor for the User Control
@@ -81,7 +82,7 @@ namespace ClinicApp.UserControls
 
         public void SetDisplay()
         {
-            if (this.visit.FinalDiagnosis != null)
+            if (this.isFnaliazed)
             {
                 this.SetMessage("");
                 btnAddTest.Enabled = false;
@@ -149,14 +150,7 @@ namespace ClinicApp.UserControls
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
-                if (this.visit.FinalDiagnosis != null)
-                {
-                    labTestInfoForm.labTestInfoUserControl1.isFinalized = true;
-                }
-                else
-                {
-                    labTestInfoForm.labTestInfoUserControl1.isFinalized = false;
-                }
+                labTestInfoForm.labTestInfoUserControl1.isFinalized = this.isFnaliazed;
                 labTestInfoForm.Show();
                 this.RefreshPage();
             }

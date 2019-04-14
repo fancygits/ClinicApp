@@ -222,6 +222,14 @@ namespace ClinicApp.UserControls
             //{
 
             //}
+            if (this.visit.FinalDiagnosis != null)
+            {
+                OrderLabTestDialog.Instance().orderLabTestUserControl1.isFnaliazed = true;
+            }
+            else
+            {
+                OrderLabTestDialog.Instance().orderLabTestUserControl1.isFnaliazed = false;
+            }
             OrderLabTestDialog.Instance().orderLabTestUserControl1.visit = visit;
             OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
             OrderLabTestDialog.Instance().Show();
