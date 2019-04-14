@@ -35,17 +35,18 @@
             // 
             this.addVisitUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addVisitUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.addVisitUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.addVisitUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addVisitUserControl1.Name = "addVisitUserControl1";
-            this.addVisitUserControl1.Size = new System.Drawing.Size(1428, 762);
+            this.addVisitUserControl1.Size = new System.Drawing.Size(766, 396);
             this.addVisitUserControl1.TabIndex = 0;
             // 
             // AddVisitDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1428, 762);
+            this.ClientSize = new System.Drawing.Size(766, 396);
             this.Controls.Add(this.addVisitUserControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddVisitDialog";
             this.Text = "AddVisitDialog";
             this.ResumeLayout(false);
