@@ -121,7 +121,8 @@ namespace ClinicApp.UserControls
                 if (this.labTestController.AddTestOrdered(testOrdered))
                 {
                     this.SetMessage("The lab test was added to the Patients record.");
-                    this.RefreshPage();
+                    //this.RefreshPage();
+                    this.LoadComboBoxes();
                 }
                 else
                 {
