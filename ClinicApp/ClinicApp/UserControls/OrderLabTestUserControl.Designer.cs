@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lbltTestName;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmboBoxTestID = new System.Windows.Forms.ComboBox();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -56,7 +56,7 @@
             // 
             lbltTestName.AutoSize = true;
             lbltTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lbltTestName.Location = new System.Drawing.Point(183, 30);
+            lbltTestName.Location = new System.Drawing.Point(183, 41);
             lbltTestName.Name = "lbltTestName";
             lbltTestName.Size = new System.Drawing.Size(44, 20);
             lbltTestName.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.cmboBoxTestID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboBoxTestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmboBoxTestID.FormattingEnabled = true;
-            this.cmboBoxTestID.Location = new System.Drawing.Point(246, 28);
+            this.cmboBoxTestID.Location = new System.Drawing.Point(246, 39);
             this.cmboBoxTestID.Name = "cmboBoxTestID";
             this.cmboBoxTestID.Size = new System.Drawing.Size(260, 26);
             this.cmboBoxTestID.TabIndex = 3;
@@ -87,7 +87,7 @@
             // btnAddTest
             // 
             this.btnAddTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTest.Location = new System.Drawing.Point(388, 60);
+            this.btnAddTest.Location = new System.Drawing.Point(388, 71);
             this.btnAddTest.Name = "btnAddTest";
             this.btnAddTest.Size = new System.Drawing.Size(118, 28);
             this.btnAddTest.TabIndex = 4;
@@ -154,9 +154,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Date";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn4.HeaderText = "Test Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -205,7 +205,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.Black;
-            this.lblMessage.Location = new System.Drawing.Point(84, 75);
+            this.lblMessage.Location = new System.Drawing.Point(17, 12);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(0, 13);
             this.lblMessage.TabIndex = 7;

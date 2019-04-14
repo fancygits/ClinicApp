@@ -80,6 +80,9 @@ namespace ClinicApp.UserControls
             this.GetTestOrderedList();
         }
 
+        /// <summary>
+        /// Sets the buttons based on Visit finalDiagnosis status
+        /// </summary>
         public void SetDisplay()
         {
             if (this.isFnaliazed)
@@ -136,7 +139,11 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void SetMessage(String message)
+        /// <summary>
+        /// Sets user message
+        /// </summary>
+        /// <param name="message"></param>
+        public void SetMessage(String message)
         {
             lblMessage.Text = message;
         }

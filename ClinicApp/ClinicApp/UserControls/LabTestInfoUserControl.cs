@@ -84,9 +84,10 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
-                    this.testOrdered = this.newTestOrdered;
+                    //MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
+                    //this.testOrdered = this.newTestOrdered;
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.SetMessage(this.testOrdered.Name.ToString() + " was updated on the Patient Lab Order");
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();
                 }
@@ -109,8 +110,9 @@ namespace ClinicApp.UserControls
             {
                 if (this.labTestController.DeleteTestOrdered(this.testOrdered))
                 {
-                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
+                    //MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.SetMessage(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();
                 }

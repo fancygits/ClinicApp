@@ -471,7 +471,7 @@
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
             this.finalDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(153, 59);
+            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(152, 59);
             this.finalDiagnosisTextBox.TabIndex = 29;
             // 
             // initialDiagnosisTextBox
@@ -483,7 +483,7 @@
             this.initialDiagnosisTextBox.Multiline = true;
             this.initialDiagnosisTextBox.Name = "initialDiagnosisTextBox";
             this.initialDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.initialDiagnosisTextBox.Size = new System.Drawing.Size(153, 59);
+            this.initialDiagnosisTextBox.Size = new System.Drawing.Size(152, 59);
             this.initialDiagnosisTextBox.TabIndex = 31;
             this.initialDiagnosisTextBox.Tag = "Initial Diagnosis";
             // 
@@ -496,7 +496,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.1189F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.21444F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel1.Controls.Add(this.finalDiagnosisTextBox, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.initialDiagnosisTextBox, 5, 2);
             this.tableLayoutPanel1.Controls.Add(initialDiagnosisLabel, 4, 2);
@@ -594,7 +594,7 @@
             this.lblResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblResults.AutoSize = true;
             this.lblResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(826, 312);
+            this.lblResults.Location = new System.Drawing.Point(825, 312);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(96, 13);
             this.lblResults.TabIndex = 36;
@@ -603,7 +603,7 @@
             // llbAbResults
             // 
             this.llbAbResults.AutoSize = true;
-            this.llbAbResults.Location = new System.Drawing.Point(826, 325);
+            this.llbAbResults.Location = new System.Drawing.Point(825, 325);
             this.llbAbResults.Name = "llbAbResults";
             this.llbAbResults.Size = new System.Drawing.Size(0, 13);
             this.llbAbResults.TabIndex = 37;
