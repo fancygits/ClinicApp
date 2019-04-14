@@ -18,6 +18,7 @@ namespace ClinicApp.View
         public ResetPasswordDialog(Nurse nurse)
         {
             this.nurse = nurse;
+            newCredential = new Credential();
             newCredential.Username = nurse.Username;
             newCredential.Role = "nurse";
             InitializeComponent();

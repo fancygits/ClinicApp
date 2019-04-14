@@ -210,7 +210,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void UpdateNurse()
         {
-            DebugNurse(null, null);
             if (IsValidData())
             {
                 try
@@ -243,6 +242,7 @@ namespace ClinicApp.UserControls
             {
                 newCredential = updateAccountDialog.newCredential;
                 lblMessage.Text = "New password is set. Press " + btnAddUpdateNurse.Text + " to save.";
+                btnAddUpdateNurse.Enabled = true;
             }
             Enabled = true;
         }
@@ -266,6 +266,8 @@ namespace ClinicApp.UserControls
             newNurse.PhoneNumber = nurse.PhoneNumber;
             newNurse.Active = nurse.Active;
             newNurse.Username = nurse.Username;
+            currentCredential.Username = nurse.Username;
+            currentCredential.Role = "nurse";
             newCredential.Username = currentCredential.Username;
             newCredential.Password = currentCredential.Password;
             newCredential.Role = currentCredential.Role;
@@ -434,7 +436,7 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Postcode:\t" + postCodeTextBox.Text);
                     System.Diagnostics.Debug.Print("Phone:\t\t" + phoneNumberMaskedTextBox.Text);
                     System.Diagnostics.Debug.Print("Username:\t" + usernameTextBox.Text);
-                    System.Diagnostics.Debug.Print("Active:\t\t" + activeCheckBox.CheckState);
+                    System.Diagnostics.Debug.Print("Active:\t\t" + activeCheckBox.Checked);
 
                     System.Diagnostics.Debug.Print("\t[Current Nurse]");
                     System.Diagnostics.Debug.Print("NurseID:\t" + nurse.NurseID.ToString());
@@ -455,7 +457,22 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Username:\t" + currentCredential.Username.ToString());
                     System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(currentCredential.Password));
                     System.Diagnostics.Debug.Print("Role:\t\t" + currentCredential.Role.ToString());
-                    
+
+                    System.Diagnostics.Debug.Print("\t[New Nurse]");
+                    System.Diagnostics.Debug.Print("NurseID:\t" + newNurse.NurseID.ToString());
+                    System.Diagnostics.Debug.Print("PersonID:\t" + newNurse.PersonID.ToString());
+                    System.Diagnostics.Debug.Print("Full Name:\t" + newNurse.FullName.ToString());
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + newNurse.BirthDate.ToString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + newNurse.SSN.ToString());
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + newNurse.Gender.ToString());
+                    System.Diagnostics.Debug.Print("Address:\t" + newNurse.StreetAddress.ToString());
+                    System.Diagnostics.Debug.Print("City:\t\t" + newNurse.City.ToString());
+                    System.Diagnostics.Debug.Print("State:\t\t" + newNurse.State.ToString());
+                    System.Diagnostics.Debug.Print("Postcode:\t" + newNurse.PostCode.ToString());
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + newNurse.PhoneNumber.ToString());
+                    System.Diagnostics.Debug.Print("Username:\t" + newNurse.Username.ToString());
+                    System.Diagnostics.Debug.Print("Active:\t\t" + newNurse.Active.ToString());
+
                     System.Diagnostics.Debug.Print("\t[New Credential]");
                     System.Diagnostics.Debug.Print("Username:\t" + newCredential.Username.ToString());
                     System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(newCredential.Password));

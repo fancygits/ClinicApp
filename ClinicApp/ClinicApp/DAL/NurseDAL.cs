@@ -394,7 +394,6 @@ namespace ClinicApp.DAL
 
                 try
                 {
-                    PersonDAL.UpdatePerson(oldNurse, newNurse);
                     if (newCredential.Password != null)
                     {
                         CredentialDAL.UpdateCredential(oldCredential, newCredential);
@@ -402,6 +401,9 @@ namespace ClinicApp.DAL
                     else if (oldCredential.Username != newCredential.Username) {
                         CredentialDAL.UpdateUsername(oldCredential, newCredential);
                     }
+                    PersonDAL.UpdatePerson(oldNurse, newNurse);
+                    UpdateNurseActiveState(newNurse);
+
                     nurseTransaction.Commit();
                     return true;
                 }
@@ -409,6 +411,35 @@ namespace ClinicApp.DAL
                 {
                     nurseTransaction.Rollback();
                     throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the active state of a Nurse
+        /// </summary>
+        /// <param name="nurse">The Nurse to update</param>
+        /// <param name="active">The active state</param>
+        /// <returns>True if successful</returns>
+        public static bool UpdateNurseActiveState(Nurse nurse)
+        {
+
+            string updateStatement =
+                "UPDATE Nurse SET " +
+                    "active = @active " +
+                "WHERE nurseID = @nurseID " +
+                    "AND personID = @personID ";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@active", nurse.Active);
+                    updateCommand.Parameters.AddWithValue("@nurseID", nurse.NurseID);
+                    updateCommand.Parameters.AddWithValue("@personID", nurse.PersonID);
+                    
+                    int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
                 }
             }
         }
