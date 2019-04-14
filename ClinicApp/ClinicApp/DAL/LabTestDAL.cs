@@ -134,10 +134,12 @@ namespace ClinicApp.DAL
                 "result = @NewResult, " +
                 "resultDetails = @NewResultDetail " +
                 "WHERE appointmentID = @AppointmentID " +
-                "AND testCode = @TestCode " + 
+                "AND testCode = @TestCode " +
                 "AND testDate = @OldTestDate " +
                 "AND (result = @OldResult " +
-                    "OR result IS NULL AND @OldResult LIKE 0) ";
+                    "OR result IS NULL AND @OldResult LIKE 0) " +
+                "AND (resultDetails = @OldResultDetail " +
+                    "OR resultDetails IS NULL AND @OldResultDetail IS NULL) ";                  
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();

@@ -29,8 +29,8 @@ namespace ClinicApp.UserControls
 
         private void RefreshPage()
         {
-            testOrderedBindingSource.Clear();
-            testOrderedBindingSource.Add(this.testOrdered);
+            //testOrderedBindingSource.Clear();
+            //testOrderedBindingSource.Add(this.testOrdered);
             this.SetDisplay();
         }
 
@@ -41,10 +41,10 @@ namespace ClinicApp.UserControls
 
         private void SetDisplay()
         {
-            //dateTimePickerTestDate.Value = this.testOrdered.Date;
-            //txBxTestName.Text = this.testOrdered.Name;
-            //ckBxAbnResults.Checked = this.testOrdered.Result;
-            //txBxResultDetail.Text = this.testOrdered.ResultDetail;
+            dateTimePickerTestDate.Value = this.testOrdered.Date;
+            txBxTestName.Text = this.testOrdered.Name;
+            ckBxAbnResults.Checked = this.testOrdered.Result;
+            txBxResultDetail.Text = this.testOrdered.ResultDetail;
 
             if (isFinalized)
             {
@@ -76,8 +76,6 @@ namespace ClinicApp.UserControls
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
             this.PutLabTest();
-            //MessageBox.Show(this.testOrdered.ResultDetail.ToString());
-            MessageBox.Show(this.newTestOrdered.ResultDetail.ToString());
             try
             {
                 if (!this.labTestController.UpdateTestOrdered(this.testOrdered, this.newTestOrdered))
