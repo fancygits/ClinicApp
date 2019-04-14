@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClinicApp.Model
+﻿namespace ClinicApp.Model
 {
-    class Credential
+    public class Credential
     {
         public string Username { get; set; }
         public string Password { get; set; }

@@ -1,15 +1,10 @@
-﻿using ClinicApp.Model;
-using ClinicApp.Controller;
-using System;
-using System.Collections.Generic;
+﻿using ClinicApp.Controller;
+using ClinicApp.Model;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicApp.DAL
 {
-   
+
     class CredentialDAL
     {
         public static Nurse GetNurseByUserName(string username)
@@ -170,6 +165,66 @@ namespace ClinicApp.DAL
                     {
                         return false;
                     }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the username in the DB
+        /// </summary>
+        /// <param name="oldCredential">The former credentials</param>
+        /// <param name="newCredential">The updated credentials</param>
+        /// <returns>True if successful</returns>
+        public static bool UpdateUsername(Credential oldCredential, Credential newCredential)
+        {
+            string updateStatement =
+                "UPDATE Credential SET " +
+                    "username = @newUsername " +
+                "WHERE username = @oldUsername " +
+                    "AND role = @oldRole";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@newUsername", newCredential.Username);
+                    updateCommand.Parameters.AddWithValue("@oldUsername", oldCredential.Username);
+                    updateCommand.Parameters.AddWithValue("@oldRole", oldCredential.Role);
+                    
+                    int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the password in the DB
+        /// </summary>
+        /// <param name="oldCredential">The former credentials</param>
+        /// <param name="newCredential">The updated credentials</param>
+        /// <returns>True if successful</returns>
+        public static bool UpdateCredential(Credential oldCredential, Credential newCredential)
+        {
+            string updateStatement =
+                "UPDATE Credential SET " +
+                    "username = @newUsername, " +
+                    "password = @newPassword, " +
+                    "role = @newRole " +
+                "WHERE username = @oldUsername " +
+                    "AND role = @oldRole";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@newUsername", newCredential.Username);
+                    updateCommand.Parameters.AddWithValue("@newPassword", Security.Hash(newCredential.Password));
+                    updateCommand.Parameters.AddWithValue("@newRole", newCredential.Role);
+                    updateCommand.Parameters.AddWithValue("@oldUsername", oldCredential.Username);
+                    updateCommand.Parameters.AddWithValue("@oldRole", oldCredential.Role);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
                 }
             }
         }

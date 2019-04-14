@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label newPasswordLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetPasswordDialog));
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.newPasswordTextBox = new System.Windows.Forms.TextBox();
             this.confirmPasswordLabel = new System.Windows.Forms.Label();
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -39,7 +38,6 @@
             this.updateCredentialsButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             newPasswordLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,10 +51,6 @@
             newPasswordLabel.TabIndex = 5;
             newPasswordLabel.Tag = "";
             newPasswordLabel.Text = "New Password:";
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // newPasswordTextBox
             // 
@@ -138,7 +132,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reset Password";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -152,6 +145,5 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button updateCredentialsButton;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.BindingSource nurseBindingSource;
     }
 }

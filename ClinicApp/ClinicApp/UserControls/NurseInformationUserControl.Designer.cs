@@ -56,7 +56,8 @@
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.btnUpdateCredentials = new System.Windows.Forms.Button();
+            this.resetPasswordButton = new System.Windows.Forms.Button();
+            this.debugNurseButton = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
@@ -376,7 +377,7 @@
             // activeCheckBox
             // 
             this.activeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.nurseBindingSource, "Active", true));
+            this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.nurseBindingSource, "Active", true));
             this.activeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeCheckBox.Location = new System.Drawing.Point(190, 345);
             this.activeCheckBox.Name = "activeCheckBox";
@@ -397,21 +398,33 @@
             this.usernameTextBox.TabIndex = 75;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
-            // btnUpdateCredentials
+            // resetPasswordButton
             // 
-            this.btnUpdateCredentials.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUpdateCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateCredentials.Location = new System.Drawing.Point(219, 345);
-            this.btnUpdateCredentials.Name = "btnUpdateCredentials";
-            this.btnUpdateCredentials.Size = new System.Drawing.Size(155, 35);
-            this.btnUpdateCredentials.TabIndex = 76;
-            this.btnUpdateCredentials.Text = "Reset Password";
-            this.btnUpdateCredentials.UseVisualStyleBackColor = true;
-            this.btnUpdateCredentials.Click += new System.EventHandler(this.btnUpdateCredentials_Click);
+            this.resetPasswordButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.resetPasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetPasswordButton.Location = new System.Drawing.Point(219, 345);
+            this.resetPasswordButton.Name = "resetPasswordButton";
+            this.resetPasswordButton.Size = new System.Drawing.Size(155, 35);
+            this.resetPasswordButton.TabIndex = 76;
+            this.resetPasswordButton.Text = "Reset Password";
+            this.resetPasswordButton.UseVisualStyleBackColor = true;
+            this.resetPasswordButton.Click += new System.EventHandler(this.resetPasswordButton_Click);
+            // 
+            // debugNurseButton
+            // 
+            this.debugNurseButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.debugNurseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.debugNurseButton.Location = new System.Drawing.Point(25, 373);
+            this.debugNurseButton.Name = "debugNurseButton";
+            this.debugNurseButton.Size = new System.Drawing.Size(7, 7);
+            this.debugNurseButton.TabIndex = 77;
+            this.debugNurseButton.UseVisualStyleBackColor = true;
+            this.debugNurseButton.Click += new System.EventHandler(this.DebugNurse);
             // 
             // personSearchUserControl
             // 
             this.personSearchUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.personSearchUserControl.AutoSize = true;
             this.personSearchUserControl.Location = new System.Drawing.Point(25, 0);
             this.personSearchUserControl.Margin = new System.Windows.Forms.Padding(0);
             this.personSearchUserControl.Name = "personSearchUserControl";
@@ -426,8 +439,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.debugNurseButton);
             this.Controls.Add(this.personSearchUserControl);
-            this.Controls.Add(this.btnUpdateCredentials);
+            this.Controls.Add(this.resetPasswordButton);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(activeLabel);
@@ -483,7 +497,8 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.Button btnUpdateCredentials;
+        private System.Windows.Forms.Button resetPasswordButton;
         private PersonSearchUserControl personSearchUserControl;
+        private System.Windows.Forms.Button debugNurseButton;
     }
 }

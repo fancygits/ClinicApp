@@ -46,14 +46,16 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
-        /// Updates a Nurse
+        /// Updates a Nurse and the credentials
         /// </summary>
-        /// <param name="oldNurse"></param>
-        /// <param name="newNurse"></param>
+        /// <param name="oldNurse">Nurse to change from</param>
+        /// <param name="oldCredential">Credential to change from</param>
+        /// <param name="newNurse">Nurse to change to</param>
+        /// <param name="newCredential">Credential to change to</param>
         /// <returns>True if update was successful</returns>
-        public bool UpdateNurse(Nurse oldNurse, Nurse newNurse)
+        public bool UpdateNurse(Nurse oldNurse, Credential oldCredential, Nurse newNurse, Credential newCredential)
         {
-            return PersonDAL.UpdatePerson(oldNurse, newNurse);
+            return NurseDAL.UpdateNurse(oldNurse, oldCredential, newNurse, newCredential);
         }
 
         /// <summary>
