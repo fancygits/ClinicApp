@@ -165,6 +165,7 @@ namespace ClinicApp.UserControls
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
             OrderLabTestDialog.Instance().Hide();
         }
 
