@@ -41,11 +41,11 @@ namespace ClinicApp.UserControls
             {
                 this.nurseNameComboBox.SelectedValue = this.visit.NurseID;
                 this.nurseNameComboBox.SelectedText = this.visit.NurseName;
-            } else
+            }
+            else
             {
                 this.nurseNameComboBox.SelectedIndex = -1;
             }
-            this.SetTestOrderedLabel();
         }
 
         private bool PutData(Visit newVisit)
@@ -154,6 +154,8 @@ namespace ClinicApp.UserControls
             this.testOrderedList = null;
             lblTestHeader.Visible = false;
             lblResults.Visible = false;
+            lblTestOrdered.Text = "";
+            llbAbResults.Text = "";
             try
             {
                 this.testOrderedList = this.labTestController.GetTestOrderedByAppointmentID(this.visit.AppointmentID);
