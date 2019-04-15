@@ -109,6 +109,7 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                     AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
                     AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
+                    AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
                     if (this.HasVisit())
                     {
                         if (visit.FinalDiagnosis != null)

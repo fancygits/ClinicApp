@@ -151,6 +151,7 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void SetTestOrderedLabel()
         {
+            this.testOrderedList = null;
             lblTestHeader.Visible = false;
             lblResults.Visible = false;
             try

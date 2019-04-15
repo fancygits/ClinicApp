@@ -505,7 +505,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.1189F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.21444F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 367F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 371F));
             this.tableLayoutPanel1.Controls.Add(this.btnLabTest, 6, 3);
             this.tableLayoutPanel1.Controls.Add(this.finalDiagnosisTextBox, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.initialDiagnosisTextBox, 5, 1);
@@ -520,7 +520,6 @@
             this.tableLayoutPanel1.Controls.Add(diastolicBPLabel, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.temperatureTextBox, 3, 4);
             this.tableLayoutPanel1.Controls.Add(temperatureLabel, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.updateVisitButton, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.birthDateTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.addVisitButton, 0, 6);
             this.tableLayoutPanel1.Controls.Add(appointmentTimeLabel, 0, 3);
@@ -539,6 +538,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnClose, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.updateVisitButton, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
