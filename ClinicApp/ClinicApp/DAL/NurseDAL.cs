@@ -323,7 +323,7 @@ namespace ClinicApp.DAL
                 SqlCommand command = connection.CreateCommand();
                 SqlTransaction nurseTransaction;
 
-                nurseTransaction = connection.BeginTransaction("Add Nurse");
+                nurseTransaction = connection.BeginTransaction("AddNurse");
 
                 command.Connection = connection;
                 command.Transaction = nurseTransaction;
@@ -332,14 +332,21 @@ namespace ClinicApp.DAL
                 {
                     CredentialDAL.AddCredential(nurse.Username, nurse.Password, "nurse");
                     int personID = PersonDAL.AddPerson(nurse);
-                    nurseID = InsertNurse(personID);
+                    nurseID = InsertNurse(personID, nurse.Active);
                     nurseTransaction.Commit();
                     return nurseID;
                 }
                 catch
                 {
-                    nurseTransaction.Rollback();
-                    throw;
+                    try
+                    {
+                        nurseTransaction.Rollback();
+                        throw;
+                    }
+                    catch
+                    {
+                        throw;
+                    }
                 }
             }
         }
@@ -349,17 +356,18 @@ namespace ClinicApp.DAL
         /// </summary>
         /// <param name="personID">The PersonID to add</param>
         /// <returns>The new Nurse's NurseID</returns>
-        public static int InsertNurse(int personID)
+        public static int InsertNurse(int personID, bool active)
         {
             int nurseID;
             string insertStatement =
-                "INSERT INTO Nurse (personID) VALUES (@personID)";
+                "INSERT INTO Nurse (personID, active) VALUES (@personID, @active)";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@personID", personID);
+                    insertCommand.Parameters.AddWithValue("@active", active);
                     nurseID = insertCommand.ExecuteNonQuery();
                 }
                 string selectStatement = "SELECT IDENT_CURRENT('Nurse') FROM Nurse";

@@ -56,7 +56,6 @@
             this.btnSearchAppointments = new System.Windows.Forms.Button();
             this.btnSearchVisits = new System.Windows.Forms.Button();
             this.btnDebug = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
             this.deletePatientButton = new System.Windows.Forms.Button();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -388,26 +387,15 @@
             this.btnDebug.UseVisualStyleBackColor = false;
             this.btnDebug.Click += new System.EventHandler(this.DebugPatient);
             // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(412, 345);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 35);
-            this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // personSearchUserControl
             // 
             this.personSearchUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.personSearchUserControl.AutoSize = true;
             this.personSearchUserControl.Location = new System.Drawing.Point(20, 0);
             this.personSearchUserControl.Name = "personSearchUserControl";
             this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(10);
             this.personSearchUserControl.Size = new System.Drawing.Size(750, 105);
-            this.personSearchUserControl.TabIndex = 32;
+            this.personSearchUserControl.TabIndex = 0;
             // 
             // deletePatientButton
             // 
@@ -429,7 +417,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.personSearchUserControl);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.btnSearchVisits);
             this.Controls.Add(this.btnSearchAppointments);
@@ -471,7 +458,6 @@
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox postCodeTextBox;
         private System.Windows.Forms.TextBox streetAddressTextBox;
@@ -485,8 +471,8 @@
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
         private System.Windows.Forms.Button btnDebug;
-        private System.Windows.Forms.Button btnClear;
-        private PersonSearchUserControl personSearchUserControl;
         private System.Windows.Forms.Button deletePatientButton;
+        protected internal System.Windows.Forms.TextBox firstNameTextBox;
+        protected internal PersonSearchUserControl personSearchUserControl;
     }
 }

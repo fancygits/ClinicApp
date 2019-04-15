@@ -41,7 +41,6 @@
             System.Windows.Forms.Label genderLabel;
             System.Windows.Forms.Label activeLabel;
             System.Windows.Forms.Label usernameLabel;
-            this.btnClear = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
@@ -207,18 +206,6 @@
             usernameLabel.TabIndex = 74;
             usernameLabel.Text = "Username:";
             // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(514, 345);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 35);
-            this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // lblMessage
             // 
             this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -236,7 +223,7 @@
             this.btnAddUpdateNurse.Location = new System.Drawing.Point(595, 345);
             this.btnAddUpdateNurse.Name = "btnAddUpdateNurse";
             this.btnAddUpdateNurse.Size = new System.Drawing.Size(175, 35);
-            this.btnAddUpdateNurse.TabIndex = 12;
+            this.btnAddUpdateNurse.TabIndex = 14;
             this.btnAddUpdateNurse.Text = "Update Nurse";
             this.btnAddUpdateNurse.UseVisualStyleBackColor = true;
             this.btnAddUpdateNurse.Click += new System.EventHandler(this.btnAddUpdateNurse_Click);
@@ -340,6 +327,7 @@
             // birthDateDateTimePicker
             // 
             this.birthDateDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.nurseBindingSource, "BirthDate", true));
             this.birthDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.birthDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthDateDateTimePicker.Location = new System.Drawing.Point(174, 189);
@@ -382,7 +370,7 @@
             this.activeCheckBox.Location = new System.Drawing.Point(190, 345);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(23, 24);
-            this.activeCheckBox.TabIndex = 11;
+            this.activeCheckBox.TabIndex = 12;
             this.activeCheckBox.Tag = "Account Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             this.activeCheckBox.CheckStateChanged += new System.EventHandler(this.NurseTextboxChanged);
@@ -395,7 +383,7 @@
             this.usernameTextBox.Location = new System.Drawing.Point(174, 306);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
-            this.usernameTextBox.TabIndex = 75;
+            this.usernameTextBox.TabIndex = 11;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
             // resetPasswordButton
@@ -405,8 +393,8 @@
             this.resetPasswordButton.Location = new System.Drawing.Point(219, 345);
             this.resetPasswordButton.Name = "resetPasswordButton";
             this.resetPasswordButton.Size = new System.Drawing.Size(155, 35);
-            this.resetPasswordButton.TabIndex = 76;
-            this.resetPasswordButton.Text = "Reset Password";
+            this.resetPasswordButton.TabIndex = 13;
+            this.resetPasswordButton.Text = "Set Password";
             this.resetPasswordButton.UseVisualStyleBackColor = true;
             this.resetPasswordButton.Click += new System.EventHandler(this.resetPasswordButton_Click);
             // 
@@ -466,7 +454,6 @@
             this.Controls.Add(genderLabel);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.firstNameTextBox);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnAddUpdateNurse);
             this.Margin = new System.Windows.Forms.Padding(0);
@@ -480,8 +467,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnAddUpdateNurse;
         private System.Windows.Forms.BindingSource nurseBindingSource;
@@ -498,7 +483,7 @@
         private System.Windows.Forms.CheckBox activeCheckBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Button resetPasswordButton;
-        private PersonSearchUserControl personSearchUserControl;
         private System.Windows.Forms.Button debugNurseButton;
+        protected internal PersonSearchUserControl personSearchUserControl;
     }
 }

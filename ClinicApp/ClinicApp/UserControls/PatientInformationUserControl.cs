@@ -28,6 +28,8 @@ namespace ClinicApp.UserControls
             errorProvider = new ErrorProvider();
             personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
+            personSearchUserControl.AddPersonClicked += btnAddUpdatePatient_Click;
         }
 
         /// <summary>
@@ -60,6 +62,17 @@ namespace ClinicApp.UserControls
         }
 
         /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            ClearFields();
+            DisableFields();
+        }
+
+        /// <summary>
         /// Gets a patient from the given textboxes.
         /// If no patient is found, returns a list of possible matches.
         /// If no matches are found, prompts to add a new Patient.
@@ -68,9 +81,9 @@ namespace ClinicApp.UserControls
         {
             if (patient == null)
             {
-                NoMatchesDialog();
+                patient = new Patient();
             }
-            else if (patient.FirstName == null)
+            if (patient.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdatePatient.Text = "Add Patient";
@@ -88,22 +101,6 @@ namespace ClinicApp.UserControls
                 patientBindingSource.Add(newPatient);
                 EnableFields();
                 btnAddUpdatePatient.Enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// Prompts to add a new patient since none are found
-        /// </summary>
-        public void NoMatchesDialog()
-        {
-            DialogResult result = MessageBox.Show("No patients matched your search.\n" +
-                            "Would you like to add a new patient?", "No Matches",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                TabControl tabControl = Parent.Parent as TabControl;
-                tabControl.SelectedIndex = 0;
-                btnAddUpdatePatient.PerformClick();
             }
         }
 
@@ -303,6 +300,9 @@ namespace ClinicApp.UserControls
 
         private void EnableFields()
         {
+            firstNameTextBox.Enabled = true;
+            lastNameTextBox.Enabled = true;
+            birthDateDateTimePicker.Enabled = true;
             sSNMaskedTextBox.Enabled = true;
             genderComboBox.Enabled = true;
             streetAddressTextBox.Enabled = true;
@@ -317,6 +317,9 @@ namespace ClinicApp.UserControls
 
         private void DisableFields()
         {
+            firstNameTextBox.Enabled = false;
+            lastNameTextBox.Enabled = false;
+            birthDateDateTimePicker.Enabled = false;
             sSNMaskedTextBox.Enabled = false;
             genderComboBox.Enabled = false;
             streetAddressTextBox.Enabled = false;
@@ -386,15 +389,6 @@ namespace ClinicApp.UserControls
             SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
             searchForVisitUserControl.patient = patient;
             searchForVisitUserControl.RefreshPage();
-            searchForVisitUserControl.personSearchUserControl.firstNameTextBox.Text = patient.FirstName;
-            searchForVisitUserControl.personSearchUserControl.lastNameTextBox.Text = patient.LastName;
-            searchForVisitUserControl.personSearchUserControl.birthDateDateTimePicker.Text = patient.BirthDate.ToShortDateString();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-            DisableFields();
         }
 
         private void btnAddUpdatePatient_Click(object sender, EventArgs e)
@@ -411,15 +405,15 @@ namespace ClinicApp.UserControls
                 }
                 if (sSNMaskedTextBox.Enabled)
                 {
-                    DebugPatient(null, null);
+                    //DebugPatient(null, null);
                     AddPatient();
                 }
                 else
                 {
                     EnableFields();
+                    patientBindingSource.Clear();
+                    patientBindingSource.Add(patient);
                 }
-                patientBindingSource.Clear();
-                patientBindingSource.Add(patient);
             }
         }
 

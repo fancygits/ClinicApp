@@ -25,11 +25,39 @@ namespace ClinicApp.UserControls
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.patientController = new PatientController();
+            personSearchUserControl.SetPersonType(new Patient());
+            personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
         {
             this.RefreshPage();
+            this.ActiveControl = personSearchUserControl;
+        }
+
+        /// <summary>
+        /// The method to run when the GetPerson Button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
+        {
+            //personSearchUserControl.RefreshPerson();
+            patient = personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
+            RefreshPage();
+        }
+
+        /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            Clear();
         }
 
         /// <summary>
@@ -69,13 +97,10 @@ namespace ClinicApp.UserControls
         private void Clear()
         {
             patientBindingSource.Clear();
-            birthDateDateTimePicker.Text = "";
-            firstNameTextBox.Text = "";
-            lastNameTextBox.Text = "";
             appointmentDataGridView.DataSource = null;
             appointmentDataGridView.Refresh();
             btnAddAppointment.Enabled = false;
-            firstNameTextBox.Focus();
+            this.ActiveControl = personSearchUserControl;
         }
 
 
@@ -103,38 +128,6 @@ namespace ClinicApp.UserControls
             addApptForm.addAppointment = true;
             addApptForm.ShowDialog();
             this.RefreshPage();
-        }
-
-        private void btnSearchPatient_Click(object sender, EventArgs e)
-        {
-            string firstName = firstNameTextBox.Text;
-            string lastName = lastNameTextBox.Text;
-            string birthDate = birthDateDateTimePicker.Text;
-            this.patient = this.FindPatient(firstName, lastName, birthDate);
-            if (this.patient != null)
-            {
-                patientBindingSource.Clear();
-                patientBindingSource.Add(patient);
-                this.RefreshPage();
-            }
-           else
-            {
-                this.SwitchTabNoMatchesDialog();
-            }
-        }
-
-
-        private void SwitchTabNoMatchesDialog()
-{
-            TabControl tabControl = this.Parent.Parent as TabControl;
-            //tabControl.SelectedIndex = 0;
-            PatientInformationUserControl patientInformationUserControl = tabControl.TabPages[0].Controls[0] as PatientInformationUserControl;
-            patientInformationUserControl.NoMatchesDialog();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            this.Clear();
         }
     }
 }

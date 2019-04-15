@@ -30,6 +30,8 @@ namespace ClinicApp.UserControls
             errorProvider = new ErrorProvider();
             personSearchUserControl.SetPersonType(new Nurse());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
+            personSearchUserControl.AddPersonClicked += btnAddUpdateNurse_Click;
         }
         
         /// <summary>
@@ -56,7 +58,21 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
+            nurse = personSearchUserControl.nurse;
+            nurseBindingSource.Clear();
+            nurseBindingSource.Add(nurse);
             this.GetNurse();
+        }
+
+        /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            ClearFields();
+            DisableFields();
         }
 
         /// <summary>
@@ -66,12 +82,12 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetNurse()
         {
-            RefreshNurse();
             if (nurse == null)
             {
-                NoMatchesDialog();
+                nurse = new Nurse();
+                currentCredential = new Credential();
             }
-            else if (nurse.FirstName == null)
+            if (nurse.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdateNurse.Text = "Add Nurse";
@@ -85,28 +101,12 @@ namespace ClinicApp.UserControls
             else
             {
                 btnAddUpdateNurse.Text = "Update Nurse";
-                resetPasswordButton.Text = "Set Password";
+                resetPasswordButton.Text = "Reset Password";
                 PutNewNurse();
                 nurseBindingSource.Clear();
                 nurseBindingSource.Add(newNurse);
                 EnableFields();
                 btnAddUpdateNurse.Enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// Prompts to add a new nurse since none are found
-        /// </summary>
-        public void NoMatchesDialog()
-        {
-            DialogResult result = MessageBox.Show("No nurses matched your search.\n" +
-                            "Would you like to add a new nurse?", "No Matches",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                TabControl tabControl = Parent.Parent as TabControl;
-                tabControl.SelectedIndex = 0;
-                btnAddUpdateNurse.PerformClick();
             }
         }
 
@@ -175,6 +175,7 @@ namespace ClinicApp.UserControls
             string lastName = lastNameTextBox.Text;
             string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
             string SSN = sSNMaskedTextBox.Text;
+            bool active = activeCheckBox.Checked;
             int nurseID = -1;
             try
             {
@@ -186,7 +187,7 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        nurseID = nurseController.InsertNurse(personID);
+                        nurseID = nurseController.InsertNurse(personID, active);
                     }
                     else
                     {
@@ -217,6 +218,7 @@ namespace ClinicApp.UserControls
                     newCredential.Username = usernameTextBox.Text;
                     if (nurseController.UpdateNurse(nurse, currentCredential, newNurse, newCredential))
                     {
+                        RefreshNurse();
                         GetNurse();
                         lblMessage.Text = "Nurse has been updated successfully.";
                     }
@@ -256,7 +258,7 @@ namespace ClinicApp.UserControls
             newNurse.PersonID = nurse.PersonID;
             newNurse.LastName = nurse.LastName;
             newNurse.FirstName = nurse.FirstName;
-            newNurse.BirthDate = nurse.BirthDate;
+            newNurse.BirthDate = nurse.BirthDate.Date;
             newNurse.SSN = nurse.SSN;
             newNurse.Gender = nurse.Gender;
             newNurse.StreetAddress = nurse.StreetAddress;
@@ -266,6 +268,7 @@ namespace ClinicApp.UserControls
             newNurse.PhoneNumber = nurse.PhoneNumber;
             newNurse.Active = nurse.Active;
             newNurse.Username = nurse.Username;
+            newNurse.Password = newCredential.Password;
             currentCredential.Username = nurse.Username;
             currentCredential.Role = "nurse";
             newCredential.Username = currentCredential.Username;
@@ -309,6 +312,9 @@ namespace ClinicApp.UserControls
 
         private void EnableFields()
         {
+            firstNameTextBox.Enabled = true;
+            lastNameTextBox.Enabled = true;
+            birthDateDateTimePicker.Enabled = true;
             sSNMaskedTextBox.Enabled = true;
             genderComboBox.Enabled = true;
             streetAddressTextBox.Enabled = true;
@@ -316,11 +322,16 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = true;
             stateComboBox.Enabled = true;
             phoneNumberMaskedTextBox.Enabled = true;
+            usernameTextBox.Enabled = true;
+            activeCheckBox.Enabled = true;
             resetPasswordButton.Enabled = true;
         }
 
         private void DisableFields()
         {
+            firstNameTextBox.Enabled = false;
+            lastNameTextBox.Enabled = false;
+            birthDateDateTimePicker.Enabled = false;
             sSNMaskedTextBox.Enabled = false;
             genderComboBox.Enabled = false;
             streetAddressTextBox.Enabled = false;
@@ -328,14 +339,17 @@ namespace ClinicApp.UserControls
             postCodeTextBox.Enabled = false;
             stateComboBox.Enabled = false;
             phoneNumberMaskedTextBox.Enabled = false;
+            usernameTextBox.Enabled = false;
+            activeCheckBox.Enabled = false;
             resetPasswordButton.Enabled = false;
             btnAddUpdateNurse.Text = "Add Nurse";
+            resetPasswordButton.Text = "Set Password";
         }
 
         private void RefreshNurse()
         {
-            this.personSearchUserControl.RefreshPerson();
-            nurse = this.personSearchUserControl.nurse;
+            personSearchUserControl.RefreshPerson();
+            nurse = personSearchUserControl.nurse;
             currentCredential.Username = nurse.Username;
             currentCredential.Role = "nurse";
             nurseBindingSource.Clear();
@@ -375,12 +389,6 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-            DisableFields();
-        }
-
         private void btnAddUpdateNurse_Click(object sender, EventArgs e)
         {
             if (btnAddUpdateNurse.Text == "Update Nurse")
@@ -400,9 +408,9 @@ namespace ClinicApp.UserControls
                 else
                 {
                     EnableFields();
+                    nurseBindingSource.Clear();
+                    nurseBindingSource.Add(nurse);
                 }
-                nurseBindingSource.Clear();
-                nurseBindingSource.Add(nurse);
             }
         }
 
@@ -454,7 +462,7 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Active:\t\t" + nurse.Active.ToString());
 
                     System.Diagnostics.Debug.Print("\t[Current Credential]");
-                    System.Diagnostics.Debug.Print("Username:\t" + currentCredential.Username.ToString());
+                    System.Diagnostics.Debug.Print("Username:\t" + Convert.ToString(currentCredential.Username));
                     System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(currentCredential.Password));
                     System.Diagnostics.Debug.Print("Role:\t\t" + currentCredential.Role.ToString());
 
@@ -474,7 +482,7 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Active:\t\t" + newNurse.Active.ToString());
 
                     System.Diagnostics.Debug.Print("\t[New Credential]");
-                    System.Diagnostics.Debug.Print("Username:\t" + newCredential.Username.ToString());
+                    System.Diagnostics.Debug.Print("Username:\t" + Convert.ToString(newCredential.Username));
                     System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(newCredential.Password));
                     System.Diagnostics.Debug.Print("Role:\t\t" + newCredential.Role.ToString());
                 }
