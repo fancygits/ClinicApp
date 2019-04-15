@@ -60,7 +60,7 @@ namespace ClinicApp.UserControls
                     isValid = true;
                 } else
                 {
-                    throw new FormatException();
+                    isValid = false;
                 }
                
                 if (Validator.IsInt32(this.systolicBPTextBox, errorProvider))
@@ -70,7 +70,7 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    throw new FormatException();
+                    isValid = false;
                 }
                 if (Validator.IsInt32(this.diastolicBPTextBox, errorProvider))
                 {
@@ -79,7 +79,7 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    throw new FormatException();
+                    isValid = false;
                 }
                 if (Validator.IsDecimal(this.temperatureTextBox, errorProvider))
                 {
@@ -88,7 +88,7 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    throw new FormatException();
+                    isValid = false;
                 }
                 if (Validator.IsInt32(this.pulseTextBox, errorProvider))
                 {
@@ -97,17 +97,24 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    throw new FormatException();
+                    isValid = false;
                 }
                 if (Validator.IsPresent(this.symptomsTextBox, errorProvider))
                 {
                     newVisit.Symptoms = this.symptomsTextBox.Text;
                     isValid = true;
                 }
+                else
+                {
+                    isValid = false;
+                }
                 if (Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
                 {
                     newVisit.InitialDiagnosis = this.initialDiagnosisTextBox.Text;
                     isValid = true;
+                } else
+                {
+                    isValid = false;
                 }
                 if (!this.finalDiagnosisTextBox.Equals(""))
                 {
@@ -139,6 +146,7 @@ namespace ClinicApp.UserControls
                     else
                     {
                         this.visit = newVisit;
+                        AddVisitDialog.Instance().Hide();
                         MessageBox.Show("Your visit has been successfully updated", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                         this.PutData(newVisit);
@@ -166,6 +174,7 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
+                        AddVisitDialog.Instance().Hide();
                         MessageBox.Show("Your visit was successfully added", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                         this.addVisitButton.Enabled = false;
