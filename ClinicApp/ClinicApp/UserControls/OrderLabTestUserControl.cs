@@ -17,6 +17,7 @@ namespace ClinicApp.UserControls
         private readonly LabTestController labTestController;
         private List<TestOrdered> testOrderedList;
         public Visit visit;
+        public bool isFnaliazed;
 
         /// <summary>
         /// Constructor for the User Control
@@ -79,9 +80,12 @@ namespace ClinicApp.UserControls
             this.GetTestOrderedList();
         }
 
+        /// <summary>
+        /// Sets the buttons based on Visit finalDiagnosis status
+        /// </summary>
         public void SetDisplay()
         {
-            if (this.visit.FinalDiagnosis != null)
+            if (this.isFnaliazed)
             {
                 this.SetMessage("");
                 btnAddTest.Enabled = false;
@@ -135,7 +139,11 @@ namespace ClinicApp.UserControls
             }
         }
 
-        private void SetMessage(String message)
+        /// <summary>
+        /// Sets user message
+        /// </summary>
+        /// <param name="message"></param>
+        public void SetMessage(String message)
         {
             lblMessage.Text = message;
         }
@@ -149,14 +157,7 @@ namespace ClinicApp.UserControls
                 TestOrdered testOrdered = (TestOrdered)row.DataBoundItem;
                 LabTestInfoDialog labTestInfoForm = new LabTestInfoDialog();
                 labTestInfoForm.labTestInfoUserControl1.testOrdered = testOrdered;
-                if (this.visit.FinalDiagnosis != null)
-                {
-                    labTestInfoForm.labTestInfoUserControl1.isFinalized = true;
-                }
-                else
-                {
-                    labTestInfoForm.labTestInfoUserControl1.isFinalized = false;
-                }
+                labTestInfoForm.labTestInfoUserControl1.isFinalized = this.isFnaliazed;
                 labTestInfoForm.Show();
                 this.RefreshPage();
             }
@@ -164,6 +165,7 @@ namespace ClinicApp.UserControls
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
             OrderLabTestDialog.Instance().Hide();
         }
 

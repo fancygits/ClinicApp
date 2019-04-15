@@ -180,7 +180,11 @@ namespace ClinicApp.UserControls
            
         }
 
-        private void SetTestOrderedLabel()
+
+        /// <summary>
+        /// Sets the ordered lab tests and results list on Visit screen
+        /// </summary>
+        public void SetTestOrderedLabel()
         {
             lblTestHeader.Visible = false;
             lblResults.Visible = false;
@@ -222,9 +226,22 @@ namespace ClinicApp.UserControls
             //{
 
             //}
+            if (this.visit.FinalDiagnosis != null)
+            {
+                OrderLabTestDialog.Instance().orderLabTestUserControl1.isFnaliazed = true;
+            }
+            else
+            {
+                OrderLabTestDialog.Instance().orderLabTestUserControl1.isFnaliazed = false;
+            }
             OrderLabTestDialog.Instance().orderLabTestUserControl1.visit = visit;
             OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
             OrderLabTestDialog.Instance().Show();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            AddVisitDialog.Instance().Hide();
         }
     }
 }

@@ -133,7 +133,13 @@ namespace ClinicApp.DAL
                 "SET testDate = @NewTestDate, " +
                 "result = @NewResult, " +
                 "resultDetails = @NewResultDetail " +
-                "WHERE appointmentID = @AppointmentID AND testCode = @TestCode";
+                "WHERE appointmentID = @AppointmentID " +
+                "AND testCode = @TestCode " +
+                "AND testDate = @OldTestDate " +
+                "AND (result = @OldResult " +
+                    "OR result IS NULL AND @OldResult LIKE 0) " +
+                "AND (resultDetails = @OldResultDetail " +
+                    "OR resultDetails IS NULL AND @OldResultDetail IS NULL) ";                  
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -143,17 +149,17 @@ namespace ClinicApp.DAL
                     updateCommand.Parameters.AddWithValue("@AppointmentID", testOrdered.AppointmentID);
                     updateCommand.Parameters.AddWithValue("@NewTestDate", newTestOrdered.Date);
                     updateCommand.Parameters.AddWithValue("@NewResult", newTestOrdered.Result);
-                    if (newTestOrdered.ResultDetail != "")
+                    updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                    updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
+                    updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
+                    if (testOrdered.ResultDetail != null)
                     {
-                        updateCommand.Parameters.AddWithValue("@NewResultDetail", newTestOrdered.ResultDetail);
+                        updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
                     }
                     else
                     {
-                        updateCommand.Parameters.AddWithValue("@NewResultDetail", DBNull.Value);
+                        updateCommand.Parameters.AddWithValue("@OldResultDetail", DBNull.Value);
                     }
-                    updateCommand.Parameters.AddWithValue("@OldTestDate", testOrdered.Date);
-                    updateCommand.Parameters.AddWithValue("@OldResult", testOrdered.Result);
-                    updateCommand.Parameters.AddWithValue("@OldResultDetail", testOrdered.ResultDetail);
 
                     int count = updateCommand.ExecuteNonQuery();
                     return count > 0;

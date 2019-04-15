@@ -29,7 +29,8 @@ namespace ClinicApp.UserControls
 
         private void RefreshPage()
         {
-            testOrderedBindingSource.Add(this.testOrdered);
+            //testOrderedBindingSource.Clear();
+            //testOrderedBindingSource.Add(this.testOrdered);
             this.SetDisplay();
         }
 
@@ -40,7 +41,12 @@ namespace ClinicApp.UserControls
 
         private void SetDisplay()
         {
-            if(isFinalized)
+            dateTimePickerTestDate.Value = this.testOrdered.Date;
+            txBxTestName.Text = this.testOrdered.Name;
+            ckBxAbnResults.Checked = this.testOrdered.Result;
+            txBxResultDetail.Text = this.testOrdered.ResultDetail;
+
+            if (isFinalized)
             {
                 txBxResultDetail.Enabled = false;
                 dateTimePickerTestDate.Enabled = false;
@@ -64,20 +70,12 @@ namespace ClinicApp.UserControls
             this.newTestOrdered.TestCode = this.testOrdered.TestCode;
             this.newTestOrdered.Date = dateTimePickerTestDate.Value;
             this.newTestOrdered.Result = ckBxAbnResults.Checked;
-            if (txBxResultDetail.Text != "")
-            {
-                this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
-            }
-            else
-            {
-                this.newTestOrdered.ResultDetail = "no info provided";
-            }
+            this.newTestOrdered.ResultDetail = txBxResultDetail.Text;
         }
 
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
             this.PutLabTest();
-            MessageBox.Show(this.newTestOrdered.ResultDetail.ToString());
             try
             {
                 if (!this.labTestController.UpdateTestOrdered(this.testOrdered, this.newTestOrdered))
@@ -86,9 +84,10 @@ namespace ClinicApp.UserControls
                 }
                 else
                 {
-                    MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
-                    this.testOrdered = this.newTestOrdered;
+                    //MessageBox.Show(this.testOrdered.Name.ToString() + " was updated");
+                    //this.testOrdered = this.newTestOrdered;
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.SetMessage(this.testOrdered.Name.ToString() + " was updated on the Patient Lab Order");
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();
                 }
@@ -111,8 +110,9 @@ namespace ClinicApp.UserControls
             {
                 if (this.labTestController.DeleteTestOrdered(this.testOrdered))
                 {
-                    MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
+                    //MessageBox.Show(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
                     OrderLabTestDialog.Instance().orderLabTestUserControl1.RefreshPage();
+                    OrderLabTestDialog.Instance().orderLabTestUserControl1.SetMessage(this.testOrdered.Name.ToString() + " was deleted from the Patient Lab Order");
                     Form labInfo = (Form)this.Parent;
                     labInfo.Close();
                 }

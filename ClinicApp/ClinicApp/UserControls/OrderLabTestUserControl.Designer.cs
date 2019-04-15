@@ -56,7 +56,7 @@
             // 
             lbltTestName.AutoSize = true;
             lbltTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lbltTestName.Location = new System.Drawing.Point(183, 30);
+            lbltTestName.Location = new System.Drawing.Point(183, 41);
             lbltTestName.Name = "lbltTestName";
             lbltTestName.Size = new System.Drawing.Size(44, 20);
             lbltTestName.TabIndex = 2;
@@ -71,9 +71,10 @@
             this.cmboBoxTestID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.labTestBindingSource, "TestName", true));
             this.cmboBoxTestID.DataSource = this.labTestBindingSource;
             this.cmboBoxTestID.DisplayMember = "TestName";
+            this.cmboBoxTestID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboBoxTestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmboBoxTestID.FormattingEnabled = true;
-            this.cmboBoxTestID.Location = new System.Drawing.Point(246, 28);
+            this.cmboBoxTestID.Location = new System.Drawing.Point(246, 39);
             this.cmboBoxTestID.Name = "cmboBoxTestID";
             this.cmboBoxTestID.Size = new System.Drawing.Size(260, 26);
             this.cmboBoxTestID.TabIndex = 3;
@@ -86,7 +87,7 @@
             // btnAddTest
             // 
             this.btnAddTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTest.Location = new System.Drawing.Point(388, 60);
+            this.btnAddTest.Location = new System.Drawing.Point(388, 71);
             this.btnAddTest.Name = "btnAddTest";
             this.btnAddTest.Size = new System.Drawing.Size(118, 28);
             this.btnAddTest.TabIndex = 4;
@@ -97,7 +98,7 @@
             // btnOrder
             // 
             this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(352, 338);
+            this.btnOrder.Location = new System.Drawing.Point(352, 361);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(154, 36);
             this.btnOrder.TabIndex = 5;
@@ -120,10 +121,10 @@
             this.dataGridViewTextBoxColumn5,
             this.AddEdit});
             this.testOrderedDataGridView.DataSource = this.testOrderedBindingSource;
-            this.testOrderedDataGridView.Location = new System.Drawing.Point(3, 112);
+            this.testOrderedDataGridView.Location = new System.Drawing.Point(3, 105);
             this.testOrderedDataGridView.Name = "testOrderedDataGridView";
             this.testOrderedDataGridView.ReadOnly = true;
-            this.testOrderedDataGridView.Size = new System.Drawing.Size(520, 220);
+            this.testOrderedDataGridView.Size = new System.Drawing.Size(512, 238);
             this.testOrderedDataGridView.TabIndex = 5;
             this.testOrderedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.testOrderedDataGridView_CellContentClick);
             // 
@@ -191,11 +192,11 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(22, 338);
+            this.btnCancel.Location = new System.Drawing.Point(20, 361);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 36);
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -204,7 +205,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.Black;
-            this.lblMessage.Location = new System.Drawing.Point(84, 75);
+            this.lblMessage.Location = new System.Drawing.Point(17, 12);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(0, 13);
             this.lblMessage.TabIndex = 7;
@@ -221,7 +222,7 @@
             this.Controls.Add(lbltTestName);
             this.Controls.Add(this.cmboBoxTestID);
             this.Name = "OrderLabTestUserControl";
-            this.Size = new System.Drawing.Size(526, 394);
+            this.Size = new System.Drawing.Size(523, 416);
             this.Load += new System.EventHandler(this.OrderLabTestUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();

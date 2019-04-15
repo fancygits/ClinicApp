@@ -34,7 +34,7 @@
             System.Windows.Forms.Label resultLabel;
             System.Windows.Forms.Label resultDetailLabel;
             this.dateTimePickerTestDate = new System.Windows.Forms.DateTimePicker();
-            this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            //this.testOrderedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txBxTestName = new System.Windows.Forms.TextBox();
             this.ckBxAbnResults = new System.Windows.Forms.CheckBox();
             this.txBxResultDetail = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@
             nameLabel = new System.Windows.Forms.Label();
             resultLabel = new System.Windows.Forms.Label();
             resultDetailLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dateLabel
@@ -90,7 +90,6 @@
             // 
             // dateTimePickerTestDate
             // 
-            this.dateTimePickerTestDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.testOrderedBindingSource, "Date", true));
             this.dateTimePickerTestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerTestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerTestDate.Location = new System.Drawing.Point(145, 59);
@@ -100,11 +99,10 @@
             // 
             // testOrderedBindingSource
             // 
-            this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
+            //this.testOrderedBindingSource.DataSource = typeof(ClinicApp.Model.TestOrdered);
             // 
             // txBxTestName
             // 
-            this.txBxTestName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "Name", true));
             this.txBxTestName.Enabled = false;
             this.txBxTestName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txBxTestName.Location = new System.Drawing.Point(145, 21);
@@ -114,7 +112,6 @@
             // 
             // ckBxAbnResults
             // 
-            this.ckBxAbnResults.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.testOrderedBindingSource, "Result", true));
             this.ckBxAbnResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckBxAbnResults.Location = new System.Drawing.Point(151, 94);
             this.ckBxAbnResults.Name = "ckBxAbnResults";
@@ -124,7 +121,6 @@
             // 
             // txBxResultDetail
             // 
-            this.txBxResultDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.testOrderedBindingSource, "ResultDetail", true));
             this.txBxResultDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txBxResultDetail.Location = new System.Drawing.Point(145, 131);
             this.txBxResultDetail.Multiline = true;
@@ -183,7 +179,7 @@
             this.Name = "LabTestInfoUserControl";
             this.Size = new System.Drawing.Size(449, 259);
             this.Load += new System.EventHandler(this.LabTestInfoUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.testOrderedBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,7 +187,7 @@
 
         #endregion
 
-        private System.Windows.Forms.BindingSource testOrderedBindingSource;
+        //private System.Windows.Forms.BindingSource testOrderedBindingSource;
         private System.Windows.Forms.DateTimePicker dateTimePickerTestDate;
         private System.Windows.Forms.TextBox txBxTestName;
         private System.Windows.Forms.CheckBox ckBxAbnResults;

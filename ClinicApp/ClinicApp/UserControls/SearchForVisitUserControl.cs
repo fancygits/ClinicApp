@@ -97,67 +97,68 @@ namespace ClinicApp.UserControls
                     int i = e.RowIndex;
                     DataGridViewRow row = visitDataGridView.Rows[i];
                     this.visit = (Visit)row.DataBoundItem;
-                    AddVisitDialog addVisitDialog = new AddVisitDialog();
-                    addVisitDialog.addVisitUserControl1.appointmentIDTextBox.Text = this.visit.AppointmentID + "";
-                    addVisitDialog.addVisitUserControl1.weightTextBox.Text = this.visit.Weight + "";
-                    addVisitDialog.addVisitUserControl1.temperatureTextBox.Text = visit.Temperature + "";
-                    addVisitDialog.addVisitUserControl1.systolicBPTextBox.Text = visit.SystolicBP + "";
-                    addVisitDialog.addVisitUserControl1.diastolicBPTextBox.Text = visit.DiastolicBP + "";
-                    addVisitDialog.addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
-                    addVisitDialog.addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
-                    addVisitDialog.addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
-                    addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
-                    addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
+                    // Changed to Instance <jbb>
+                    //AddVisitDialog addVisitDialog = new AddVisitDialog();
+                    AddVisitDialog.Instance().addVisitUserControl1.appointmentIDTextBox.Text = this.visit.AppointmentID + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Text = this.visit.Weight + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Text = visit.Temperature + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Text = visit.SystolicBP + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.diastolicBPTextBox.Text = visit.DiastolicBP + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.pulseTextBox.Text = visit.Pulse + "";
+                    AddVisitDialog.Instance().addVisitUserControl1.symptomsTextBox.Text = visit.Symptoms;
+                    AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
+                    AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
+                    AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
                     if (this.visit.NurseID > 0)
                     {
                         if (visit.FinalDiagnosis != null)
                         {
-                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.weightTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.temperatureTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.systolicBPTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.diastolicBPTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.symptomsTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.pulseTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = true;
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Show();
-                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Hide();
+                            AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.diastolicBPTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.symptomsTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.pulseTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = true;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Show();
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Hide();
 
                         }
                         else
                         {
-                            addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
-                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
-                            addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
-                            addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = false;
-                            addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = true;
-                            addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = true;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
+                            AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
+                            AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
+                            AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = true;
                         }
                     }
                     else
                     {
                         this.visit.NurseID = this.credentialController.GetNurseByUserName(LoginForm.Instance().userNameTextBox.Text).NurseID;
-                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Show();
-                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
-                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.SelectedText = this.visit.NurseName;
-                        addVisitDialog.addVisitUserControl1.nurseNameComboBox.Enabled = false;
-                        addVisitDialog.addVisitUserControl1.nurseNameTextBox.Hide();
-                        addVisitDialog.addVisitUserControl1.addVisitButton.Enabled = true;
-                        addVisitDialog.addVisitUserControl1.updateVisitButton.Enabled = false;
-                        addVisitDialog.addVisitUserControl1.btnLabTest.Enabled = false;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedText = this.visit.NurseName;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = false;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
+                        AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
+                        AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
+                        AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = false;
 
 
                     }
-                    addVisitDialog.addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
-                    addVisitDialog.addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
-                    addVisitDialog.addVisitUserControl1.appointmentTimeTextBox.Text = visit.AppointmentTime.ToShortDateString() + " " + visit.AppointmentTime.ToShortTimeString();
-                    addVisitDialog.addVisitUserControl1.visit = this.visit;
-                    addVisitDialog.Show();
+                    AddVisitDialog.Instance().addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
+                    AddVisitDialog.Instance().addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
+                    AddVisitDialog.Instance().addVisitUserControl1.appointmentTimeTextBox.Text = visit.AppointmentTime.ToShortDateString() + " " + visit.AppointmentTime.ToShortTimeString();
+                    AddVisitDialog.Instance().addVisitUserControl1.visit = this.visit;
+                    AddVisitDialog.Instance().Show();
                 }
             } catch (Exception ex)
             {
