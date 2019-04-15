@@ -407,7 +407,7 @@
             this.personSearchUserControl.Name = "personSearchUserControl";
             this.personSearchUserControl.Padding = new System.Windows.Forms.Padding(10);
             this.personSearchUserControl.Size = new System.Drawing.Size(750, 105);
-            this.personSearchUserControl.TabIndex = 32;
+            this.personSearchUserControl.TabIndex = 0;
             // 
             // deletePatientButton
             // 
