@@ -458,7 +458,6 @@
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox postCodeTextBox;
         private System.Windows.Forms.TextBox streetAddressTextBox;
@@ -472,7 +471,8 @@
         private System.Windows.Forms.Button btnSearchAppointments;
         private System.Windows.Forms.Button btnSearchVisits;
         private System.Windows.Forms.Button btnDebug;
-        private PersonSearchUserControl personSearchUserControl;
         private System.Windows.Forms.Button deletePatientButton;
+        protected internal System.Windows.Forms.TextBox firstNameTextBox;
+        protected internal PersonSearchUserControl personSearchUserControl;
     }
 }

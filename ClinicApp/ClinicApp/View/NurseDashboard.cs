@@ -7,10 +7,12 @@ namespace ClinicApp
     public partial class NurseDashboard : Form
     {
         private static NurseDashboard instance = null;
-        public TabControl patientTabControl;
+        //public TabControl patientTabControl;
         private NurseDashboard()
         {
             InitializeComponent();
+            this.searchForVisitUserControl1.personSearchUserControl.AddPersonClicked += patientsTabControl_AddPatientClicked;
+            this.addAppointmentUserControl1.personSearchUserControl.AddPersonClicked += patientsTabControl_AddPatientClicked;
         }
 
         public static NurseDashboard Instance()
@@ -43,6 +45,13 @@ namespace ClinicApp
             Point end2 = new Point(logoutLinkLabel.Location.X, logoutLinkLabel.Location.Y + 30);
             e.Graphics.DrawLine(pen, start1, end1);
             e.Graphics.DrawLine(pen, start2, end2);
+        }
+
+        private void patientsTabControl_AddPatientClicked(object sender, System.EventArgs e)
+        {
+            patientsTabControl.SelectTab("infoTabPage");
+            this.patientInformationUserControl1.GetPatient();
+            this.patientInformationUserControl1.firstNameTextBox.Focus();
         }
     }
 }

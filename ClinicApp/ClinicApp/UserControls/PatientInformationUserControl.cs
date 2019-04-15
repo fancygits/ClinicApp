@@ -29,6 +29,7 @@ namespace ClinicApp.UserControls
             personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
             personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
+            personSearchUserControl.AddPersonClicked += btnAddUpdatePatient_Click;
         }
 
         /// <summary>
@@ -80,9 +81,9 @@ namespace ClinicApp.UserControls
         {
             if (patient == null)
             {
-                NoMatchesDialog();
+                patient = new Patient();
             }
-            else if (patient.FirstName == null)
+            if (patient.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdatePatient.Text = "Add Patient";
@@ -100,22 +101,6 @@ namespace ClinicApp.UserControls
                 patientBindingSource.Add(newPatient);
                 EnableFields();
                 btnAddUpdatePatient.Enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// Prompts to add a new patient since none are found
-        /// </summary>
-        public void NoMatchesDialog()
-        {
-            DialogResult result = MessageBox.Show("No patients matched your search.\n" +
-                            "Would you like to add a new patient?", "No Matches",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                TabControl tabControl = Parent.Parent as TabControl;
-                tabControl.SelectedIndex = 0;
-                btnAddUpdatePatient.PerformClick();
             }
         }
 

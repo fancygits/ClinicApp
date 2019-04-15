@@ -11,6 +11,7 @@ namespace ClinicApp.UserControls
         private string personType;
         public event EventHandler GetPersonButtonClicked;
         public event EventHandler ClearButtonClicked;
+        public event EventHandler AddPersonClicked;
         public PersonSearchUserControl(Person person) : this()
         {
             SetPersonType(person);
@@ -30,6 +31,11 @@ namespace ClinicApp.UserControls
         protected virtual void OnClearButtonClicked(EventArgs e)
         {
             ClearButtonClicked?.Invoke(this, e);
+        }
+
+        protected virtual void OnAddPersonClicked(EventArgs e)
+        {
+            AddPersonClicked?.Invoke(this, e);
         }
 
         private void PersonSearchUserControl_Enter(object sender, EventArgs e)
@@ -66,7 +72,14 @@ namespace ClinicApp.UserControls
         {
             personBindingSource.Clear();
             patient = this.FindPatient(firstName, lastName, birthDate);
-            personBindingSource.Add(patient);
+            if (patient == null)
+            {
+                NoMatchesDialog(null, null);
+            }
+            else
+            {
+                personBindingSource.Add(patient);
+            }
         }
 
         /// <summary>
@@ -93,6 +106,21 @@ namespace ClinicApp.UserControls
             else if (nurse != null)
             {
                 nurse = this.GetNurseByID(nurse.NurseID);
+            }
+        }
+
+        /// <summary>
+        /// Prompts to add a new person since none are found
+        /// </summary>
+        public void NoMatchesDialog(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("No " + personType + "s matched your search.\n" +
+                            "Would you like to add a new " + personType + "? ", "No Matches",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //patient = new Patient();
+                OnAddPersonClicked(e);
             }
         }
 

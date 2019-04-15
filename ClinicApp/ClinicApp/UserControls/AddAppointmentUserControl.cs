@@ -129,37 +129,5 @@ namespace ClinicApp.UserControls
             addApptForm.ShowDialog();
             this.RefreshPage();
         }
-
-        //private void btnSearchPatient_Click(object sender, EventArgs e)
-        //{
-        //    string firstName = firstNameTextBox.Text;
-        //    string lastName = lastNameTextBox.Text;
-        //    string birthDate = birthDateDateTimePicker.Text;
-        //    this.patient = this.FindPatient(firstName, lastName, birthDate);
-        //    if (this.patient != null)
-        //    {
-        //        patientBindingSource.Clear();
-        //        patientBindingSource.Add(patient);
-        //        this.RefreshPage();
-        //    }
-        //   else
-        //    {
-        //        this.SwitchTabNoMatchesDialog();
-        //    }
-        //}
-
-
-        private void SwitchTabNoMatchesDialog()
-{
-            TabControl tabControl = this.Parent.Parent as TabControl;
-            //tabControl.SelectedIndex = 0;
-            PatientInformationUserControl patientInformationUserControl = tabControl.TabPages[0].Controls[0] as PatientInformationUserControl;
-            patientInformationUserControl.NoMatchesDialog();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            this.Clear();
-        }
     }
 }
