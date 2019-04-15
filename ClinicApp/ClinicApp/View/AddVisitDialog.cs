@@ -6,7 +6,7 @@ namespace ClinicApp.View
     {
         private static AddVisitDialog instance = null;
 
-        public AddVisitDialog()
+        private AddVisitDialog()
         {
             InitializeComponent();
         }

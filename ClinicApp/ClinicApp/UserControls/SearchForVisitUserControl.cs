@@ -122,21 +122,12 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                     AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
                     AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
-                    if (this.visit.NurseID > 0)
+                    AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
+                    if (this.HasVisit())
                     {
                         if (visit.FinalDiagnosis != null)
                         {
-                            AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.diastolicBPTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.symptomsTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.pulseTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
-                            AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
+                            this.DisableFields();
                             AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = true;
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Text = visit.NurseName;
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Show();
@@ -145,6 +136,7 @@ namespace ClinicApp.UserControls
                         }
                         else
                         {
+                            this.EnableFields();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
@@ -155,17 +147,16 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
+                        this.EnableFields();
                         this.visit.NurseID = this.credentialController.GetNurseByUserName(LoginForm.Instance().userNameTextBox.Text).NurseID;
-                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedText = this.visit.NurseName;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
                         AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
                         AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = false;
-
-
                     }
                     AddVisitDialog.Instance().addVisitUserControl1.patientNameTextBox.Text = visit.PatientName;
                     AddVisitDialog.Instance().addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
@@ -186,6 +177,48 @@ namespace ClinicApp.UserControls
         {
             this.RefreshPatient();
             this.DisplayVistsByPatient();
+        }
+
+        private bool HasVisit()
+        {
+            if (this.visit.NurseID > 0 && 
+                this.visit.Symptoms != null &&
+                this.visit.InitialDiagnosis != null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+        private void DisableFields()
+        {
+            AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.diastolicBPTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.symptomsTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.pulseTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
+            AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
+        }
+
+        private void EnableFields()
+        {
+            AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.diastolicBPTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.symptomsTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.pulseTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Enabled = true;
         }
     }
 }
