@@ -91,7 +91,14 @@ namespace ClinicApp.UserControls
         {
             personBindingSource.Clear();
             nurse = this.FindNurse(firstName, lastName, birthDate);
-            personBindingSource.Add(nurse);
+            if (nurse == null)
+            {
+                NoMatchesDialog(null, null);
+            }
+            else
+            {
+                personBindingSource.Add(nurse);
+            }
         }
 
         /// <summary>

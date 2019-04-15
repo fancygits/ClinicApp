@@ -389,9 +389,6 @@ namespace ClinicApp.UserControls
             SearchForVisitUserControl searchForVisitUserControl = tabControl.TabPages[2].Controls[0] as SearchForVisitUserControl;
             searchForVisitUserControl.patient = patient;
             searchForVisitUserControl.RefreshPage();
-            searchForVisitUserControl.personSearchUserControl.firstNameTextBox.Text = patient.FirstName;
-            searchForVisitUserControl.personSearchUserControl.lastNameTextBox.Text = patient.LastName;
-            searchForVisitUserControl.personSearchUserControl.birthDateDateTimePicker.Text = patient.BirthDate.ToShortDateString();
         }
 
         private void btnAddUpdatePatient_Click(object sender, EventArgs e)
@@ -408,15 +405,15 @@ namespace ClinicApp.UserControls
                 }
                 if (sSNMaskedTextBox.Enabled)
                 {
-                    DebugPatient(null, null);
+                    //DebugPatient(null, null);
                     AddPatient();
                 }
                 else
                 {
                     EnableFields();
+                    patientBindingSource.Clear();
+                    patientBindingSource.Add(patient);
                 }
-                patientBindingSource.Clear();
-                patientBindingSource.Add(patient);
             }
         }
 

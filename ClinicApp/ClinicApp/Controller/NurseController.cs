@@ -73,9 +73,9 @@ namespace ClinicApp.Controller
         /// </summary>
         /// <param name="personID">The PersonID of the new nurse</param>
         /// <returns>The new NurseID</returns>
-        public int InsertNurse(int personID)
+        public int InsertNurse(int personID, bool active)
         {
-            return NurseDAL.InsertNurse(personID);
+            return NurseDAL.InsertNurse(personID, active);
         }
 
         /// <summary>
