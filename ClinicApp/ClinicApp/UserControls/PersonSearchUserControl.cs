@@ -24,11 +24,7 @@ namespace ClinicApp.UserControls
 
         protected virtual void OnGetPersonButtonClicked(EventArgs e)
         {
-            var handler = GetPersonButtonClicked;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            GetPersonButtonClicked?.Invoke(this, e);
         }
 
         protected virtual void OnClearButtonClicked(EventArgs e)

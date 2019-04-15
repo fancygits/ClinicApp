@@ -27,6 +27,7 @@ namespace ClinicApp.UserControls
             this.patientController = new PatientController();
             personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
         }
 
         private void AddAppointmentUserControl_Load(object sender, EventArgs e)
@@ -47,6 +48,16 @@ namespace ClinicApp.UserControls
             patientBindingSource.Clear();
             patientBindingSource.Add(patient);
             RefreshPage();
+        }
+
+        /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            Clear();
         }
 
         /// <summary>

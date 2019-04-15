@@ -28,6 +28,7 @@ namespace ClinicApp.UserControls
             this.credentialController = new CredentialController();
             personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
         }
 
         private void RefreshPatient()
@@ -47,6 +48,18 @@ namespace ClinicApp.UserControls
         {
             RefreshPatient();
             DisplayVistsByPatient();
+        }
+
+        /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            patientBindingSource.Clear();
+            visitBindingSource.Clear();
+            visitDataGridView.DataSource = null;
         }
 
         public void RefreshPage()

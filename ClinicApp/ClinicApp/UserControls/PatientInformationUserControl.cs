@@ -60,6 +60,11 @@ namespace ClinicApp.UserControls
             GetPatient();
         }
 
+        /// <summary>
+        /// The method to run when the Clear button in PersonSearchUserControl is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
         {
             ClearFields();
@@ -310,6 +315,9 @@ namespace ClinicApp.UserControls
 
         private void EnableFields()
         {
+            firstNameTextBox.Enabled = true;
+            lastNameTextBox.Enabled = true;
+            birthDateDateTimePicker.Enabled = true;
             sSNMaskedTextBox.Enabled = true;
             genderComboBox.Enabled = true;
             streetAddressTextBox.Enabled = true;
@@ -324,6 +332,9 @@ namespace ClinicApp.UserControls
 
         private void DisableFields()
         {
+            firstNameTextBox.Enabled = false;
+            lastNameTextBox.Enabled = false;
+            birthDateDateTimePicker.Enabled = false;
             sSNMaskedTextBox.Enabled = false;
             genderComboBox.Enabled = false;
             streetAddressTextBox.Enabled = false;
