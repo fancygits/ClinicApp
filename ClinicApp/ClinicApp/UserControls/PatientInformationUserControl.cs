@@ -28,6 +28,7 @@ namespace ClinicApp.UserControls
             errorProvider = new ErrorProvider();
             personSearchUserControl.SetPersonType(new Patient());
             personSearchUserControl.GetPersonButtonClicked += personSearchUserControl_GetPersonButtonClicked;
+            personSearchUserControl.ClearButtonClicked += personSearchUserControl_ClearButtonClicked;
         }
 
         /// <summary>
@@ -57,6 +58,12 @@ namespace ClinicApp.UserControls
             patientBindingSource.Clear();
             patientBindingSource.Add(patient);
             GetPatient();
+        }
+
+        private void personSearchUserControl_ClearButtonClicked(object sender, EventArgs e)
+        {
+            ClearFields();
+            DisableFields();
         }
 
         /// <summary>
@@ -389,12 +396,6 @@ namespace ClinicApp.UserControls
             searchForVisitUserControl.personSearchUserControl.firstNameTextBox.Text = patient.FirstName;
             searchForVisitUserControl.personSearchUserControl.lastNameTextBox.Text = patient.LastName;
             searchForVisitUserControl.personSearchUserControl.birthDateDateTimePicker.Text = patient.BirthDate.ToShortDateString();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-            DisableFields();
         }
 
         private void btnAddUpdatePatient_Click(object sender, EventArgs e)

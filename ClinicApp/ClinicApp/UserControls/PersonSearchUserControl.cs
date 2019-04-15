@@ -10,6 +10,7 @@ namespace ClinicApp.UserControls
         public Patient patient;
         private string personType;
         public event EventHandler GetPersonButtonClicked;
+        public event EventHandler ClearButtonClicked;
         public PersonSearchUserControl(Person person) : this()
         {
             SetPersonType(person);
@@ -29,7 +30,12 @@ namespace ClinicApp.UserControls
                 handler(this, e);
             }
         }
-    
+
+        protected virtual void OnClearButtonClicked(EventArgs e)
+        {
+            ClearButtonClicked?.Invoke(this, e);
+        }
+
         private void PersonSearchUserControl_Enter(object sender, EventArgs e)
         {
             firstNameTextBox.Focus();
@@ -146,6 +152,7 @@ namespace ClinicApp.UserControls
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
+            OnClearButtonClicked(e);
         }
 
         private void textChanged(object sender, EventArgs e)
