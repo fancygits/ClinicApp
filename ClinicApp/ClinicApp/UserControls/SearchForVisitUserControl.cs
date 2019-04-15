@@ -47,7 +47,7 @@ namespace ClinicApp.UserControls
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
             RefreshPatient();
-            DisplayVistsByPatient();
+            RefreshPage();
         }
 
         /// <summary>

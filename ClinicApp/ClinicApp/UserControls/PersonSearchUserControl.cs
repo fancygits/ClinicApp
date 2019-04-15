@@ -119,7 +119,6 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //patient = new Patient();
                 OnAddPersonClicked(e);
             }
         }

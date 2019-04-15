@@ -47,6 +47,11 @@ namespace ClinicApp
             e.Graphics.DrawLine(pen, start2, end2);
         }
 
+        /// <summary>
+        /// Switches to the Patient Information Tab and prepares to add a new patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void patientsTabControl_AddPatientClicked(object sender, System.EventArgs e)
         {
             patientsTabControl.SelectTab("infoTabPage");
