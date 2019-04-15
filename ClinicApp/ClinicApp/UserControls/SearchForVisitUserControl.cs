@@ -109,7 +109,7 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                     AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
                     AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
-                    if (this.visit.NurseID > 0)
+                    if (this.HasVisit())
                     {
                         if (visit.FinalDiagnosis != null)
                         {
@@ -135,9 +135,9 @@ namespace ClinicApp.UserControls
                     {
                         this.EnableFields();
                         this.visit.NurseID = this.credentialController.GetNurseByUserName(LoginForm.Instance().userNameTextBox.Text).NurseID;
-                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedText = this.visit.NurseName;
+                        AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
                         AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
@@ -165,6 +165,18 @@ namespace ClinicApp.UserControls
             this.DisplayVistsByPatient();
         }
 
+        private bool HasVisit()
+        {
+            if (this.visit.NurseID > 0 && 
+                this.visit.Symptoms != null &&
+                this.visit.InitialDiagnosis != null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
         private void DisableFields()
         {
             AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;

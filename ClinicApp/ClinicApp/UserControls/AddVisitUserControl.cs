@@ -47,6 +47,7 @@ namespace ClinicApp.UserControls
             }
             this.SetTestOrderedLabel();
         }
+
         private bool PutData(Visit newVisit)
         {
             bool isValid = false;
@@ -54,62 +55,20 @@ namespace ClinicApp.UserControls
             {
                 newVisit.AppointmentID = Convert.ToInt32(this.appointmentIDTextBox.Text);
                 newVisit.NurseID = (int)this.nurseNameComboBox.SelectedValue;
-                if (Validator.IsDecimal(this.weightTextBox, errorProvider))
+                if (Validator.IsDecimal(this.weightTextBox, errorProvider) &&
+                   Validator.IsInt32(this.systolicBPTextBox, errorProvider) &&
+                   Validator.IsInt32(this.diastolicBPTextBox, errorProvider) &&
+                   Validator.IsDecimal(this.temperatureTextBox, errorProvider) &&
+                   Validator.IsInt32(this.pulseTextBox, errorProvider) &&
+                   Validator.IsPresent(this.symptomsTextBox, errorProvider) &&
+                   Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
                 {
                     newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
-                    isValid = true;
-                } else
-                {
-                    isValid = false;
-                }
-               
-                if (Validator.IsInt32(this.systolicBPTextBox, errorProvider))
-                {
                     newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
-                    isValid = true;
-                }
-                else
-                {
-                    isValid = false;
-                }
-                if (Validator.IsInt32(this.diastolicBPTextBox, errorProvider))
-                {
                     newVisit.DiastolicBP = Convert.ToInt32(this.diastolicBPTextBox.Text);
-                    isValid = true;
-                }
-                else
-                {
-                    isValid = false;
-                }
-                if (Validator.IsDecimal(this.temperatureTextBox, errorProvider))
-                {
                     newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
-                    isValid = true;
-                }
-                else
-                {
-                    isValid = false;
-                }
-                if (Validator.IsInt32(this.pulseTextBox, errorProvider))
-                {
                     newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
-                    isValid = true;
-                }
-                else
-                {
-                    isValid = false;
-                }
-                if (Validator.IsPresent(this.symptomsTextBox, errorProvider))
-                {
                     newVisit.Symptoms = this.symptomsTextBox.Text;
-                    isValid = true;
-                }
-                else
-                {
-                    isValid = false;
-                }
-                if (Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
-                {
                     newVisit.InitialDiagnosis = this.initialDiagnosisTextBox.Text;
                     isValid = true;
                 } else
@@ -177,7 +136,6 @@ namespace ClinicApp.UserControls
                         AddVisitDialog.Instance().Hide();
                         MessageBox.Show("Your visit was successfully added", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
-                        this.addVisitButton.Enabled = false;
                     }
                 }
                 catch (Exception ex)
@@ -185,7 +143,6 @@ namespace ClinicApp.UserControls
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
-            
            
         }
 
