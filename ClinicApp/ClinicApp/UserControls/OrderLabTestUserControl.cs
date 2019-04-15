@@ -56,7 +56,6 @@ namespace ClinicApp.UserControls
                 else
                 {
                     btnAddTest.Enabled = false;
-                    cmboBoxTestID.Text = "No Lab Tests Available";
                 }
                 
             }

@@ -122,7 +122,7 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                     AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
                     AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
-                    AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
+                    //AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
                     if (this.HasVisit())
                     {
                         if (visit.FinalDiagnosis != null)
@@ -162,6 +162,7 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.birthDateTextBox.Text = visit.PatientBirthDate.ToShortDateString();
                     AddVisitDialog.Instance().addVisitUserControl1.appointmentTimeTextBox.Text = visit.AppointmentTime.ToShortDateString() + " " + visit.AppointmentTime.ToShortTimeString();
                     AddVisitDialog.Instance().addVisitUserControl1.visit = this.visit;
+                    AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
                     AddVisitDialog.Instance().Show();
                 }
             } catch (Exception ex)
