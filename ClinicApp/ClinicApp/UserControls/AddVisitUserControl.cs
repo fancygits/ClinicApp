@@ -108,7 +108,6 @@ namespace ClinicApp.UserControls
                         AddVisitDialog.Instance().Hide();
                         MessageBox.Show("Your visit has been successfully updated", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
-                        this.PutData(newVisit);
                     }
                 }
                 catch (Exception ex)
@@ -208,6 +207,7 @@ namespace ClinicApp.UserControls
         private void btnClose_Click(object sender, EventArgs e)
         {
             AddVisitDialog.Instance().Hide();
+            this.errorProvider.Clear();
         }
     }
 }
