@@ -56,6 +56,7 @@ namespace ClinicApp
         {
             patientsTabControl.SelectTab("infoTabPage");
             this.patientInformationUserControl1.GetPatient();
+            this.patientInformationUserControl1.ClearFields();
             this.patientInformationUserControl1.firstNameTextBox.Focus();
         }
     }

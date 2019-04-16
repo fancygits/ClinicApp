@@ -89,7 +89,7 @@ namespace ClinicApp.UserControls
                 btnAddUpdatePatient.Text = "Add Patient";
                 PutNewPatient();
                 patientBindingSource.Clear();
-                patientBindingSource.Add(newPatient);
+                patientBindingSource.Add(patient);
                 EnableFields();
                 btnAddUpdatePatient.Enabled = true;
             }
