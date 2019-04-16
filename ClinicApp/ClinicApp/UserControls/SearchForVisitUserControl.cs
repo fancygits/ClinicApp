@@ -110,8 +110,6 @@ namespace ClinicApp.UserControls
                     int i = e.RowIndex;
                     DataGridViewRow row = visitDataGridView.Rows[i];
                     this.visit = (Visit)row.DataBoundItem;
-                    // Changed to Instance <jbb>
-                    //AddVisitDialog addVisitDialog = new AddVisitDialog();
                     AddVisitDialog.Instance().addVisitUserControl1.appointmentIDTextBox.Text = this.visit.AppointmentID + "";
                     AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Text = this.visit.Weight + "";
                     AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Text = visit.Temperature + "";
@@ -122,7 +120,6 @@ namespace ClinicApp.UserControls
                     AddVisitDialog.Instance().addVisitUserControl1.doctorNameTextBox.Text = visit.DoctorName;
                     AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
                     AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
-                    //AddVisitDialog.Instance().addVisitUserControl1.SetTestOrderedLabel();
                     if (this.HasVisit())
                     {
                         if (visit.FinalDiagnosis != null)
@@ -139,7 +136,7 @@ namespace ClinicApp.UserControls
                             this.EnableFields();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
-                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
                             AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
                             AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
                             AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = true;
@@ -212,6 +209,7 @@ namespace ClinicApp.UserControls
             AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = true;
