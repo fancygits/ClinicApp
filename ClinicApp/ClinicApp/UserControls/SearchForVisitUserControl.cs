@@ -139,7 +139,7 @@ namespace ClinicApp.UserControls
                             this.EnableFields();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
                             AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
-                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = visit.NurseID;
+                            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.SelectedValue = this.visit.NurseID;
                             AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = false;
                             AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
                             AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = true;
@@ -212,6 +212,7 @@ namespace ClinicApp.UserControls
             AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Enabled = true;
+            AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.weightTextBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.temperatureTextBox.Enabled = true;
             AddVisitDialog.Instance().addVisitUserControl1.systolicBPTextBox.Enabled = true;
