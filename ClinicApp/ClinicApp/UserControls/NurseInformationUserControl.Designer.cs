@@ -306,6 +306,7 @@
             this.postCodeTextBox.Enabled = false;
             this.postCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postCodeTextBox.Location = new System.Drawing.Point(534, 228);
+            this.postCodeTextBox.MaxLength = 10;
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.postCodeTextBox.TabIndex = 9;
@@ -384,6 +385,7 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
             this.usernameTextBox.TabIndex = 11;
+            this.usernameTextBox.Tag = "Username";
             this.usernameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
             // resetPasswordButton
@@ -401,6 +403,7 @@
             // debugNurseButton
             // 
             this.debugNurseButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.debugNurseButton.FlatAppearance.BorderSize = 0;
             this.debugNurseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.debugNurseButton.Location = new System.Drawing.Point(25, 373);
             this.debugNurseButton.Name = "debugNurseButton";

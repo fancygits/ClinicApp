@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ClinicApp.Controller;
+﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using ClinicApp.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {/// <summary>
@@ -106,7 +106,7 @@ namespace ClinicApp.UserControls
                     {
                         this.visit = newVisit;
                         AddVisitDialog.Instance().Hide();
-                        MessageBox.Show("Your visit has been successfully updated", "Success");
+                        //MessageBox.Show("Your visit has been successfully updated", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                     }
                 }
@@ -133,7 +133,7 @@ namespace ClinicApp.UserControls
                     else
                     {
                         AddVisitDialog.Instance().Hide();
-                        MessageBox.Show("Your visit was successfully added", "Success");
+                        //MessageBox.Show("Your visit was successfully added", "Success");
                         NurseDashboard.Instance().searchForVisitUserControl1.DisplayVistsByPatient();
                     }
                 }

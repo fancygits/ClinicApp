@@ -94,7 +94,7 @@ namespace ClinicApp.UserControls
                 resetPasswordButton.Text = "Set Password";
                 PutNewNurse();
                 nurseBindingSource.Clear();
-                nurseBindingSource.Add(newNurse);
+                nurseBindingSource.Add(nurse);
                 EnableFields();
                 btnAddUpdateNurse.Enabled = true;
             }
@@ -369,7 +369,8 @@ namespace ClinicApp.UserControls
                    Validator.IsPresent(stateComboBox, errorProvider) &&
                    Validator.IsPresent(postCodeTextBox, errorProvider) &&
                    Validator.IsPostCode(postCodeTextBox, errorProvider) &&
-                   Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider);
+                   Validator.IsPresent(phoneNumberMaskedTextBox, errorProvider) &&
+                   Validator.IsPresent(usernameTextBox, errorProvider);
         }
 
         /// <summary>

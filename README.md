@@ -12,7 +12,6 @@ A health care system for a clinic. Created by the CS6232-G1 Team.
 | --------------|----------|---------------|
 | administrator | password | administrator |
 |    vcheelj    |  JFPVru  | administrator |
-|     nurse     | password |     nurse     |
 |    sbadinit   |  ahcFkj  |     nurse     |
 |   sbunhill6   | hYGFAvS4 |     nurse     |
 |   whelbeck16  |  RvafA0  |     nurse     |
