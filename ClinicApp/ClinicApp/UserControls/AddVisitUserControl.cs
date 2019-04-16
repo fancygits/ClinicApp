@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ClinicApp.Controller;
+﻿using ClinicApp.Controller;
 using ClinicApp.Model;
 using ClinicApp.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {/// <summary>
