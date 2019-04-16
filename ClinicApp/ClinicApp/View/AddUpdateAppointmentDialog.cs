@@ -157,7 +157,7 @@ namespace ClinicApp.View
                         }
                         else
                         {
-                            MessageBox.Show("Appointment Updated");
+                            //MessageBox.Show("Appointment Updated");
                             this.appointment = this.newAppointment;
                             this.DialogResult = DialogResult.OK;
                         }
@@ -178,7 +178,7 @@ namespace ClinicApp.View
                         }
                         else
                         {
-                            MessageBox.Show("Appointment Updated");
+                            //MessageBox.Show("Appointment Updated");
                             this.appointment = this.newAppointment;
                             this.DialogResult = DialogResult.OK;
                         }

@@ -44,7 +44,6 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sSNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
@@ -59,6 +58,7 @@
             this.resetPasswordButton = new System.Windows.Forms.Button();
             this.debugNurseButton = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
             stateLabel = new System.Windows.Forms.Label();
@@ -241,10 +241,6 @@
             this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
-            // 
             // phoneNumberMaskedTextBox
             // 
             this.phoneNumberMaskedTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -310,6 +306,7 @@
             this.postCodeTextBox.Enabled = false;
             this.postCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postCodeTextBox.Location = new System.Drawing.Point(534, 228);
+            this.postCodeTextBox.MaxLength = 10;
             this.postCodeTextBox.Name = "postCodeTextBox";
             this.postCodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.postCodeTextBox.TabIndex = 9;
@@ -388,6 +385,7 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 26);
             this.usernameTextBox.TabIndex = 11;
+            this.usernameTextBox.Tag = "Username";
             this.usernameTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
             // resetPasswordButton
@@ -423,6 +421,10 @@
             this.personSearchUserControl.Name = "personSearchUserControl";
             this.personSearchUserControl.Size = new System.Drawing.Size(750, 80);
             this.personSearchUserControl.TabIndex = 0;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // NurseInformationUserControl
             // 
