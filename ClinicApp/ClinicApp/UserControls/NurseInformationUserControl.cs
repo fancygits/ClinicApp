@@ -119,6 +119,10 @@ namespace ClinicApp.UserControls
                     errorProvider.SetError(resetPasswordButton, "Password hasn't been set.");
                     return;
                 }
+                else
+                {
+                    errorProvider.SetError(resetPasswordButton, "");
+                }
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 string birthDate = birthDateDateTimePicker.Value.ToShortDateString();
@@ -299,7 +303,7 @@ namespace ClinicApp.UserControls
             stateComboBox.SelectedValue = "";
         }
 
-        public void ClearFields()
+        private void ClearFields()
         {
             errorProvider.Clear();
             nurse = null;
