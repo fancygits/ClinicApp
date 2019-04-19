@@ -15,7 +15,7 @@ namespace ClinicApp.UserControls
         private readonly NurseController nurseController;
         public Nurse nurse;
         private Credential currentCredential;
-        private Nurse newNurse;
+        private Nurse currentNurse;
         private Credential newCredential;
         private List<State> stateList;
         private ErrorProvider errorProvider;
@@ -41,7 +41,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void NurseInformationUserControl_Load(object sender, EventArgs e)
         {
-            newNurse = new Nurse();
             currentCredential = new Credential();
             newCredential = new Credential();
             LoadComboboxes();
@@ -58,9 +57,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            nurse = personSearchUserControl.nurse;
-            nurseBindingSource.Clear();
-            nurseBindingSource.Add(nurse);
             this.GetNurse();
         }
 
@@ -82,48 +78,29 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetNurse()
         {
-            //if (nurse == null)
-            //{
-            //    nurse = new Nurse();
-            //    currentCredential = new Credential();
-            //}
+            nurse = personSearchUserControl.nurse;
+            nurseBindingSource.Clear();
+            nurseBindingSource.Add(nurse);
             if (nurse.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdateNurse.Text = "Add Nurse";
                 resetPasswordButton.Text = "Set Password";
-                PutNewNurse();
-                nurseBindingSource.Clear();
-                nurseBindingSource.Add(nurse);
-                EnableFields();
                 btnAddUpdateNurse.Enabled = true;
             }
             else
             {
+                StashNurse();
                 btnAddUpdateNurse.Text = "Update Nurse";
                 resetPasswordButton.Text = "Reset Password";
-                PutNewNurse();
-                nurseBindingSource.Clear();
-                nurseBindingSource.Add(newNurse);
-                EnableFields();
                 btnAddUpdateNurse.Enabled = false;
             }
+            EnableFields();
         }
 
         private void AddNurse()
         {
-            if (nurseController.UsernameInUse(usernameTextBox.Text))
-            {
-                lblMessage.Text = "Error: That username is already in use.";
-                errorProvider.SetError(usernameTextBox, "Username is already in use.");
-                return;
-            }
-            else
-            {
-                lblMessage.Text = "";
-                errorProvider.SetError(usernameTextBox, "");
-            }
-            if (IsValidData())
+            if (IsValidData() && UsernameNotInUse())
             {
                 if (newCredential.Password == null)
                 {
@@ -141,7 +118,6 @@ namespace ClinicApp.UserControls
                 int nurseID = -1;
                 try
                 {
-                    PutNewNurse();
                     Nurse tempNurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
                     if (tempNurse != null)
                     {
@@ -160,11 +136,11 @@ namespace ClinicApp.UserControls
                     }
                     else
                     {
-                        nurseID = nurseController.AddNurse(newNurse);
+                        nurseID = nurseController.AddNurse(nurse);
                     }
                     if (nurseID > 0)
                     {
-                        GetNurse();
+                        RefreshNurse();
                         lblMessage.Text = "Nurse " + nurseID + " has been added successfully.";
                     }
                     else
@@ -226,15 +202,14 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void UpdateNurse()
         {
-            if (IsValidData())
+            if (IsValidData() && UsernameNotInUse())
             {
                 try
                 {
                     newCredential.Username = usernameTextBox.Text;
-                    if (nurseController.UpdateNurse(nurse, currentCredential, newNurse, newCredential))
+                    if (nurseController.UpdateNurse(currentNurse, currentCredential, nurse, newCredential))
                     {
                         RefreshNurse();
-                        GetNurse();
                         lblMessage.Text = "Nurse has been updated successfully.";
                     }
                     else
@@ -252,38 +227,68 @@ namespace ClinicApp.UserControls
 
         private void SetResetPassword()
         {
-            ResetPasswordDialog updateAccountDialog = new ResetPasswordDialog(newNurse);
+            ResetPasswordDialog updateAccountDialog = new ResetPasswordDialog(nurse);
             Enabled = false;
             DialogResult result = updateAccountDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 newCredential = updateAccountDialog.newCredential;
+                nurse.Password = newCredential.Password;
                 lblMessage.Text = "New password is set. Press " + btnAddUpdateNurse.Text + " to save.";
                 btnAddUpdateNurse.Enabled = true;
             }
             Enabled = true;
         }
 
+        private bool UsernameNotInUse()
+        {
+            try
+            {
+                if (currentNurse == null || currentNurse.Username != usernameTextBox.Text)
+                {
+                    if (nurseController.UsernameInUse(usernameTextBox.Text))
+                    {
+                        lblMessage.Text = "Error: That username is already in use.";
+                        errorProvider.SetError(usernameTextBox, "Username is already in use.");
+                        return false;
+                    }
+                    else
+                    {
+                        lblMessage.Text = "";
+                        errorProvider.SetError(usernameTextBox, "");
+                        return true;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong with the input!! \n" + ex.ToString(),
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Puts fields into a new nurse object
         /// </summary>
-        private void PutNewNurse()
+        private void StashNurse()
         {
-            newNurse.NurseID = nurse.NurseID;
-            newNurse.PersonID = nurse.PersonID;
-            newNurse.LastName = nurse.LastName;
-            newNurse.FirstName = nurse.FirstName;
-            newNurse.BirthDate = nurse.BirthDate.Date;
-            newNurse.SSN = nurse.SSN;
-            newNurse.Gender = nurse.Gender;
-            newNurse.StreetAddress = nurse.StreetAddress;
-            newNurse.City = nurse.City;
-            newNurse.State = nurse.State;
-            newNurse.PostCode = nurse.PostCode;
-            newNurse.PhoneNumber = nurse.PhoneNumber;
-            newNurse.Active = nurse.Active;
-            newNurse.Username = nurse.Username;
-            newNurse.Password = newCredential.Password;
+            currentNurse = new Nurse();
+            currentNurse.NurseID = nurse.NurseID;
+            currentNurse.PersonID = nurse.PersonID;
+            currentNurse.LastName = nurse.LastName;
+            currentNurse.FirstName = nurse.FirstName;
+            currentNurse.BirthDate = nurse.BirthDate.Date;
+            currentNurse.SSN = nurse.SSN;
+            currentNurse.Gender = nurse.Gender;
+            currentNurse.StreetAddress = nurse.StreetAddress;
+            currentNurse.City = nurse.City;
+            currentNurse.State = nurse.State;
+            currentNurse.PostCode = nurse.PostCode;
+            currentNurse.PhoneNumber = nurse.PhoneNumber;
+            currentNurse.Active = nurse.Active;
+            currentNurse.Username = nurse.Username;
             currentCredential.Username = nurse.Username;
             currentCredential.Role = "nurse";
             newCredential.Username = currentCredential.Username;
@@ -364,10 +369,11 @@ namespace ClinicApp.UserControls
 
         private void RefreshNurse()
         {
+            lblMessage.Text = "";
+            personSearchUserControl.nurse = nurse;
             personSearchUserControl.RefreshPerson();
             nurse = personSearchUserControl.nurse;
-            currentCredential.Username = nurse.Username;
-            currentCredential.Role = "nurse";
+            StashNurse();
             nurseBindingSource.Clear();
             nurseBindingSource.Add(nurse);
         }
@@ -396,14 +402,8 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void NurseTextboxChanged(object sender, EventArgs e)
         {
-            if (sSNMaskedTextBox.MaskFull)
-            {
-                if (btnAddUpdateNurse.Enabled == false)
-                {
-                    lblMessage.Text = "";
-                }
-                btnAddUpdateNurse.Enabled = true;
-            }
+            lblMessage.Text = "";
+            btnAddUpdateNurse.Enabled = true;
         }
 
         private void btnAddUpdateNurse_Click(object sender, EventArgs e)
@@ -411,6 +411,7 @@ namespace ClinicApp.UserControls
             if (btnAddUpdateNurse.Text == "Update Nurse")
             {
                 UpdateNurse();
+                btnAddUpdateNurse.Enabled = false;
             }
             else
             {
@@ -449,7 +450,7 @@ namespace ClinicApp.UserControls
             {
                 try
                 {
-                    System.Diagnostics.Debug.Print("\t[Current Fields]");
+                    System.Diagnostics.Debug.Print("\t[Input Fields]");
                     System.Diagnostics.Debug.Print("First Name:\t" + firstNameTextBox.Text);
                     System.Diagnostics.Debug.Print("Last Name:\t" + lastNameTextBox.Text);
                     System.Diagnostics.Debug.Print("Birth Date:\t" + birthDateDateTimePicker.Value.ToShortDateString());
@@ -463,7 +464,7 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Username:\t" + usernameTextBox.Text);
                     System.Diagnostics.Debug.Print("Active:\t\t" + activeCheckBox.Checked);
 
-                    System.Diagnostics.Debug.Print("\t[Current Nurse]");
+                    System.Diagnostics.Debug.Print("\t[Nurse]");
                     System.Diagnostics.Debug.Print("NurseID:\t" + nurse.NurseID.ToString());
                     System.Diagnostics.Debug.Print("PersonID:\t" + nurse.PersonID.ToString());
                     System.Diagnostics.Debug.Print("Full Name:\t" + nurse.FullName.ToString());
@@ -483,20 +484,20 @@ namespace ClinicApp.UserControls
                     System.Diagnostics.Debug.Print("Password:\t" + Convert.ToString(currentCredential.Password));
                     System.Diagnostics.Debug.Print("Role:\t\t" + currentCredential.Role.ToString());
 
-                    System.Diagnostics.Debug.Print("\t[New Nurse]");
-                    System.Diagnostics.Debug.Print("NurseID:\t" + newNurse.NurseID.ToString());
-                    System.Diagnostics.Debug.Print("PersonID:\t" + newNurse.PersonID.ToString());
-                    System.Diagnostics.Debug.Print("Full Name:\t" + newNurse.FullName.ToString());
-                    System.Diagnostics.Debug.Print("Birth Date:\t" + newNurse.BirthDate.ToString());
-                    System.Diagnostics.Debug.Print("SSN:\t\t" + newNurse.SSN.ToString());
-                    System.Diagnostics.Debug.Print("Gender:\t\t" + newNurse.Gender.ToString());
-                    System.Diagnostics.Debug.Print("Address:\t" + newNurse.StreetAddress.ToString());
-                    System.Diagnostics.Debug.Print("City:\t\t" + newNurse.City.ToString());
-                    System.Diagnostics.Debug.Print("State:\t\t" + newNurse.State.ToString());
-                    System.Diagnostics.Debug.Print("Postcode:\t" + newNurse.PostCode.ToString());
-                    System.Diagnostics.Debug.Print("Phone:\t\t" + newNurse.PhoneNumber.ToString());
-                    System.Diagnostics.Debug.Print("Username:\t" + newNurse.Username.ToString());
-                    System.Diagnostics.Debug.Print("Active:\t\t" + newNurse.Active.ToString());
+                    System.Diagnostics.Debug.Print("\t[Stashed Nurse]");
+                    System.Diagnostics.Debug.Print("NurseID:\t" + currentNurse.NurseID.ToString());
+                    System.Diagnostics.Debug.Print("PersonID:\t" + currentNurse.PersonID.ToString());
+                    System.Diagnostics.Debug.Print("Full Name:\t" + currentNurse.FullName.ToString());
+                    System.Diagnostics.Debug.Print("Birth Date:\t" + currentNurse.BirthDate.ToString());
+                    System.Diagnostics.Debug.Print("SSN:\t\t" + currentNurse.SSN.ToString());
+                    System.Diagnostics.Debug.Print("Gender:\t\t" + currentNurse.Gender.ToString());
+                    System.Diagnostics.Debug.Print("Address:\t" + currentNurse.StreetAddress.ToString());
+                    System.Diagnostics.Debug.Print("City:\t\t" + currentNurse.City.ToString());
+                    System.Diagnostics.Debug.Print("State:\t\t" + currentNurse.State.ToString());
+                    System.Diagnostics.Debug.Print("Postcode:\t" + currentNurse.PostCode.ToString());
+                    System.Diagnostics.Debug.Print("Phone:\t\t" + currentNurse.PhoneNumber.ToString());
+                    System.Diagnostics.Debug.Print("Username:\t" + currentNurse.Username.ToString());
+                    System.Diagnostics.Debug.Print("Active:\t\t" + currentNurse.Active.ToString());
 
                     System.Diagnostics.Debug.Print("\t[New Credential]");
                     System.Diagnostics.Debug.Print("Username:\t" + Convert.ToString(newCredential.Username));
