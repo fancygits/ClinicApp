@@ -112,6 +112,17 @@ namespace ClinicApp.UserControls
 
         private void AddNurse()
         {
+            if (nurseController.UsernameInUse(usernameTextBox.Text))
+            {
+                lblMessage.Text = "Error: That username is already in use.";
+                errorProvider.SetError(usernameTextBox, "Username is already in use.");
+                return;
+            }
+            else
+            {
+                lblMessage.Text = "";
+                errorProvider.SetError(usernameTextBox, "");
+            }
             if (IsValidData())
             {
                 if (newCredential.Password == null)

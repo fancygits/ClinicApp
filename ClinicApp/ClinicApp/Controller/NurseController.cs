@@ -91,5 +91,15 @@ namespace ClinicApp.Controller
         {
             return PersonDAL.GetPersonID(firstName, lastName, birthDate, SSN);
         }
+
+        /// <summary>
+        /// Gets the role of a given username. Used to check if a duplicate username exists.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>string</returns>
+        public bool UsernameInUse(string username)
+        {
+            return (CredentialDAL.GetRole(username) != "");
+        }
     }
 }
