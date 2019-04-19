@@ -82,11 +82,11 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetNurse()
         {
-            if (nurse == null)
-            {
-                nurse = new Nurse();
-                currentCredential = new Credential();
-            }
+            //if (nurse == null)
+            //{
+            //    nurse = new Nurse();
+            //    currentCredential = new Credential();
+            //}
             if (nurse.FirstName == null)
             {
                 firstNameTextBox.Focus();
@@ -301,6 +301,7 @@ namespace ClinicApp.UserControls
 
         public void ClearFields()
         {
+            errorProvider.Clear();
             nurse = null;
             nurseBindingSource.Clear();
             birthDateDateTimePicker.Value = DateTime.Today;

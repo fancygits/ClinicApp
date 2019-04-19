@@ -196,7 +196,6 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "PersonSearchUserControl";
             this.Size = new System.Drawing.Size(1500, 135);
-            this.Enter += new System.EventHandler(this.PersonSearchUserControl_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();

@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace ClinicApp.UserControls
 {
+    /// <summary>
+    /// Defines the PersonSearch User Control. To search for Nurses, Patients, and others.
+    /// </summary>
     public partial class PersonSearchUserControl : UserControl, IUserControlSearch
     {
         public Nurse nurse;
@@ -12,11 +15,19 @@ namespace ClinicApp.UserControls
         public event EventHandler GetPersonButtonClicked;
         public event EventHandler ClearButtonClicked;
         public event EventHandler AddPersonClicked;
+
+        /// <summary>
+        /// Constructs a PersonSearchUC and sets the personType.
+        /// </summary>
+        /// <param name="person"></param>
         public PersonSearchUserControl(Person person) : this()
         {
             SetPersonType(person);
         }
 
+        /// <summary>
+        /// Constructs a PersonSearchUC. personType must be set before working.
+        /// </summary>
         public PersonSearchUserControl()
         {
             InitializeComponent();
@@ -38,11 +49,10 @@ namespace ClinicApp.UserControls
             AddPersonClicked?.Invoke(this, e);
         }
 
-        private void PersonSearchUserControl_Enter(object sender, EventArgs e)
-        {
-            firstNameTextBox.Focus();
-        }
-
+        /// <summary>
+        /// Sets the PersonType of the UserControl
+        /// </summary>
+        /// <param name="person"></param>
         public void SetPersonType(Person person)
         {
             switch (person.GetType().ToString())
@@ -126,7 +136,27 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                CreateNewPerson();
                 OnAddPersonClicked(e);
+            }
+        }
+
+        private void CreateNewPerson()
+        {
+            switch (personType)
+            {
+                case "Patient":
+                    patient = new Patient();
+                    break;
+                case "Nurse":
+                    nurse = new Nurse();
+                    break;
+                case "Doctor":
+
+                    break;
+                case "Administrator":
+
+                    break;
             }
         }
 
@@ -138,7 +168,6 @@ namespace ClinicApp.UserControls
             lastNameTextBox.Clear();
             birthDateDateTimePicker.Value = DateTime.Today;
             btnGetPerson.Enabled = false;
-            btnClear.Enabled = false;
             firstNameTextBox.Focus();
         }
 
@@ -151,9 +180,17 @@ namespace ClinicApp.UserControls
             {
                 case "Patient":
                     GetPatient(firstName, lastName, birthDate);
+                    if (patient != null)
+                    {
+                        OnGetPersonButtonClicked(e);
+                    }
                     break;
                 case "Nurse":
                     GetNurse(firstName, lastName, birthDate);
+                    if (nurse != null)
+                    {
+                        OnGetPersonButtonClicked(e);
+                    }
                     break;
                 case "Doctor":
 
@@ -162,7 +199,7 @@ namespace ClinicApp.UserControls
 
                     break;
             }
-            OnGetPersonButtonClicked(e);
+            //OnGetPersonButtonClicked(e);
         }
 
         /// <summary>
@@ -188,7 +225,6 @@ namespace ClinicApp.UserControls
         private void textChanged(object sender, EventArgs e)
         {
             btnGetPerson.Enabled = true;
-            btnClear.Enabled = true;
         }
 
     }
