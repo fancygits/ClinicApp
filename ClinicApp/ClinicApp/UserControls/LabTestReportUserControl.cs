@@ -16,5 +16,10 @@ namespace ClinicApp.UserControls
         {
             InitializeComponent();
         }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
