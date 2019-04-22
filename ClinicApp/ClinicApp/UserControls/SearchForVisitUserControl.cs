@@ -151,8 +151,6 @@ namespace ClinicApp.UserControls
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Show();
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameComboBox.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.nurseNameTextBox.Hide();
-                        AddVisitDialog.Instance().addVisitUserControl1.initialDiagnosisTextBox.Enabled = false;
-                        AddVisitDialog.Instance().addVisitUserControl1.finalDiagnosisTextBox.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.addVisitButton.Enabled = true;
                         AddVisitDialog.Instance().addVisitUserControl1.updateVisitButton.Enabled = false;
                         AddVisitDialog.Instance().addVisitUserControl1.btnLabTest.Enabled = false;
