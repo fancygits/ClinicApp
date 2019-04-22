@@ -6,33 +6,36 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1.14583in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1.375in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03241in</Width>
+              <Width>1.36458in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.14583in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.5in</Height>
+              <Height>0.26042in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -43,7 +46,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>test Name</Value>
+                              <Value>Test Name</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -84,7 +87,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>total tests</Value>
+                              <Value>Total Individual Tests</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -125,7 +128,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>total all tests</Value>
+                              <Value>Total All Tests</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -159,6 +162,47 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox37">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Percent of All Tests</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#666666</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -166,7 +210,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>normal Results</Value>
+                              <Value>Normal Results</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -207,7 +251,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>abnormal Results</Value>
+                              <Value>Abnormal Results</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -248,7 +292,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>percent age 18To29</Value>
+                              <Value>Ages 18 to 29</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -257,7 +301,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -269,7 +313,6 @@
                         <BottomBorder>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </BottomBorder>
                         <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -289,7 +332,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>percent age 30To39</Value>
+                              <Value>Ages 30 to 39</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -298,7 +341,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -310,7 +353,6 @@
                         <BottomBorder>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </BottomBorder>
                         <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -323,14 +365,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox37">
+                    <Textbox Name="Textbox33">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>percent other ages</Value>
+                              <Value>All Other Age Groups</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -339,11 +381,11 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <rd:DefaultName>Textbox33</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -351,7 +393,6 @@
                         <BottomBorder>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </BottomBorder>
                         <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -365,7 +406,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -409,7 +450,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!total_tests.Value</Value>
+                              <Value>=Sum(Fields!total_tests.Value)</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -435,14 +476,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="total_tests1">
+                    <Textbox Name="total_all_tests">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>[total_all_tests]</Value>
+                              <Value>=Sum(Fields!total_all_tests.Value)</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -452,7 +493,41 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>total_tests1</rd:DefaultName>
+                      <rd:DefaultName>total_all_tests</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox38">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!total_tests.Value/Fields!total_all_tests.Value</Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Format>0.00%</Format>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -475,7 +550,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!normal_Results.Value</Value>
+                              <Value>=Sum(Fields!normal_Results.Value)</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -508,7 +583,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!abnormal_Results.Value</Value>
+                              <Value>=Sum(Fields!abnormal_Results.Value)</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -602,7 +677,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox38">
+                    <Textbox Name="Textbox34">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -620,7 +695,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox38</rd:DefaultName>
+                      <rd:DefaultName>Textbox34</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -637,7 +712,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -735,6 +810,44 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox28</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox39">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox39</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -907,7 +1020,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox39">
+                    <Textbox Name="Textbox35">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -924,7 +1037,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox39</rd:DefaultName>
+                      <rd:DefaultName>Textbox35</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -946,7 +1059,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1023,7 +1136,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!total_tests.Value)</Value>
+                              <Value />
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>#333333</Color>
@@ -1034,6 +1147,39 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox40">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox40</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -1181,7 +1327,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox40">
+                    <Textbox Name="Textbox36">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1198,7 +1344,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox40</rd:DefaultName>
+                      <rd:DefaultName>Textbox36</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -1226,13 +1372,14 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.03241in</Size>
+                <Size>1in</Size>
                 <CellContents>
                   <Textbox Name="Textbox15">
                     <CanGrow>true</CanGrow>
@@ -1241,7 +1388,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>test Code</Value>
+                            <Value>Test Code</Value>
                             <Style>
                               <FontSize>11pt</FontSize>
                               <FontWeight>Bold</FontWeight>
@@ -1290,7 +1437,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.03241in</Size>
+                <Size>1in</Size>
                 <CellContents>
                   <Textbox Name="testCode">
                     <CanGrow>true</CanGrow>
@@ -1331,9 +1478,6 @@
               <TablixMembers>
                 <TablixMember>
                   <Group Name="Details" />
-                  <Visibility>
-                    <ToggleItem>testCode</ToggleItem>
-                  </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>Before</KeepWithGroup>
@@ -1342,7 +1486,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>1.03241in</Size>
+                <Size>1in</Size>
                 <CellContents>
                   <Textbox Name="Textbox17">
                     <CanGrow>true</CanGrow>
@@ -1379,9 +1523,15 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>LabReportsPerformedDataSet</DataSetName>
-        <Height>2in</Height>
-        <Width>9.29167in</Width>
+        <DataSetName>LabTestReport2</DataSetName>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=Fields!total_tests.Value</Value>
+            <Direction>Descending</Direction>
+          </SortExpression>
+        </SortExpressions>
+        <Height>1.01042in</Height>
+        <Width>12.03125in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1392,14 +1542,14 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>9.29167in</Width>
+  <Width>12.30208in</Width>
   <Page>
     <PageHeader>
-      <Height>0.82292in</Height>
+      <Height>1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox1">
+        <Textbox Name="Textbox41">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -1408,7 +1558,7 @@
                 <TextRun>
                   <Value>Lab Test Report</Value>
                   <Style>
-                    <FontSize>16pt</FontSize>
+                    <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1418,16 +1568,14 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.20187in</Top>
-          <Left>2.58208in</Left>
-          <Height>0.41667in</Height>
-          <Width>4.41792in</Width>
+          <rd:DefaultName>Textbox41</rd:DefaultName>
+          <Top>0.26437in</Top>
+          <Height>0.29167in</Height>
+          <Width>12.03125in</Width>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -1449,67 +1597,16 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="ID_CS6232_g1DataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>15636520-c8a3-4b16-85db-a592b989b733</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="ID_CS6232_g1DataSet1">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>5d5f03f2-9c37-4a1c-bc4b-fb48aebcc1ba</rd:DataSourceID>
+      <rd:DataSourceID>317d684d-2d49-4592-8362-ec7fdc102154</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="LabReportsPerformedDataSet">
-      <Query>
-        <DataSourceName>ID_CS6232_g1DataSet</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="testCode">
-          <DataField>testCode</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="testName">
-          <DataField>testName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="total_tests">
-          <DataField>total_tests</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="normal_Results">
-          <DataField>normal_Results</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="abnormal_Results">
-          <DataField>abnormal_Results</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="age_18To29">
-          <DataField>age_18To29</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="age_30To39">
-          <DataField>age_30To39</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>_CS6232_g1DataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\circ\Desktop\ClinicPostPasswordHash\ClinicApp\ClinicApp\_CS6232_g1DataSet.xsd</rd:SchemaPath>
-        <rd:TableName>sp_mostPerformedTestsDuringDates</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>sp_mostPerformedTestsDuringDatesTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="LabReportDataSet2">
+    <DataSet Name="LabTestReport2">
       <Query>
         <DataSourceName>ID_CS6232_g1DataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -1559,5 +1656,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>50bb371b-01f6-4da5-89e7-6700b802c929</rd:ReportID>
+  <rd:ReportID>05c6640d-7ddb-404f-b531-670bfa8b055f</rd:ReportID>
 </Report>
