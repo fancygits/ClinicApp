@@ -219,7 +219,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_CS6232_g1DataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LabTestPerformedReport.rdlc" />
+    <EmbeddedResource Include="LabReports\LabTestPerformedReport.rdlc" />
     <EmbeddedResource Include="UserControls\AddAppointmentUserControl.resx">
       <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
