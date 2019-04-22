@@ -293,6 +293,8 @@ namespace ClinicApp {
             
             private global::System.Data.DataColumn columnage_30To39;
             
+            private global::System.Data.DataColumn columntotal_all_tests;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public sp_mostPerformedTestsDuringDatesDataTable() {
@@ -384,6 +386,14 @@ namespace ClinicApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn total_all_testsColumn {
+                get {
+                    return this.columntotal_all_tests;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +429,7 @@ namespace ClinicApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public sp_mostPerformedTestsDuringDatesRow Addsp_mostPerformedTestsDuringDatesRow(int testCode, string testName, int total_tests, int normal_Results, int abnormal_Results, int age_18To29, int age_30To39) {
+            public sp_mostPerformedTestsDuringDatesRow Addsp_mostPerformedTestsDuringDatesRow(int testCode, string testName, int total_tests, int normal_Results, int abnormal_Results, int age_18To29, int age_30To39, int total_all_tests) {
                 sp_mostPerformedTestsDuringDatesRow rowsp_mostPerformedTestsDuringDatesRow = ((sp_mostPerformedTestsDuringDatesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         testCode,
@@ -428,7 +438,8 @@ namespace ClinicApp {
                         normal_Results,
                         abnormal_Results,
                         age_18To29,
-                        age_30To39};
+                        age_30To39,
+                        total_all_tests};
                 rowsp_mostPerformedTestsDuringDatesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_mostPerformedTestsDuringDatesRow);
                 return rowsp_mostPerformedTestsDuringDatesRow;
@@ -458,6 +469,7 @@ namespace ClinicApp {
                 this.columnabnormal_Results = base.Columns["abnormal_Results"];
                 this.columnage_18To29 = base.Columns["age_18To29"];
                 this.columnage_30To39 = base.Columns["age_30To39"];
+                this.columntotal_all_tests = base.Columns["total_all_tests"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +489,8 @@ namespace ClinicApp {
                 base.Columns.Add(this.columnage_18To29);
                 this.columnage_30To39 = new global::System.Data.DataColumn("age_30To39", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnage_30To39);
+                this.columntotal_all_tests = new global::System.Data.DataColumn("total_all_tests", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_all_tests);
                 this.columntestCode.AllowDBNull = false;
                 this.columntestName.AllowDBNull = false;
                 this.columntestName.MaxLength = 50;
@@ -485,6 +499,7 @@ namespace ClinicApp {
                 this.columnabnormal_Results.ReadOnly = true;
                 this.columnage_18To29.ReadOnly = true;
                 this.columnage_30To39.ReadOnly = true;
+                this.columntotal_all_tests.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -734,6 +749,23 @@ namespace ClinicApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int total_all_tests {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_mostPerformedTestsDuringDates.total_all_testsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_all_tests\' in table \'sp_mostPerformedTestsDuringDates" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_mostPerformedTestsDuringDates.total_all_testsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Istotal_testsNull() {
                 return this.IsNull(this.tablesp_mostPerformedTestsDuringDates.total_testsColumn);
             }
@@ -790,6 +822,18 @@ namespace ClinicApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setage_30To39Null() {
                 this[this.tablesp_mostPerformedTestsDuringDates.age_30To39Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Istotal_all_testsNull() {
+                return this.IsNull(this.tablesp_mostPerformedTestsDuringDates.total_all_testsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Settotal_all_testsNull() {
+                this[this.tablesp_mostPerformedTestsDuringDates.total_all_testsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -959,6 +1003,7 @@ namespace ClinicApp._CS6232_g1DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("abnormal_Results", "abnormal_Results");
             tableMapping.ColumnMappings.Add("age_18To29", "age_18To29");
             tableMapping.ColumnMappings.Add("age_30To39", "age_30To39");
+            tableMapping.ColumnMappings.Add("total_all_tests", "total_all_tests");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_mostPerformedTestsDuringDatesTableAdapter" GeneratorDataComponentClassName="sp_mostPerformedTestsDuringDatesTableAdapter" Name="sp_mostPerformedTestsDuringDates" UserDataComponentName="sp_mostPerformedTestsDuringDatesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="CS6232_g1ConnectionString (Settings)" DbObjectName="[CS6232-g1].dbo.sp_mostPerformedTestsDuringDates" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="CS6232_g1ConnectionString (Settings)" DbObjectName="[CS6232-g1].dbo.sp_mostPerformedTestsDuringDates" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_mostPerformedTestsDuringDates</CommandText>
@@ -30,6 +30,7 @@
               <Mapping SourceColumn="abnormal_Results" DataSetColumn="abnormal_Results" />
               <Mapping SourceColumn="age_18To29" DataSetColumn="age_18To29" />
               <Mapping SourceColumn="age_30To39" DataSetColumn="age_30To39" />
+              <Mapping SourceColumn="total_all_tests" DataSetColumn="total_all_tests" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -41,7 +42,7 @@
   <xs:element name="_CS6232_g1DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="_CS6232_g1DataSet" msprop:Generator_UserDSName="_CS6232_g1DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sp_mostPerformedTestsDuringDates" msprop:Generator_TableClassName="sp_mostPerformedTestsDuringDatesDataTable" msprop:Generator_TableVarName="tablesp_mostPerformedTestsDuringDates" msprop:Generator_RowChangedName="sp_mostPerformedTestsDuringDatesRowChanged" msprop:Generator_TablePropName="sp_mostPerformedTestsDuringDates" msprop:Generator_RowDeletingName="sp_mostPerformedTestsDuringDatesRowDeleting" msprop:Generator_RowChangingName="sp_mostPerformedTestsDuringDatesRowChanging" msprop:Generator_RowEvHandlerName="sp_mostPerformedTestsDuringDatesRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_mostPerformedTestsDuringDatesRowDeleted" msprop:Generator_RowClassName="sp_mostPerformedTestsDuringDatesRow" msprop:Generator_UserTableName="sp_mostPerformedTestsDuringDates" msprop:Generator_RowEvArgName="sp_mostPerformedTestsDuringDatesRowChangeEvent">
+        <xs:element name="sp_mostPerformedTestsDuringDates" msprop:Generator_TableClassName="sp_mostPerformedTestsDuringDatesDataTable" msprop:Generator_TableVarName="tablesp_mostPerformedTestsDuringDates" msprop:Generator_TablePropName="sp_mostPerformedTestsDuringDates" msprop:Generator_RowDeletingName="sp_mostPerformedTestsDuringDatesRowDeleting" msprop:Generator_RowChangingName="sp_mostPerformedTestsDuringDatesRowChanging" msprop:Generator_RowEvHandlerName="sp_mostPerformedTestsDuringDatesRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_mostPerformedTestsDuringDatesRowDeleted" msprop:Generator_UserTableName="sp_mostPerformedTestsDuringDates" msprop:Generator_RowChangedName="sp_mostPerformedTestsDuringDatesRowChanged" msprop:Generator_RowEvArgName="sp_mostPerformedTestsDuringDatesRowChangeEvent" msprop:Generator_RowClassName="sp_mostPerformedTestsDuringDatesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="testCode" msprop:Generator_ColumnVarNameInTable="columntestCode" msprop:Generator_ColumnPropNameInRow="testCode" msprop:Generator_ColumnPropNameInTable="testCodeColumn" msprop:Generator_UserColumnName="testCode" type="xs:int" />
@@ -57,6 +58,7 @@
               <xs:element name="abnormal_Results" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnabnormal_Results" msprop:Generator_ColumnPropNameInRow="abnormal_Results" msprop:Generator_ColumnPropNameInTable="abnormal_ResultsColumn" msprop:Generator_UserColumnName="abnormal_Results" type="xs:int" minOccurs="0" />
               <xs:element name="age_18To29" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnage_18To29" msprop:Generator_ColumnPropNameInRow="age_18To29" msprop:Generator_ColumnPropNameInTable="age_18To29Column" msprop:Generator_UserColumnName="age_18To29" type="xs:int" minOccurs="0" />
               <xs:element name="age_30To39" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnage_30To39" msprop:Generator_ColumnPropNameInRow="age_30To39" msprop:Generator_ColumnPropNameInTable="age_30To39Column" msprop:Generator_UserColumnName="age_30To39" type="xs:int" minOccurs="0" />
+              <xs:element name="total_all_tests" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntotal_all_tests" msprop:Generator_ColumnPropNameInRow="total_all_tests" msprop:Generator_ColumnPropNameInTable="total_all_testsColumn" msprop:Generator_UserColumnName="total_all_tests" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
