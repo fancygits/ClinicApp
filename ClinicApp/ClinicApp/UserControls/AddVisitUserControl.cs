@@ -60,8 +60,8 @@ namespace ClinicApp.UserControls
                    Validator.IsInt32(this.diastolicBPTextBox, errorProvider) &&
                    Validator.IsDecimal(this.temperatureTextBox, errorProvider) &&
                    Validator.IsInt32(this.pulseTextBox, errorProvider) &&
-                   Validator.IsPresent(this.symptomsTextBox, errorProvider) &&
-                   Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
+                   Validator.IsPresent(this.symptomsTextBox, errorProvider))
+           //        Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
                 {
                     newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
                     newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
