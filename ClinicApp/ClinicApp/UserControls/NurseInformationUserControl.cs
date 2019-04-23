@@ -140,6 +140,7 @@ namespace ClinicApp.UserControls
                     }
                     if (nurseID > 0)
                     {
+                        nurse.NurseID = nurseID;
                         RefreshNurse();
                         lblMessage.Text = "Nurse " + nurseID + " has been added successfully.";
                     }
@@ -274,21 +275,23 @@ namespace ClinicApp.UserControls
         /// </summary>
         private void StashNurse()
         {
-            currentNurse = new Nurse();
-            currentNurse.NurseID = nurse.NurseID;
-            currentNurse.PersonID = nurse.PersonID;
-            currentNurse.LastName = nurse.LastName;
-            currentNurse.FirstName = nurse.FirstName;
-            currentNurse.BirthDate = nurse.BirthDate.Date;
-            currentNurse.SSN = nurse.SSN;
-            currentNurse.Gender = nurse.Gender;
-            currentNurse.StreetAddress = nurse.StreetAddress;
-            currentNurse.City = nurse.City;
-            currentNurse.State = nurse.State;
-            currentNurse.PostCode = nurse.PostCode;
-            currentNurse.PhoneNumber = nurse.PhoneNumber;
-            currentNurse.Active = nurse.Active;
-            currentNurse.Username = nurse.Username;
+            currentNurse = new Nurse
+            {
+                NurseID = nurse.NurseID,
+                PersonID = nurse.PersonID,
+                LastName = nurse.LastName,
+                FirstName = nurse.FirstName,
+                BirthDate = nurse.BirthDate.Date,
+                SSN = nurse.SSN,
+                Gender = nurse.Gender,
+                StreetAddress = nurse.StreetAddress,
+                City = nurse.City,
+                State = nurse.State,
+                PostCode = nurse.PostCode,
+                PhoneNumber = nurse.PhoneNumber,
+                Active = nurse.Active,
+                Username = nurse.Username
+            };
             currentCredential.Username = nurse.Username;
             currentCredential.Role = "nurse";
             newCredential.Username = currentCredential.Username;
