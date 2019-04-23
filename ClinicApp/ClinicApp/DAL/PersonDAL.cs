@@ -201,5 +201,85 @@ namespace ClinicApp.DAL
             }
             return (rowCount == 1);
         }
+
+        /// <summary>
+        /// Checks if a Person is a Nurse
+        /// </summary>
+        /// <param name="personID">The PersonID to check</param>
+        /// <returns>True if Person is a Nurse</returns>
+        public static bool IsANurse(int personID)
+        {
+            string selectStatement = "SELECT COUNT(*) FROM Nurse WHERE personID = @personID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@personID", personID);
+                    int count = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if a Person is a Doctor
+        /// </summary>
+        /// <param name="personID">The PersonID to check</param>
+        /// <returns>True if Person is a Doctor</returns>
+        public static bool IsADoctor(int personID)
+        {
+            string selectStatement = "SELECT COUNT(*) FROM Doctor WHERE personID = @personID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@personID", personID);
+                    int count = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if a Person is a Patient
+        /// </summary>
+        /// <param name="personID">The PersonID to check</param>
+        /// <returns>True if Person is a Patient</returns>
+        public static bool IsAPatient(int personID)
+        {
+            string selectStatement = "SELECT COUNT(*) FROM Patient WHERE personID = @personID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@personID", personID);
+                    int count = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if a Person is an Administrator
+        /// </summary>
+        /// <param name="personID">The PersonID to check</param>
+        /// <returns>True if Person is an Administrator</returns>
+        public static bool IsAnAdministrator(int personID)
+        {
+            string selectStatement = "SELECT COUNT(*) FROM Administrator WHERE personID = @personID";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@personID", personID);
+                    int count = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
     }
 }

@@ -115,27 +115,17 @@ namespace ClinicApp.Controller
         /// <returns>True if successful</returns>
         public bool DeletePatient(Patient patient)
         {
-            bool success;
-            try
-            {
-                success = PatientDAL.DeletePatient(patient);
-            }
-            catch
-            {
-                return false;
-            }
-            if (success)
-            {
-                try
-                {
-                    PersonDAL.DeletePerson(patient);
-                }
-                catch
-                {
+            return PatientDAL.DeletePatient(patient);
+        }
 
-                }
-            }
-            return success;
+        /// <summary>
+        /// Deletes a Person
+        /// </summary>
+        /// <param name="patient">The Person to delete</param>
+        /// <returns>True if successful</returns>
+        public bool DeletePerson(Patient patient)
+        {
+            return PersonDAL.DeletePerson(patient);
         }
 
         /// <summary>
@@ -150,6 +140,47 @@ namespace ClinicApp.Controller
         public int GetPersonID(string firstName, string lastName, string birthDate, string SSN)
         {
             return PersonDAL.GetPersonID(firstName, lastName, birthDate, SSN);
+        }
+
+        /// <summary>
+        /// Checks if a Patient is also a Nurse
+        /// </summary>
+        /// <param name="personID">The PersonID of the Patient</param>
+        /// <returns>True if Patient is also a Nurse</returns>
+        public bool IsANurse(int personID)
+        {
+            return PersonDAL.IsANurse(personID);
+        }
+
+        /// <summary>
+        /// Checks if a Patient is also an Administrator
+        /// </summary>
+        /// <param name="personID">The PersonID of the Patient</param>
+        /// <returns>True if Patient is also an Administrator</returns>
+        public bool IsAnAdministrator(int personID)
+        {
+            return PersonDAL.IsAnAdministrator(personID);
+        }
+
+        /// <summary>
+        /// Checks if a Patient is also a Doctor
+        /// </summary>
+        /// <param name="personID">The PersonID of the Patient</param>
+        /// <returns>True if Patient is also a Doctor</returns>
+        public bool IsADoctor(int personID)
+        {
+            return PersonDAL.IsADoctor(personID);
+        }
+
+        /// <summary>
+        /// Checks if a Patient has made any appointments
+        /// </summary>
+        /// <param name="patientID">The PatientID to check</param>
+        /// <returns>True if Patient has made appointments</returns>
+        public bool HasMadeAppointments(int patientID)
+        {
+            List<Appointment> apptList = AppointmentDAL.GetAppointmentsByPatientID(patientID);
+            return apptList.Count > 0;
         }
     }
 }

@@ -223,16 +223,30 @@ namespace ClinicApp.UserControls
         }
 
 
-        private void DeletePatient()
+        private void DeletePatient(Patient patient)
         {
-            string name = newPatient.FullName;
+            string name = patient.FullName;
+            int personID = patient.PersonID;
             try
             {
-                if (patientController.DeletePatient(newPatient))
+                if (patientController.HasMadeAppointments(patient.PatientID))
                 {
-                    ClearFields();
-                    DisableFields();
-                    lblMessage.Text = name + " is no longer a patient at this clinic.";
+                    lblMessage.Text = "The patient cannot be deleted since appointments have been made.";
+                }
+                else
+                {
+                    if (patientController.DeletePatient(patient))
+                    {
+                        if (!(patientController.IsANurse(personID) ||
+                              patientController.IsADoctor(personID) ||
+                              patientController.IsAnAdministrator(personID)))
+                        {
+                            patientController.DeletePerson(patient);
+                        }
+                        ClearFields();
+                        DisableFields();
+                        lblMessage.Text = name + " is no longer a patient at this clinic.";
+                    }
                 }
             }
             catch (Exception ex)
@@ -312,7 +326,7 @@ namespace ClinicApp.UserControls
             phoneNumberMaskedTextBox.Enabled = true;
             btnSearchAppointments.Enabled = true;
             btnSearchVisits.Enabled = true;
-            //deletePatientButton.Enabled = true;
+            deletePatientButton.Enabled = true;
         }
 
         private void DisableFields()
@@ -419,12 +433,15 @@ namespace ClinicApp.UserControls
 
         private void deletePatientButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This operation cannot be undone. \n" +
+            if (patient != null)
+            {
+                DialogResult result = MessageBox.Show("This operation cannot be undone. \n" +
                 "Are you sure you want to remove " + newPatient.FullName + " as a patient?",
                 "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                DeletePatient();
+                if (result == DialogResult.Yes)
+                {
+                    DeletePatient(patient);
+                }
             }
         }
 
