@@ -29,60 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.sp_mostPerformedTestsDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._CS6232_g1DataSet = new ClinicApp._CS6232_g1DataSet();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sp_mostPerformedTestsDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._CS6232_g1DataSet = new ClinicApp._CS6232_g1DataSet();
             this.spmostPerformedTestsDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sp_mostPerformedTestsDuringDatesTableAdapter = new ClinicApp._CS6232_g1DataSetTableAdapters.sp_mostPerformedTestsDuringDatesTableAdapter();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGenerateReport = new System.Windows.Forms.Button();
-            this.lblEndDate = new System.Windows.Forms.Label();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sp_mostPerformedTestsDuringDatesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._CS6232_g1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spmostPerformedTestsDuringDatesBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblStartDate
-            // 
-            this.lblStartDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartDate.Location = new System.Drawing.Point(351, 21);
-            this.lblStartDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(161, 37);
-            this.lblStartDate.TabIndex = 2;
-            this.lblStartDate.Text = "Start Date";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(646, 24);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(6);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 31);
-            this.dateTimePicker1.TabIndex = 4;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "LabTestReport2";
-            reportDataSource1.Value = this.sp_mostPerformedTestsDuringDatesBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicApp.LabReports.LabTestReport2.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(3, 167);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1274, 601);
-            this.reportViewer1.TabIndex = 6;
             // 
             // sp_mostPerformedTestsDuringDatesBindingSource
             // 
@@ -93,6 +58,41 @@
             // 
             this._CS6232_g1DataSet.DataSetName = "_CS6232_g1DataSet";
             this._CS6232_g1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.Location = new System.Drawing.Point(8, 13);
+            this.lblStartDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(161, 37);
+            this.lblStartDate.TabIndex = 2;
+            this.lblStartDate.Text = "Start Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(318, 16);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(6);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 31);
+            this.dateTimePicker1.TabIndex = 4;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "LabTestReport2";
+            reportDataSource2.Value = this.sp_mostPerformedTestsDuringDatesBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicApp.LabReports.LabTestReport2.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(3, 135);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1274, 633);
+            this.reportViewer1.TabIndex = 6;
             // 
             // spmostPerformedTestsDuringDatesBindingSource
             // 
@@ -113,17 +113,17 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.40078F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.59922F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.12062F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.87938F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 771);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.125F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.875F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.79671F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.20329F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 613F));
             this.tableLayoutPanel2.Controls.Add(this.dateTimePickerEndDate, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblStartDate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblEndDate, 0, 1);
@@ -136,14 +136,36 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1274, 158);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1274, 126);
             this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(318, 79);
+            this.dateTimePickerEndDate.Margin = new System.Windows.Forms.Padding(6);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 31);
+            this.dateTimePickerEndDate.TabIndex = 5;
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEndDate.Location = new System.Drawing.Point(13, 76);
+            this.lblEndDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(150, 37);
+            this.lblEndDate.TabIndex = 3;
+            this.lblEndDate.Text = "End Date";
             // 
             // btnGenerateReport
             // 
             this.btnGenerateReport.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGenerateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateReport.Location = new System.Drawing.Point(981, 35);
+            this.btnGenerateReport.Location = new System.Drawing.Point(823, 19);
             this.btnGenerateReport.Margin = new System.Windows.Forms.Padding(6);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.tableLayoutPanel2.SetRowSpan(this.btnGenerateReport, 2);
@@ -152,28 +174,6 @@
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
-            // 
-            // lblEndDate
-            // 
-            this.lblEndDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndDate.Location = new System.Drawing.Point(362, 100);
-            this.lblEndDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(150, 37);
-            this.lblEndDate.TabIndex = 3;
-            this.lblEndDate.Text = "End Date";
-            // 
-            // dateTimePickerEndDate
-            // 
-            this.dateTimePickerEndDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(646, 103);
-            this.dateTimePickerEndDate.Margin = new System.Windows.Forms.Padding(6);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(200, 31);
-            this.dateTimePickerEndDate.TabIndex = 5;
             // 
             // LabTestReportUserControl
             // 
