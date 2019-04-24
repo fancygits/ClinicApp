@@ -1433,7 +1433,12 @@
               </Group>
               <SortExpressions>
                 <SortExpression>
+                  <Value>=Fields!total_tests.Value</Value>
+                  <Direction>Descending</Direction>
+                </SortExpression>
+                <SortExpression>
                   <Value>=Fields!testCode.Value</Value>
+                  <Direction>Descending</Direction>
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
@@ -1473,6 +1478,7 @@
                       <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
+                  <rd:Selected>true</rd:Selected>
                 </CellContents>
               </TablixHeader>
               <TablixMembers>
@@ -1531,7 +1537,7 @@
           </SortExpression>
         </SortExpressions>
         <Height>1.01042in</Height>
-        <Width>12.03125in</Width>
+        <Width>12.03124in</Width>
         <Style>
           <Border>
             <Style>None</Style>
