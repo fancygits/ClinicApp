@@ -87,18 +87,26 @@ namespace ClinicApp.UserControls
             NurseController nurseController = new NurseController();
             try
             {
-                nurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
+                nurse = nurseController.GetNurseByBirthDate(birthDate);
                 if (nurse == null)
                 {
-                    List<Nurse> nurseList = nurseController.SearchNursesByName(firstName, lastName, birthDate);
-                    if (nurseList.Count != 0)
+                    nurse = nurseController.GetNurseByName(firstName, lastName);
+                    if (nurse == null)
                     {
-                        FindPeopleDialog findNursesDialog = new FindPeopleDialog(new Nurse());
-                        findNursesDialog.nurseList = nurseList;
-                        DialogResult result = findNursesDialog.ShowDialog();
-                        if (result == DialogResult.OK)
+                        nurse = nurseController.GetNurseByLastNameAndBirthDate(lastName, birthDate);
+                        if (nurse == null)
                         {
-                            nurse = findNursesDialog.nurse;
+                            List<Nurse> nurseList = nurseController.SearchNursesByName(firstName, lastName, birthDate);
+                            if (nurseList.Count != 0)
+                            {
+                                FindPeopleDialog findNursesDialog = new FindPeopleDialog(new Nurse());
+                                findNursesDialog.nurseList = nurseList;
+                                DialogResult result = findNursesDialog.ShowDialog();
+                                if (result == DialogResult.OK)
+                                {
+                                    nurse = findNursesDialog.nurse;
+                                }
+                            }
                         }
                     }
                 }

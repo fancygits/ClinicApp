@@ -11,36 +11,10 @@ namespace ClinicApp.DAL
     /// </summary>
     class NurseDAL
     {
-        public static Nurse GetNurse(int nurseID)
-        {
-            Nurse nurse = new Nurse();
-            string selectStatement = "SELECT nurseID, firstName, lastName " +
-                                    "FROM Person p " +
-                                    "JOIN Nurse n " +
-                                    "ON n.personID = p.personID " +
-                                    "WHERE nurseID = @nurseID";
-            using (SqlConnection connection = ClinicDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    selectCommand.Parameters.AddWithValue("@nurseID", nurseID);
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            nurse.FirstName = reader["firstName"].ToString();
-                            nurse.LastName = reader["lastName"].ToString();
-                        }
-                        else
-                        {
-                            nurse = null;
-                        }
-                    }
-                }
-            }
-            return nurse;
-        }
+        /// <summary>
+        /// Gets a list of all active Nurses
+        /// </summary>
+        /// <returns>A list of active Nurses</returns>
         public static List<Nurse> GetNurseList()
         {
             List<Nurse> listOfNurses = new List<Nurse>();
@@ -108,7 +82,7 @@ namespace ClinicApp.DAL
             Nurse nurse = new Nurse();
             string selectStatement =
                 "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
-                "streetAddress, city, state, postCode, phoneNumber, username, active " +
+                "streetAddress, city, state, postCode, phoneNumber, active, username " +
                 "FROM Nurse " +
                 "JOIN Person p ON Nurse.personID = p.personID " +
                 "WHERE nurseID = @nurseID";
@@ -132,8 +106,8 @@ namespace ClinicApp.DAL
                         int stateOrd = reader.GetOrdinal("state");
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
-                        int usernameOrd = reader.GetOrdinal("username");
                         int activeOrd = reader.GetOrdinal("active");
+                        int usernameOrd = reader.GetOrdinal("username");
                         if (reader.Read())
                         {
                             nurse.NurseID = reader.GetInt32(nurseIDOrd);
@@ -162,31 +136,25 @@ namespace ClinicApp.DAL
         }
 
         /// <summary>
-        /// Gets a nurse from the database based on personal details
+        /// Gets a single nurse from the database by SSN
         /// </summary>
-        /// <param name="firstName">Nurse's first name</param>
-        /// <param name="lastName">Nurse's last name</param>
-        /// <param name="birthDate">Nurses date of birth</param>
-        /// <returns>The nurse</returns>
-        public static Nurse GetNurseByName(string firstName, string lastName, string birthDate)
+        /// <param name="SSN">The SSN to retrieve</param>
+        /// <returns>A Nurse object</returns>
+        public static Nurse GetNurseBySSN(string SSN)
         {
             Nurse nurse = new Nurse();
             string selectStatement =
                 "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
-                "streetAddress, city, state, postCode, phoneNumber, username, active " +
+                "streetAddress, city, state, postCode, phoneNumber, active, username " +
                 "FROM Nurse " +
                 "JOIN Person p ON Nurse.personID = p.personID " +
-                "WHERE firstName = @firstname " +
-                    "AND lastName = @lastName " +
-                    "AND birthDate = @birthDate";
+                "WHERE SSN = @SSN";
             using (SqlConnection connection = ClinicDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("@firstName", firstName);
-                    selectCommand.Parameters.AddWithValue("@lastName", lastName);
-                    selectCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                    selectCommand.Parameters.AddWithValue("@SSN", SSN);
                     using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
                     {
                         int nurseIDOrd = reader.GetOrdinal("nurseID");
@@ -201,8 +169,8 @@ namespace ClinicApp.DAL
                         int stateOrd = reader.GetOrdinal("state");
                         int postCodeOrd = reader.GetOrdinal("postCode");
                         int phoneOrd = reader.GetOrdinal("phoneNumber");
-                        int usernameOrd = reader.GetOrdinal("username");
                         int activeOrd = reader.GetOrdinal("active");
+                        int usernameOrd = reader.GetOrdinal("username");
                         if (reader.Read())
                         {
                             nurse.NurseID = reader.GetInt32(nurseIDOrd);
@@ -229,6 +197,258 @@ namespace ClinicApp.DAL
             }
             return nurse;
         }
+
+        /// <summary>
+        /// Gets a single nurse from the database by nurseID
+        /// </summary>
+        /// <param name="personID">The personID to retrieve</param>
+        /// <returns>A Nurse object</returns>
+        public static Nurse GetNurseByBirthDate(string birthDate)
+        {
+            Nurse nurse = null;
+            string countStatement =
+                "SELECT COUNT(*) FROM Nurse n " +
+                "JOIN Person pe ON n.personID = pe.personID " +
+                "WHERE pe.birthDate = @birthdate";
+            int count = 0;
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand countCommand = new SqlCommand(countStatement, connection))
+                {
+                    countCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                    count = Convert.ToInt32(countCommand.ExecuteScalar());
+                }
+            }
+            if (count == 1)
+            {
+                string selectStatement =
+                "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
+                "streetAddress, city, state, postCode, phoneNumber, active, username " +
+                "FROM Nurse " +
+                "JOIN Person p ON Nurse.personID = p.personID " +
+                "WHERE birthDate = @birthDate";
+                using (SqlConnection connection = ClinicDBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+                        {
+                            int nurseIDOrd = reader.GetOrdinal("nurseID");
+                            int personIDOrd = reader.GetOrdinal("personID");
+                            int lastNameOrd = reader.GetOrdinal("lastName");
+                            int firstNameOrd = reader.GetOrdinal("firstName");
+                            int birthDateOrd = reader.GetOrdinal("birthDate");
+                            int ssnOrd = reader.GetOrdinal("SSN");
+                            int genderOrd = reader.GetOrdinal("gender");
+                            int addressOrd = reader.GetOrdinal("streetAddress");
+                            int cityOrd = reader.GetOrdinal("city");
+                            int stateOrd = reader.GetOrdinal("state");
+                            int postCodeOrd = reader.GetOrdinal("postCode");
+                            int phoneOrd = reader.GetOrdinal("phoneNumber");
+                            int activeOrd = reader.GetOrdinal("active");
+                            int usernameOrd = reader.GetOrdinal("username");
+                            if (reader.Read())
+                            {
+                                nurse = new Nurse
+                                {
+                                    NurseID = reader.GetInt32(nurseIDOrd),
+                                    PersonID = reader.GetInt32(personIDOrd),
+                                    LastName = reader.GetString(lastNameOrd),
+                                    FirstName = reader.GetString(firstNameOrd),
+                                    BirthDate = reader.GetDateTime(birthDateOrd),
+                                    SSN = reader.GetString(ssnOrd),
+                                    Gender = reader.GetString(genderOrd),
+                                    StreetAddress = reader.GetString(addressOrd),
+                                    City = reader.GetString(cityOrd),
+                                    State = reader.GetString(stateOrd),
+                                    PostCode = reader.GetString(postCodeOrd),
+                                    PhoneNumber = reader.GetString(phoneOrd),
+                                    Active = reader.GetBoolean(activeOrd),
+                                    Username = reader.GetString(usernameOrd)
+                            };
+                            }
+                        }
+                    }
+                }
+            }
+            return nurse;
+        }
+
+        /// <summary>
+        /// Gets a nurse from the database based on personal details
+        /// </summary>
+        /// <param name="firstName">Nurse's first name</param>
+        /// <param name="lastName">Nurse's last name</param>
+        /// <returns>The nurse</returns>
+        public static Nurse GetNurseByName(string firstName, string lastName)
+        {
+            Nurse nurse = null;
+            string countStatement =
+                "SELECT COUNT(*) FROM Nurse n " +
+                "JOIN Person pe ON n.personID = pe.personID " +
+                "WHERE pe.firstName = @firstName " +
+                "AND pe.lastName = @lastName";
+            int count = 0;
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand countCommand = new SqlCommand(countStatement, connection))
+                {
+                    countCommand.Parameters.AddWithValue("@firstName", firstName);
+                    countCommand.Parameters.AddWithValue("@lastName", lastName);
+                    count = Convert.ToInt32(countCommand.ExecuteScalar());
+                }
+            }
+            if (count == 1)
+            {
+                nurse = new Nurse();
+                string selectStatement =
+                "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
+                "streetAddress, city, state, postCode, phoneNumber, active, username " +
+                "FROM Nurse " +
+                "JOIN Person p ON Nurse.personID = p.personID " +
+                "WHERE firstName = @firstname " +
+                    "AND lastName = @lastName ";
+                using (SqlConnection connection = ClinicDBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@firstName", firstName);
+                        selectCommand.Parameters.AddWithValue("@lastName", lastName);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+                        {
+                            int nurseIDOrd = reader.GetOrdinal("nurseID");
+                            int personIDOrd = reader.GetOrdinal("personID");
+                            int lastNameOrd = reader.GetOrdinal("lastName");
+                            int firstNameOrd = reader.GetOrdinal("firstName");
+                            int birthDateOrd = reader.GetOrdinal("birthDate");
+                            int ssnOrd = reader.GetOrdinal("SSN");
+                            int genderOrd = reader.GetOrdinal("gender");
+                            int addressOrd = reader.GetOrdinal("streetAddress");
+                            int cityOrd = reader.GetOrdinal("city");
+                            int stateOrd = reader.GetOrdinal("state");
+                            int postCodeOrd = reader.GetOrdinal("postCode");
+                            int phoneOrd = reader.GetOrdinal("phoneNumber");
+                            int activeOrd = reader.GetOrdinal("active");
+                            int usernameOrd = reader.GetOrdinal("username");
+                            if (reader.Read())
+                            {
+                                nurse.NurseID = reader.GetInt32(nurseIDOrd);
+                                nurse.PersonID = reader.GetInt32(personIDOrd);
+                                nurse.LastName = reader.GetString(lastNameOrd);
+                                nurse.FirstName = reader.GetString(firstNameOrd);
+                                nurse.BirthDate = reader.GetDateTime(birthDateOrd);
+                                nurse.SSN = reader.GetString(ssnOrd);
+                                nurse.Gender = reader.GetString(genderOrd);
+                                nurse.StreetAddress = reader.GetString(addressOrd);
+                                nurse.City = reader.GetString(cityOrd);
+                                nurse.State = reader.GetString(stateOrd);
+                                nurse.PostCode = reader.GetString(postCodeOrd);
+                                nurse.PhoneNumber = reader.GetString(phoneOrd);
+                                nurse.Active = reader.GetBoolean(activeOrd);
+                                nurse.Username = reader.GetString(usernameOrd);
+                            }
+                            else
+                            {
+                                nurse = null;
+                            }
+                        }
+                    }
+                }
+            }
+            return nurse;
+        }
+
+        /// <summary>
+        /// Gets a Nurse by their last name and birthdate
+        /// </summary>
+        /// <param name="lastName">Nurse's last name</param>
+        /// <param name="birthDate">Nurse's birth date</param>
+        /// <returns>A Nurse</returns>
+        public static Nurse GetNurseByLastNameAndBirthDate(string lastName, string birthDate)
+        {
+            Nurse nurse = null;
+            string countStatement =
+                "SELECT COUNT(*) FROM Nurse n " +
+                "JOIN Person p ON n.personID = p.personID " +
+                "WHERE p.birthDate = @birthDate " +
+                "AND p.lastName = @lastName";
+            int count = 0;
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand countCommand = new SqlCommand(countStatement, connection))
+                {
+                    countCommand.Parameters.AddWithValue("@lastName", lastName);
+                    countCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                    count = Convert.ToInt32(countCommand.ExecuteScalar());
+                }
+            }
+            if (count == 1)
+            {
+                nurse = new Nurse();
+                string selectStatement =
+                "SELECT nurseID, p.personID, lastName, firstName, birthDate, SSN, gender, " +
+                "streetAddress, city, state, postCode, phoneNumber, active, username " +
+                "FROM Nurse " +
+                "JOIN Person p ON Nurse.personID = p.personID " +
+                "WHERE birthDate = @birthDate " +
+                    "AND lastName = @lastName ";
+                using (SqlConnection connection = ClinicDBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@birthDate", birthDate);
+                        selectCommand.Parameters.AddWithValue("@lastName", lastName);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+                        {
+                            int nurseIDOrd = reader.GetOrdinal("nurseID");
+                            int personIDOrd = reader.GetOrdinal("personID");
+                            int lastNameOrd = reader.GetOrdinal("lastName");
+                            int firstNameOrd = reader.GetOrdinal("firstName");
+                            int birthDateOrd = reader.GetOrdinal("birthDate");
+                            int ssnOrd = reader.GetOrdinal("SSN");
+                            int genderOrd = reader.GetOrdinal("gender");
+                            int addressOrd = reader.GetOrdinal("streetAddress");
+                            int cityOrd = reader.GetOrdinal("city");
+                            int stateOrd = reader.GetOrdinal("state");
+                            int postCodeOrd = reader.GetOrdinal("postCode");
+                            int phoneOrd = reader.GetOrdinal("phoneNumber");
+                            int activeOrd = reader.GetOrdinal("active");
+                            int usernameOrd = reader.GetOrdinal("username");
+                            if (reader.Read())
+                            {
+                                nurse.NurseID = reader.GetInt32(nurseIDOrd);
+                                nurse.PersonID = reader.GetInt32(personIDOrd);
+                                nurse.LastName = reader.GetString(lastNameOrd);
+                                nurse.FirstName = reader.GetString(firstNameOrd);
+                                nurse.BirthDate = reader.GetDateTime(birthDateOrd);
+                                nurse.SSN = reader.GetString(ssnOrd);
+                                nurse.Gender = reader.GetString(genderOrd);
+                                nurse.StreetAddress = reader.GetString(addressOrd);
+                                nurse.City = reader.GetString(cityOrd);
+                                nurse.State = reader.GetString(stateOrd);
+                                nurse.PostCode = reader.GetString(postCodeOrd);
+                                nurse.PhoneNumber = reader.GetString(phoneOrd);
+                                nurse.Active = reader.GetBoolean(activeOrd);
+                                nurse.Username = reader.GetString(usernameOrd);
+                            }
+                            else
+                            {
+                                nurse = null;
+                            }
+                        }
+                    }
+                }
+            }
+            return nurse;
+        }
+        
 
         /// <summary>
         /// Searches nurses by given firstName, lastName, and birthDate
@@ -377,6 +597,41 @@ namespace ClinicApp.DAL
                 }
             }
             return nurseID;
+        }
+
+        /// <summary>
+        /// Adds a Person to Nurse, adds new credentials, updates Person
+        /// </summary>
+        /// <param name="nurse">The Nurse-Person to add to Nurse</param>
+        /// <returns>The new NurseID</returns>
+        public static int PersonToNurse(Nurse nurse)
+        {
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction nurseTransaction;
+
+                nurseTransaction = connection.BeginTransaction("PersonToNurse");
+
+                command.Connection = connection;
+                command.Transaction = nurseTransaction;
+
+                try
+                {
+                    CredentialDAL.AddCredential(nurse.Username, nurse.Password, "nurse");
+                    PersonDAL.AddUsername(nurse.PersonID, nurse.SSN, nurse.Username);
+                    int nurseID = InsertNurse(nurse.PersonID, nurse.Active);
+
+                    nurseTransaction.Commit();
+                    return nurseID;
+                }
+                catch
+                {
+                    nurseTransaction.Rollback();
+                    throw;
+                }
+            }
         }
 
         /// <summary>

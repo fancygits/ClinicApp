@@ -118,10 +118,12 @@ namespace ClinicApp.UserControls
                 int nurseID = -1;
                 try
                 {
-                    Nurse tempNurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
+                    Nurse tempNurse = nurseController.GetNurseBySSN(SSN);
                     if (tempNurse != null)
                     {
                         nurseID = tempNurse.NurseID;
+                        nurse.NurseID = nurseID;
+                        RefreshNurse();
                         lblMessage.Text = "Error: That person is already a nurse.";
                         return;
                     }
@@ -131,6 +133,8 @@ namespace ClinicApp.UserControls
                     }
                     if (nurseID > 0)
                     {
+                        nurse.NurseID = nurseID;
+                        RefreshNurse();
                         lblMessage.Text = "Nurse " + nurseID + " has been added successfully.";
                         return;
                     }
@@ -179,7 +183,8 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        nurseID = nurseController.InsertNurse(personID, active);
+                        nurse.PersonID = personID;
+                        nurseID = nurseController.PersonToNurse(nurse);
                     }
                     else
                     {
@@ -379,6 +384,9 @@ namespace ClinicApp.UserControls
             StashNurse();
             nurseBindingSource.Clear();
             nurseBindingSource.Add(nurse);
+            btnAddUpdateNurse.Text = "Update Nurse";
+            resetPasswordButton.Text = "Reset Password";
+            btnAddUpdateNurse.Enabled = false;
         }
 
         private bool IsValidData()

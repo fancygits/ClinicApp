@@ -107,6 +107,8 @@ namespace ClinicApp.UserControls
                     if (tempPatient != null)
                     {
                         patientID = tempPatient.PatientID;
+                        patient.PatientID = patientID;
+                        RefreshPatient();
                         lblMessage.Text = "Error: That person is already a patient.";
                         return;
                     }
@@ -116,6 +118,8 @@ namespace ClinicApp.UserControls
                     }
                     if (patientID > 0)
                     {
+                        patient.PatientID = patientID;
+                        RefreshPatient();
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                         return;
                     }
@@ -345,6 +349,8 @@ namespace ClinicApp.UserControls
             StashPatient();
             patientBindingSource.Clear();
             patientBindingSource.Add(patient);
+            btnAddUpdatePatient.Text = "Update Patient";
+            btnAddUpdatePatient.Enabled = false;
         }
 
         private bool IsValidData()

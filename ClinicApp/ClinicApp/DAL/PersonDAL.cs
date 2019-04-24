@@ -132,6 +132,35 @@ namespace ClinicApp.DAL
         }
 
         /// <summary>
+        /// Adds a Username to a given Person
+        /// </summary>
+        /// <param name="personID">The PersonID to update</param>
+        /// <param name="SSN">The SSN to verify correct person</param>
+        /// <param name="username">The new Username</param>
+        /// <returns>True if successful</returns>
+        public static bool AddUsername(int personID, string SSN, string username)
+        {
+            string updateStatement =
+                "UPDATE Person SET " +
+                "username = @username " +
+                "WHERE personID = @personID " +
+                "AND SSN = @SSN " +
+                "AND username IS NULL";
+            using (SqlConnection connection = ClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@username", username);
+                    updateCommand.Parameters.AddWithValue("@personID", personID);
+                    updateCommand.Parameters.AddWithValue("@SSN", SSN);
+                    int count = updateCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        /// <summary>
         /// Adds a Person to the database
         /// </summary>
         /// <param name="person">The Person to add</param>

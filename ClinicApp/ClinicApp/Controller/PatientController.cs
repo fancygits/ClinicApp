@@ -41,14 +41,20 @@ namespace ClinicApp.Controller
         /// <summary>
         /// Gets a Patient by full name and birthDate
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
+        /// <param name="firstName">The Patient's first name</param>
+        /// <param name="lastName">The Patient's last name</param>
         /// <returns>A Patient</returns>
         public Patient GetPatientByName(string firstName, string lastName)
         {
             return PatientDAL.GetPatientByName(firstName, lastName);
         }
 
+        /// <summary>
+        /// Gets a Patient by the last name and birthdate
+        /// </summary>
+        /// <param name="lastName">The Patient's last name</param>
+        /// <param name="birthDate">The birth date to search</param>
+        /// <returns></returns>
         public Patient GetPatientByLastNameAndBirthDate(string lastName, string birthDate)
         {
             return PatientDAL.GetPatientByLastNameAndBirthDate(lastName, birthDate);
