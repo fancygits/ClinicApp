@@ -118,10 +118,12 @@ namespace ClinicApp.UserControls
                 int nurseID = -1;
                 try
                 {
-                    Nurse tempNurse = nurseController.GetNurseByName(firstName, lastName, birthDate);
+                    Nurse tempNurse = nurseController.GetNurseBySSN(SSN);
                     if (tempNurse != null)
                     {
                         nurseID = tempNurse.NurseID;
+                        nurse.NurseID = nurseID;
+                        RefreshNurse();
                         lblMessage.Text = "Error: That person is already a nurse.";
                         return;
                     }
@@ -131,6 +133,8 @@ namespace ClinicApp.UserControls
                     }
                     if (nurseID > 0)
                     {
+                        nurse.NurseID = nurseID;
+                        RefreshNurse();
                         lblMessage.Text = "Nurse " + nurseID + " has been added successfully.";
                         return;
                     }
@@ -140,6 +144,7 @@ namespace ClinicApp.UserControls
                     }
                     if (nurseID > 0)
                     {
+                        nurse.NurseID = nurseID;
                         RefreshNurse();
                         lblMessage.Text = "Nurse " + nurseID + " has been added successfully.";
                     }
@@ -178,7 +183,8 @@ namespace ClinicApp.UserControls
                             MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        nurseID = nurseController.InsertNurse(personID, active);
+                        nurse.PersonID = personID;
+                        nurseID = nurseController.PersonToNurse(nurse);
                     }
                     else
                     {
@@ -274,21 +280,23 @@ namespace ClinicApp.UserControls
         /// </summary>
         private void StashNurse()
         {
-            currentNurse = new Nurse();
-            currentNurse.NurseID = nurse.NurseID;
-            currentNurse.PersonID = nurse.PersonID;
-            currentNurse.LastName = nurse.LastName;
-            currentNurse.FirstName = nurse.FirstName;
-            currentNurse.BirthDate = nurse.BirthDate.Date;
-            currentNurse.SSN = nurse.SSN;
-            currentNurse.Gender = nurse.Gender;
-            currentNurse.StreetAddress = nurse.StreetAddress;
-            currentNurse.City = nurse.City;
-            currentNurse.State = nurse.State;
-            currentNurse.PostCode = nurse.PostCode;
-            currentNurse.PhoneNumber = nurse.PhoneNumber;
-            currentNurse.Active = nurse.Active;
-            currentNurse.Username = nurse.Username;
+            currentNurse = new Nurse
+            {
+                NurseID = nurse.NurseID,
+                PersonID = nurse.PersonID,
+                LastName = nurse.LastName,
+                FirstName = nurse.FirstName,
+                BirthDate = nurse.BirthDate.Date,
+                SSN = nurse.SSN,
+                Gender = nurse.Gender,
+                StreetAddress = nurse.StreetAddress,
+                City = nurse.City,
+                State = nurse.State,
+                PostCode = nurse.PostCode,
+                PhoneNumber = nurse.PhoneNumber,
+                Active = nurse.Active,
+                Username = nurse.Username
+            };
             currentCredential.Username = nurse.Username;
             currentCredential.Role = "nurse";
             newCredential.Username = currentCredential.Username;
@@ -376,6 +384,9 @@ namespace ClinicApp.UserControls
             StashNurse();
             nurseBindingSource.Clear();
             nurseBindingSource.Add(nurse);
+            btnAddUpdateNurse.Text = "Update Nurse";
+            resetPasswordButton.Text = "Reset Password";
+            btnAddUpdateNurse.Enabled = false;
         }
 
         private bool IsValidData()

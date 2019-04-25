@@ -14,7 +14,7 @@ namespace ClinicApp.UserControls
     {
         private readonly PatientController patientController;
         public Patient patient;
-        private Patient newPatient;
+        private Patient currentPatient;
         private List<State> stateList;
         private ErrorProvider errorProvider;
 
@@ -39,7 +39,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void PatientInformationUserControl_Load(object sender, EventArgs e)
         {
-            newPatient = new Patient();
             LoadComboboxes();
             phoneNumberMaskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             ClearFields();
@@ -54,10 +53,6 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void personSearchUserControl_GetPersonButtonClicked(object sender, EventArgs e)
         {
-            //personSearchUserControl.RefreshPerson();
-            patient = personSearchUserControl.patient;
-            patientBindingSource.Clear();
-            patientBindingSource.Add(patient);
             GetPatient();
         }
 
@@ -79,29 +74,22 @@ namespace ClinicApp.UserControls
         /// </summary>
         public void GetPatient()
         {
-            if (patient == null)
-            {
-                patient = new Patient();
-            }
+            patient = personSearchUserControl.patient;
+            patientBindingSource.Clear();
+            patientBindingSource.Add(patient);
             if (patient.FirstName == null)
             {
                 firstNameTextBox.Focus();
                 btnAddUpdatePatient.Text = "Add Patient";
-                PutNewPatient();
-                patientBindingSource.Clear();
-                patientBindingSource.Add(patient);
-                EnableFields();
                 btnAddUpdatePatient.Enabled = true;
             }
             else
             {
+                StashPatient();
                 btnAddUpdatePatient.Text = "Update Patient";
-                PutNewPatient();
-                patientBindingSource.Clear();
-                patientBindingSource.Add(newPatient);
-                EnableFields();
                 btnAddUpdatePatient.Enabled = false;
             }
+            EnableFields();
         }
 
         private void AddPatient()
@@ -115,11 +103,12 @@ namespace ClinicApp.UserControls
                 int patientID = -1;
                 try
                 {
-                    PutNewPatient();
                     Patient tempPatient = patientController.GetPatientBySSN(SSN);
                     if (tempPatient != null)
                     {
                         patientID = tempPatient.PatientID;
+                        patient.PatientID = patientID;
+                        RefreshPatient();
                         lblMessage.Text = "Error: That person is already a patient.";
                         return;
                     }
@@ -129,16 +118,19 @@ namespace ClinicApp.UserControls
                     }
                     if (patientID > 0)
                     {
+                        patient.PatientID = patientID;
+                        RefreshPatient();
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                         return;
                     }
                     else
                     {
-                        patientID = patientController.AddPatient(newPatient);
+                        patientID = patientController.AddPatient(patient);
                     }
                     if (patientID > 0)
                     {
-                        GetPatient();
+                        patient.PatientID = patientID;
+                        RefreshPatient();
                         lblMessage.Text = "Patient " + patientID + " has been added successfully.";
                     }
                     else
@@ -203,10 +195,9 @@ namespace ClinicApp.UserControls
             {
                 try
                 {
-                    if (patientController.UpdatePatient(patient, newPatient))
+                    if (patientController.UpdatePatient(currentPatient, patient))
                     {
                         RefreshPatient();
-                        GetPatient();
                         lblMessage.Text = "Patient has been updated successfully.";
                     }
                     else
@@ -223,16 +214,30 @@ namespace ClinicApp.UserControls
         }
 
 
-        private void DeletePatient()
+        private void DeletePatient(Patient patient)
         {
-            string name = newPatient.FullName;
+            string name = patient.FullName;
+            int personID = patient.PersonID;
             try
             {
-                if (patientController.DeletePatient(newPatient))
+                if (patientController.HasMadeAppointments(patient.PatientID))
                 {
-                    ClearFields();
-                    DisableFields();
-                    lblMessage.Text = name + " is no longer a patient at this clinic.";
+                    lblMessage.Text = "The patient cannot be deleted since appointments have been made.";
+                }
+                else
+                {
+                    if (patientController.DeletePatient(patient))
+                    {
+                        if (!(patientController.IsANurse(personID) ||
+                              patientController.IsADoctor(personID) ||
+                              patientController.IsAnAdministrator(personID)))
+                        {
+                            patientController.DeletePerson(patient);
+                        }
+                        ClearFields();
+                        DisableFields();
+                        lblMessage.Text = name + " is no longer a patient at this clinic.";
+                    }
                 }
             }
             catch (Exception ex)
@@ -245,21 +250,24 @@ namespace ClinicApp.UserControls
         /// <summary>
         /// Puts fields into a new patient object
         /// </summary>
-        private void PutNewPatient()
+        private void StashPatient()
         {
-            newPatient.PatientID = patient.PatientID;
-            newPatient.PersonID = patient.PersonID;
-            newPatient.LastName = patient.LastName;
-            newPatient.FirstName = patient.FirstName;
-            newPatient.BirthDate = patient.BirthDate.Date;
-            newPatient.SSN = patient.SSN;
-            newPatient.Gender = patient.Gender;
-            newPatient.StreetAddress = patient.StreetAddress;
-            newPatient.City = patient.City;
-            newPatient.State = patient.State;
-            newPatient.PostCode = patient.PostCode;
-            newPatient.PhoneNumber = patient.PhoneNumber;
-            newPatient.Username = patient.Username;
+            currentPatient = new Patient
+            {
+                PatientID = patient.PatientID,
+                PersonID = patient.PersonID,
+                LastName = patient.LastName,
+                FirstName = patient.FirstName,
+                BirthDate = patient.BirthDate.Date,
+                SSN = patient.SSN,
+                Gender = patient.Gender,
+                StreetAddress = patient.StreetAddress,
+                City = patient.City,
+                State = patient.State,
+                PostCode = patient.PostCode,
+                PhoneNumber = patient.PhoneNumber,
+                Username = patient.Username
+            };
         }
 
         /// <summary>
@@ -287,6 +295,7 @@ namespace ClinicApp.UserControls
         
         public void ClearFields()
         {
+            errorProvider.Clear();
             patient = null;
             patientBindingSource.Clear();
             birthDateDateTimePicker.Value = DateTime.Today;
@@ -312,7 +321,7 @@ namespace ClinicApp.UserControls
             phoneNumberMaskedTextBox.Enabled = true;
             btnSearchAppointments.Enabled = true;
             btnSearchVisits.Enabled = true;
-            //deletePatientButton.Enabled = true;
+            deletePatientButton.Enabled = true;
         }
 
         private void DisableFields()
@@ -333,10 +342,15 @@ namespace ClinicApp.UserControls
 
         private void RefreshPatient()
         {
+            lblMessage.Text = "";
+            personSearchUserControl.patient = patient;
             personSearchUserControl.RefreshPerson();
             patient = personSearchUserControl.patient;
+            StashPatient();
             patientBindingSource.Clear();
             patientBindingSource.Add(patient);
+            btnAddUpdatePatient.Text = "Update Patient";
+            btnAddUpdatePatient.Enabled = false;
         }
 
         private bool IsValidData()
@@ -362,14 +376,8 @@ namespace ClinicApp.UserControls
         /// <param name="e"></param>
         private void PatientTextboxChanged(object sender, EventArgs e)
         {
-            if (sSNMaskedTextBox.MaskFull)
-            {
-                if (btnAddUpdatePatient.Enabled == false)
-                {
-                    lblMessage.Text = "";
-                }
-                btnAddUpdatePatient.Enabled = true;
-            }
+            lblMessage.Text = "";
+            btnAddUpdatePatient.Enabled = true;
             btnSearchAppointments.Enabled = false;
             btnSearchVisits.Enabled = false;
         }
@@ -396,6 +404,7 @@ namespace ClinicApp.UserControls
             if (btnAddUpdatePatient.Text == "Update Patient")
             {
                 UpdatePatient();
+                btnAddUpdatePatient.Enabled = true;
             }
             else 
             {
@@ -405,7 +414,6 @@ namespace ClinicApp.UserControls
                 }
                 if (sSNMaskedTextBox.Enabled)
                 {
-                    //DebugPatient(null, null);
                     AddPatient();
                 }
                 else
@@ -419,12 +427,15 @@ namespace ClinicApp.UserControls
 
         private void deletePatientButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This operation cannot be undone. \n" +
-                "Are you sure you want to remove " + newPatient.FullName + " as a patient?",
-                "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            if (patient != null)
             {
-                DeletePatient();
+                DialogResult result = MessageBox.Show("This operation cannot be undone. \n" +
+                "Are you sure you want to remove " + patient.FullName + " as a patient?",
+                "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeletePatient(patient);
+                }
             }
         }
 

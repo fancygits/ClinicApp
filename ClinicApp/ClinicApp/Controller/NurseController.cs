@@ -22,15 +22,45 @@ namespace ClinicApp.Controller
         }
 
         /// <summary>
+        /// Gets a Nurse matching a birth date. 
+        /// </summary>
+        /// <param name="birthDate">The birth date to search</param>
+        /// <returns>A Nurse or null if none or multiple nurses are found.</returns>
+        public Nurse GetNurseByBirthDate(string birthDate)
+        {
+            return NurseDAL.GetNurseByBirthDate(birthDate);
+        }
+
+        /// <summary>
         /// Gets a Nurse by full name and birthDate
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="birthDate"></param>
+        /// <param name="firstName">The Nurse's first name</param>
+        /// <param name="lastName">The Nurse's last name</param>
         /// <returns>A Nurse</returns>
-        public Nurse GetNurseByName(string firstName, string lastName, string birthDate)
+        public Nurse GetNurseByName(string firstName, string lastName)
         {
-            return NurseDAL.GetNurseByName(firstName, lastName, birthDate);
+            return NurseDAL.GetNurseByName(firstName, lastName);
+        }
+
+        /// <summary>
+        /// Gets a Nurse by the last name and birthdate
+        /// </summary>
+        /// <param name="lastName">The Nurse's last name</param>
+        /// <param name="birthDate">The birth date to search</param>
+        /// <returns></returns>
+        public Nurse GetNurseByLastNameAndBirthDate(string lastName, string birthDate)
+        {
+            return NurseDAL.GetNurseByLastNameAndBirthDate(lastName, birthDate);
+        }
+
+        /// <summary>
+        /// Gets a Nurse matching a SSN.
+        /// </summary>
+        /// <param name="SSN">The SSN to search</param>
+        /// <returns>A Nurse or null if none are found.</returns>
+        public Nurse GetNurseBySSN(string SSN)
+        {
+            return NurseDAL.GetNurseBySSN(SSN);
         }
 
         /// <summary>
@@ -76,6 +106,16 @@ namespace ClinicApp.Controller
         public int InsertNurse(int personID, bool active)
         {
             return NurseDAL.InsertNurse(personID, active);
+        }
+
+        /// <summary>
+        /// Inserts an existing Person as a nurse
+        /// </summary>
+        /// <param name="nurse">The Person to add to Nurse</param>
+        /// <returns>The new NurseID</returns>
+        public int PersonToNurse(Nurse nurse)
+        {
+            return NurseDAL.PersonToNurse(nurse);
         }
 
         /// <summary>
