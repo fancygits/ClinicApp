@@ -60,8 +60,7 @@ namespace ClinicApp.UserControls
                    Validator.IsInt32(this.diastolicBPTextBox, errorProvider) &&
                    Validator.IsDecimal(this.temperatureTextBox, errorProvider) &&
                    Validator.IsInt32(this.pulseTextBox, errorProvider) &&
-                   Validator.IsPresent(this.symptomsTextBox, errorProvider) &&
-                   Validator.IsPresent(this.initialDiagnosisTextBox, errorProvider))
+                   Validator.IsPresent(this.symptomsTextBox, errorProvider))
                 {
                     newVisit.Weight = Convert.ToDecimal(this.weightTextBox.Text);
                     newVisit.SystolicBP = Convert.ToInt32(this.systolicBPTextBox.Text);
@@ -69,11 +68,17 @@ namespace ClinicApp.UserControls
                     newVisit.Temperature = Convert.ToDecimal(this.temperatureTextBox.Text);
                     newVisit.Pulse = Convert.ToInt32(this.pulseTextBox.Text);
                     newVisit.Symptoms = this.symptomsTextBox.Text;
-                    newVisit.InitialDiagnosis = this.initialDiagnosisTextBox.Text;
                     isValid = true;
                 } else
                 {
                     isValid = false;
+                }
+                if (this.initialDiagnosisTextBox.Text.Equals(""))
+                {
+                    newVisit.InitialDiagnosis = "Pending Doctor Visit..";
+                } else
+                {
+                    newVisit.InitialDiagnosis = this.initialDiagnosisTextBox.Text;
                 }
                 if (!this.finalDiagnosisTextBox.Equals(""))
                 {

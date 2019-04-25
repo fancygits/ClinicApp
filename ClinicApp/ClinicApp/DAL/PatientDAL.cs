@@ -368,7 +368,12 @@ namespace ClinicApp.DAL
             return patient;
         }
 
-
+        /// <summary>
+        /// Gets a Patient by their last name and birthdate
+        /// </summary>
+        /// <param name="lastName">Patient's last name</param>
+        /// <param name="birthDate">Patient's birth date</param>
+        /// <returns>A Patient</returns>
         public static Patient GetPatientByLastNameAndBirthDate(string lastName, string birthDate)
         {
             Patient patient = null;
