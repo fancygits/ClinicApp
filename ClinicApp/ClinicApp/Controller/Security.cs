@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace ClinicApp.Controller
 {
+    /// <summary>
+    /// This is the security class. It holds a static method used to hash passwords
+    /// 
+    /// password hash citations - https://stackoverflow.com/questions/17292366/hashing-with-sha1-algorithm-in-c-sharp
+    /// </summary>
     public class Security
     {
         public static string Hash(string value)
