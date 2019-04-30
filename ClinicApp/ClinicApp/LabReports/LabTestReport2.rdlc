@@ -1735,10 +1735,6 @@
           <DataField>total_tests</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="total_all_tests">
-          <DataField>total_all_tests</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="normal_Results">
           <DataField>normal_Results</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -1755,10 +1751,14 @@
           <DataField>age_30To39</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="total_all_tests">
+          <DataField>total_all_tests</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>_CS6232_g1DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Li Yang\source\repos\clinicapp\ClinicApp\ClinicApp\_CS6232_g1DataSet1.xsd</rd:SchemaPath>
+        <rd:DataSetName>_CS6232_g1DataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Li Yang\source\repos\clinicapp\ClinicApp\ClinicApp\_CS6232_g1DataSet.xsd</rd:SchemaPath>
         <rd:TableName>sp_mostPerformedTestsDuringDates</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

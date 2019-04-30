@@ -4,6 +4,9 @@ using ClinicApp.View;
 
 namespace ClinicApp.UserControls
 {
+/// <summary>
+///  This is the User Control that will contain the lab test report and allow the user to enter a range of date from which to pull the report. 
+/// </summary>
     public partial class LabTestReportUserControl : UserControl
     {
         private ErrorProvider errorProvider;
