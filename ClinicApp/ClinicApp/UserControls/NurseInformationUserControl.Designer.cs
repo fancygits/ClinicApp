@@ -44,6 +44,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnAddUpdateNurse = new System.Windows.Forms.Button();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phoneNumberMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sSNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
@@ -58,7 +59,6 @@
             this.resetPasswordButton = new System.Windows.Forms.Button();
             this.debugNurseButton = new System.Windows.Forms.Button();
             this.personSearchUserControl = new ClinicApp.UserControls.PersonSearchUserControl();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             firstNameLabel = new System.Windows.Forms.Label();
             streetAddressLabel = new System.Windows.Forms.Label();
             stateLabel = new System.Windows.Forms.Label();
@@ -241,6 +241,10 @@
             this.streetAddressTextBox.Tag = "Street Address";
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.NurseTextboxChanged);
             // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
+            // 
             // phoneNumberMaskedTextBox
             // 
             this.phoneNumberMaskedTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -421,10 +425,6 @@
             this.personSearchUserControl.Name = "personSearchUserControl";
             this.personSearchUserControl.Size = new System.Drawing.Size(750, 80);
             this.personSearchUserControl.TabIndex = 0;
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicApp.Model.Nurse);
             // 
             // NurseInformationUserControl
             // 

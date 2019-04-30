@@ -94,10 +94,11 @@
             // 
             // addAppointmentUserControl1
             // 
-            this.addAppointmentUserControl1.Location = new System.Drawing.Point(10, 3);
+            this.addAppointmentUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addAppointmentUserControl1.Location = new System.Drawing.Point(3, 3);
             this.addAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(6);
             this.addAppointmentUserControl1.Name = "addAppointmentUserControl1";
-            this.addAppointmentUserControl1.Size = new System.Drawing.Size(792, 392);
+            this.addAppointmentUserControl1.Size = new System.Drawing.Size(796, 386);
             this.addAppointmentUserControl1.TabIndex = 0;
             // 
             // VisitTabPage
