@@ -219,12 +219,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_CS6232_g1DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="_CS6232_g1DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_CS6232_g1DataSet1.xsd</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="LabReports\LabTestPerformedReport.rdlc" />
     <EmbeddedResource Include="UserControls\AddAppointmentUserControl.resx">
       <DependentUpon>AddAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,17 +313,6 @@
     </None>
     <None Include="_CS6232_g1DataSet.xss">
       <DependentUpon>_CS6232_g1DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_CS6232_g1DataSet1.xsc">
-      <DependentUpon>_CS6232_g1DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="_CS6232_g1DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_CS6232_g1DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_CS6232_g1DataSet1.xss">
-      <DependentUpon>_CS6232_g1DataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
